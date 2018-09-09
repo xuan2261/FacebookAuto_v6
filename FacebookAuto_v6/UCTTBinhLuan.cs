@@ -60,6 +60,22 @@ namespace FacebookAuto_v6
                 wc.Noidung = LsNoiDungBinhLuan.Items[i].Text;
                 WorkComment.Them(wc);
             }
+            // lưu thông tin công việc bình luận lại
+            tblWork w = new tblWork();
+            w.IDPost = idpost;
+            w.KhoangTime = (int)numKhoangTime.Value;
+            w.TongComment = (int)numSoBL.Value;
+            w.TienDo = 0;
+            w.TrangThai = "Đang bình luận";
+            Work.Them(w);
+            //Lưu vào thông tin bài post
+            tblPost post = new tblPost();
+            post.IDPost = idpost;
+            if (radioTichCuc.Checked == true) post.Status = "Tích cực";
+            else post.Status = "Tiêu cực";
+            Post.Them(post);
+            //Thêm thành công thông tin
+            MessageBox.Show("Đã thêm công việc thành công");
         }
 
         private void UCTTBinhLuan_Load(object sender, EventArgs e)

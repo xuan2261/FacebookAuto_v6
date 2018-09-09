@@ -18,5 +18,8 @@ namespace DTO
         public int? TongComment { get; set; }
 
         public int? TienDo { get; set; }
+
+        [StringLength(50)]
+        public string TrangThai { get; set; }
     }
 }

@@ -114,6 +114,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ThuVienLamViecFacebook.cs" />
+    <Compile Include="TuDongBinhLuan.cs" />
     <Compile Include="UCQuanLyTK.cs">
       <SubType>UserControl</SubType>
     </Compile>
