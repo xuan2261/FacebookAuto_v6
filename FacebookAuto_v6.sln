@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2003
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacebookAuto_v6", "FacebookAuto_v6\FacebookAuto_v6.csproj", "{77E6A58D-B2C2-44CF-BB33-B1EB8B622D59}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTO", "DTO\DTO.csproj", "{B2DDB5D9-FE10-4127-822C-F53DC06A7D47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAO", "DAO\DAO.csproj", "{6A9F3F53-4E58-4A19-9052-24F748B5C52F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{77E6A58D-B2C2-44CF-BB33-B1EB8B622D59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77E6A58D-B2C2-44CF-BB33-B1EB8B622D59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77E6A58D-B2C2-44CF-BB33-B1EB8B622D59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77E6A58D-B2C2-44CF-BB33-B1EB8B622D59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2DDB5D9-FE10-4127-822C-F53DC06A7D47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2DDB5D9-FE10-4127-822C-F53DC06A7D47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2DDB5D9-FE10-4127-822C-F53DC06A7D47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2DDB5D9-FE10-4127-822C-F53DC06A7D47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A9F3F53-4E58-4A19-9052-24F748B5C52F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A9F3F53-4E58-4A19-9052-24F748B5C52F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A9F3F53-4E58-4A19-9052-24F748B5C52F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A9F3F53-4E58-4A19-9052-24F748B5C52F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {37DDE673-418C-4A2F-82DF-FF1F2514C8E0}
+	EndGlobalSection
+EndGlobal
