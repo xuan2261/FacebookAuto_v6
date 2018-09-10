@@ -20,6 +20,17 @@ namespace DAO
             DataProvider.DongKetNoi(con);
             return dt;
         }
+
+        public static string LayIDBinhLuan(string idpost)
+        {
+            string sTruyVan = "select * from tblWorkAccount where IDPost='" + idpost + "'";
+            con = DataProvider.KetNoi();
+            DataTable dt = DataProvider.LayDataTable(sTruyVan, con);
+            DataProvider.DongKetNoi(con);
+            Random r = new Random();
+            string idbinhluan = dt.Rows[r.Next(0,dt.Rows.Count)]["IDAccountComment"].ToString();
+            return idbinhluan;
+        }
         public static bool Them(tblWorkAccount wa)
         {
             try

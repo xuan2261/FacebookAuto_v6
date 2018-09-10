@@ -20,6 +20,14 @@ namespace DAO
             DataProvider.DongKetNoi(con);
             return dt;
         }
+        public static DataTable LoadDuLieuByID(string id)
+        {
+            string sTruyVan = "select Email,Password from tblAccountFB where NumberIDAccount='"+id+"'";
+            con = DataProvider.KetNoi();
+            DataTable dt = DataProvider.LayDataTable(sTruyVan, con);
+            DataProvider.DongKetNoi(con);
+            return dt;
+        }
         public static DataTable LoadDuLieuByStatus(int status)
         {
             string sTruyVan = "Select * from tblAccountFB where Status='"+status+"'";

@@ -37,6 +37,7 @@
             this.tiếpTụcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tạmDừngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bắtĐầuTấtCảToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tạmDừngTấtCảToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.IDPost = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Status = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -47,7 +48,7 @@
             this.TienDo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemProgressBar1 = new DevExpress.XtraEditors.Repository.RepositoryItemProgressBar();
             this.TrangThai = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.tạmDừngTấtCảToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataBaiCu)).BeginInit();
             this.MenuChuotPhai.SuspendLayout();
@@ -64,7 +65,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(928, 162);
             this.panel1.TabIndex = 0;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // label2
             // 
@@ -114,20 +114,28 @@
             // tiếpTụcToolStripMenuItem
             // 
             this.tiếpTụcToolStripMenuItem.Name = "tiếpTụcToolStripMenuItem";
-            this.tiếpTụcToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.tiếpTụcToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.tiếpTụcToolStripMenuItem.Text = "Tiếp tục";
+            this.tiếpTụcToolStripMenuItem.Click += new System.EventHandler(this.tiếpTụcToolStripMenuItem_Click);
             // 
             // tạmDừngToolStripMenuItem
             // 
             this.tạmDừngToolStripMenuItem.Name = "tạmDừngToolStripMenuItem";
-            this.tạmDừngToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.tạmDừngToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.tạmDừngToolStripMenuItem.Text = "Tạm dừng";
+            this.tạmDừngToolStripMenuItem.Click += new System.EventHandler(this.tạmDừngToolStripMenuItem_Click);
             // 
             // bắtĐầuTấtCảToolStripMenuItem
             // 
             this.bắtĐầuTấtCảToolStripMenuItem.Name = "bắtĐầuTấtCảToolStripMenuItem";
-            this.bắtĐầuTấtCảToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.bắtĐầuTấtCảToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.bắtĐầuTấtCảToolStripMenuItem.Text = "Bắt đầu tất cả";
+            // 
+            // tạmDừngTấtCảToolStripMenuItem
+            // 
+            this.tạmDừngTấtCảToolStripMenuItem.Name = "tạmDừngTấtCảToolStripMenuItem";
+            this.tạmDừngTấtCảToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.tạmDừngTấtCảToolStripMenuItem.Text = "Tạm dừng tất cả";
             // 
             // gridView1
             // 
@@ -234,11 +242,10 @@
             this.TrangThai.Visible = true;
             this.TrangThai.VisibleIndex = 7;
             // 
-            // tạmDừngTấtCảToolStripMenuItem
+            // timer1
             // 
-            this.tạmDừngTấtCảToolStripMenuItem.Name = "tạmDừngTấtCảToolStripMenuItem";
-            this.tạmDừngTấtCảToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
-            this.tạmDừngTấtCảToolStripMenuItem.Text = "Tạm dừng tất cả";
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // UCTTHoatDongGD
             // 
@@ -249,6 +256,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "UCTTHoatDongGD";
             this.Size = new System.Drawing.Size(928, 596);
+            this.Load += new System.EventHandler(this.UCTTHoatDongGD_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataBaiCu)).EndInit();
@@ -280,5 +288,6 @@
         private System.Windows.Forms.ToolStripMenuItem tạmDừngToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bắtĐầuTấtCảToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tạmDừngTấtCảToolStripMenuItem;
+        private System.Windows.Forms.Timer timer1;
     }
 }

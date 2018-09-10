@@ -14,7 +14,7 @@ namespace DAO
         private static SqlConnection con;
         public static DataTable LoadDuLieu()
         {
-            string sTruyVan = "select w.IDPost,p.Status, p.CountComment,p.CountLike,w.KhoangTime,w.TongComment,w.TienDo,w.TrangThai from tblWork w,tblPost p where w.IDPost=p.IDPost";
+            string sTruyVan = "select w.IDPost,p.Status, p.CountComment,p.CountLike,w.KhoangTime,w.TongComment,w.TienDo*100/w.TongComment as TienDo,w.TrangThai from tblWork w,tblPost p where w.IDPost=p.IDPost";
             con = DataProvider.KetNoi();
             DataTable dt = DataProvider.LayDataTable(sTruyVan, con);
             DataProvider.DongKetNoi(con);

@@ -78,8 +78,33 @@ namespace FacebookAuto_v6
             return ac;
         }
         //Kết thúc đăng nhập
+        //
+        //đăng nhập lấy fb_dtsg
+        public static string DNLay_fb_dtsg(string user,string pass)
+        {
+            tblAccountFB ac = new tblAccountFB();
+            WebBrowser web1 = new WebBrowser();
+            web1.ScriptErrorsSuppressed = true;
+            string postdata = "email=" + user + "&pass=" + pass;
+            System.Text.Encoding encoding = System.Text.Encoding.UTF8;
+            byte[] bytes = encoding.GetBytes(postdata);
+            string url = "https://mobile.facebook.com/login.php";
+            web1.Navigate(url, string.Empty, bytes, "Content-Type: application/x-www-form-urlencoded");
+            while (web1.ReadyState != WebBrowserReadyState.Complete)
+                Application.DoEvents();
+            web1.Navigate("https://mobile.facebook.com");
+            while (web1.ReadyState != WebBrowserReadyState.Complete)
+                Application.DoEvents();
+            string htmlcontent = web1.DocumentText;
+            string fb_dtsg = htmlcontent.Substring(htmlcontent.IndexOf("fb_dtsg"));
+            fb_dtsg = fb_dtsg.Substring(fb_dtsg.IndexOf("value") + 7);
+            fb_dtsg = fb_dtsg.Remove(fb_dtsg.IndexOf("\""));
+            return fb_dtsg;
+        }
 
+        // kết thúc lấy fb_dtsg
         //đăng xuát
+        
         public static void DangXuat()
         {
             WebBrowser web1 = new WebBrowser();
