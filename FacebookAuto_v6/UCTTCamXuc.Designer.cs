@@ -149,6 +149,7 @@
             this.btnThich.TabIndex = 26;
             this.btnThich.TabStop = false;
             this.btnThich.Zoom = 10;
+            this.btnThich.Click += new System.EventHandler(this.btnThich_Click);
             // 
             // lsCheckTKTieuCuc
             // 
@@ -179,6 +180,7 @@
             this.lsCheckTKTichCuc.Size = new System.Drawing.Size(271, 21);
             this.lsCheckTKTichCuc.TabIndex = 24;
             this.lsCheckTKTichCuc.ValueSeparator = ", ";
+            this.lsCheckTKTichCuc.DropDownClosed += new System.EventHandler(this.lsCheckTKTichCuc_DropDownClosed);
             // 
             // UCTTCamXuc
             // 

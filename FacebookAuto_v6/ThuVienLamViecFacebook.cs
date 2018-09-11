@@ -123,5 +123,35 @@ namespace FacebookAuto_v6
             }
         }
         //Kết thúc đăng xuất
+
+        //Bình luận
+        public static void BinhLuan(string idpost,string noidungcomment,string idaccountbl,string fb_dtsg)
+        {
+            string postdata = "ft_ent_identifier=" + idpost + "&comment_text=" + noidungcomment + "&source=21&client_id=1521281816386%3A2357270080&reply_fbid&rootid=u_jsonp_3_w&attached_sticker_fbid=0&attached_photo_fbid=0&attached_video_fbid=0&attached_file_fbid=0&attached_share_url&av=" + idaccountbl + "&section=default&__user=" + idaccountbl + "&fb_dtsg=" + fb_dtsg;
+            System.Text.Encoding encoding = System.Text.Encoding.UTF8;
+            byte[] bytes = encoding.GetBytes(postdata);
+            string url = "https://www.facebook.com/ufi/add/comment/?dpr=1";
+            WebBrowser web1 = new WebBrowser();
+            web1.Navigate(url, string.Empty, bytes, "Content-Type: application/x-www-form-urlencoded");
+
+            while (web1.ReadyState != WebBrowserReadyState.Complete)
+                Application.DoEvents();
+
+        }
+        //Kết thúc bình luận
+
+        //bày tỏ cảm xúc
+        public static void CamXuc()
+        {
+
+        }
+        //Kết thúc bày tỏ cảm xúc
+
+        //chia sẻ bài viết
+        public static void ChiaSe()
+        {
+
+        }
+        //kết thúc chia sẻ bài viết
     }
 }

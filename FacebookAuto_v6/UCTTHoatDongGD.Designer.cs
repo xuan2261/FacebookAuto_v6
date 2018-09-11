@@ -30,14 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.labelViTri = new System.Windows.Forms.Label();
             this.DataBaiCu = new DevExpress.XtraGrid.GridControl();
             this.MenuChuotPhai = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.tiếpTụcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tạmDừngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bắtĐầuTấtCảToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tạmDừngTấtCảToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TiepTucToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TamDungToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.BatDauTatCaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TamDungTatCaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.IDPost = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Status = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -49,7 +47,7 @@
             this.repositoryItemProgressBar1 = new DevExpress.XtraEditors.Repository.RepositoryItemProgressBar();
             this.TrangThai = new DevExpress.XtraGrid.Columns.GridColumn();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.panel1.SuspendLayout();
+            this.xemChiTietToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.DataBaiCu)).BeginInit();
             this.MenuChuotPhai.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -58,45 +56,22 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.labelViTri);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(928, 162);
+            this.panel1.Size = new System.Drawing.Size(508, 109);
             this.panel1.TabIndex = 0;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.Window;
-            this.label2.Location = new System.Drawing.Point(3, 12);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(234, 29);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Thao tác nghiệp vụ";
-            // 
-            // labelViTri
-            // 
-            this.labelViTri.AutoSize = true;
-            this.labelViTri.ForeColor = System.Drawing.SystemColors.Window;
-            this.labelViTri.Location = new System.Drawing.Point(243, 24);
-            this.labelViTri.Name = "labelViTri";
-            this.labelViTri.Size = new System.Drawing.Size(124, 13);
-            this.labelViTri.TabIndex = 5;
-            this.labelViTri.Text = ">>>  Hoạt động gần đây";
             // 
             // DataBaiCu
             // 
             this.DataBaiCu.ContextMenuStrip = this.MenuChuotPhai;
             this.DataBaiCu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DataBaiCu.Location = new System.Drawing.Point(0, 162);
+            this.DataBaiCu.Location = new System.Drawing.Point(0, 109);
             this.DataBaiCu.MainView = this.gridView1;
             this.DataBaiCu.Name = "DataBaiCu";
             this.DataBaiCu.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemProgressBar1});
-            this.DataBaiCu.Size = new System.Drawing.Size(928, 434);
+            this.DataBaiCu.Size = new System.Drawing.Size(508, 390);
             this.DataBaiCu.TabIndex = 1;
             this.DataBaiCu.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -104,38 +79,39 @@
             // MenuChuotPhai
             // 
             this.MenuChuotPhai.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tiếpTụcToolStripMenuItem,
-            this.tạmDừngToolStripMenuItem,
-            this.bắtĐầuTấtCảToolStripMenuItem,
-            this.tạmDừngTấtCảToolStripMenuItem});
+            this.TiepTucToolStripMenuItem,
+            this.TamDungToolStripMenuItem,
+            this.BatDauTatCaToolStripMenuItem,
+            this.TamDungTatCaToolStripMenuItem,
+            this.xemChiTietToolStripMenuItem});
             this.MenuChuotPhai.Name = "MenuChuotPhai";
-            this.MenuChuotPhai.Size = new System.Drawing.Size(162, 92);
+            this.MenuChuotPhai.Size = new System.Drawing.Size(181, 136);
             // 
-            // tiếpTụcToolStripMenuItem
+            // TiepTucToolStripMenuItem
             // 
-            this.tiếpTụcToolStripMenuItem.Name = "tiếpTụcToolStripMenuItem";
-            this.tiếpTụcToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.tiếpTụcToolStripMenuItem.Text = "Tiếp tục";
-            this.tiếpTụcToolStripMenuItem.Click += new System.EventHandler(this.tiếpTụcToolStripMenuItem_Click);
+            this.TiepTucToolStripMenuItem.Name = "TiepTucToolStripMenuItem";
+            this.TiepTucToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.TiepTucToolStripMenuItem.Text = "Tiếp tục";
+            this.TiepTucToolStripMenuItem.Click += new System.EventHandler(this.tiếpTụcToolStripMenuItem_Click);
             // 
-            // tạmDừngToolStripMenuItem
+            // TamDungToolStripMenuItem
             // 
-            this.tạmDừngToolStripMenuItem.Name = "tạmDừngToolStripMenuItem";
-            this.tạmDừngToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.tạmDừngToolStripMenuItem.Text = "Tạm dừng";
-            this.tạmDừngToolStripMenuItem.Click += new System.EventHandler(this.tạmDừngToolStripMenuItem_Click);
+            this.TamDungToolStripMenuItem.Name = "TamDungToolStripMenuItem";
+            this.TamDungToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.TamDungToolStripMenuItem.Text = "Tạm dừng";
+            this.TamDungToolStripMenuItem.Click += new System.EventHandler(this.tạmDừngToolStripMenuItem_Click);
             // 
-            // bắtĐầuTấtCảToolStripMenuItem
+            // BatDauTatCaToolStripMenuItem
             // 
-            this.bắtĐầuTấtCảToolStripMenuItem.Name = "bắtĐầuTấtCảToolStripMenuItem";
-            this.bắtĐầuTấtCảToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.bắtĐầuTấtCảToolStripMenuItem.Text = "Bắt đầu tất cả";
+            this.BatDauTatCaToolStripMenuItem.Name = "BatDauTatCaToolStripMenuItem";
+            this.BatDauTatCaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.BatDauTatCaToolStripMenuItem.Text = "Bắt đầu tất cả";
             // 
-            // tạmDừngTấtCảToolStripMenuItem
+            // TamDungTatCaToolStripMenuItem
             // 
-            this.tạmDừngTấtCảToolStripMenuItem.Name = "tạmDừngTấtCảToolStripMenuItem";
-            this.tạmDừngTấtCảToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.tạmDừngTấtCảToolStripMenuItem.Text = "Tạm dừng tất cả";
+            this.TamDungTatCaToolStripMenuItem.Name = "TamDungTatCaToolStripMenuItem";
+            this.TamDungTatCaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.TamDungTatCaToolStripMenuItem.Text = "Tạm dừng tất cả";
             // 
             // gridView1
             // 
@@ -164,7 +140,6 @@
             this.gridView1.GridControl = this.DataBaiCu;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.ReadOnly = true;
-            this.gridView1.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CellSelect;
             // 
             // IDPost
             // 
@@ -244,8 +219,15 @@
             // 
             // timer1
             // 
-            this.timer1.Interval = 1000;
+            this.timer1.Interval = 10000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // xemChiTietToolStripMenuItem
+            // 
+            this.xemChiTietToolStripMenuItem.Name = "xemChiTietToolStripMenuItem";
+            this.xemChiTietToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.xemChiTietToolStripMenuItem.Text = "Xem chi tiết";
+            this.xemChiTietToolStripMenuItem.Click += new System.EventHandler(this.xemChiTietToolStripMenuItem_Click);
             // 
             // UCTTHoatDongGD
             // 
@@ -255,10 +237,8 @@
             this.Controls.Add(this.DataBaiCu);
             this.Controls.Add(this.panel1);
             this.Name = "UCTTHoatDongGD";
-            this.Size = new System.Drawing.Size(928, 596);
+            this.Size = new System.Drawing.Size(508, 499);
             this.Load += new System.EventHandler(this.UCTTHoatDongGD_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataBaiCu)).EndInit();
             this.MenuChuotPhai.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
@@ -270,8 +250,6 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label labelViTri;
         private DevExpress.XtraGrid.GridControl DataBaiCu;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Columns.GridColumn IDPost;
@@ -284,10 +262,11 @@
         private DevExpress.XtraGrid.Columns.GridColumn TongComment;
         private DevExpress.XtraGrid.Columns.GridColumn TrangThai;
         private System.Windows.Forms.ContextMenuStrip MenuChuotPhai;
-        private System.Windows.Forms.ToolStripMenuItem tiếpTụcToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tạmDừngToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem bắtĐầuTấtCảToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tạmDừngTấtCảToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem TiepTucToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem TamDungToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem BatDauTatCaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem TamDungTatCaToolStripMenuItem;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ToolStripMenuItem xemChiTietToolStripMenuItem;
     }
 }

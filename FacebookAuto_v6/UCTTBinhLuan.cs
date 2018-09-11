@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DAO;
 using DTO;
+using System.Threading;
 
 namespace FacebookAuto_v6
 {
@@ -18,6 +19,7 @@ namespace FacebookAuto_v6
         DataTable tichcuc = new DataTable();
         DataTable tieucuc = new DataTable();
         List<string> idTaiKhoanBinhLuan = new List<string>();
+        Dictionary<string, Thread> danhsach = new Dictionary<string, Thread>();
         public UCTTBinhLuan()
         {
             InitializeComponent();
@@ -75,7 +77,14 @@ namespace FacebookAuto_v6
             else post.Status = "Tiêu cực";
             Post.Them(post);
             //Thêm thành công thông tin
+            TuDongBinhLuan r = new TuDongBinhLuan(idpost, numKhoangTime.Value.ToString(), numSoBL.Value.ToString());
+            Thread tudong = new Thread(r.DoWork);
+            tudong.SetApartmentState(ApartmentState.STA);
+            tudong.Start();
+            danhsach.Add(idpost, tudong);
+            Work.updatetrangthai(idpost, "Đang bình luận");
             MessageBox.Show("Đã thêm công việc thành công");
+            timer1.Start();
         }
 
         private void UCTTBinhLuan_Load(object sender, EventArgs e)
@@ -144,6 +153,11 @@ namespace FacebookAuto_v6
                 else
                     idTaiKhoanBinhLuan.Add(tieucuc.Rows[int.Parse(i) - 1]["NumberIDAccount"].ToString());
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            ProgressTienDo.Value = int.Parse(Work.layPhanTramTienDo(idpost));
         }
     }
 }

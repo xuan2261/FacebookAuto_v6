@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.LsNoiDungBinhLuan = new System.Windows.Forms.ListView();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -35,7 +36,7 @@
             this.panelphosisaduoibinhluan = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.bunifuProgressBar1 = new Bunifu.Framework.UI.BunifuProgressBar();
+            this.ProgressTienDo = new Bunifu.Framework.UI.BunifuProgressBar();
             this.btnBatDauBinhLuan = new Bunifu.Framework.UI.BunifuFlatButton();
             this.numSoBL = new System.Windows.Forms.NumericUpDown();
             this.numKhoangTime = new System.Windows.Forms.NumericUpDown();
@@ -44,11 +45,12 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.btnThem = new Bunifu.Framework.UI.BunifuImageButton();
-            this.lsCheckTKTieuCuc = new FacebookAuto_v5.ListCheckBoxDropDown();
-            this.lsCheckTKTichCuc = new FacebookAuto_v5.ListCheckBoxDropDown();
             this.label1 = new System.Windows.Forms.Label();
             this.radioTichCuc = new System.Windows.Forms.RadioButton();
             this.radioTieuCuc = new System.Windows.Forms.RadioButton();
+            this.lsCheckTKTieuCuc = new FacebookAuto_v5.ListCheckBoxDropDown();
+            this.lsCheckTKTichCuc = new FacebookAuto_v5.ListCheckBoxDropDown();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panelphosisaduoibinhluan.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numSoBL)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numKhoangTime)).BeginInit();
@@ -103,7 +105,7 @@
             this.panelphosisaduoibinhluan.Controls.Add(this.lsCheckTKTichCuc);
             this.panelphosisaduoibinhluan.Controls.Add(this.label11);
             this.panelphosisaduoibinhluan.Controls.Add(this.label12);
-            this.panelphosisaduoibinhluan.Controls.Add(this.bunifuProgressBar1);
+            this.panelphosisaduoibinhluan.Controls.Add(this.ProgressTienDo);
             this.panelphosisaduoibinhluan.Controls.Add(this.btnBatDauBinhLuan);
             this.panelphosisaduoibinhluan.Controls.Add(this.numSoBL);
             this.panelphosisaduoibinhluan.Controls.Add(this.numKhoangTime);
@@ -138,19 +140,19 @@
             this.label12.TabIndex = 14;
             this.label12.Text = "Tiến độ";
             // 
-            // bunifuProgressBar1
+            // ProgressTienDo
             // 
-            this.bunifuProgressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.ProgressTienDo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.bunifuProgressBar1.BackColor = System.Drawing.Color.Silver;
-            this.bunifuProgressBar1.BorderRadius = 5;
-            this.bunifuProgressBar1.Location = new System.Drawing.Point(74, 217);
-            this.bunifuProgressBar1.MaximumValue = 100;
-            this.bunifuProgressBar1.Name = "bunifuProgressBar1";
-            this.bunifuProgressBar1.ProgressColor = System.Drawing.Color.Teal;
-            this.bunifuProgressBar1.Size = new System.Drawing.Size(434, 10);
-            this.bunifuProgressBar1.TabIndex = 15;
-            this.bunifuProgressBar1.Value = 0;
+            this.ProgressTienDo.BackColor = System.Drawing.Color.Silver;
+            this.ProgressTienDo.BorderRadius = 5;
+            this.ProgressTienDo.Location = new System.Drawing.Point(74, 217);
+            this.ProgressTienDo.MaximumValue = 100;
+            this.ProgressTienDo.Name = "ProgressTienDo";
+            this.ProgressTienDo.ProgressColor = System.Drawing.Color.Teal;
+            this.ProgressTienDo.Size = new System.Drawing.Size(434, 10);
+            this.ProgressTienDo.TabIndex = 15;
+            this.ProgressTienDo.Value = 0;
             // 
             // btnBatDauBinhLuan
             // 
@@ -285,38 +287,6 @@
             this.btnThem.Zoom = 10;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
-            // lsCheckTKTieuCuc
-            // 
-            this.lsCheckTKTieuCuc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lsCheckTKTieuCuc.CheckOnClick = true;
-            this.lsCheckTKTieuCuc.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.lsCheckTKTieuCuc.DropDownHeight = 1;
-            this.lsCheckTKTieuCuc.FormattingEnabled = true;
-            this.lsCheckTKTieuCuc.IntegralHeight = false;
-            this.lsCheckTKTieuCuc.Location = new System.Drawing.Point(137, 70);
-            this.lsCheckTKTieuCuc.Name = "lsCheckTKTieuCuc";
-            this.lsCheckTKTieuCuc.Size = new System.Drawing.Size(371, 21);
-            this.lsCheckTKTieuCuc.TabIndex = 21;
-            this.lsCheckTKTieuCuc.ValueSeparator = ", ";
-            this.lsCheckTKTieuCuc.DropDownClosed += new System.EventHandler(this.lsCheckTKTieuCuc_DropDownClosed);
-            // 
-            // lsCheckTKTichCuc
-            // 
-            this.lsCheckTKTichCuc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lsCheckTKTichCuc.CheckOnClick = true;
-            this.lsCheckTKTichCuc.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.lsCheckTKTichCuc.DropDownHeight = 1;
-            this.lsCheckTKTichCuc.FormattingEnabled = true;
-            this.lsCheckTKTichCuc.IntegralHeight = false;
-            this.lsCheckTKTichCuc.Location = new System.Drawing.Point(137, 26);
-            this.lsCheckTKTichCuc.Name = "lsCheckTKTichCuc";
-            this.lsCheckTKTichCuc.Size = new System.Drawing.Size(371, 21);
-            this.lsCheckTKTichCuc.TabIndex = 20;
-            this.lsCheckTKTichCuc.ValueSeparator = ", ";
-            this.lsCheckTKTichCuc.DropDownClosed += new System.EventHandler(this.lsCheckTKTichCuc_DropDownClosed);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -350,6 +320,43 @@
             this.radioTieuCuc.TabIndex = 20;
             this.radioTieuCuc.Text = "Tiêu cực";
             this.radioTieuCuc.UseVisualStyleBackColor = true;
+            // 
+            // lsCheckTKTieuCuc
+            // 
+            this.lsCheckTKTieuCuc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lsCheckTKTieuCuc.CheckOnClick = true;
+            this.lsCheckTKTieuCuc.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.lsCheckTKTieuCuc.DropDownHeight = 1;
+            this.lsCheckTKTieuCuc.FormattingEnabled = true;
+            this.lsCheckTKTieuCuc.IntegralHeight = false;
+            this.lsCheckTKTieuCuc.Location = new System.Drawing.Point(137, 70);
+            this.lsCheckTKTieuCuc.Name = "lsCheckTKTieuCuc";
+            this.lsCheckTKTieuCuc.Size = new System.Drawing.Size(371, 21);
+            this.lsCheckTKTieuCuc.TabIndex = 21;
+            this.lsCheckTKTieuCuc.ValueSeparator = ", ";
+            this.lsCheckTKTieuCuc.DropDownClosed += new System.EventHandler(this.lsCheckTKTieuCuc_DropDownClosed);
+            // 
+            // lsCheckTKTichCuc
+            // 
+            this.lsCheckTKTichCuc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lsCheckTKTichCuc.CheckOnClick = true;
+            this.lsCheckTKTichCuc.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.lsCheckTKTichCuc.DropDownHeight = 1;
+            this.lsCheckTKTichCuc.FormattingEnabled = true;
+            this.lsCheckTKTichCuc.IntegralHeight = false;
+            this.lsCheckTKTichCuc.Location = new System.Drawing.Point(137, 26);
+            this.lsCheckTKTichCuc.Name = "lsCheckTKTichCuc";
+            this.lsCheckTKTichCuc.Size = new System.Drawing.Size(371, 21);
+            this.lsCheckTKTichCuc.TabIndex = 20;
+            this.lsCheckTKTichCuc.ValueSeparator = ", ";
+            this.lsCheckTKTichCuc.DropDownClosed += new System.EventHandler(this.lsCheckTKTichCuc_DropDownClosed);
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // UCTTBinhLuan
             // 
@@ -390,7 +397,7 @@
         private FacebookAuto_v5.ListCheckBoxDropDown lsCheckTKTichCuc;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private Bunifu.Framework.UI.BunifuProgressBar bunifuProgressBar1;
+        private Bunifu.Framework.UI.BunifuProgressBar ProgressTienDo;
         private Bunifu.Framework.UI.BunifuFlatButton btnBatDauBinhLuan;
         private System.Windows.Forms.NumericUpDown numSoBL;
         private System.Windows.Forms.NumericUpDown numKhoangTime;
@@ -401,5 +408,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RadioButton radioTichCuc;
         private System.Windows.Forms.RadioButton radioTieuCuc;
+        private System.Windows.Forms.Timer timer1;
     }
 }

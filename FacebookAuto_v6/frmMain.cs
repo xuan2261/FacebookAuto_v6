@@ -94,14 +94,19 @@ namespace FacebookAuto_v6
 
         private void ElementHoatDong_Click(object sender, EventArgs e)
         {
-            ktuc = 0;
-            panelMain.Controls.Clear();
-            panelMain.Controls.Add(uctthdgd);
-            uctthdgd.Dock = DockStyle.Fill;
+            if (ktuc != 1)
+            {
+                panelMain.Controls.Clear();
+                panelMain.Controls.Add(ucthaotac);
+                ucthaotac.Dock = DockStyle.Fill;
+            }
+            ucthaotac.LoadHoatDongGanDay();
+            ktuc = 1;
         }
 
         private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
+            Work.updatetrangthaitamdung();
             Application.Exit();
         }
 

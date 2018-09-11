@@ -16,6 +16,7 @@ namespace FacebookAuto_v6
         UCTTCamXuc ttcx = new UCTTCamXuc();
         UCTTChiaSe ttcs = new UCTTChiaSe();
         UCTTKiemDuyet ttkd = new UCTTKiemDuyet();
+        UCTTHoatDongGD tthdgd = new UCTTHoatDongGD();
         string urlfacebook= "https://mobile.facebook.com/";
         public UCThaoTac()
         {
@@ -23,7 +24,7 @@ namespace FacebookAuto_v6
             LoadBinhLuan();
         }
 
-        private void btnKiemTra_Click(object sender, EventArgs e)
+        public void btnKiemTra_Click(object sender, EventArgs e)
         {
             WebView.Navigate(urlfacebook+txtIDBaiViet.Text);
             ttbl.idpost = txtIDBaiViet.Text;
@@ -56,6 +57,19 @@ namespace FacebookAuto_v6
             splitContainerControl1.Panel2.Controls.Add(ttkd);
             ttkd.Dock = DockStyle.Fill;
             labelViTri.Text = ">>>  Kiểm duyệt";
+        }
+        //load lại webview
+        public void getdulieufrmkhac(string idpost)
+        {
+            WebView.Navigate(urlfacebook + idpost);
+        }
+        public void LoadHoatDongGanDay()
+        {
+            splitContainerControl1.Panel2.Controls.Clear();
+            splitContainerControl1.Panel2.Controls.Add(tthdgd);
+            tthdgd.Dock = DockStyle.Fill;
+            tthdgd.sentidpost = new UCTTHoatDongGD.SendIDPost(getdulieufrmkhac);
+            labelViTri.Text = ">>>  Hoạt động gần đây";
         }
 
         private void radioMobile_CheckedChanged(object sender, EventArgs e)
