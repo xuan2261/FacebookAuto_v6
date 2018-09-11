@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DTO;
+using DAO;
+using System.Data;
 
 namespace FacebookAuto_v6
 {
@@ -82,7 +84,6 @@ namespace FacebookAuto_v6
         //đăng nhập lấy fb_dtsg
         public static string DNLay_fb_dtsg(string user,string pass)
         {
-            tblAccountFB ac = new tblAccountFB();
             WebBrowser web1 = new WebBrowser();
             web1.ScriptErrorsSuppressed = true;
             string postdata = "email=" + user + "&pass=" + pass;
@@ -123,7 +124,21 @@ namespace FacebookAuto_v6
             }
         }
         //Kết thúc đăng xuất
-
+        //đăng nhập không lấy thông tin
+        public static void DNKhongLayTT(string idaccountfb)
+        {
+            DataTable dt= AccountFB.LoadDuLieuByID(idaccountfb);
+            WebBrowser web1 = new WebBrowser();
+            web1.ScriptErrorsSuppressed = true;
+            string postdata = "email=" + dt.Rows[0]["Email"] + "&pass=" + dt.Rows[0]["Password"];
+            System.Text.Encoding encoding = System.Text.Encoding.UTF8;
+            byte[] bytes = encoding.GetBytes(postdata);
+            string url = "https://mobile.facebook.com/login.php";
+            web1.Navigate(url, string.Empty, bytes, "Content-Type: application/x-www-form-urlencoded");
+            while (web1.ReadyState != WebBrowserReadyState.Complete)
+                Application.DoEvents();
+        }
+        //kết thúc đăng nhập không lấy thông tin
         //Bình luận
         public static void BinhLuan(string idpost,string noidungcomment,string idaccountbl,string fb_dtsg)
         {
@@ -140,10 +155,28 @@ namespace FacebookAuto_v6
         }
         //Kết thúc bình luận
 
-        //bày tỏ cảm xúc
-        public static void CamXuc()
-        {
 
+        //bày tỏ cảm xúc
+        public static void CamXuc(string idpost,int loaicamxuc)
+        {
+            string[] camxuc = new string[6];
+            WebBrowser web1 = new WebBrowser();
+            web1.Navigate("https://mobile.facebook.com/reactions/picker/?ft_id="+idpost);
+            while (web1.ReadyState != WebBrowserReadyState.Complete)
+                Application.DoEvents();
+            string htmlcontent = web1.DocumentText;
+            htmlcontent = htmlcontent.Replace("amp;", "");
+            camxuc[0] = htmlcontent.Substring(htmlcontent.IndexOf("/ufi/reaction/?ft_e"));
+            for (int i = 1; i < 6; i++)
+            {
+                string tg = camxuc[i - 1].Substring(1);
+                camxuc[i] = tg.Substring(tg.IndexOf("/ufi/reaction/?ft_e"));
+            }
+            for (int i = 0; i < 6; i++)
+                camxuc[i] = camxuc[i].Remove(camxuc[i].IndexOf("\""));
+            web1.Navigate("https://mobile.facebook.com" + camxuc[loaicamxuc]);
+            while (web1.ReadyState != WebBrowserReadyState.Complete)
+                Application.DoEvents();
         }
         //Kết thúc bày tỏ cảm xúc
 
@@ -153,5 +186,12 @@ namespace FacebookAuto_v6
 
         }
         //kết thúc chia sẻ bài viết
+
+        //duyệt người thích
+        public static void DuyetNguoiThich()
+        {
+
+        }
+        //kết thúc duyệt người thích
     }
 }

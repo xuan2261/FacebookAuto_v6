@@ -84,7 +84,6 @@ namespace FacebookAuto_v6
             danhsach.Add(idpost, tudong);
             Work.updatetrangthai(idpost, "Đang bình luận");
             MessageBox.Show("Đã thêm công việc thành công");
-            timer1.Start();
         }
 
         private void UCTTBinhLuan_Load(object sender, EventArgs e)
@@ -154,10 +153,6 @@ namespace FacebookAuto_v6
                     idTaiKhoanBinhLuan.Add(tieucuc.Rows[int.Parse(i) - 1]["NumberIDAccount"].ToString());
             }
         }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            ProgressTienDo.Value = int.Parse(Work.layPhanTramTienDo(idpost));
-        }
+        
     }
 }

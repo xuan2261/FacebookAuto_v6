@@ -103,6 +103,16 @@ namespace FacebookAuto_v6.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_neutral_filled_50 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-neutral-filled-50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_plus_48 {
             get {
                 object obj = ResourceManager.GetObject("icons8-plus-48", resourceCulture);
@@ -113,9 +123,29 @@ namespace FacebookAuto_v6.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_sad_filled_50 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-sad-filled-50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_save_as_filled_50 {
             get {
                 object obj = ResourceManager.GetObject("icons8-save-as-filled-50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_smiling_filled_50 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-smiling-filled-50", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -47,6 +47,7 @@ namespace FacebookAuto_v6
                 // đăng xuất
                 ThuVienLamViecFacebook.DangXuat();
                 DataTable dtac = AccountFB.LoadDuLieuByID(idaccountbl);
+                //đăng nhập và lấy fb-dtsg
                 string fb_dtsg=ThuVienLamViecFacebook.DNLay_fb_dtsg(dtac.Rows[0]["Email"].ToString(), dtac.Rows[0]["Password"].ToString());
                 string noidungcomment = WorkComment.LayNoiDungComment(idpost);
                 // bắt đầu bình luận

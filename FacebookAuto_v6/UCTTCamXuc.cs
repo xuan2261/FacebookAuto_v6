@@ -25,7 +25,18 @@ namespace FacebookAuto_v6
 
         private void btnThich_Click(object sender, EventArgs e)
         {
-
+            lbTienDo.Text = "Đang thích";
+            lbTienDo.Visible = true;
+            ProgressTienDo.Visible = true;
+            ProgressTienDo.Value = 0;
+            for (int i = 0; i < idTaiKhoanCamXuc.Count; i++)
+            {
+                ThuVienLamViecFacebook.DangXuat();
+                ThuVienLamViecFacebook.DNKhongLayTT(idTaiKhoanCamXuc[i]);
+                ThuVienLamViecFacebook.CamXuc(idpost, 0);
+                ProgressTienDo.Value = (int)100 * (i+1) / idTaiKhoanCamXuc.Count;
+            }
+            lbTienDo.Text = "Đã thích xong";
         }
         private void LoadListAccount()
         {
@@ -45,6 +56,114 @@ namespace FacebookAuto_v6
         }
 
         private void lsCheckTKTichCuc_DropDownClosed(object sender, EventArgs e)
+        {
+            idTaiKhoanCamXuc = new List<string>();
+            //lấy ra list tài khoản sử dụng để bình lu
+            foreach (var item in lsCheckTKTichCuc.CheckedIndices)
+            {
+                string i = item.ToString();
+                if (i == "0")
+                {
+                    for (int t = 0; t < tichcuc.Rows.Count; t++)
+                        idTaiKhoanCamXuc.Add(tichcuc.Rows[t]["NumberIDAccount"].ToString());
+                }
+                else
+                    idTaiKhoanCamXuc.Add(tichcuc.Rows[int.Parse(i) - 1]["NumberIDAccount"].ToString());
+            }
+            foreach (var item in lsCheckTKTieuCuc.CheckedIndices)
+            {
+                string i = item.ToString();
+                if (i == "0")
+                {
+                    for (int t = 0; t < tieucuc.Rows.Count; t++)
+                        idTaiKhoanCamXuc.Add(tieucuc.Rows[t]["NumberIDAccount"].ToString());
+                }
+                else
+                    idTaiKhoanCamXuc.Add(tieucuc.Rows[int.Parse(i) - 1]["NumberIDAccount"].ToString());
+            }
+        }
+
+        private void btnYeuThich_Click(object sender, EventArgs e)
+        {
+            lbTienDo.Text = "Đang yêu thích";
+            lbTienDo.Visible = true;
+            ProgressTienDo.Visible = true;
+            ProgressTienDo.Value = 0;
+            for (int i = 0; i < idTaiKhoanCamXuc.Count; i++)
+            {
+                ThuVienLamViecFacebook.DangXuat();
+                ThuVienLamViecFacebook.DNKhongLayTT(idTaiKhoanCamXuc[i]);
+                ThuVienLamViecFacebook.CamXuc(idpost, 1);
+                ProgressTienDo.Value = (int)100 * (i + 1) / idTaiKhoanCamXuc.Count;
+            }
+            lbTienDo.Text = "Đã thả tim xong!!";
+        }
+
+        private void btnHaHa_Click(object sender, EventArgs e)
+        {
+            lbTienDo.Text = "Đang cười haha";
+            lbTienDo.Visible = true;
+            ProgressTienDo.Visible = true;
+            ProgressTienDo.Value = 0;
+            for (int i = 0; i < idTaiKhoanCamXuc.Count; i++)
+            {
+                ThuVienLamViecFacebook.DangXuat();
+                ThuVienLamViecFacebook.DNKhongLayTT(idTaiKhoanCamXuc[i]);
+                ThuVienLamViecFacebook.CamXuc(idpost, 2);
+                ProgressTienDo.Value = (int)100 * (i + 1) / idTaiKhoanCamXuc.Count;
+            }
+            lbTienDo.Text = "Đã cười Haha xong!!!!";
+        }
+
+        private void btnWow_Click(object sender, EventArgs e)
+        {
+            lbTienDo.Text = "Đang ngạc nhiên";
+            lbTienDo.Visible = true;
+            ProgressTienDo.Visible = true;
+            ProgressTienDo.Value = 0;
+            for (int i = 0; i < idTaiKhoanCamXuc.Count; i++)
+            {
+                ThuVienLamViecFacebook.DangXuat();
+                ThuVienLamViecFacebook.DNKhongLayTT(idTaiKhoanCamXuc[i]);
+                ThuVienLamViecFacebook.CamXuc(idpost, 3);
+                ProgressTienDo.Value = (int)100 * (i + 1) / idTaiKhoanCamXuc.Count;
+            }
+            lbTienDo.Text = "Đã ngạc nhiên xong!!!";
+        }
+
+        private void btnKhoc_Click(object sender, EventArgs e)
+        {
+            lbTienDo.Text = "Đang khóc";
+            lbTienDo.Visible = true;
+            ProgressTienDo.Visible = true;
+            ProgressTienDo.Value = 0;
+            for (int i = 0; i < idTaiKhoanCamXuc.Count; i++)
+            {
+                ThuVienLamViecFacebook.DangXuat();
+                ThuVienLamViecFacebook.DNKhongLayTT(idTaiKhoanCamXuc[i]);
+                ThuVienLamViecFacebook.CamXuc(idpost, 4);
+                ProgressTienDo.Value = (int)100 * (i + 1) / idTaiKhoanCamXuc.Count;
+            }
+            lbTienDo.Text = "Đã bật khóc xong!!";
+        }
+
+        private void btnPhanNo_Click(object sender, EventArgs e)
+        {
+            lbTienDo.Text = "Đang phẫn nộ";
+            lbTienDo.Visible = true;
+            ProgressTienDo.Visible = true;
+            ProgressTienDo.Value = 0;
+            for (int i = 0; i < idTaiKhoanCamXuc.Count; i++)
+            {
+                ThuVienLamViecFacebook.DangXuat();
+                ThuVienLamViecFacebook.DNKhongLayTT(idTaiKhoanCamXuc[i]);
+                ThuVienLamViecFacebook.CamXuc(idpost, 5);
+                ProgressTienDo.Value = (int)100 * (i+1) / idTaiKhoanCamXuc.Count;
+            }
+            lbTienDo.Text = "Đã phẫn nộ xong!!!!";
+        }
+
+        private void lsCheckTKTieuCuc_DropDownClosed(object sender, EventArgs e)
         {
             idTaiKhoanCamXuc = new List<string>();
             //lấy ra list tài khoản sử dụng để bình lu

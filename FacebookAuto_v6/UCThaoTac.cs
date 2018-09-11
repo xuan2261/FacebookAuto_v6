@@ -28,6 +28,8 @@ namespace FacebookAuto_v6
         {
             WebView.Navigate(urlfacebook+txtIDBaiViet.Text);
             ttbl.idpost = txtIDBaiViet.Text;
+            ttcx.idpost = txtIDBaiViet.Text;
+            ttkd.idpost = txtIDBaiViet.Text;
         }
         public void LoadBinhLuan()
         {
@@ -43,6 +45,7 @@ namespace FacebookAuto_v6
             splitContainerControl1.Panel2.Controls.Add(ttcx);
             ttcx.Dock = DockStyle.Fill;
             labelViTri.Text = ">>>  Bày tỏ cảm xúc";
+            ttcx.idpost = txtIDBaiViet.Text;
         }
         public void LoadChiaSe()
         {
