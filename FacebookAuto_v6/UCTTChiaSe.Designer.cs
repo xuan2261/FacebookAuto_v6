@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panelphosisaduoibinhluan = new System.Windows.Forms.Panel();
+            this.lsCheckTKTieuCuc = new FacebookAuto_v5.ListCheckBoxDropDown();
+            this.lsCheckTKTichCuc = new FacebookAuto_v5.ListCheckBoxDropDown();
             this.label12 = new System.Windows.Forms.Label();
             this.bunifuProgressBar1 = new Bunifu.Framework.UI.BunifuProgressBar();
             this.btnBatDauBinhLuan = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -39,8 +41,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtNoiDungChiaSe = new System.Windows.Forms.RichTextBox();
             this.btnThem = new Bunifu.Framework.UI.BunifuImageButton();
-            this.lsCheckTKTieuCuc = new FacebookAuto_v5.ListCheckBoxDropDown();
-            this.lsCheckTKTichCuc = new FacebookAuto_v5.ListCheckBoxDropDown();
             this.radioTieuCuc = new System.Windows.Forms.RadioButton();
             this.radioTichCuc = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
@@ -62,6 +62,36 @@
             this.panelphosisaduoibinhluan.Name = "panelphosisaduoibinhluan";
             this.panelphosisaduoibinhluan.Size = new System.Drawing.Size(526, 234);
             this.panelphosisaduoibinhluan.TabIndex = 18;
+            // 
+            // lsCheckTKTieuCuc
+            // 
+            this.lsCheckTKTieuCuc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lsCheckTKTieuCuc.CheckOnClick = true;
+            this.lsCheckTKTieuCuc.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.lsCheckTKTieuCuc.DropDownHeight = 1;
+            this.lsCheckTKTieuCuc.FormattingEnabled = true;
+            this.lsCheckTKTieuCuc.IntegralHeight = false;
+            this.lsCheckTKTieuCuc.Location = new System.Drawing.Point(137, 83);
+            this.lsCheckTKTieuCuc.Name = "lsCheckTKTieuCuc";
+            this.lsCheckTKTieuCuc.Size = new System.Drawing.Size(371, 21);
+            this.lsCheckTKTieuCuc.TabIndex = 21;
+            this.lsCheckTKTieuCuc.ValueSeparator = ", ";
+            // 
+            // lsCheckTKTichCuc
+            // 
+            this.lsCheckTKTichCuc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lsCheckTKTichCuc.CheckOnClick = true;
+            this.lsCheckTKTichCuc.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.lsCheckTKTichCuc.DropDownHeight = 1;
+            this.lsCheckTKTichCuc.FormattingEnabled = true;
+            this.lsCheckTKTichCuc.IntegralHeight = false;
+            this.lsCheckTKTichCuc.Location = new System.Drawing.Point(137, 26);
+            this.lsCheckTKTichCuc.Name = "lsCheckTKTichCuc";
+            this.lsCheckTKTichCuc.Size = new System.Drawing.Size(371, 21);
+            this.lsCheckTKTichCuc.TabIndex = 20;
+            this.lsCheckTKTichCuc.ValueSeparator = ", ";
             // 
             // label12
             // 
@@ -109,7 +139,7 @@
             this.btnBatDauBinhLuan.IconVisible = true;
             this.btnBatDauBinhLuan.IconZoom = 50D;
             this.btnBatDauBinhLuan.IsTab = false;
-            this.btnBatDauBinhLuan.Location = new System.Drawing.Point(26, 158);
+            this.btnBatDauBinhLuan.Location = new System.Drawing.Point(26, 140);
             this.btnBatDauBinhLuan.Name = "btnBatDauBinhLuan";
             this.btnBatDauBinhLuan.Normalcolor = System.Drawing.Color.SlateGray;
             this.btnBatDauBinhLuan.OnHovercolor = System.Drawing.Color.Gray;
@@ -153,6 +183,7 @@
             this.LsNoiDungChiaSe.Size = new System.Drawing.Size(236, 157);
             this.LsNoiDungChiaSe.TabIndex = 22;
             this.LsNoiDungChiaSe.UseCompatibleStateImageBehavior = false;
+            this.LsNoiDungChiaSe.View = System.Windows.Forms.View.Details;
             // 
             // label6
             // 
@@ -197,36 +228,6 @@
             this.btnThem.TabStop = false;
             this.btnThem.Zoom = 10;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
-            // 
-            // lsCheckTKTieuCuc
-            // 
-            this.lsCheckTKTieuCuc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lsCheckTKTieuCuc.CheckOnClick = true;
-            this.lsCheckTKTieuCuc.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.lsCheckTKTieuCuc.DropDownHeight = 1;
-            this.lsCheckTKTieuCuc.FormattingEnabled = true;
-            this.lsCheckTKTieuCuc.IntegralHeight = false;
-            this.lsCheckTKTieuCuc.Location = new System.Drawing.Point(137, 83);
-            this.lsCheckTKTieuCuc.Name = "lsCheckTKTieuCuc";
-            this.lsCheckTKTieuCuc.Size = new System.Drawing.Size(371, 21);
-            this.lsCheckTKTieuCuc.TabIndex = 21;
-            this.lsCheckTKTieuCuc.ValueSeparator = ", ";
-            // 
-            // lsCheckTKTichCuc
-            // 
-            this.lsCheckTKTichCuc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lsCheckTKTichCuc.CheckOnClick = true;
-            this.lsCheckTKTichCuc.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.lsCheckTKTichCuc.DropDownHeight = 1;
-            this.lsCheckTKTichCuc.FormattingEnabled = true;
-            this.lsCheckTKTichCuc.IntegralHeight = false;
-            this.lsCheckTKTichCuc.Location = new System.Drawing.Point(137, 26);
-            this.lsCheckTKTichCuc.Name = "lsCheckTKTichCuc";
-            this.lsCheckTKTichCuc.Size = new System.Drawing.Size(371, 21);
-            this.lsCheckTKTichCuc.TabIndex = 20;
-            this.lsCheckTKTichCuc.ValueSeparator = ", ";
             // 
             // radioTieuCuc
             // 

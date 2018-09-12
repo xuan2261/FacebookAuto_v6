@@ -118,5 +118,14 @@ namespace FacebookAuto_v6
             panelMain.Controls.Add(ucqltk);
             ucqltk.Dock = DockStyle.Fill;
         }
+
+        private void ElementThemTrangNhom_Click(object sender, EventArgs e)
+        {
+            UCGSThemTrang ucgstt = new UCGSThemTrang();
+            ktuc = 2;
+            panelMain.Controls.Clear();
+            panelMain.Controls.Add(ucgstt);
+            ucgstt.Dock = DockStyle.Fill;
+        }
     }
 }

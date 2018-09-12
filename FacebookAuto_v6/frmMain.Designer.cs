@@ -39,17 +39,18 @@
             this.ElementHoatDong = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlSeparator1 = new DevExpress.XtraBars.Navigation.AccordionControlSeparator();
             this.tabGiamSatTrang = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.ElementThemTrangNhom = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.ElementDuyetBaiViet = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.ElementQLTaiKhoan = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.GroupElementQuanLy = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.tabGiamSat = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.ElementGSNhanVien = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.ElementGSNguoiDung = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             this.accordionControlElement7 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement8 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.panelMain = new System.Windows.Forms.Panel();
-            this.ElementTrang = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.ElementNhom = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.ElementGSNhanVien = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.ElementGSNguoiDung = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accordionControlSeparator2 = new DevExpress.XtraBars.Navigation.AccordionControlSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.TabControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             this.SuspendLayout();
@@ -79,6 +80,7 @@
             this.tabThaoTac,
             this.accordionControlSeparator1,
             this.tabGiamSatTrang,
+            this.accordionControlSeparator2,
             this.ElementQLTaiKhoan});
             this.GroupElemtNhanVien.Hint = "Các chức năng của nhân viên";
             this.GroupElemtNhanVien.Name = "GroupElemtNhanVien";
@@ -148,11 +150,24 @@
             // tabGiamSatTrang
             // 
             this.tabGiamSatTrang.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.ElementTrang,
-            this.ElementNhom});
+            this.ElementThemTrangNhom,
+            this.ElementDuyetBaiViet});
             this.tabGiamSatTrang.Expanded = true;
             this.tabGiamSatTrang.Name = "tabGiamSatTrang";
             this.tabGiamSatTrang.Text = "Giám sát Trang, nhóm";
+            // 
+            // ElementThemTrangNhom
+            // 
+            this.ElementThemTrangNhom.Name = "ElementThemTrangNhom";
+            this.ElementThemTrangNhom.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.ElementThemTrangNhom.Text = "Thêm trang, nhóm";
+            this.ElementThemTrangNhom.Click += new System.EventHandler(this.ElementThemTrangNhom_Click);
+            // 
+            // ElementDuyetBaiViet
+            // 
+            this.ElementDuyetBaiViet.Name = "ElementDuyetBaiViet";
+            this.ElementDuyetBaiViet.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.ElementDuyetBaiViet.Text = "Duyệt bài viết trang, nhóm";
             // 
             // ElementQLTaiKhoan
             // 
@@ -178,6 +193,18 @@
             this.tabGiamSat.Expanded = true;
             this.tabGiamSat.Name = "tabGiamSat";
             this.tabGiamSat.Text = "Đối tượng giám sát";
+            // 
+            // ElementGSNhanVien
+            // 
+            this.ElementGSNhanVien.Name = "ElementGSNhanVien";
+            this.ElementGSNhanVien.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.ElementGSNhanVien.Text = "Giám sát nhân viên";
+            // 
+            // ElementGSNguoiDung
+            // 
+            this.ElementGSNguoiDung.Name = "ElementGSNguoiDung";
+            this.ElementGSNguoiDung.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.ElementGSNguoiDung.Text = "Giám sát người dùng FB";
             // 
             // fluentDesignFormControl1
             // 
@@ -209,29 +236,9 @@
             this.panelMain.Size = new System.Drawing.Size(947, 596);
             this.panelMain.TabIndex = 3;
             // 
-            // ElementTrang
+            // accordionControlSeparator2
             // 
-            this.ElementTrang.Name = "ElementTrang";
-            this.ElementTrang.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.ElementTrang.Text = "Trang";
-            // 
-            // ElementNhom
-            // 
-            this.ElementNhom.Name = "ElementNhom";
-            this.ElementNhom.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.ElementNhom.Text = "Nhóm";
-            // 
-            // ElementGSNhanVien
-            // 
-            this.ElementGSNhanVien.Name = "ElementGSNhanVien";
-            this.ElementGSNhanVien.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.ElementGSNhanVien.Text = "Giám sát nhân viên";
-            // 
-            // ElementGSNguoiDung
-            // 
-            this.ElementGSNguoiDung.Name = "ElementGSNguoiDung";
-            this.ElementGSNguoiDung.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.ElementGSNguoiDung.Text = "Giám sát người dùng FB";
+            this.accordionControlSeparator2.Name = "accordionControlSeparator2";
             // 
             // frmMain
             // 
@@ -275,10 +282,11 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement tabGiamSat;
         private System.Windows.Forms.Panel panelMain;
         private DevExpress.XtraBars.Navigation.AccordionControlElement ElementQLTaiKhoan;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement ElementTrang;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement ElementNhom;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement ElementThemTrangNhom;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement ElementDuyetBaiViet;
         private DevExpress.XtraBars.Navigation.AccordionControlElement ElementGSNhanVien;
         private DevExpress.XtraBars.Navigation.AccordionControlElement ElementGSNguoiDung;
+        private DevExpress.XtraBars.Navigation.AccordionControlSeparator accordionControlSeparator2;
     }
 }
 
