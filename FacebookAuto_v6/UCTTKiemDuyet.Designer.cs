@@ -35,19 +35,19 @@
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.btnNguoiQuanTam = new Bunifu.Framework.UI.BunifuFlatButton();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.bunifuImageButton2 = new Bunifu.Framework.UI.BunifuImageButton();
-            this.bunifuImageButton1 = new Bunifu.Framework.UI.BunifuImageButton();
-            this.btnThich = new Bunifu.Framework.UI.BunifuImageButton();
-            this.btnNguoiBinhLuan = new Bunifu.Framework.UI.BunifuFlatButton();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.ProgressQuet = new Bunifu.Framework.UI.BunifuProgressBar();
             this.lbTrangThaiQuet = new System.Windows.Forms.Label();
             this.ProgressQuetBL = new Bunifu.Framework.UI.BunifuProgressBar();
             this.lbTrangThaiBL = new System.Windows.Forms.Label();
+            this.btnNguoiQuanTam = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.bunifuImageButton2 = new Bunifu.Framework.UI.BunifuImageButton();
+            this.bunifuImageButton1 = new Bunifu.Framework.UI.BunifuImageButton();
+            this.btnThich = new Bunifu.Framework.UI.BunifuImageButton();
+            this.btnNguoiBinhLuan = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnLuu = new Bunifu.Framework.UI.BunifuFlatButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -57,13 +57,13 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnThich)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
             this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnThich)).BeginInit();
             this.SuspendLayout();
             // 
             // lsNguoiDungTichCuc
@@ -165,41 +165,6 @@
             this.splitContainer2.SplitterDistance = 254;
             this.splitContainer2.TabIndex = 12;
             // 
-            // btnNguoiQuanTam
-            // 
-            this.btnNguoiQuanTam.Activecolor = System.Drawing.SystemColors.ActiveBorder;
-            this.btnNguoiQuanTam.BackColor = System.Drawing.Color.SlateGray;
-            this.btnNguoiQuanTam.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnNguoiQuanTam.BorderRadius = 7;
-            this.btnNguoiQuanTam.ButtonText = "  Duyệt những người quan tâm";
-            this.btnNguoiQuanTam.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnNguoiQuanTam.DisabledColor = System.Drawing.Color.Gray;
-            this.btnNguoiQuanTam.Iconcolor = System.Drawing.Color.Transparent;
-            this.btnNguoiQuanTam.Iconimage = global::FacebookAuto_v6.Properties.Resources.icons8_checkmark_64;
-            this.btnNguoiQuanTam.Iconimage_right = null;
-            this.btnNguoiQuanTam.Iconimage_right_Selected = null;
-            this.btnNguoiQuanTam.Iconimage_Selected = null;
-            this.btnNguoiQuanTam.IconMarginLeft = 0;
-            this.btnNguoiQuanTam.IconMarginRight = 0;
-            this.btnNguoiQuanTam.IconRightVisible = true;
-            this.btnNguoiQuanTam.IconRightZoom = 0D;
-            this.btnNguoiQuanTam.IconVisible = true;
-            this.btnNguoiQuanTam.IconZoom = 50D;
-            this.btnNguoiQuanTam.IsTab = false;
-            this.btnNguoiQuanTam.Location = new System.Drawing.Point(6, 3);
-            this.btnNguoiQuanTam.Name = "btnNguoiQuanTam";
-            this.btnNguoiQuanTam.Normalcolor = System.Drawing.Color.SlateGray;
-            this.btnNguoiQuanTam.OnHovercolor = System.Drawing.Color.Gray;
-            this.btnNguoiQuanTam.OnHoverTextColor = System.Drawing.Color.White;
-            this.btnNguoiQuanTam.selected = false;
-            this.btnNguoiQuanTam.Size = new System.Drawing.Size(230, 33);
-            this.btnNguoiQuanTam.TabIndex = 5;
-            this.btnNguoiQuanTam.Text = "  Duyệt những người quan tâm";
-            this.btnNguoiQuanTam.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNguoiQuanTam.Textcolor = System.Drawing.Color.White;
-            this.btnNguoiQuanTam.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNguoiQuanTam.Click += new System.EventHandler(this.btnNguoiQuanTam_Click);
-            // 
             // label4
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -235,6 +200,118 @@
             this.label2.Size = new System.Drawing.Size(51, 13);
             this.label2.TabIndex = 66;
             this.label2.Text = "Tích cực";
+            // 
+            // splitContainer3
+            // 
+            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer3.Name = "splitContainer3";
+            this.splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer3.Panel1
+            // 
+            this.splitContainer3.Panel1.Controls.Add(this.ProgressQuet);
+            this.splitContainer3.Panel1.Controls.Add(this.lbTrangThaiQuet);
+            this.splitContainer3.Panel1.Controls.Add(this.lsNguoiDungTieuCuc);
+            // 
+            // splitContainer3.Panel2
+            // 
+            this.splitContainer3.Panel2.Controls.Add(this.ProgressQuetBL);
+            this.splitContainer3.Panel2.Controls.Add(this.lbTrangThaiBL);
+            this.splitContainer3.Panel2.Controls.Add(this.txtNoiDungBinhLuan);
+            this.splitContainer3.Panel2.Controls.Add(this.btnLuu);
+            this.splitContainer3.Size = new System.Drawing.Size(260, 511);
+            this.splitContainer3.SplitterDistance = 254;
+            this.splitContainer3.TabIndex = 12;
+            // 
+            // ProgressQuet
+            // 
+            this.ProgressQuet.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ProgressQuet.BackColor = System.Drawing.Color.Silver;
+            this.ProgressQuet.BorderRadius = 7;
+            this.ProgressQuet.Location = new System.Drawing.Point(102, 24);
+            this.ProgressQuet.MaximumValue = 100;
+            this.ProgressQuet.Name = "ProgressQuet";
+            this.ProgressQuet.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(190)))), ((int)(((byte)(166)))));
+            this.ProgressQuet.Size = new System.Drawing.Size(151, 12);
+            this.ProgressQuet.TabIndex = 66;
+            this.ProgressQuet.Value = 0;
+            this.ProgressQuet.Visible = false;
+            // 
+            // lbTrangThaiQuet
+            // 
+            this.lbTrangThaiQuet.AutoSize = true;
+            this.lbTrangThaiQuet.ForeColor = System.Drawing.SystemColors.Control;
+            this.lbTrangThaiQuet.Location = new System.Drawing.Point(2, 23);
+            this.lbTrangThaiQuet.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbTrangThaiQuet.Name = "lbTrangThaiQuet";
+            this.lbTrangThaiQuet.Size = new System.Drawing.Size(57, 13);
+            this.lbTrangThaiQuet.TabIndex = 65;
+            this.lbTrangThaiQuet.Text = "Đang quét";
+            this.lbTrangThaiQuet.Visible = false;
+            // 
+            // ProgressQuetBL
+            // 
+            this.ProgressQuetBL.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ProgressQuetBL.BackColor = System.Drawing.Color.Silver;
+            this.ProgressQuetBL.BorderRadius = 7;
+            this.ProgressQuetBL.Location = new System.Drawing.Point(102, 24);
+            this.ProgressQuetBL.MaximumValue = 100;
+            this.ProgressQuetBL.Name = "ProgressQuetBL";
+            this.ProgressQuetBL.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(190)))), ((int)(((byte)(166)))));
+            this.ProgressQuetBL.Size = new System.Drawing.Size(151, 12);
+            this.ProgressQuetBL.TabIndex = 66;
+            this.ProgressQuetBL.Value = 0;
+            this.ProgressQuetBL.Visible = false;
+            // 
+            // lbTrangThaiBL
+            // 
+            this.lbTrangThaiBL.AutoSize = true;
+            this.lbTrangThaiBL.ForeColor = System.Drawing.SystemColors.Control;
+            this.lbTrangThaiBL.Location = new System.Drawing.Point(2, 23);
+            this.lbTrangThaiBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbTrangThaiBL.Name = "lbTrangThaiBL";
+            this.lbTrangThaiBL.Size = new System.Drawing.Size(57, 13);
+            this.lbTrangThaiBL.TabIndex = 65;
+            this.lbTrangThaiBL.Text = "Đang quét";
+            this.lbTrangThaiBL.Visible = false;
+            // 
+            // btnNguoiQuanTam
+            // 
+            this.btnNguoiQuanTam.Activecolor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnNguoiQuanTam.BackColor = System.Drawing.Color.SlateGray;
+            this.btnNguoiQuanTam.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnNguoiQuanTam.BorderRadius = 7;
+            this.btnNguoiQuanTam.ButtonText = "  Duyệt những người quan tâm";
+            this.btnNguoiQuanTam.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNguoiQuanTam.DisabledColor = System.Drawing.Color.Gray;
+            this.btnNguoiQuanTam.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnNguoiQuanTam.Iconimage = global::FacebookAuto_v6.Properties.Resources.icons8_iris_scan_48;
+            this.btnNguoiQuanTam.Iconimage_right = null;
+            this.btnNguoiQuanTam.Iconimage_right_Selected = null;
+            this.btnNguoiQuanTam.Iconimage_Selected = null;
+            this.btnNguoiQuanTam.IconMarginLeft = 0;
+            this.btnNguoiQuanTam.IconMarginRight = 0;
+            this.btnNguoiQuanTam.IconRightVisible = true;
+            this.btnNguoiQuanTam.IconRightZoom = 0D;
+            this.btnNguoiQuanTam.IconVisible = true;
+            this.btnNguoiQuanTam.IconZoom = 50D;
+            this.btnNguoiQuanTam.IsTab = false;
+            this.btnNguoiQuanTam.Location = new System.Drawing.Point(6, 3);
+            this.btnNguoiQuanTam.Name = "btnNguoiQuanTam";
+            this.btnNguoiQuanTam.Normalcolor = System.Drawing.Color.SlateGray;
+            this.btnNguoiQuanTam.OnHovercolor = System.Drawing.Color.Gray;
+            this.btnNguoiQuanTam.OnHoverTextColor = System.Drawing.Color.White;
+            this.btnNguoiQuanTam.selected = false;
+            this.btnNguoiQuanTam.Size = new System.Drawing.Size(230, 33);
+            this.btnNguoiQuanTam.TabIndex = 5;
+            this.btnNguoiQuanTam.Text = "  Duyệt những người quan tâm";
+            this.btnNguoiQuanTam.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNguoiQuanTam.Textcolor = System.Drawing.Color.White;
+            this.btnNguoiQuanTam.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNguoiQuanTam.Click += new System.EventHandler(this.btnNguoiQuanTam_Click);
             // 
             // bunifuImageButton2
             // 
@@ -291,7 +368,7 @@
             this.btnNguoiBinhLuan.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnNguoiBinhLuan.DisabledColor = System.Drawing.Color.Gray;
             this.btnNguoiBinhLuan.Iconcolor = System.Drawing.Color.Transparent;
-            this.btnNguoiBinhLuan.Iconimage = global::FacebookAuto_v6.Properties.Resources.icons8_checkmark_64;
+            this.btnNguoiBinhLuan.Iconimage = global::FacebookAuto_v6.Properties.Resources.icons8_iris_scan_48;
             this.btnNguoiBinhLuan.Iconimage_right = null;
             this.btnNguoiBinhLuan.Iconimage_right_Selected = null;
             this.btnNguoiBinhLuan.Iconimage_Selected = null;
@@ -316,83 +393,6 @@
             this.btnNguoiBinhLuan.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNguoiBinhLuan.Click += new System.EventHandler(this.btnNguoiBinhLuan_Click);
             // 
-            // splitContainer3
-            // 
-            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer3.Name = "splitContainer3";
-            this.splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer3.Panel1
-            // 
-            this.splitContainer3.Panel1.Controls.Add(this.ProgressQuet);
-            this.splitContainer3.Panel1.Controls.Add(this.lbTrangThaiQuet);
-            this.splitContainer3.Panel1.Controls.Add(this.lsNguoiDungTieuCuc);
-            // 
-            // splitContainer3.Panel2
-            // 
-            this.splitContainer3.Panel2.Controls.Add(this.ProgressQuetBL);
-            this.splitContainer3.Panel2.Controls.Add(this.lbTrangThaiBL);
-            this.splitContainer3.Panel2.Controls.Add(this.txtNoiDungBinhLuan);
-            this.splitContainer3.Panel2.Controls.Add(this.btnLuu);
-            this.splitContainer3.Size = new System.Drawing.Size(260, 511);
-            this.splitContainer3.SplitterDistance = 254;
-            this.splitContainer3.TabIndex = 12;
-            // 
-            // ProgressQuet
-            // 
-            this.ProgressQuet.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ProgressQuet.BackColor = System.Drawing.Color.Silver;
-            this.ProgressQuet.BorderRadius = 7;
-            this.ProgressQuet.Location = new System.Drawing.Point(102, 24);
-            this.ProgressQuet.MaximumValue = 100;
-            this.ProgressQuet.Name = "ProgressQuet";
-            this.ProgressQuet.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(76)))), ((int)(((byte)(56)))));
-            this.ProgressQuet.Size = new System.Drawing.Size(151, 12);
-            this.ProgressQuet.TabIndex = 66;
-            this.ProgressQuet.Value = 0;
-            this.ProgressQuet.Visible = false;
-            // 
-            // lbTrangThaiQuet
-            // 
-            this.lbTrangThaiQuet.AutoSize = true;
-            this.lbTrangThaiQuet.ForeColor = System.Drawing.SystemColors.Control;
-            this.lbTrangThaiQuet.Location = new System.Drawing.Point(2, 23);
-            this.lbTrangThaiQuet.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbTrangThaiQuet.Name = "lbTrangThaiQuet";
-            this.lbTrangThaiQuet.Size = new System.Drawing.Size(57, 13);
-            this.lbTrangThaiQuet.TabIndex = 65;
-            this.lbTrangThaiQuet.Text = "Đang quét";
-            this.lbTrangThaiQuet.Visible = false;
-            // 
-            // ProgressQuetBL
-            // 
-            this.ProgressQuetBL.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ProgressQuetBL.BackColor = System.Drawing.Color.Silver;
-            this.ProgressQuetBL.BorderRadius = 7;
-            this.ProgressQuetBL.Location = new System.Drawing.Point(102, 24);
-            this.ProgressQuetBL.MaximumValue = 100;
-            this.ProgressQuetBL.Name = "ProgressQuetBL";
-            this.ProgressQuetBL.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(76)))), ((int)(((byte)(56)))));
-            this.ProgressQuetBL.Size = new System.Drawing.Size(151, 12);
-            this.ProgressQuetBL.TabIndex = 66;
-            this.ProgressQuetBL.Value = 0;
-            this.ProgressQuetBL.Visible = false;
-            // 
-            // lbTrangThaiBL
-            // 
-            this.lbTrangThaiBL.AutoSize = true;
-            this.lbTrangThaiBL.ForeColor = System.Drawing.SystemColors.Control;
-            this.lbTrangThaiBL.Location = new System.Drawing.Point(2, 23);
-            this.lbTrangThaiBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbTrangThaiBL.Name = "lbTrangThaiBL";
-            this.lbTrangThaiBL.Size = new System.Drawing.Size(57, 13);
-            this.lbTrangThaiBL.TabIndex = 65;
-            this.lbTrangThaiBL.Text = "Đang quét";
-            this.lbTrangThaiBL.Visible = false;
-            // 
             // btnLuu
             // 
             this.btnLuu.Activecolor = System.Drawing.SystemColors.ActiveBorder;
@@ -404,7 +404,7 @@
             this.btnLuu.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLuu.DisabledColor = System.Drawing.Color.Gray;
             this.btnLuu.Iconcolor = System.Drawing.Color.Transparent;
-            this.btnLuu.Iconimage = global::FacebookAuto_v6.Properties.Resources.icons8_checkmark_64;
+            this.btnLuu.Iconimage = global::FacebookAuto_v6.Properties.Resources.icons8_save_as_48;
             this.btnLuu.Iconimage_right = null;
             this.btnLuu.Iconimage_right_Selected = null;
             this.btnLuu.Iconimage_Selected = null;
@@ -413,7 +413,7 @@
             this.btnLuu.IconRightVisible = true;
             this.btnLuu.IconRightZoom = 0D;
             this.btnLuu.IconVisible = true;
-            this.btnLuu.IconZoom = 50D;
+            this.btnLuu.IconZoom = 60D;
             this.btnLuu.IsTab = false;
             this.btnLuu.Location = new System.Drawing.Point(121, 205);
             this.btnLuu.Name = "btnLuu";
@@ -427,6 +427,7 @@
             this.btnLuu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLuu.Textcolor = System.Drawing.Color.White;
             this.btnLuu.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // UCTTKiemDuyet
             // 
@@ -446,15 +447,15 @@
             this.splitContainer2.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnThich)).EndInit();
             this.splitContainer3.Panel1.ResumeLayout(false);
             this.splitContainer3.Panel1.PerformLayout();
             this.splitContainer3.Panel2.ResumeLayout(false);
             this.splitContainer3.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnThich)).EndInit();
             this.ResumeLayout(false);
 
         }

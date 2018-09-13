@@ -74,6 +74,7 @@
             this.lsCheckTKTieuCuc.Size = new System.Drawing.Size(371, 21);
             this.lsCheckTKTieuCuc.TabIndex = 21;
             this.lsCheckTKTieuCuc.ValueSeparator = ", ";
+            this.lsCheckTKTieuCuc.DropDownClosed += new System.EventHandler(this.lsCheckTKTieuCuc_DropDownClosed);
             // 
             // lsCheckTKTichCuc
             // 
@@ -89,6 +90,7 @@
             this.lsCheckTKTichCuc.Size = new System.Drawing.Size(371, 21);
             this.lsCheckTKTichCuc.TabIndex = 20;
             this.lsCheckTKTichCuc.ValueSeparator = ", ";
+            this.lsCheckTKTichCuc.DropDownClosed += new System.EventHandler(this.lsCheckTKTichCuc_DropDownClosed);
             // 
             // label12
             // 

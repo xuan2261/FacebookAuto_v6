@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Gecko;
+using DTO;
+using DAO;
 
 namespace FacebookAuto_v6
 {
@@ -22,7 +24,8 @@ namespace FacebookAuto_v6
         List<string> lsNoiDungBL = new List<string>();
         List<string> lsIDBinhLuan = new List<string>();
         List<string> lsTimeBinhLuan = new List<string>();
-        string tongsoluong;
+        string tongsoluonglike;
+        int tongsocomment;
         public string idpost;
         string htmlcontent;
         public string danhgia;
@@ -60,8 +63,8 @@ namespace FacebookAuto_v6
             while (web1.ReadyState != WebBrowserReadyState.Complete)
                 Application.DoEvents();
             htmlcontent = web1.DocumentText;
-            tongsoluong = htmlcontent.Substring(htmlcontent.IndexOf("total_count=") + 12);
-            tongsoluong = tongsoluong.Remove(tongsoluong.IndexOf("&"));
+            tongsoluonglike = htmlcontent.Substring(htmlcontent.IndexOf("total_count=") + 12);
+            tongsoluonglike = tongsoluonglike.Remove(tongsoluonglike.IndexOf("&"));
             for (; ; )
             {
                 //int kt = htmlcontent.IndexOf("https://z-p3-scontent.fhan7-1.fna.fbcdn.net/v/t1.0-1/cp0");
@@ -157,7 +160,7 @@ namespace FacebookAuto_v6
                     MessageBox.Show("Số người tích cực: " + lsIDTichCuc.Count + " Số người tiêu cực " + lsIDTieuCuc.Count);
                     break;
                 }
-                ProgressQuet.Value = (int)(lsNguoiDungTichCuc.Items.Count + lsNguoiDungTieuCuc.Items.Count) * 100 / (int.Parse(tongsoluong));
+                ProgressQuet.Value = (int)(lsNguoiDungTichCuc.Items.Count + lsNguoiDungTieuCuc.Items.Count) * 100 / (int.Parse(tongsoluonglike));
             }
         }
 
@@ -235,6 +238,7 @@ namespace FacebookAuto_v6
                         ProgressQuetBL.Value = 100;
                         lbTrangThaiBL.Text = "Đã quét xong!";
                         MessageBox.Show("Đã tìm kiếm được " + LsNguoiDungBL.Items.Count + " bình luận");
+                        tongsocomment = LsNguoiDungBL.Items.Count;
                         break;
                     }
                 }
@@ -244,6 +248,64 @@ namespace FacebookAuto_v6
         private void LsNguoiDungBL_MouseClick(object sender, MouseEventArgs e)
         {
             txtNoiDungBinhLuan.Text=lsNoiDungBL[LsNguoiDungBL.FocusedItem.Index];
+        }
+
+        private void btnLuu_Click(object sender, EventArgs e)
+        {
+            // cập nhật thông tin bài viết
+            tblPost p = new tblPost();
+            p.IDPost = idpost;
+            p.CountComment = tongsocomment;
+            p.CountLike = int.Parse(tongsoluonglike);
+            if (danhgia == "Tích cực") p.Status = "Tích cực";
+            else p.Status = "Tiêu cực";
+            Post.Sua(p);
+            // kết thúc cập nhật thông tin bài viết
+
+            //thêm tài khoản người dùng
+            for (int i = 0; i < lsIDTichCuc.Count; i++)
+            {
+                tblUserFB newu = new tblUserFB();
+                tblLikePost newlp = new tblLikePost();
+                newu.IDUser = lsIDTichCuc[i].ToString();
+                newu.Name = lsNameTichCuc[i].ToString();
+                UserFB.Them(newu);
+                newlp.IDUserFB = lsIDTichCuc[i].ToString();
+                newlp.Status = 1;
+                LikePost.Them(newlp);
+            }
+            for (int i = 0; i < lsIDTieuCuc.Count; i++)
+            {
+                tblUserFB newu = new tblUserFB();
+                tblLikePost newlp = new tblLikePost();
+                newu.IDUser = lsIDTichCuc[i].ToString();
+                newu.Name = lsNameTichCuc[i].ToString();
+                UserFB.Them(newu);
+                newlp.IDUserFB = lsIDTichCuc[i].ToString();
+                newlp.Status = -1;
+                LikePost.Them(newlp);
+            }
+            //thêm từ những người bình luận
+            for (int i = 0; i < lsIDUserBinhLuan.Count; i++)
+            {
+                tblUserFB newu = new tblUserFB();
+                newu.IDUser = lsIDUserBinhLuan[i];
+                newu.Name = LsNguoiDungBL.Items[i].Text;
+                UserFB.Them(newu);
+
+                //lưu người dùng bình luận vào sql
+                tblCommentPost newcommentpost = new tblCommentPost();
+                newcommentpost.IDPost = idpost;
+                newcommentpost.IDComment = lsIDBinhLuan[i].ToString();
+                newcommentpost.IDUser = lsIDUserBinhLuan[i];
+                newcommentpost.Description = lsNoiDungBL[i];
+                newcommentpost.Status = 0;
+
+                CommentPost.Them(newcommentpost);
+                //kết thúc lưu người dùng bình luận
+            }
+            //kết thúc thêm tài khoản 
+            MessageBox.Show("Đã lưu tất cả thông tin!");
         }
     }
 }

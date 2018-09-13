@@ -244,6 +244,9 @@
     <Content Include="Firefox\sandboxbroker.dll" />
     <Content Include="Firefox\softokn3.dll" />
     <Content Include="Firefox\xul.dll" />
+    <None Include="Resources\icons8-checkmark-64 %281%29.png" />
+    <None Include="Resources\icons8-save-as-48.png" />
+    <None Include="Resources\icons8-iris-scan-48.png" />
     <None Include="Resources\icons8-share-filled-50.png" />
     <None Include="Resources\icons8-search-64.png" />
     <None Include="Resources\icons8-neutral-48.png" />

@@ -187,7 +187,53 @@ namespace FacebookAuto_v6
             web1.Navigate("https://mobile.facebook.com/"+idpost);
             while (web1.ReadyState != WebBrowserReadyState.Complete)
                 Application.DoEvents();
+            string htmlcontent = web1.DocumentText;
+            htmlcontent = htmlcontent.Replace("amp;", "");
+            string urltiep = htmlcontent.Substring(htmlcontent.LastIndexOf("/composer"));
+            urltiep = urltiep.Remove(urltiep.IndexOf("\""));
+            web1.Navigate("https://mobile.facebook.com" + urltiep);
+            while (web1.ReadyState != WebBrowserReadyState.Complete)
+                Application.DoEvents();
+            htmlcontent = web1.DocumentText;
+            string csid = htmlcontent.Substring(htmlcontent.IndexOf("csid")+5);
+            csid = csid.Remove(csid.IndexOf("&"));
+            string av = htmlcontent.Substring(htmlcontent.IndexOf("av=") + 3);
+            av = av.Remove(av.IndexOf("\""));
+            string eav = htmlcontent.Substring(htmlcontent.IndexOf("eav=") + 4);
+            eav = eav.Remove(eav.IndexOf("\""));
+            string fb_dtsg = htmlcontent.Substring(htmlcontent.IndexOf("fb_dtsg")+10);
+            fb_dtsg = fb_dtsg.Substring(fb_dtsg.IndexOf("value") + 1);
+            fb_dtsg = fb_dtsg.Substring(fb_dtsg.IndexOf("\"")+1);
+            fb_dtsg = fb_dtsg.Remove(fb_dtsg.IndexOf("\""));
+            string jazoest = htmlcontent.Substring(htmlcontent.IndexOf("jazoest") + 10);
+            jazoest = jazoest.Substring(jazoest.IndexOf("value") + 1);
+            jazoest = jazoest.Substring(jazoest.IndexOf("\"")+1);
+            jazoest = jazoest.Remove(jazoest.IndexOf("\""));
+            string privacyx = htmlcontent.Substring(htmlcontent.IndexOf("privacyx"));
+            privacyx = privacyx.Substring(privacyx.IndexOf("value"));
+            privacyx = privacyx.Substring(privacyx.IndexOf("\"")+1);
+            privacyx = privacyx.Remove(privacyx.IndexOf("\""));
+            string sid = htmlcontent.Substring(htmlcontent.IndexOf("sid")+5);
+            sid = sid.Substring(sid.IndexOf("value") + 1);
+            sid = sid.Substring(sid.IndexOf("\"")+1);
+            sid = sid.Remove(sid.IndexOf("\""));
+            string shared_from_post_id = htmlcontent.Substring(htmlcontent.IndexOf("shared_from_post_id") + 22);
+            shared_from_post_id = shared_from_post_id.Substring(shared_from_post_id.IndexOf("value") + 1);
+            shared_from_post_id = shared_from_post_id.Substring(shared_from_post_id.IndexOf("\"") + 1);
+            shared_from_post_id = shared_from_post_id.Remove(shared_from_post_id.IndexOf("\""));
+            string referrer = htmlcontent.Substring(htmlcontent.LastIndexOf("referrer"));
+            referrer = referrer.Substring(referrer.IndexOf("value"));
+            referrer = referrer.Substring(referrer.IndexOf("\"")+1);
+            referrer = referrer.Remove(referrer.IndexOf("\""));
+            // bắt đầu chia sẻ
+            string postdata = "fb_dtsg="+fb_dtsg+"&jazoest="+jazoest+"&at=&target="+av+"&csid="+csid+"&c_src=share&referrer="+referrer+"&ctype=advanced&cver=amber_share&users_with=&album_id=&waterfall_source=advanced_composer_timeline&privacyx="+privacyx+"&appid=0&sid="+sid+"&linkUrl=&m=self&xc_message="+noidungchiase+"&view_post=Chia sẻ&shared_from_post_id="+shared_from_post_id;
+            System.Text.Encoding encoding = System.Text.Encoding.UTF8;
+            byte[] bytes = encoding.GetBytes(postdata);
+            string url = "https://mobile.facebook.com/composer/mbasic/?csid="+csid+"&incparms%5B0%5D=xc_message&av="+av+"&eav="+eav;
+            web1.Navigate(url, string.Empty, bytes, "Content-Type: application/x-www-form-urlencoded");
 
+            while (web1.ReadyState != WebBrowserReadyState.Complete)
+                Application.DoEvents();
         }
         //kết thúc chia sẻ bài viết
 

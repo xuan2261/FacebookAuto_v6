@@ -43,11 +43,14 @@
   <ItemGroup>
     <Compile Include="AccountFB.cs" />
     <Compile Include="Admin.cs" />
+    <Compile Include="CommentPost.cs" />
     <Compile Include="DataProvider.cs" />
     <Compile Include="HoatDongGanDay.cs" />
+    <Compile Include="LikePost.cs" />
     <Compile Include="Pages.cs" />
     <Compile Include="Post.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserFB.cs" />
     <Compile Include="Work.cs" />
     <Compile Include="WorkAccount.cs" />
     <Compile Include="WorkComment.cs" />

@@ -33,20 +33,20 @@
             this.label2 = new System.Windows.Forms.Label();
             this.labelViTri = new System.Windows.Forms.Label();
             this.paneltop = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.radioTichCuc = new System.Windows.Forms.RadioButton();
+            this.radioTieuCuc = new System.Windows.Forms.RadioButton();
+            this.label3 = new System.Windows.Forms.Label();
             this.btnKiemTra = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
-            this.WebView = new System.Windows.Forms.WebBrowser();
             this.radioWeb = new System.Windows.Forms.RadioButton();
             this.radioMobile = new System.Windows.Forms.RadioButton();
             this.label4 = new System.Windows.Forms.Label();
-            this.radioTieuCuc = new System.Windows.Forms.RadioButton();
-            this.radioTichCuc = new System.Windows.Forms.RadioButton();
-            this.label3 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
+            this.WebView = new System.Windows.Forms.WebBrowser();
             this.paneltop.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -117,6 +117,50 @@
             this.paneltop.Size = new System.Drawing.Size(928, 150);
             this.paneltop.TabIndex = 9;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.radioTichCuc);
+            this.panel1.Controls.Add(this.radioTieuCuc);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Location = new System.Drawing.Point(441, 47);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(325, 100);
+            this.panel1.TabIndex = 24;
+            // 
+            // radioTichCuc
+            // 
+            this.radioTichCuc.AutoSize = true;
+            this.radioTichCuc.Checked = true;
+            this.radioTichCuc.ForeColor = System.Drawing.SystemColors.Window;
+            this.radioTichCuc.Location = new System.Drawing.Point(134, 74);
+            this.radioTichCuc.Name = "radioTichCuc";
+            this.radioTichCuc.Size = new System.Drawing.Size(69, 17);
+            this.radioTichCuc.TabIndex = 22;
+            this.radioTichCuc.TabStop = true;
+            this.radioTichCuc.Text = "Tích cực";
+            this.radioTichCuc.UseVisualStyleBackColor = true;
+            // 
+            // radioTieuCuc
+            // 
+            this.radioTieuCuc.AutoSize = true;
+            this.radioTieuCuc.ForeColor = System.Drawing.SystemColors.Window;
+            this.radioTieuCuc.Location = new System.Drawing.Point(240, 74);
+            this.radioTieuCuc.Name = "radioTieuCuc";
+            this.radioTieuCuc.Size = new System.Drawing.Size(67, 17);
+            this.radioTieuCuc.TabIndex = 23;
+            this.radioTieuCuc.Text = "Tiêu cực";
+            this.radioTieuCuc.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.SystemColors.Window;
+            this.label3.Location = new System.Drawing.Point(3, 76);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(87, 13);
+            this.label3.TabIndex = 21;
+            this.label3.Text = "Đánh giá bài viết";
+            // 
             // btnKiemTra
             // 
             this.btnKiemTra.Activecolor = System.Drawing.SystemColors.ActiveBorder;
@@ -127,7 +171,7 @@
             this.btnKiemTra.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnKiemTra.DisabledColor = System.Drawing.Color.Gray;
             this.btnKiemTra.Iconcolor = System.Drawing.Color.Transparent;
-            this.btnKiemTra.Iconimage = global::FacebookAuto_v6.Properties.Resources.icons8_checkmark_64;
+            this.btnKiemTra.Iconimage = global::FacebookAuto_v6.Properties.Resources.icons8_checkmark_64__1_;
             this.btnKiemTra.Iconimage_right = null;
             this.btnKiemTra.Iconimage_right_Selected = null;
             this.btnKiemTra.Iconimage_Selected = null;
@@ -151,30 +195,6 @@
             this.btnKiemTra.Textcolor = System.Drawing.Color.White;
             this.btnKiemTra.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnKiemTra.Click += new System.EventHandler(this.btnKiemTra_Click);
-            // 
-            // splitContainerControl1
-            // 
-            this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerControl1.Location = new System.Drawing.Point(0, 150);
-            this.splitContainerControl1.Name = "splitContainerControl1";
-            this.splitContainerControl1.Panel1.Controls.Add(this.WebView);
-            this.splitContainerControl1.Panel1.Text = "Panel1";
-            this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(928, 446);
-            this.splitContainerControl1.SplitterPosition = 417;
-            this.splitContainerControl1.TabIndex = 10;
-            this.splitContainerControl1.Text = "splitContainerControl1";
-            // 
-            // WebView
-            // 
-            this.WebView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.WebView.Location = new System.Drawing.Point(8, 6);
-            this.WebView.MinimumSize = new System.Drawing.Size(20, 20);
-            this.WebView.Name = "WebView";
-            this.WebView.Size = new System.Drawing.Size(404, 437);
-            this.WebView.TabIndex = 4;
             // 
             // radioWeb
             // 
@@ -212,49 +232,29 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "Xem thông tin bài viết";
             // 
-            // radioTieuCuc
+            // splitContainerControl1
             // 
-            this.radioTieuCuc.AutoSize = true;
-            this.radioTieuCuc.ForeColor = System.Drawing.SystemColors.Window;
-            this.radioTieuCuc.Location = new System.Drawing.Point(240, 74);
-            this.radioTieuCuc.Name = "radioTieuCuc";
-            this.radioTieuCuc.Size = new System.Drawing.Size(67, 17);
-            this.radioTieuCuc.TabIndex = 23;
-            this.radioTieuCuc.Text = "Tiêu cực";
-            this.radioTieuCuc.UseVisualStyleBackColor = true;
+            this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 150);
+            this.splitContainerControl1.Name = "splitContainerControl1";
+            this.splitContainerControl1.Panel1.Controls.Add(this.WebView);
+            this.splitContainerControl1.Panel1.Text = "Panel1";
+            this.splitContainerControl1.Panel2.Text = "Panel2";
+            this.splitContainerControl1.Size = new System.Drawing.Size(928, 446);
+            this.splitContainerControl1.SplitterPosition = 417;
+            this.splitContainerControl1.TabIndex = 10;
+            this.splitContainerControl1.Text = "splitContainerControl1";
             // 
-            // radioTichCuc
+            // WebView
             // 
-            this.radioTichCuc.AutoSize = true;
-            this.radioTichCuc.Checked = true;
-            this.radioTichCuc.ForeColor = System.Drawing.SystemColors.Window;
-            this.radioTichCuc.Location = new System.Drawing.Point(134, 74);
-            this.radioTichCuc.Name = "radioTichCuc";
-            this.radioTichCuc.Size = new System.Drawing.Size(69, 17);
-            this.radioTichCuc.TabIndex = 22;
-            this.radioTichCuc.TabStop = true;
-            this.radioTichCuc.Text = "Tích cực";
-            this.radioTichCuc.UseVisualStyleBackColor = true;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.SystemColors.Window;
-            this.label3.Location = new System.Drawing.Point(3, 76);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(87, 13);
-            this.label3.TabIndex = 21;
-            this.label3.Text = "Đánh giá bài viết";
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.radioTichCuc);
-            this.panel1.Controls.Add(this.radioTieuCuc);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Location = new System.Drawing.Point(441, 47);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(325, 100);
-            this.panel1.TabIndex = 24;
+            this.WebView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.WebView.Location = new System.Drawing.Point(8, 6);
+            this.WebView.MinimumSize = new System.Drawing.Size(20, 20);
+            this.WebView.Name = "WebView";
+            this.WebView.Size = new System.Drawing.Size(404, 437);
+            this.WebView.TabIndex = 4;
             // 
             // UCThaoTac
             // 
@@ -267,10 +267,10 @@
             this.Size = new System.Drawing.Size(928, 596);
             this.paneltop.ResumeLayout(false);
             this.paneltop.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
-            this.splitContainerControl1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
+            this.splitContainerControl1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
