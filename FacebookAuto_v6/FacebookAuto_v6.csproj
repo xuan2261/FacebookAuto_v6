@@ -73,6 +73,10 @@
     <Reference Include="DevExpress.XtraGrid.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraPrinting.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraRichEdit.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="Geckofx-Core, Version=45.0.34.0, Culture=neutral, PublicKeyToken=3209ac31600d1857, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Geckofx45.45.0.34\lib\net45\Geckofx-Core.dll</HintPath>
+    </Reference>
     <Reference Include="Geckofx-Winforms">
       <HintPath>..\packages\Geckofx45.45.0.34\lib\net45\Geckofx-Winforms.dll</HintPath>
     </Reference>
@@ -114,6 +118,13 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ThuVienLamViecFacebook.cs" />
+    <Compile Include="TuDongBinhLuan.cs" />
+    <Compile Include="UCGSThemTrang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCGSThemTrang.Designer.cs">
+      <DependentUpon>UCGSThemTrang.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCQuanLyTK.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -176,6 +187,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UCGSThemTrang.resx">
+      <DependentUpon>UCGSThemTrang.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCQuanLyTK.resx">
       <DependentUpon>UCQuanLyTK.cs</DependentUpon>
     </EmbeddedResource>
@@ -230,6 +244,17 @@
     <Content Include="Firefox\sandboxbroker.dll" />
     <Content Include="Firefox\softokn3.dll" />
     <Content Include="Firefox\xul.dll" />
+    <None Include="Resources\icons8-checkmark-64 %281%29.png" />
+    <None Include="Resources\icons8-save-as-48.png" />
+    <None Include="Resources\icons8-iris-scan-48.png" />
+    <None Include="Resources\icons8-share-filled-50.png" />
+    <None Include="Resources\icons8-search-64.png" />
+    <None Include="Resources\icons8-neutral-48.png" />
+    <None Include="Resources\icons8-happy-48.png" />
+    <None Include="Resources\icons8-nerd-48.png" />
+    <None Include="Resources\icons8-sad-filled-50.png" />
+    <None Include="Resources\icons8-neutral-filled-50.png" />
+    <None Include="Resources\icons8-smiling-filled-50.png" />
     <None Include="Resources\icons8-hand-with-pen-filled-50.png" />
     <None Include="Resources\icons8-save-as-filled-50.png" />
     <None Include="Resources\phanno.gif" />

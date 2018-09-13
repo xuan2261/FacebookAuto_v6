@@ -33,13 +33,18 @@
             this.label2 = new System.Windows.Forms.Label();
             this.labelViTri = new System.Windows.Forms.Label();
             this.paneltop = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.radioTichCuc = new System.Windows.Forms.RadioButton();
+            this.radioTieuCuc = new System.Windows.Forms.RadioButton();
+            this.label3 = new System.Windows.Forms.Label();
             this.btnKiemTra = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.radioWeb = new System.Windows.Forms.RadioButton();
             this.radioMobile = new System.Windows.Forms.RadioButton();
             this.label4 = new System.Windows.Forms.Label();
+            this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.WebView = new System.Windows.Forms.WebBrowser();
             this.paneltop.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             this.SuspendLayout();
@@ -97,16 +102,64 @@
             // 
             // paneltop
             // 
+            this.paneltop.Controls.Add(this.panel1);
             this.paneltop.Controls.Add(this.btnKiemTra);
+            this.paneltop.Controls.Add(this.radioWeb);
             this.paneltop.Controls.Add(this.label2);
+            this.paneltop.Controls.Add(this.radioMobile);
             this.paneltop.Controls.Add(this.labelViTri);
+            this.paneltop.Controls.Add(this.label4);
             this.paneltop.Controls.Add(this.txtIDBaiViet);
             this.paneltop.Controls.Add(this.label1);
             this.paneltop.Dock = System.Windows.Forms.DockStyle.Top;
             this.paneltop.Location = new System.Drawing.Point(0, 0);
             this.paneltop.Name = "paneltop";
-            this.paneltop.Size = new System.Drawing.Size(928, 106);
+            this.paneltop.Size = new System.Drawing.Size(928, 150);
             this.paneltop.TabIndex = 9;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.radioTichCuc);
+            this.panel1.Controls.Add(this.radioTieuCuc);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Location = new System.Drawing.Point(441, 47);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(325, 100);
+            this.panel1.TabIndex = 24;
+            // 
+            // radioTichCuc
+            // 
+            this.radioTichCuc.AutoSize = true;
+            this.radioTichCuc.Checked = true;
+            this.radioTichCuc.ForeColor = System.Drawing.SystemColors.Window;
+            this.radioTichCuc.Location = new System.Drawing.Point(134, 74);
+            this.radioTichCuc.Name = "radioTichCuc";
+            this.radioTichCuc.Size = new System.Drawing.Size(69, 17);
+            this.radioTichCuc.TabIndex = 22;
+            this.radioTichCuc.TabStop = true;
+            this.radioTichCuc.Text = "Tích cực";
+            this.radioTichCuc.UseVisualStyleBackColor = true;
+            // 
+            // radioTieuCuc
+            // 
+            this.radioTieuCuc.AutoSize = true;
+            this.radioTieuCuc.ForeColor = System.Drawing.SystemColors.Window;
+            this.radioTieuCuc.Location = new System.Drawing.Point(240, 74);
+            this.radioTieuCuc.Name = "radioTieuCuc";
+            this.radioTieuCuc.Size = new System.Drawing.Size(67, 17);
+            this.radioTieuCuc.TabIndex = 23;
+            this.radioTieuCuc.Text = "Tiêu cực";
+            this.radioTieuCuc.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.SystemColors.Window;
+            this.label3.Location = new System.Drawing.Point(3, 76);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(87, 13);
+            this.label3.TabIndex = 21;
+            this.label3.Text = "Đánh giá bài viết";
             // 
             // btnKiemTra
             // 
@@ -118,7 +171,7 @@
             this.btnKiemTra.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnKiemTra.DisabledColor = System.Drawing.Color.Gray;
             this.btnKiemTra.Iconcolor = System.Drawing.Color.Transparent;
-            this.btnKiemTra.Iconimage = global::FacebookAuto_v6.Properties.Resources.icons8_checkmark_64;
+            this.btnKiemTra.Iconimage = global::FacebookAuto_v6.Properties.Resources.icons8_checkmark_64__1_;
             this.btnKiemTra.Iconimage_right = null;
             this.btnKiemTra.Iconimage_right_Selected = null;
             this.btnKiemTra.Iconimage_Selected = null;
@@ -143,29 +196,13 @@
             this.btnKiemTra.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnKiemTra.Click += new System.EventHandler(this.btnKiemTra_Click);
             // 
-            // splitContainerControl1
-            // 
-            this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerControl1.Location = new System.Drawing.Point(0, 106);
-            this.splitContainerControl1.Name = "splitContainerControl1";
-            this.splitContainerControl1.Panel1.Controls.Add(this.WebView);
-            this.splitContainerControl1.Panel1.Controls.Add(this.radioWeb);
-            this.splitContainerControl1.Panel1.Controls.Add(this.radioMobile);
-            this.splitContainerControl1.Panel1.Controls.Add(this.label4);
-            this.splitContainerControl1.Panel1.Text = "Panel1";
-            this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(928, 490);
-            this.splitContainerControl1.SplitterPosition = 417;
-            this.splitContainerControl1.TabIndex = 10;
-            this.splitContainerControl1.Text = "splitContainerControl1";
-            // 
             // radioWeb
             // 
             this.radioWeb.AutoSize = true;
             this.radioWeb.ForeColor = System.Drawing.SystemColors.Window;
-            this.radioWeb.Location = new System.Drawing.Point(299, 15);
+            this.radioWeb.Location = new System.Drawing.Point(299, 123);
             this.radioWeb.Name = "radioWeb";
-            this.radioWeb.Size = new System.Drawing.Size(49, 17);
+            this.radioWeb.Size = new System.Drawing.Size(48, 17);
             this.radioWeb.TabIndex = 3;
             this.radioWeb.Text = "Web";
             this.radioWeb.UseVisualStyleBackColor = true;
@@ -176,9 +213,9 @@
             this.radioMobile.AutoSize = true;
             this.radioMobile.Checked = true;
             this.radioMobile.ForeColor = System.Drawing.SystemColors.Window;
-            this.radioMobile.Location = new System.Drawing.Point(191, 15);
+            this.radioMobile.Location = new System.Drawing.Point(181, 123);
             this.radioMobile.Name = "radioMobile";
-            this.radioMobile.Size = new System.Drawing.Size(61, 17);
+            this.radioMobile.Size = new System.Drawing.Size(56, 17);
             this.radioMobile.TabIndex = 2;
             this.radioMobile.TabStop = true;
             this.radioMobile.Text = "Mobile";
@@ -189,21 +226,34 @@
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.SystemColors.Window;
-            this.label4.Location = new System.Drawing.Point(17, 17);
+            this.label4.Location = new System.Drawing.Point(17, 123);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(120, 13);
+            this.label4.Size = new System.Drawing.Size(109, 13);
             this.label4.TabIndex = 0;
             this.label4.Text = "Xem thông tin bài viết";
+            // 
+            // splitContainerControl1
+            // 
+            this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 150);
+            this.splitContainerControl1.Name = "splitContainerControl1";
+            this.splitContainerControl1.Panel1.Controls.Add(this.WebView);
+            this.splitContainerControl1.Panel1.Text = "Panel1";
+            this.splitContainerControl1.Panel2.Text = "Panel2";
+            this.splitContainerControl1.Size = new System.Drawing.Size(928, 446);
+            this.splitContainerControl1.SplitterPosition = 417;
+            this.splitContainerControl1.TabIndex = 10;
+            this.splitContainerControl1.Text = "splitContainerControl1";
             // 
             // WebView
             // 
             this.WebView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.WebView.Location = new System.Drawing.Point(8, 49);
+            this.WebView.Location = new System.Drawing.Point(8, 6);
             this.WebView.MinimumSize = new System.Drawing.Size(20, 20);
             this.WebView.Name = "WebView";
-            this.WebView.Size = new System.Drawing.Size(404, 438);
+            this.WebView.Size = new System.Drawing.Size(404, 437);
             this.WebView.TabIndex = 4;
             // 
             // UCThaoTac
@@ -217,6 +267,8 @@
             this.Size = new System.Drawing.Size(928, 596);
             this.paneltop.ResumeLayout(false);
             this.paneltop.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -235,5 +287,9 @@
         private System.Windows.Forms.RadioButton radioWeb;
         private System.Windows.Forms.RadioButton radioMobile;
         private System.Windows.Forms.WebBrowser WebView;
+        private System.Windows.Forms.RadioButton radioTieuCuc;
+        private System.Windows.Forms.RadioButton radioTichCuc;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel1;
     }
 }

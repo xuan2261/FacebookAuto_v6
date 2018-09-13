@@ -10,3 +10,15 @@ C:\Users\tungn\OneDrive\Documents\Visual Studio 2017\FacebookAuto_v6\DAO\obj\Deb
 C:\Users\tungn\OneDrive\Documents\Visual Studio 2017\FacebookAuto_v6\DAO\obj\Debug\DAO.csproj.CopyComplete
 C:\Users\tungn\OneDrive\Documents\Visual Studio 2017\FacebookAuto_v6\DAO\obj\Debug\DAO.dll
 C:\Users\tungn\OneDrive\Documents\Visual Studio 2017\FacebookAuto_v6\DAO\obj\Debug\DAO.pdb
+C:\Users\tungn\OneDrive\Documents\FacebookAuto_v6\DAO\bin\Debug\DAO.dll
+C:\Users\tungn\OneDrive\Documents\FacebookAuto_v6\DAO\bin\Debug\DAO.pdb
+C:\Users\tungn\OneDrive\Documents\FacebookAuto_v6\DAO\bin\Debug\DTO.dll
+C:\Users\tungn\OneDrive\Documents\FacebookAuto_v6\DAO\bin\Debug\EntityFramework.dll
+C:\Users\tungn\OneDrive\Documents\FacebookAuto_v6\DAO\bin\Debug\DTO.pdb
+C:\Users\tungn\OneDrive\Documents\FacebookAuto_v6\DAO\bin\Debug\DTO.dll.config
+C:\Users\tungn\OneDrive\Documents\FacebookAuto_v6\DAO\bin\Debug\EntityFramework.xml
+C:\Users\tungn\OneDrive\Documents\FacebookAuto_v6\DAO\obj\Debug\DAO.csprojAssemblyReference.cache
+C:\Users\tungn\OneDrive\Documents\FacebookAuto_v6\DAO\obj\Debug\DAO.csproj.CoreCompileInputs.cache
+C:\Users\tungn\OneDrive\Documents\FacebookAuto_v6\DAO\obj\Debug\DAO.csproj.CopyComplete
+C:\Users\tungn\OneDrive\Documents\FacebookAuto_v6\DAO\obj\Debug\DAO.dll
+C:\Users\tungn\OneDrive\Documents\FacebookAuto_v6\DAO\obj\Debug\DAO.pdb

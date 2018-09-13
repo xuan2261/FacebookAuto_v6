@@ -1,4 +1,5 @@
 ﻿using DTO;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -14,6 +15,16 @@ namespace DAO
             DataTable dt = DataProvider.LayDataTable(sTruyVan, con);
             DataProvider.DongKetNoi(con);
             return dt;
+        }
+        public static string LayNoiDungComment(string idpost)
+        {
+            string sTruyVan = "select Noidung from tblWorkComment where IDPost='" + idpost + "'";
+            con = DataProvider.KetNoi();
+            DataTable dt = DataProvider.LayDataTable(sTruyVan, con);
+            DataProvider.DongKetNoi(con);
+            Random r = new Random();
+            string noidung = dt.Rows[r.Next(0, dt.Rows.Count)]["NoiDung"].ToString();
+            return noidung;
         }
         public static bool Them(tblWorkComment wc)
         {

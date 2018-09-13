@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DAO;
 using DTO;
+using System.Threading;
 
 namespace FacebookAuto_v6
 {
@@ -18,6 +19,7 @@ namespace FacebookAuto_v6
         DataTable tichcuc = new DataTable();
         DataTable tieucuc = new DataTable();
         List<string> idTaiKhoanBinhLuan = new List<string>();
+        Dictionary<string, Thread> danhsach = new Dictionary<string, Thread>();
         public UCTTBinhLuan()
         {
             InitializeComponent();
@@ -60,6 +62,26 @@ namespace FacebookAuto_v6
                 wc.Noidung = LsNoiDungBinhLuan.Items[i].Text;
                 WorkComment.Them(wc);
             }
+            // lưu thông tin công việc bình luận lại
+            tblWork w = new tblWork();
+            w.IDPost = idpost;
+            w.KhoangTime = (int)numKhoangTime.Value;
+            w.TongComment = (int)numSoBL.Value;
+            w.TienDo = 0;
+            w.TrangThai = "Đang bình luận";
+            Work.Them(w);
+            //Lưu vào thông tin bài post
+            tblPost post = new tblPost();
+            post.IDPost = idpost;
+            Post.Them(post);
+            //Thêm thành công thông tin
+            TuDongBinhLuan r = new TuDongBinhLuan(idpost, numKhoangTime.Value.ToString(), numSoBL.Value.ToString());
+            Thread tudong = new Thread(r.DoWork);
+            tudong.SetApartmentState(ApartmentState.STA);
+            tudong.Start();
+            danhsach.Add(idpost, tudong);
+            Work.updatetrangthai(idpost, "Đang bình luận");
+            MessageBox.Show("Đã thêm công việc thành công");
         }
 
         private void UCTTBinhLuan_Load(object sender, EventArgs e)
@@ -129,5 +151,6 @@ namespace FacebookAuto_v6
                     idTaiKhoanBinhLuan.Add(tieucuc.Rows[int.Parse(i) - 1]["NumberIDAccount"].ToString());
             }
         }
+        
     }
 }

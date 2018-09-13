@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Gecko;
+using DTO;
+using DAO;
 
 namespace FacebookAuto_v6
 {
@@ -16,6 +18,7 @@ namespace FacebookAuto_v6
         UCTTCamXuc ttcx = new UCTTCamXuc();
         UCTTChiaSe ttcs = new UCTTChiaSe();
         UCTTKiemDuyet ttkd = new UCTTKiemDuyet();
+        UCTTHoatDongGD tthdgd = new UCTTHoatDongGD();
         string urlfacebook= "https://mobile.facebook.com/";
         public UCThaoTac()
         {
@@ -23,10 +26,16 @@ namespace FacebookAuto_v6
             LoadBinhLuan();
         }
 
-        private void btnKiemTra_Click(object sender, EventArgs e)
+        public void btnKiemTra_Click(object sender, EventArgs e)
         {
+            //lưu thông tin bài viết
             WebView.Navigate(urlfacebook+txtIDBaiViet.Text);
+            tblPost p = ThuVienLamViecFacebook.LayThongTinPost(txtIDBaiViet.Text);
+            Post.Them(p);
+            //kết thúc lưu luôn thông tin bài viết 
             ttbl.idpost = txtIDBaiViet.Text;
+            ttcx.idpost = txtIDBaiViet.Text;
+            ttkd.idpost = txtIDBaiViet.Text;
         }
         public void LoadBinhLuan()
         {
@@ -42,6 +51,7 @@ namespace FacebookAuto_v6
             splitContainerControl1.Panel2.Controls.Add(ttcx);
             ttcx.Dock = DockStyle.Fill;
             labelViTri.Text = ">>>  Bày tỏ cảm xúc";
+            ttcx.idpost = txtIDBaiViet.Text;
         }
         public void LoadChiaSe()
         {
@@ -56,6 +66,21 @@ namespace FacebookAuto_v6
             splitContainerControl1.Panel2.Controls.Add(ttkd);
             ttkd.Dock = DockStyle.Fill;
             labelViTri.Text = ">>>  Kiểm duyệt";
+            if (radioTichCuc.Checked == true) ttkd.danhgia = "Tích cực";
+            else ttkd.danhgia = "Tiêu cực";
+        }
+        //load lại webview
+        public void getdulieufrmkhac(string idpost)
+        {
+            WebView.Navigate(urlfacebook + idpost);
+        }
+        public void LoadHoatDongGanDay()
+        {
+            splitContainerControl1.Panel2.Controls.Clear();
+            splitContainerControl1.Panel2.Controls.Add(tthdgd);
+            tthdgd.Dock = DockStyle.Fill;
+            tthdgd.sentidpost = new UCTTHoatDongGD.SendIDPost(getdulieufrmkhac);
+            labelViTri.Text = ">>>  Hoạt động gần đây";
         }
 
         private void radioMobile_CheckedChanged(object sender, EventArgs e)
