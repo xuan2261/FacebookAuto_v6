@@ -33,7 +33,7 @@
             this.lsCheckTKTichCuc = new FacebookAuto_v5.ListCheckBoxDropDown();
             this.label12 = new System.Windows.Forms.Label();
             this.bunifuProgressBar1 = new Bunifu.Framework.UI.BunifuProgressBar();
-            this.btnBatDauBinhLuan = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.btnBatDauChiaSe = new Bunifu.Framework.UI.BunifuFlatButton();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.LsNoiDungChiaSe = new System.Windows.Forms.ListView();
@@ -41,9 +41,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtNoiDungChiaSe = new System.Windows.Forms.RichTextBox();
             this.btnThem = new Bunifu.Framework.UI.BunifuImageButton();
-            this.radioTieuCuc = new System.Windows.Forms.RadioButton();
-            this.radioTichCuc = new System.Windows.Forms.RadioButton();
-            this.label1 = new System.Windows.Forms.Label();
             this.panelphosisaduoibinhluan.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnThem)).BeginInit();
             this.SuspendLayout();
@@ -54,7 +51,7 @@
             this.panelphosisaduoibinhluan.Controls.Add(this.lsCheckTKTichCuc);
             this.panelphosisaduoibinhluan.Controls.Add(this.label12);
             this.panelphosisaduoibinhluan.Controls.Add(this.bunifuProgressBar1);
-            this.panelphosisaduoibinhluan.Controls.Add(this.btnBatDauBinhLuan);
+            this.panelphosisaduoibinhluan.Controls.Add(this.btnBatDauChiaSe);
             this.panelphosisaduoibinhluan.Controls.Add(this.label7);
             this.panelphosisaduoibinhluan.Controls.Add(this.label8);
             this.panelphosisaduoibinhluan.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -118,40 +115,40 @@
             this.bunifuProgressBar1.TabIndex = 15;
             this.bunifuProgressBar1.Value = 0;
             // 
-            // btnBatDauBinhLuan
+            // btnBatDauChiaSe
             // 
-            this.btnBatDauBinhLuan.Activecolor = System.Drawing.SystemColors.ActiveBorder;
-            this.btnBatDauBinhLuan.BackColor = System.Drawing.Color.SlateGray;
-            this.btnBatDauBinhLuan.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnBatDauBinhLuan.BorderRadius = 7;
-            this.btnBatDauBinhLuan.ButtonText = "Bắt đầu chia sẻ";
-            this.btnBatDauBinhLuan.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBatDauBinhLuan.DisabledColor = System.Drawing.Color.Gray;
-            this.btnBatDauBinhLuan.Iconcolor = System.Drawing.Color.Transparent;
-            this.btnBatDauBinhLuan.Iconimage = global::FacebookAuto_v6.Properties.Resources.icons8_checkmark_64;
-            this.btnBatDauBinhLuan.Iconimage_right = null;
-            this.btnBatDauBinhLuan.Iconimage_right_Selected = null;
-            this.btnBatDauBinhLuan.Iconimage_Selected = null;
-            this.btnBatDauBinhLuan.IconMarginLeft = 0;
-            this.btnBatDauBinhLuan.IconMarginRight = 0;
-            this.btnBatDauBinhLuan.IconRightVisible = true;
-            this.btnBatDauBinhLuan.IconRightZoom = 0D;
-            this.btnBatDauBinhLuan.IconVisible = true;
-            this.btnBatDauBinhLuan.IconZoom = 50D;
-            this.btnBatDauBinhLuan.IsTab = false;
-            this.btnBatDauBinhLuan.Location = new System.Drawing.Point(26, 140);
-            this.btnBatDauBinhLuan.Name = "btnBatDauBinhLuan";
-            this.btnBatDauBinhLuan.Normalcolor = System.Drawing.Color.SlateGray;
-            this.btnBatDauBinhLuan.OnHovercolor = System.Drawing.Color.Gray;
-            this.btnBatDauBinhLuan.OnHoverTextColor = System.Drawing.Color.White;
-            this.btnBatDauBinhLuan.selected = false;
-            this.btnBatDauBinhLuan.Size = new System.Drawing.Size(148, 38);
-            this.btnBatDauBinhLuan.TabIndex = 18;
-            this.btnBatDauBinhLuan.Text = "Bắt đầu chia sẻ";
-            this.btnBatDauBinhLuan.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBatDauBinhLuan.Textcolor = System.Drawing.Color.White;
-            this.btnBatDauBinhLuan.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBatDauBinhLuan.Click += new System.EventHandler(this.btnBatDauBinhLuan_Click);
+            this.btnBatDauChiaSe.Activecolor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnBatDauChiaSe.BackColor = System.Drawing.Color.SlateGray;
+            this.btnBatDauChiaSe.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBatDauChiaSe.BorderRadius = 7;
+            this.btnBatDauChiaSe.ButtonText = "Bắt đầu chia sẻ";
+            this.btnBatDauChiaSe.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBatDauChiaSe.DisabledColor = System.Drawing.Color.Gray;
+            this.btnBatDauChiaSe.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnBatDauChiaSe.Iconimage = global::FacebookAuto_v6.Properties.Resources.icons8_share_filled_50;
+            this.btnBatDauChiaSe.Iconimage_right = null;
+            this.btnBatDauChiaSe.Iconimage_right_Selected = null;
+            this.btnBatDauChiaSe.Iconimage_Selected = null;
+            this.btnBatDauChiaSe.IconMarginLeft = 0;
+            this.btnBatDauChiaSe.IconMarginRight = 0;
+            this.btnBatDauChiaSe.IconRightVisible = true;
+            this.btnBatDauChiaSe.IconRightZoom = 0D;
+            this.btnBatDauChiaSe.IconVisible = true;
+            this.btnBatDauChiaSe.IconZoom = 50D;
+            this.btnBatDauChiaSe.IsTab = false;
+            this.btnBatDauChiaSe.Location = new System.Drawing.Point(26, 140);
+            this.btnBatDauChiaSe.Name = "btnBatDauChiaSe";
+            this.btnBatDauChiaSe.Normalcolor = System.Drawing.Color.SlateGray;
+            this.btnBatDauChiaSe.OnHovercolor = System.Drawing.Color.Gray;
+            this.btnBatDauChiaSe.OnHoverTextColor = System.Drawing.Color.White;
+            this.btnBatDauChiaSe.selected = false;
+            this.btnBatDauChiaSe.Size = new System.Drawing.Size(148, 38);
+            this.btnBatDauChiaSe.TabIndex = 18;
+            this.btnBatDauChiaSe.Text = "Bắt đầu chia sẻ";
+            this.btnBatDauChiaSe.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBatDauChiaSe.Textcolor = System.Drawing.Color.White;
+            this.btnBatDauChiaSe.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBatDauChiaSe.Click += new System.EventHandler(this.btnBatDauChiaSe_Click);
             // 
             // label7
             // 
@@ -178,9 +175,9 @@
             this.LsNoiDungChiaSe.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.LsNoiDungChiaSe.Location = new System.Drawing.Point(272, 81);
+            this.LsNoiDungChiaSe.Location = new System.Drawing.Point(272, 30);
             this.LsNoiDungChiaSe.Name = "LsNoiDungChiaSe";
-            this.LsNoiDungChiaSe.Size = new System.Drawing.Size(236, 157);
+            this.LsNoiDungChiaSe.Size = new System.Drawing.Size(236, 220);
             this.LsNoiDungChiaSe.TabIndex = 22;
             this.LsNoiDungChiaSe.UseCompatibleStateImageBehavior = false;
             this.LsNoiDungChiaSe.View = System.Windows.Forms.View.Details;
@@ -189,7 +186,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.SystemColors.Window;
-            this.label6.Location = new System.Drawing.Point(269, 65);
+            this.label6.Location = new System.Drawing.Point(269, 14);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(140, 13);
             this.label6.TabIndex = 21;
@@ -199,7 +196,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.SystemColors.Window;
-            this.label5.Location = new System.Drawing.Point(10, 66);
+            this.label5.Location = new System.Drawing.Point(14, 14);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(87, 13);
             this.label5.TabIndex = 20;
@@ -209,9 +206,9 @@
             // 
             this.txtNoiDungChiaSe.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtNoiDungChiaSe.Location = new System.Drawing.Point(13, 82);
+            this.txtNoiDungChiaSe.Location = new System.Drawing.Point(13, 30);
             this.txtNoiDungChiaSe.Name = "txtNoiDungChiaSe";
-            this.txtNoiDungChiaSe.Size = new System.Drawing.Size(217, 156);
+            this.txtNoiDungChiaSe.Size = new System.Drawing.Size(217, 220);
             this.txtNoiDungChiaSe.TabIndex = 19;
             this.txtNoiDungChiaSe.Text = "";
             // 
@@ -229,48 +226,11 @@
             this.btnThem.Zoom = 10;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
-            // radioTieuCuc
-            // 
-            this.radioTieuCuc.AutoSize = true;
-            this.radioTieuCuc.ForeColor = System.Drawing.SystemColors.Window;
-            this.radioTieuCuc.Location = new System.Drawing.Point(178, 23);
-            this.radioTieuCuc.Name = "radioTieuCuc";
-            this.radioTieuCuc.Size = new System.Drawing.Size(67, 17);
-            this.radioTieuCuc.TabIndex = 26;
-            this.radioTieuCuc.Text = "Tiêu cực";
-            this.radioTieuCuc.UseVisualStyleBackColor = true;
-            // 
-            // radioTichCuc
-            // 
-            this.radioTichCuc.AutoSize = true;
-            this.radioTichCuc.Checked = true;
-            this.radioTichCuc.ForeColor = System.Drawing.SystemColors.Window;
-            this.radioTichCuc.Location = new System.Drawing.Point(103, 23);
-            this.radioTichCuc.Name = "radioTichCuc";
-            this.radioTichCuc.Size = new System.Drawing.Size(69, 17);
-            this.radioTichCuc.TabIndex = 25;
-            this.radioTichCuc.TabStop = true;
-            this.radioTichCuc.Text = "Tích cực";
-            this.radioTichCuc.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.SystemColors.Window;
-            this.label1.Location = new System.Drawing.Point(10, 25);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 13);
-            this.label1.TabIndex = 24;
-            this.label1.Text = "Đánh giá bài viết";
-            // 
             // UCTTChiaSe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
-            this.Controls.Add(this.radioTieuCuc);
-            this.Controls.Add(this.radioTichCuc);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnThem);
             this.Controls.Add(this.LsNoiDungChiaSe);
             this.Controls.Add(this.label6);
@@ -294,7 +254,7 @@
         private FacebookAuto_v5.ListCheckBoxDropDown lsCheckTKTichCuc;
         private System.Windows.Forms.Label label12;
         private Bunifu.Framework.UI.BunifuProgressBar bunifuProgressBar1;
-        private Bunifu.Framework.UI.BunifuFlatButton btnBatDauBinhLuan;
+        private Bunifu.Framework.UI.BunifuFlatButton btnBatDauChiaSe;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ListView LsNoiDungChiaSe;
@@ -302,8 +262,5 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.RichTextBox txtNoiDungChiaSe;
         private Bunifu.Framework.UI.BunifuImageButton btnThem;
-        private System.Windows.Forms.RadioButton radioTieuCuc;
-        private System.Windows.Forms.RadioButton radioTichCuc;
-        private System.Windows.Forms.Label label1;
     }
 }

@@ -38,16 +38,17 @@ namespace FacebookAuto_v6
                 lsCheckTKTieuCuc.Items.Add(tieucuc.Rows[i]["Name"].ToString());
             }
         }
-        private void btnBatDauBinhLuan_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
             LsNoiDungChiaSe.Items.Add(txtNoiDungChiaSe.Text);
             txtNoiDungChiaSe.Text = null;
             txtNoiDungChiaSe.Focus();
+        }
+
+        private void btnBatDauChiaSe_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

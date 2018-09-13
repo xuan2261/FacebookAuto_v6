@@ -25,6 +25,7 @@ namespace FacebookAuto_v6
         string tongsoluong;
         public string idpost;
         string htmlcontent;
+        public string danhgia;
         public UCTTKiemDuyet()
         {
             InitializeComponent();
@@ -85,7 +86,7 @@ namespace FacebookAuto_v6
                     htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("\"") + 1);
                     string id = htmlcontent.Remove(htmlcontent.IndexOf("\""));
                     //nếu bài viết là tốt
-                    if (radioTichCuc.Checked == true)
+                    if (danhgia == "Tích cực")
                     {
                         if (trangthai == "Phẫn nộ")
                         {
@@ -101,7 +102,7 @@ namespace FacebookAuto_v6
                         }
                     }
                     //nếu như bài viết tiêu cực
-                    if (radioTieuCuc.Checked == true)
+                    else
                     {
                         if (trangthai == "Phẫn nộ")
                         {

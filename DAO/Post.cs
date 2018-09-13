@@ -33,7 +33,7 @@ namespace DAO
         {
             try
             {
-                string sTruyVan = string.Format("Insert into tblPost(IDPost,Status,Description,IDRoot,NameRoot,CountLike,CountComment,TimePost) values('{0}',N'{1}',N'{2}',N'{3}','{4}',N'{5}',N'{6}',N'{7}')", p.IDPost, p.Status, p.Description, p.IDRoot,p.NameRoot,p.CountLike,p.CountComment,p.TimePost);
+                string sTruyVan = string.Format("Insert into tblPost(IDPost,Status,Description,IDRoot,NameRoot,CountLike,CountComment,TimePost) values('{0}',N'{1}',N'{2}',N'{3}',N'{4}',N'{5}',N'{6}',N'{7}')", p.IDPost, p.Status, p.Description, p.IDRoot,p.NameRoot,p.CountLike,p.CountComment,p.TimePost);
                 con = DataProvider.KetNoi();
                 DataProvider.ThucThiTruyVanNonQuery(sTruyVan, con);
                 DataProvider.DongKetNoi(con);

@@ -73,8 +73,6 @@ namespace FacebookAuto_v6
             //Lưu vào thông tin bài post
             tblPost post = new tblPost();
             post.IDPost = idpost;
-            if (radioTichCuc.Checked == true) post.Status = "Tích cực";
-            else post.Status = "Tiêu cực";
             Post.Them(post);
             //Thêm thành công thông tin
             TuDongBinhLuan r = new TuDongBinhLuan(idpost, numKhoangTime.Value.ToString(), numSoBL.Value.ToString());

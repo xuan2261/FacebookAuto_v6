@@ -181,8 +181,12 @@ namespace FacebookAuto_v6
         //Kết thúc bày tỏ cảm xúc
 
         //chia sẻ bài viết
-        public static void ChiaSe()
+        public static void ChiaSe(string idpost,string noidungchiase)
         {
+            WebBrowser web1 = new WebBrowser();
+            web1.Navigate("https://mobile.facebook.com/"+idpost);
+            while (web1.ReadyState != WebBrowserReadyState.Complete)
+                Application.DoEvents();
 
         }
         //kết thúc chia sẻ bài viết
@@ -193,5 +197,43 @@ namespace FacebookAuto_v6
 
         }
         //kết thúc duyệt người thích
+        //lấy thông tin bài viết
+        public static tblPost LayThongTinPost(string idpost)
+        {
+            tblPost p = new tblPost();
+            WebBrowser web1 = new WebBrowser();
+            web1.Navigate("https://mobile.facebook.com/" + idpost);
+            while (web1.ReadyState != WebBrowserReadyState.Complete)
+                Application.DoEvents();
+            string htmlcontent = web1.DocumentText;
+            htmlcontent = htmlcontent.Replace("amp;", "");
+            string desciption;
+            try
+            {
+                desciption = htmlcontent.Substring(htmlcontent.IndexOf("TITLE") + 6);
+                desciption = desciption.Remove(desciption.IndexOf("</TITLE>"));
+            }
+            catch
+            {
+                desciption = htmlcontent.Substring(htmlcontent.IndexOf("title") + 6);
+                desciption = desciption.Remove(desciption.IndexOf("</title>"));
+            }
+            htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("STRONG")+10);
+            string name = htmlcontent.Substring(htmlcontent.IndexOf(">")+1);
+            name = name.Remove(name.IndexOf("<"));
+            string iduser = web1.Url.ToString();
+            iduser = iduser.Substring(iduser.IndexOf("&id=")+4);
+            iduser = iduser.Remove(iduser.IndexOf("&"));
+            p.IDRoot = iduser;
+            p.IDPost = idpost;
+            p.NameRoot = name;
+            p.Description = desciption;
+            string timepost = htmlcontent.Substring(htmlcontent.IndexOf("ABBR") + 5);
+            timepost = timepost.Remove(timepost.IndexOf("<"));
+            if (!timepost.Contains("Tháng")) timepost += DateTime.Now.ToShortDateString(); 
+            p.TimePost = timepost;
+            return p;
+        }
+        //kết thúc lấy thông tin bài viết
     }
 }

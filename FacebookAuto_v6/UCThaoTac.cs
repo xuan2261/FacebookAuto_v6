@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Gecko;
+using DTO;
+using DAO;
 
 namespace FacebookAuto_v6
 {
@@ -26,7 +28,11 @@ namespace FacebookAuto_v6
 
         public void btnKiemTra_Click(object sender, EventArgs e)
         {
+            //lưu thông tin bài viết
             WebView.Navigate(urlfacebook+txtIDBaiViet.Text);
+            tblPost p = ThuVienLamViecFacebook.LayThongTinPost(txtIDBaiViet.Text);
+            Post.Them(p);
+            //kết thúc lưu luôn thông tin bài viết 
             ttbl.idpost = txtIDBaiViet.Text;
             ttcx.idpost = txtIDBaiViet.Text;
             ttkd.idpost = txtIDBaiViet.Text;
@@ -60,6 +66,8 @@ namespace FacebookAuto_v6
             splitContainerControl1.Panel2.Controls.Add(ttkd);
             ttkd.Dock = DockStyle.Fill;
             labelViTri.Text = ">>>  Kiểm duyệt";
+            if (radioTichCuc.Checked == true) ttkd.danhgia = "Tích cực";
+            else ttkd.danhgia = "Tiêu cực";
         }
         //load lại webview
         public void getdulieufrmkhac(string idpost)
