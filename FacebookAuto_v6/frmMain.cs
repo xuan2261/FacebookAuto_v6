@@ -15,6 +15,8 @@ namespace FacebookAuto_v6
     {
         UCThaoTac ucthaotac = new UCThaoTac();
         UCTTHoatDongGD uctthdgd = new UCTTHoatDongGD();
+        UCGSThemTrang ucgstt = new UCGSThemTrang();
+        UCGSDuyetBaiViet ucgsdbv = new UCGSDuyetBaiViet();
         int ktuc = 1;
         tblAdmin admin = new tblAdmin();
         public frmMain()
@@ -121,11 +123,18 @@ namespace FacebookAuto_v6
 
         private void ElementThemTrangNhom_Click(object sender, EventArgs e)
         {
-            UCGSThemTrang ucgstt = new UCGSThemTrang();
             ktuc = 2;
             panelMain.Controls.Clear();
             panelMain.Controls.Add(ucgstt);
             ucgstt.Dock = DockStyle.Fill;
+        }
+
+        private void ElementDuyetBaiViet_Click(object sender, EventArgs e)
+        {
+            ktuc = 2;
+            panelMain.Controls.Clear();
+            panelMain.Controls.Add(ucgsdbv);
+            ucgsdbv.Dock = DockStyle.Fill;
         }
     }
 }

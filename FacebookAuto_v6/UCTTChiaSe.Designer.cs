@@ -33,7 +33,6 @@
             this.lsCheckTKTichCuc = new FacebookAuto_v5.ListCheckBoxDropDown();
             this.label12 = new System.Windows.Forms.Label();
             this.bunifuProgressBar1 = new Bunifu.Framework.UI.BunifuProgressBar();
-            this.btnBatDauChiaSe = new Bunifu.Framework.UI.BunifuFlatButton();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.LsNoiDungChiaSe = new System.Windows.Forms.ListView();
@@ -41,6 +40,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtNoiDungChiaSe = new System.Windows.Forms.RichTextBox();
             this.btnThem = new Bunifu.Framework.UI.BunifuImageButton();
+            this.btnBatDauChiaSe = new Bunifu.Framework.UI.BunifuFlatButton();
             this.panelphosisaduoibinhluan.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnThem)).BeginInit();
             this.SuspendLayout();
@@ -112,45 +112,10 @@
             this.bunifuProgressBar1.Location = new System.Drawing.Point(74, 208);
             this.bunifuProgressBar1.MaximumValue = 100;
             this.bunifuProgressBar1.Name = "bunifuProgressBar1";
-            this.bunifuProgressBar1.ProgressColor = System.Drawing.Color.Teal;
+            this.bunifuProgressBar1.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(190)))), ((int)(((byte)(166)))));
             this.bunifuProgressBar1.Size = new System.Drawing.Size(434, 10);
             this.bunifuProgressBar1.TabIndex = 15;
             this.bunifuProgressBar1.Value = 0;
-            // 
-            // btnBatDauChiaSe
-            // 
-            this.btnBatDauChiaSe.Activecolor = System.Drawing.SystemColors.ActiveBorder;
-            this.btnBatDauChiaSe.BackColor = System.Drawing.Color.SlateGray;
-            this.btnBatDauChiaSe.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnBatDauChiaSe.BorderRadius = 7;
-            this.btnBatDauChiaSe.ButtonText = "Bắt đầu chia sẻ";
-            this.btnBatDauChiaSe.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBatDauChiaSe.DisabledColor = System.Drawing.Color.Gray;
-            this.btnBatDauChiaSe.Iconcolor = System.Drawing.Color.Transparent;
-            this.btnBatDauChiaSe.Iconimage = global::FacebookAuto_v6.Properties.Resources.icons8_share_filled_50;
-            this.btnBatDauChiaSe.Iconimage_right = null;
-            this.btnBatDauChiaSe.Iconimage_right_Selected = null;
-            this.btnBatDauChiaSe.Iconimage_Selected = null;
-            this.btnBatDauChiaSe.IconMarginLeft = 0;
-            this.btnBatDauChiaSe.IconMarginRight = 0;
-            this.btnBatDauChiaSe.IconRightVisible = true;
-            this.btnBatDauChiaSe.IconRightZoom = 0D;
-            this.btnBatDauChiaSe.IconVisible = true;
-            this.btnBatDauChiaSe.IconZoom = 50D;
-            this.btnBatDauChiaSe.IsTab = false;
-            this.btnBatDauChiaSe.Location = new System.Drawing.Point(26, 140);
-            this.btnBatDauChiaSe.Name = "btnBatDauChiaSe";
-            this.btnBatDauChiaSe.Normalcolor = System.Drawing.Color.SlateGray;
-            this.btnBatDauChiaSe.OnHovercolor = System.Drawing.Color.Gray;
-            this.btnBatDauChiaSe.OnHoverTextColor = System.Drawing.Color.White;
-            this.btnBatDauChiaSe.selected = false;
-            this.btnBatDauChiaSe.Size = new System.Drawing.Size(148, 38);
-            this.btnBatDauChiaSe.TabIndex = 18;
-            this.btnBatDauChiaSe.Text = "Bắt đầu chia sẻ";
-            this.btnBatDauChiaSe.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBatDauChiaSe.Textcolor = System.Drawing.Color.White;
-            this.btnBatDauChiaSe.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBatDauChiaSe.Click += new System.EventHandler(this.btnBatDauChiaSe_Click);
             // 
             // label7
             // 
@@ -217,9 +182,9 @@
             // btnThem
             // 
             this.btnThem.BackColor = System.Drawing.Color.Transparent;
-            this.btnThem.Image = global::FacebookAuto_v6.Properties.Resources.icons8_plus_48;
+            this.btnThem.Image = global::FacebookAuto_v6.Properties.Resources.icons8_plus_64;
             this.btnThem.ImageActive = null;
-            this.btnThem.Location = new System.Drawing.Point(236, 144);
+            this.btnThem.Location = new System.Drawing.Point(236, 112);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(30, 30);
             this.btnThem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -227,6 +192,41 @@
             this.btnThem.TabStop = false;
             this.btnThem.Zoom = 10;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
+            // 
+            // btnBatDauChiaSe
+            // 
+            this.btnBatDauChiaSe.Activecolor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnBatDauChiaSe.BackColor = System.Drawing.Color.SlateGray;
+            this.btnBatDauChiaSe.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBatDauChiaSe.BorderRadius = 7;
+            this.btnBatDauChiaSe.ButtonText = "Bắt đầu chia sẻ";
+            this.btnBatDauChiaSe.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBatDauChiaSe.DisabledColor = System.Drawing.Color.Gray;
+            this.btnBatDauChiaSe.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnBatDauChiaSe.Iconimage = global::FacebookAuto_v6.Properties.Resources.icons8_share_50;
+            this.btnBatDauChiaSe.Iconimage_right = null;
+            this.btnBatDauChiaSe.Iconimage_right_Selected = null;
+            this.btnBatDauChiaSe.Iconimage_Selected = null;
+            this.btnBatDauChiaSe.IconMarginLeft = 0;
+            this.btnBatDauChiaSe.IconMarginRight = 0;
+            this.btnBatDauChiaSe.IconRightVisible = true;
+            this.btnBatDauChiaSe.IconRightZoom = 0D;
+            this.btnBatDauChiaSe.IconVisible = true;
+            this.btnBatDauChiaSe.IconZoom = 50D;
+            this.btnBatDauChiaSe.IsTab = false;
+            this.btnBatDauChiaSe.Location = new System.Drawing.Point(26, 140);
+            this.btnBatDauChiaSe.Name = "btnBatDauChiaSe";
+            this.btnBatDauChiaSe.Normalcolor = System.Drawing.Color.SlateGray;
+            this.btnBatDauChiaSe.OnHovercolor = System.Drawing.Color.Gray;
+            this.btnBatDauChiaSe.OnHoverTextColor = System.Drawing.Color.White;
+            this.btnBatDauChiaSe.selected = false;
+            this.btnBatDauChiaSe.Size = new System.Drawing.Size(148, 38);
+            this.btnBatDauChiaSe.TabIndex = 18;
+            this.btnBatDauChiaSe.Text = "Bắt đầu chia sẻ";
+            this.btnBatDauChiaSe.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBatDauChiaSe.Textcolor = System.Drawing.Color.White;
+            this.btnBatDauChiaSe.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBatDauChiaSe.Click += new System.EventHandler(this.btnBatDauChiaSe_Click);
             // 
             // UCTTChiaSe
             // 

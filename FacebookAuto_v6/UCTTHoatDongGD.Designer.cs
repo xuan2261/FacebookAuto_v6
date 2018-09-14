@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.DataBaiCu = new DevExpress.XtraGrid.GridControl();
             this.MenuChuotPhai = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.TiepTucToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,24 +51,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar1)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel1
-            // 
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(508, 109);
-            this.panel1.TabIndex = 0;
-            // 
             // DataBaiCu
             // 
             this.DataBaiCu.ContextMenuStrip = this.MenuChuotPhai;
             this.DataBaiCu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DataBaiCu.Location = new System.Drawing.Point(0, 109);
+            this.DataBaiCu.Location = new System.Drawing.Point(0, 0);
             this.DataBaiCu.MainView = this.gridView1;
             this.DataBaiCu.Name = "DataBaiCu";
             this.DataBaiCu.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemProgressBar1});
-            this.DataBaiCu.Size = new System.Drawing.Size(508, 390);
+            this.DataBaiCu.Size = new System.Drawing.Size(508, 499);
             this.DataBaiCu.TabIndex = 1;
             this.DataBaiCu.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -143,6 +134,11 @@
             this.gridView1.GridControl = this.DataBaiCu;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.ReadOnly = true;
+            this.gridView1.OptionsCustomization.CustomizationFormSearchBoxVisible = true;
+            this.gridView1.OptionsFind.AlwaysVisible = true;
+            this.gridView1.OptionsFind.FindMode = DevExpress.XtraEditors.FindMode.Always;
+            this.gridView1.OptionsFind.FindNullPrompt = "Nhập từ khóa tìm kiếm dữ liệu bất kì ............";
+            this.gridView1.OptionsFind.SearchInPreview = true;
             // 
             // IDPost
             // 
@@ -222,7 +218,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
             this.Controls.Add(this.DataBaiCu);
-            this.Controls.Add(this.panel1);
             this.Name = "UCTTHoatDongGD";
             this.Size = new System.Drawing.Size(508, 499);
             this.Load += new System.EventHandler(this.UCTTHoatDongGD_Load);
@@ -235,8 +230,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel1;
         private DevExpress.XtraGrid.GridControl DataBaiCu;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Columns.GridColumn IDPost;

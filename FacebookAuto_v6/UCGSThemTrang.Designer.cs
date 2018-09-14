@@ -33,12 +33,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.labelViTri = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnSearch = new Bunifu.Framework.UI.BunifuImageButton();
             this.txtLink = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnKhongXacDinh = new Bunifu.Framework.UI.BunifuImageButton();
-            this.btnTieuCuc = new Bunifu.Framework.UI.BunifuImageButton();
-            this.btnTichCuc = new Bunifu.Framework.UI.BunifuImageButton();
             this.ProgressBarTim = new Bunifu.Framework.UI.BunifuProgressBar();
             this.lbTrangThaiTim = new System.Windows.Forms.Label();
             this.lsKetQuaSearch = new System.Windows.Forms.ListView();
@@ -50,13 +46,17 @@
             this.bunifuImageButton1 = new Bunifu.Framework.UI.BunifuImageButton();
             this.bunifuImageButton2 = new Bunifu.Framework.UI.BunifuImageButton();
             this.bunifuImageButton3 = new Bunifu.Framework.UI.BunifuImageButton();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnKhongXacDinh)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnTieuCuc)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnTichCuc)).BeginInit();
+            this.btnKhongXacDinh = new Bunifu.Framework.UI.BunifuImageButton();
+            this.btnTieuCuc = new Bunifu.Framework.UI.BunifuImageButton();
+            this.btnTichCuc = new Bunifu.Framework.UI.BunifuImageButton();
+            this.btnSearch = new Bunifu.Framework.UI.BunifuImageButton();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnKhongXacDinh)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnTieuCuc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnTichCuc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).BeginInit();
             this.SuspendLayout();
             // 
             // DrbtnLoaiTim
@@ -129,20 +129,6 @@
             this.label1.TabIndex = 83;
             this.label1.Text = "Tìm kiếm thêm vào dữ liệu giám sát";
             // 
-            // btnSearch
-            // 
-            this.btnSearch.BackColor = System.Drawing.Color.Transparent;
-            this.btnSearch.Image = global::FacebookAuto_v6.Properties.Resources.icons8_search_64;
-            this.btnSearch.ImageActive = null;
-            this.btnSearch.Location = new System.Drawing.Point(363, 111);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(40, 40);
-            this.btnSearch.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnSearch.TabIndex = 79;
-            this.btnSearch.TabStop = false;
-            this.btnSearch.Zoom = 10;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
             // txtLink
             // 
             this.txtLink.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -175,48 +161,6 @@
             this.label3.TabIndex = 87;
             this.label3.Text = "Link trang nhóm";
             // 
-            // btnKhongXacDinh
-            // 
-            this.btnKhongXacDinh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnKhongXacDinh.BackColor = System.Drawing.Color.Transparent;
-            this.btnKhongXacDinh.Image = global::FacebookAuto_v6.Properties.Resources.icons8_neutral_48;
-            this.btnKhongXacDinh.ImageActive = null;
-            this.btnKhongXacDinh.Location = new System.Drawing.Point(852, 124);
-            this.btnKhongXacDinh.Name = "btnKhongXacDinh";
-            this.btnKhongXacDinh.Size = new System.Drawing.Size(30, 30);
-            this.btnKhongXacDinh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnKhongXacDinh.TabIndex = 86;
-            this.btnKhongXacDinh.TabStop = false;
-            this.btnKhongXacDinh.Zoom = 10;
-            // 
-            // btnTieuCuc
-            // 
-            this.btnTieuCuc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTieuCuc.BackColor = System.Drawing.Color.Transparent;
-            this.btnTieuCuc.Image = global::FacebookAuto_v6.Properties.Resources.icons8_nerd_48;
-            this.btnTieuCuc.ImageActive = null;
-            this.btnTieuCuc.Location = new System.Drawing.Point(888, 124);
-            this.btnTieuCuc.Name = "btnTieuCuc";
-            this.btnTieuCuc.Size = new System.Drawing.Size(30, 30);
-            this.btnTieuCuc.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnTieuCuc.TabIndex = 85;
-            this.btnTieuCuc.TabStop = false;
-            this.btnTieuCuc.Zoom = 10;
-            // 
-            // btnTichCuc
-            // 
-            this.btnTichCuc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTichCuc.BackColor = System.Drawing.Color.Transparent;
-            this.btnTichCuc.Image = global::FacebookAuto_v6.Properties.Resources.icons8_happy_48;
-            this.btnTichCuc.ImageActive = null;
-            this.btnTichCuc.Location = new System.Drawing.Point(816, 124);
-            this.btnTichCuc.Name = "btnTichCuc";
-            this.btnTichCuc.Size = new System.Drawing.Size(30, 30);
-            this.btnTichCuc.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnTichCuc.TabIndex = 84;
-            this.btnTichCuc.TabStop = false;
-            this.btnTichCuc.Zoom = 10;
-            // 
             // ProgressBarTim
             // 
             this.ProgressBarTim.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(77)))), ((int)(((byte)(92)))));
@@ -225,7 +169,7 @@
             this.ProgressBarTim.Margin = new System.Windows.Forms.Padding(4);
             this.ProgressBarTim.MaximumValue = 100;
             this.ProgressBarTim.Name = "ProgressBarTim";
-            this.ProgressBarTim.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(76)))), ((int)(((byte)(56)))));
+            this.ProgressBarTim.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(190)))), ((int)(((byte)(166)))));
             this.ProgressBarTim.Size = new System.Drawing.Size(284, 15);
             this.ProgressBarTim.TabIndex = 91;
             this.ProgressBarTim.Value = 0;
@@ -353,6 +297,62 @@
             this.bunifuImageButton3.TabStop = false;
             this.bunifuImageButton3.Zoom = 10;
             // 
+            // btnKhongXacDinh
+            // 
+            this.btnKhongXacDinh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnKhongXacDinh.BackColor = System.Drawing.Color.Transparent;
+            this.btnKhongXacDinh.Image = global::FacebookAuto_v6.Properties.Resources.icons8_neutral_48;
+            this.btnKhongXacDinh.ImageActive = null;
+            this.btnKhongXacDinh.Location = new System.Drawing.Point(852, 124);
+            this.btnKhongXacDinh.Name = "btnKhongXacDinh";
+            this.btnKhongXacDinh.Size = new System.Drawing.Size(30, 30);
+            this.btnKhongXacDinh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnKhongXacDinh.TabIndex = 86;
+            this.btnKhongXacDinh.TabStop = false;
+            this.btnKhongXacDinh.Zoom = 10;
+            // 
+            // btnTieuCuc
+            // 
+            this.btnTieuCuc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTieuCuc.BackColor = System.Drawing.Color.Transparent;
+            this.btnTieuCuc.Image = global::FacebookAuto_v6.Properties.Resources.icons8_nerd_48;
+            this.btnTieuCuc.ImageActive = null;
+            this.btnTieuCuc.Location = new System.Drawing.Point(888, 124);
+            this.btnTieuCuc.Name = "btnTieuCuc";
+            this.btnTieuCuc.Size = new System.Drawing.Size(30, 30);
+            this.btnTieuCuc.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnTieuCuc.TabIndex = 85;
+            this.btnTieuCuc.TabStop = false;
+            this.btnTieuCuc.Zoom = 10;
+            // 
+            // btnTichCuc
+            // 
+            this.btnTichCuc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTichCuc.BackColor = System.Drawing.Color.Transparent;
+            this.btnTichCuc.Image = global::FacebookAuto_v6.Properties.Resources.icons8_happy_48;
+            this.btnTichCuc.ImageActive = null;
+            this.btnTichCuc.Location = new System.Drawing.Point(816, 124);
+            this.btnTichCuc.Name = "btnTichCuc";
+            this.btnTichCuc.Size = new System.Drawing.Size(30, 30);
+            this.btnTichCuc.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnTichCuc.TabIndex = 84;
+            this.btnTichCuc.TabStop = false;
+            this.btnTichCuc.Zoom = 10;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.BackColor = System.Drawing.Color.Transparent;
+            this.btnSearch.Image = global::FacebookAuto_v6.Properties.Resources.icons8_search_641;
+            this.btnSearch.ImageActive = null;
+            this.btnSearch.Location = new System.Drawing.Point(363, 111);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(40, 40);
+            this.btnSearch.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnSearch.TabIndex = 79;
+            this.btnSearch.TabStop = false;
+            this.btnSearch.Zoom = 10;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
             // UCGSThemTrang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -382,13 +382,13 @@
             this.Controls.Add(this.btnSearch);
             this.Name = "UCGSThemTrang";
             this.Size = new System.Drawing.Size(928, 552);
-            ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnKhongXacDinh)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnTieuCuc)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnTichCuc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnKhongXacDinh)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnTieuCuc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnTichCuc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

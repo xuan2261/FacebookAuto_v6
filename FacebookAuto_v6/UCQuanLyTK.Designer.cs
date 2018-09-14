@@ -73,7 +73,7 @@
             this.btnLuu.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLuu.DisabledColor = System.Drawing.Color.Gray;
             this.btnLuu.Iconcolor = System.Drawing.Color.Transparent;
-            this.btnLuu.Iconimage = global::FacebookAuto_v6.Properties.Resources.icons8_save_as_filled_50;
+            this.btnLuu.Iconimage = global::FacebookAuto_v6.Properties.Resources.icons8_save_as_48;
             this.btnLuu.Iconimage_right = null;
             this.btnLuu.Iconimage_right_Selected = null;
             this.btnLuu.Iconimage_Selected = null;

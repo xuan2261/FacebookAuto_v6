@@ -24,8 +24,8 @@ namespace FacebookAuto_v6
         List<string> lsNoiDungBL = new List<string>();
         List<string> lsIDBinhLuan = new List<string>();
         List<string> lsTimeBinhLuan = new List<string>();
-        string tongsoluonglike;
-        int tongsocomment;
+        string tongsoluonglike="0";
+        int tongsocomment=0;
         public string idpost;
         string htmlcontent;
         public string danhgia;
@@ -177,7 +177,7 @@ namespace FacebookAuto_v6
             while (web1.ReadyState != WebBrowserReadyState.Complete)
                 Application.DoEvents();
             htmlcontent = web1.DocumentText;
-
+            htmlcontent = htmlcontent.Replace("amp;", "");
             for (; ; )
             {
                 int kt = htmlcontent.IndexOf("<H3><A class=\"");
@@ -192,30 +192,37 @@ namespace FacebookAuto_v6
                     htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("href") + 4);
                     htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("\"") + 1);
 
-                    string idUserComment = htmlcontent.Remove(htmlcontent.IndexOf("refid"));
-                    idUserComment = idUserComment.Replace("?", "");
-                    idUserComment = idUserComment.Replace("&amp;", "");
-                    idUserComment = idUserComment.Replace("rc=p", "");
-                    lsIDUserBinhLuan.Add(idUserComment);
+                    //string idUserComment = htmlcontent.Remove(htmlcontent.IndexOf("refid"));
+                    //idUserComment = idUserComment.Replace("?", "");
+                    //idUserComment = idUserComment.Replace("rc=p", "");
+                    string idUserComment = htmlcontent.Remove(htmlcontent.IndexOf("&"));
+                    
 
                     string NameBL = htmlcontent.Substring(htmlcontent.IndexOf(">") + 1);
                     NameBL = NameBL.Remove(NameBL.IndexOf("<"));
-                    LsNguoiDungBL.Items.Add(NameBL);
+                    
 
                     htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("class=") + 5);
                     htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf(">") + 1);
 
                     string NoiDung = htmlcontent.Remove(htmlcontent.IndexOf("/DIV") - 1);
-                    lsNoiDungBL.Add(NoiDung);
+                    
                     string idcomment = htmlcontent.Substring(htmlcontent.IndexOf("like_comment_id=") + 16);
                     idcomment = idcomment.Remove(idcomment.IndexOf("&"));
-                    lsIDBinhLuan.Add(idcomment);
-
+                    
                     string TimeBL = htmlcontent.Substring(htmlcontent.IndexOf("ABBR") + 5);
                     TimeBL = TimeBL.Remove(TimeBL.IndexOf("<"));
                     if (TimeBL.IndexOf("Tháng") == -1)
                         TimeBL = TimeBL + DateTime.Now.ToShortDateString();
-                    lsTimeBinhLuan.Add(TimeBL);
+                    
+                    if(CommentPost.KiemTraIDComment(idcomment) ==false)
+                    {
+                        lsIDUserBinhLuan.Add(idUserComment);
+                        lsIDBinhLuan.Add(idcomment);
+                        lsNoiDungBL.Add(NoiDung);
+                        lsTimeBinhLuan.Add(TimeBL);
+                        LsNguoiDungBL.Items.Add(NameBL);
+                    }
                 }
                 //nếu như hết bình luận cố tìm xem thêm bình luận
                 else
@@ -237,7 +244,7 @@ namespace FacebookAuto_v6
                     {
                         ProgressQuetBL.Value = 100;
                         lbTrangThaiBL.Text = "Đã quét xong!";
-                        MessageBox.Show("Đã tìm kiếm được " + LsNguoiDungBL.Items.Count + " bình luận");
+                        MessageBox.Show("Đã tìm kiếm được " + LsNguoiDungBL.Items.Count + " bình luận mới");
                         tongsocomment = LsNguoiDungBL.Items.Count;
                         break;
                     }
@@ -306,6 +313,101 @@ namespace FacebookAuto_v6
             }
             //kết thúc thêm tài khoản 
             MessageBox.Show("Đã lưu tất cả thông tin!");
+        }
+
+        private void btnTichCuc_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //lưu thông tin tài khoản
+                tblUserFB newu = new tblUserFB();
+                newu.IDUser = lsIDUserBinhLuan[LsNguoiDungBL.FocusedItem.Index].ToString();
+                newu.Name = LsNguoiDungBL.FocusedItem.Text;
+                UserFB.Them(newu);
+                //lưu thông tin tài khoản
+                //lưu dữ liệu bình luận
+                tblCommentPost newcp = new tblCommentPost();
+                newcp.IDComment = lsIDBinhLuan[LsNguoiDungBL.FocusedItem.Index].ToString();
+                newcp.IDPost = idpost;
+                newcp.IDUser = lsIDUserBinhLuan[LsNguoiDungBL.FocusedItem.Index].ToString();
+                newcp.Status = 5;
+                newcp.Description = lsNoiDungBL[LsNguoiDungBL.FocusedItem.Index].ToString();
+                newcp.TimeComment = lsTimeBinhLuan[LsNguoiDungBL.FocusedItem.Index];
+                CommentPost.Them(newcp);
+                //kết thúc lưu dữ liệu bình luận
+                // loai bỏ item trong danh sách
+                LsNguoiDungBL.Items.RemoveAt(LsNguoiDungBL.FocusedItem.Index);
+                lsIDBinhLuan.RemoveAt(LsNguoiDungBL.FocusedItem.Index);
+                lsNoiDungBL.RemoveAt(LsNguoiDungBL.FocusedItem.Index);
+                lsIDUserBinhLuan.RemoveAt(LsNguoiDungBL.FocusedItem.Index);
+                //kết thúc loại bỏ item trong danh sách
+                txtNoiDungBinhLuan.Text = null;
+            }
+            catch { }
+        }
+
+        private void btnChuaXacDinh_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //lưu thông tin tài khoản
+                tblUserFB newu = new tblUserFB();
+                newu.IDUser = lsIDUserBinhLuan[LsNguoiDungBL.FocusedItem.Index].ToString();
+                newu.Name = LsNguoiDungBL.FocusedItem.Text;
+                UserFB.Them(newu);
+                //lưu thông tin tài khoản
+                //lưu dữ liệu bình luận
+                tblCommentPost newcp = new tblCommentPost();
+                newcp.IDComment = lsIDBinhLuan[LsNguoiDungBL.FocusedItem.Index].ToString();
+                newcp.IDPost = idpost;
+                newcp.IDUser = lsIDUserBinhLuan[LsNguoiDungBL.FocusedItem.Index].ToString();
+                newcp.Status = 0;
+                newcp.Description = lsNoiDungBL[LsNguoiDungBL.FocusedItem.Index].ToString();
+                newcp.TimeComment = lsTimeBinhLuan[LsNguoiDungBL.FocusedItem.Index];
+                CommentPost.Them(newcp);
+                //kết thúc lưu dữ liệu bình luận
+                // loai bỏ item trong danh sách
+                LsNguoiDungBL.Items.RemoveAt(LsNguoiDungBL.FocusedItem.Index);
+                lsIDBinhLuan.RemoveAt(LsNguoiDungBL.FocusedItem.Index);
+                lsNoiDungBL.RemoveAt(LsNguoiDungBL.FocusedItem.Index);
+                lsIDUserBinhLuan.RemoveAt(LsNguoiDungBL.FocusedItem.Index);
+                //kết thúc loại bỏ item trong danh sách
+
+                txtNoiDungBinhLuan.Text = null;
+            }
+            catch { }
+        }
+
+        private void btnTieuCuc_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //lưu thông tin tài khoản
+                tblUserFB newu = new tblUserFB();
+                newu.IDUser = lsIDUserBinhLuan[LsNguoiDungBL.FocusedItem.Index].ToString();
+                newu.Name = LsNguoiDungBL.FocusedItem.Text;
+                UserFB.Them(newu);
+                //lưu thông tin tài khoản
+                //lưu dữ liệu bình luận
+                tblCommentPost newcp = new tblCommentPost();
+                newcp.IDComment = lsIDBinhLuan[LsNguoiDungBL.FocusedItem.Index].ToString();
+                newcp.IDPost = idpost;
+                newcp.IDUser = lsIDUserBinhLuan[LsNguoiDungBL.FocusedItem.Index].ToString();
+                newcp.Status = -5;
+                newcp.Description = lsNoiDungBL[LsNguoiDungBL.FocusedItem.Index].ToString();
+                newcp.TimeComment = lsTimeBinhLuan[LsNguoiDungBL.FocusedItem.Index];
+                CommentPost.Them(newcp);
+                //kết thúc lưu dữ liệu bình luận
+                // loai bỏ item trong danh sách
+                LsNguoiDungBL.Items.RemoveAt(LsNguoiDungBL.FocusedItem.Index);
+                lsIDBinhLuan.RemoveAt(LsNguoiDungBL.FocusedItem.Index);
+                lsNoiDungBL.RemoveAt(LsNguoiDungBL.FocusedItem.Index);
+                lsIDUserBinhLuan.RemoveAt(LsNguoiDungBL.FocusedItem.Index);
+                //kết thúc loại bỏ item trong danh sách
+                txtNoiDungBinhLuan.Text = null;
+
+            }
+            catch { }
         }
     }
 }

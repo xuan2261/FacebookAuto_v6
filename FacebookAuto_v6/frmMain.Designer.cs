@@ -41,6 +41,7 @@
             this.tabGiamSatTrang = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.ElementThemTrangNhom = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.ElementDuyetBaiViet = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accordionControlSeparator2 = new DevExpress.XtraBars.Navigation.AccordionControlSeparator();
             this.ElementQLTaiKhoan = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.GroupElementQuanLy = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.tabGiamSat = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -50,7 +51,6 @@
             this.accordionControlElement7 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement8 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.panelMain = new System.Windows.Forms.Panel();
-            this.accordionControlSeparator2 = new DevExpress.XtraBars.Navigation.AccordionControlSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.TabControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             this.SuspendLayout();
@@ -140,7 +140,7 @@
             // 
             this.ElementHoatDong.Name = "ElementHoatDong";
             this.ElementHoatDong.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.ElementHoatDong.Text = "Hoạt động gần đây";
+            this.ElementHoatDong.Text = "Bình luận gần đây";
             this.ElementHoatDong.Click += new System.EventHandler(this.ElementHoatDong_Click);
             // 
             // accordionControlSeparator1
@@ -168,6 +168,11 @@
             this.ElementDuyetBaiViet.Name = "ElementDuyetBaiViet";
             this.ElementDuyetBaiViet.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.ElementDuyetBaiViet.Text = "Duyệt bài viết trang, nhóm";
+            this.ElementDuyetBaiViet.Click += new System.EventHandler(this.ElementDuyetBaiViet_Click);
+            // 
+            // accordionControlSeparator2
+            // 
+            this.accordionControlSeparator2.Name = "accordionControlSeparator2";
             // 
             // ElementQLTaiKhoan
             // 
@@ -235,10 +240,6 @@
             this.panelMain.Name = "panelMain";
             this.panelMain.Size = new System.Drawing.Size(947, 596);
             this.panelMain.TabIndex = 3;
-            // 
-            // accordionControlSeparator2
-            // 
-            this.accordionControlSeparator2.Name = "accordionControlSeparator2";
             // 
             // frmMain
             // 
