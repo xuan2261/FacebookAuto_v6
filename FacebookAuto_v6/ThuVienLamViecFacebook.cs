@@ -281,5 +281,14 @@ namespace FacebookAuto_v6
             return p;
         }
         //kết thúc lấy thông tin bài viết
+
+        //tìm kiếm bài viết theo idpage
+        public List<string> TimBaiViet(string idpage,string tukhoa)
+        {
+            List<string> idBaiViet = new List<string>();
+
+            return idBaiViet;
+        }
+        //kết thúc tìm kiếm bài viết theo idpage
     }
 }

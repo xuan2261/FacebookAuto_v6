@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
 using System.IO;
+using DTO;
 
 namespace FacebookAuto_v6
 {
@@ -224,6 +225,54 @@ namespace FacebookAuto_v6
                 url = "https://web.facebook.com/";
             else
                 url = "https://mobile.facebook.com/";
+        }
+
+        private void btnTichCuc1_Click(object sender, EventArgs e)
+        {
+            // thêm thông tin trang vào sql
+            if(DrbtnLoaiTim.selectedIndex==0)
+            {
+                DanhGia(1);
+            }
+            //kết thúc thêm thông tin trang vào sql
+        }
+        //đánh giá trang, nhóm
+        private void DanhGia(int kt)
+        {
+            foreach (ListViewItem item in lsKetQuaSearch.SelectedItems)
+            {
+                // thêm vào pages
+                if (DrbtnLoaiTim.selectedIndex == 0)
+                {
+                    tblPage pg = new tblPage();
+                    pg.IDPage = lsIDPage[item.Index];
+                    pg.Name = lsNamePage[item.Index];
+                    pg.ImgLink = lsLinkImgPage[item.Index];
+                    pg.Status = kt;
+                    DAO.Pages.Them(pg);
+                    //xóa cái vừa đánh giá khỏi danh sách
+                    lsIDPage.RemoveAt(item.Index);
+                    lsNamePage.RemoveAt(item.Index);
+                    lsLinkImgPage.RemoveAt(item.Index);
+                    lsKetQuaSearch.Items.RemoveAt(item.Index);
+                }
+                //thêm vào groups
+                if (DrbtnLoaiTim.selectedIndex == 1)
+                {
+
+                }
+            }
+            MessageBox.Show("Đã thêm vào danh sách");
+        }
+
+        private void btnKhongXacDinh1_Click(object sender, EventArgs e)
+        {
+            DanhGia(0);
+        }
+
+        private void btnTieuCuc1_Click(object sender, EventArgs e)
+        {
+            DanhGia(-1);
         }
     }
 }
