@@ -32,8 +32,8 @@ namespace FacebookAuto_v6
         }
         private void LoadNguoiDung()
         {
-            DataTable nguoitichcuc = UserFB.LoadDuLieuByStatus(">1");
-            DataTable nguoitieucuc = UserFB.LoadDuLieuByStatus("<1");
+            DataTable nguoitichcuc = UserFB.LoadDuLieuTichCuc();
+            DataTable nguoitieucuc = UserFB.LoadDuLieuTieuCuc();
             ImageList imglisttichcuc = new ImageList();
             imglisttichcuc.ImageSize = new Size(40, 40);
             ImageList imglisttieucuc = new ImageList();
@@ -67,6 +67,7 @@ namespace FacebookAuto_v6
 
         private void UCGSNguoiDungFB_Load(object sender, EventArgs e)
         {
+            ThuVienLamViecFacebook.UpdateStatusUserFB();
             LoadNguoiDung();
         }
     }

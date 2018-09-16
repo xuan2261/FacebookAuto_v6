@@ -139,6 +139,7 @@
             this.radioTichCuc.TabStop = true;
             this.radioTichCuc.Text = "Tích cực";
             this.radioTichCuc.UseVisualStyleBackColor = true;
+            this.radioTichCuc.CheckedChanged += new System.EventHandler(this.radioTichCuc_CheckedChanged);
             // 
             // radioTieuCuc
             // 
@@ -150,6 +151,7 @@
             this.radioTieuCuc.TabIndex = 23;
             this.radioTieuCuc.Text = "Tiêu cực";
             this.radioTieuCuc.UseVisualStyleBackColor = true;
+            this.radioTieuCuc.CheckedChanged += new System.EventHandler(this.radioTieuCuc_CheckedChanged);
             // 
             // label3
             // 

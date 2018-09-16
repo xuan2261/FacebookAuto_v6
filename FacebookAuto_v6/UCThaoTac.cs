@@ -106,5 +106,17 @@ namespace FacebookAuto_v6
                 WebView.Navigate(urlfacebook + txtIDBaiViet.Text);
             }
         }
+
+        private void radioTichCuc_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioTichCuc.Checked == true) ttkd.danhgia = "Tích cực";
+            else ttkd.danhgia = "Tiêu cực";
+        }
+
+        private void radioTieuCuc_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioTichCuc.Checked == true) ttkd.danhgia = "Tích cực";
+            else ttkd.danhgia = "Tiêu cực";
+        }
     }
 }

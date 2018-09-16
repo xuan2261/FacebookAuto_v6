@@ -297,26 +297,41 @@ namespace FacebookAuto_v6
             DataTable dt = UserFB.LoadDuLieuChuaUpdate();
             for(int i=0;i<dt.Rows.Count;i++)
             {
-                WebBrowser web = new WebBrowser();
-                web.Navigate("https://mobile.facebook.com" + dt.Rows[i]["IDUser"]);
-                while (web.ReadyState != WebBrowserReadyState.Complete)
-                    Application.DoEvents();
-                string htmlcontent = web.DocumentText;
-                htmlcontent = htmlcontent.Replace("amp;", "");
-                string idnumber = htmlcontent.Substring(htmlcontent.IndexOf("&id=")+4);
-                idnumber = idnumber.Remove(idnumber.IndexOf("&"));
-                string linkimg = htmlcontent.Substring(htmlcontent.IndexOf("u_0_") +10);
-                linkimg = linkimg.Substring(linkimg.IndexOf("https://z-p3-scontent.fhan7-1"));
-                linkimg = linkimg.Remove(linkimg.IndexOf("\""));
-                tblUserFB ufb = new tblUserFB();
-                ufb.IDUser = dt.Rows[i]["IDUser"].ToString();
-                ufb.IDNumber = idnumber;
-                ufb.ImgLink = linkimg;
-                UserFB.Sua(ufb);
+                try
+                {
+                    WebBrowser web = new WebBrowser();
+                    web.Navigate("https://mobile.facebook.com" + dt.Rows[i]["IDUser"]);
+                    while (web.ReadyState != WebBrowserReadyState.Complete)
+                        Application.DoEvents();
+                    string htmlcontent = web.DocumentText;
+                    htmlcontent = htmlcontent.Replace("amp;", "");
+                    string idnumber = htmlcontent.Substring(htmlcontent.IndexOf("&id=") + 4);
+                    idnumber = idnumber.Remove(idnumber.IndexOf("&"));
+                    string linkimg = htmlcontent.Substring(htmlcontent.IndexOf("u_0_") + 10);
+                    linkimg = linkimg.Substring(linkimg.IndexOf("https://z-p3-scontent.fhan7-1"));
+                    linkimg = linkimg.Remove(linkimg.IndexOf("\""));
+                    tblUserFB ufb = new tblUserFB();
+                    ufb.IDUser = dt.Rows[i]["IDUser"].ToString();
+                    ufb.IDNumber = idnumber;
+                    ufb.ImgLink = linkimg;
+                    UserFB.Sua(ufb);
+                }
+                catch { }
             }
+            //cập nhật thông tin trạng thái người dùng
             MessageBox.Show("Đã cập nhật thành công");
         }
         //kết thúc cập nhật thông tin người dùng
-
+        //tính điểm người dùng facebook
+        public static void UpdateStatusUserFB()
+        {
+            DataTable dt = UserFB.LoadDuLieu();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                UserFB.CapNhatStatus(dt.Rows[i]["IDUser"].ToString());
+            }
+            MessageBox.Show("Đã cập nhật thành công điểm");
+        }
+        //kết thúc tính điểm người dùng facebook
     }
 }

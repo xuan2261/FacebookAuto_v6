@@ -277,6 +277,7 @@ namespace FacebookAuto_v6
                 newu.IDUser = lsIDTichCuc[i].ToString();
                 newu.Name = lsNameTichCuc[i].ToString();
                 UserFB.Them(newu);
+                newlp.IDPost = idpost;
                 newlp.IDUserFB = lsIDTichCuc[i].ToString();
                 newlp.Status = 1;
                 LikePost.Them(newlp);
@@ -285,10 +286,11 @@ namespace FacebookAuto_v6
             {
                 tblUserFB newu = new tblUserFB();
                 tblLikePost newlp = new tblLikePost();
-                newu.IDUser = lsIDTichCuc[i].ToString();
-                newu.Name = lsNameTichCuc[i].ToString();
+                newu.IDUser = lsIDTieuCuc[i].ToString();
+                newu.Name = lsNameTieuCuc[i].ToString();
                 UserFB.Them(newu);
-                newlp.IDUserFB = lsIDTichCuc[i].ToString();
+                newlp.IDPost = idpost;
+                newlp.IDUserFB = lsIDTieuCuc[i].ToString();
                 newlp.Status = -1;
                 LikePost.Them(newlp);
             }
