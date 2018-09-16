@@ -7,5 +7,5 @@ Những công việc cần hoàn thiện:
 --Hoàn thiện chức năng thêm nhóm, đánh giá ngóm, thêm bằng link.
 -- hoàn thiện giao diện theo dõi người dùng
 -- hoàn thiện giao diện quản lý nhân viên
-
+-- hoàn thiện chức năng update tính điểm cho từng người dùng...
 

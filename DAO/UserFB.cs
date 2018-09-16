@@ -23,6 +23,14 @@ namespace DAO
             DataProvider.DongKetNoi(con);
             return dt;
         }
+        public static DataTable LoadDuLieuByStatus(string diem)
+        {
+            string sTruyVan = "select * from tblUserFB where Status "+diem+ " order by Status ASC";
+            con = DataProvider.KetNoi();
+            DataTable dt = DataProvider.LayDataTable(sTruyVan, con);
+            DataProvider.DongKetNoi(con);
+            return dt;
+        }
         public static bool Them(tblUserFB us)
         {
             try
@@ -44,7 +52,7 @@ namespace DAO
             try
             {
                 con = DataProvider.KetNoi();
-                string sTruyVan = string.Format("Update tblUserFB set IDNumber='{0}',IsUpdate=1 where IDUser = '{1}'", us.IDNumber, us.IDUser);
+                string sTruyVan = string.Format("Update tblUserFB set IDNumber='{0}',IsUpdate=1, ImgLink=N'{1}' where IDUser = '{2}'", us.IDNumber, us.ImgLink,us.IDUser);
                 DataProvider.ThucThiTruyVanNonQuery(sTruyVan, con);
                 DataProvider.DongKetNoi(con);
                 return true;

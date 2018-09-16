@@ -305,9 +305,13 @@ namespace FacebookAuto_v6
                 htmlcontent = htmlcontent.Replace("amp;", "");
                 string idnumber = htmlcontent.Substring(htmlcontent.IndexOf("&id=")+4);
                 idnumber = idnumber.Remove(idnumber.IndexOf("&"));
+                string linkimg = htmlcontent.Substring(htmlcontent.IndexOf("u_0_") +10);
+                linkimg = linkimg.Substring(linkimg.IndexOf("https://z-p3-scontent.fhan7-1"));
+                linkimg = linkimg.Remove(linkimg.IndexOf("\""));
                 tblUserFB ufb = new tblUserFB();
                 ufb.IDUser = dt.Rows[i]["IDUser"].ToString();
                 ufb.IDNumber = idnumber;
+                ufb.ImgLink = linkimg;
                 UserFB.Sua(ufb);
             }
             MessageBox.Show("Đã cập nhật thành công");
