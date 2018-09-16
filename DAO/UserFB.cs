@@ -15,7 +15,14 @@ namespace DAO
             DataProvider.DongKetNoi(con);
             return dt;
         }
-
+        public static DataTable LoadDuLieuChuaUpdate()
+        {
+            string sTruyVan = "select * from tblUserFB where IsUpdate=0";
+            con = DataProvider.KetNoi();
+            DataTable dt = DataProvider.LayDataTable(sTruyVan, con);
+            DataProvider.DongKetNoi(con);
+            return dt;
+        }
         public static bool Them(tblUserFB us)
         {
             try
@@ -37,7 +44,7 @@ namespace DAO
             try
             {
                 con = DataProvider.KetNoi();
-                string sTruyVan = string.Format("Update tblUserFB set Status='{0}' where IDUser = '{1}'", us.Status, us.IDUser);
+                string sTruyVan = string.Format("Update tblUserFB set IDNumber='{0}',IsUpdate=1 where IDUser = '{1}'", us.IDNumber, us.IDUser);
                 DataProvider.ThucThiTruyVanNonQuery(sTruyVan, con);
                 DataProvider.DongKetNoi(con);
                 return true;

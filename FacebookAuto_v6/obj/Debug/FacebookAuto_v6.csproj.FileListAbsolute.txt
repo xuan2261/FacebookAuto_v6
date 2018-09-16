@@ -239,3 +239,4 @@ C:\Users\tungn\OneDrive\Documents\FacebookAuto_v6\FacebookAuto_v6\obj\Debug\Face
 C:\Users\tungn\OneDrive\Documents\FacebookAuto_v6\FacebookAuto_v6\obj\Debug\FacebookAuto_v6.pdb
 C:\Users\tungn\OneDrive\Documents\FacebookAuto_v6\FacebookAuto_v6\obj\Debug\FacebookAuto_v6.UCGSThemTrang.resources
 C:\Users\tungn\OneDrive\Documents\FacebookAuto_v6\FacebookAuto_v6\obj\Debug\FacebookAuto_v6.UCGSDuyetBaiViet.resources
+C:\Users\tungn\OneDrive\Documents\FacebookAuto_v6\FacebookAuto_v6\obj\Debug\FacebookAuto_v6.UCGSNguoiDungFB.resources

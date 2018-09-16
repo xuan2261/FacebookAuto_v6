@@ -40,14 +40,16 @@
             this.label10 = new System.Windows.Forms.Label();
             this.btnSearch = new Bunifu.Framework.UI.BunifuImageButton();
             this.btnDoSauTimKiem = new Bunifu.Framework.UI.BunifuDropdown();
-            this.txtTuKhoa = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+            this.lsKetQuaSearch = new System.Windows.Forms.ListView();
+            this.txtTuKhoa = new System.Windows.Forms.TextBox();
+            this.WebView = new System.Windows.Forms.WebBrowser();
             this.label1 = new System.Windows.Forms.Label();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.ListTieuCuc = new FacebookAuto_v5.ListCheckBoxDropDown();
             this.ListTichCuc = new FacebookAuto_v5.ListCheckBoxDropDown();
-            this.lsKetQuaSearch = new System.Windows.Forms.ListView();
             ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -223,16 +225,6 @@
             this.btnDoSauTimKiem.Size = new System.Drawing.Size(100, 30);
             this.btnDoSauTimKiem.TabIndex = 96;
             // 
-            // txtTuKhoa
-            // 
-            this.txtTuKhoa.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTuKhoa.Location = new System.Drawing.Point(140, 170);
-            this.txtTuKhoa.Multiline = true;
-            this.txtTuKhoa.Name = "txtTuKhoa";
-            this.txtTuKhoa.Size = new System.Drawing.Size(233, 26);
-            this.txtTuKhoa.TabIndex = 99;
-            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.label2);
@@ -268,22 +260,47 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.webBrowser1);
+            this.splitContainer1.Panel2.Controls.Add(this.radioButton2);
+            this.splitContainer1.Panel2.Controls.Add(this.radioButton1);
+            this.splitContainer1.Panel2.Controls.Add(this.WebView);
             this.splitContainer1.Panel2.Controls.Add(this.label1);
             this.splitContainer1.Size = new System.Drawing.Size(928, 495);
             this.splitContainer1.SplitterDistance = 395;
             this.splitContainer1.TabIndex = 101;
             // 
-            // webBrowser1
+            // lsKetQuaSearch
             // 
-            this.webBrowser1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lsKetQuaSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.webBrowser1.Location = new System.Drawing.Point(19, 70);
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(493, 404);
-            this.webBrowser1.TabIndex = 1;
+            this.lsKetQuaSearch.Location = new System.Drawing.Point(21, 332);
+            this.lsKetQuaSearch.Name = "lsKetQuaSearch";
+            this.lsKetQuaSearch.Size = new System.Drawing.Size(352, 142);
+            this.lsKetQuaSearch.TabIndex = 100;
+            this.lsKetQuaSearch.UseCompatibleStateImageBehavior = false;
+            this.lsKetQuaSearch.View = System.Windows.Forms.View.Details;
+            this.lsKetQuaSearch.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lsKetQuaSearch_MouseClick);
+            // 
+            // txtTuKhoa
+            // 
+            this.txtTuKhoa.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTuKhoa.Location = new System.Drawing.Point(140, 170);
+            this.txtTuKhoa.Multiline = true;
+            this.txtTuKhoa.Name = "txtTuKhoa";
+            this.txtTuKhoa.Size = new System.Drawing.Size(233, 26);
+            this.txtTuKhoa.TabIndex = 99;
+            // 
+            // WebView
+            // 
+            this.WebView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.WebView.Location = new System.Drawing.Point(19, 70);
+            this.WebView.MinimumSize = new System.Drawing.Size(20, 20);
+            this.WebView.Name = "WebView";
+            this.WebView.Size = new System.Drawing.Size(493, 404);
+            this.WebView.TabIndex = 1;
             // 
             // label1
             // 
@@ -295,6 +312,32 @@
             this.label1.Size = new System.Drawing.Size(121, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Thông tin bài viết ";
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.ForeColor = System.Drawing.SystemColors.Window;
+            this.radioButton2.Location = new System.Drawing.Point(284, 20);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(48, 17);
+            this.radioButton2.TabIndex = 97;
+            this.radioButton2.Text = "Web";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
+            this.radioButton1.ForeColor = System.Drawing.SystemColors.Window;
+            this.radioButton1.Location = new System.Drawing.Point(176, 20);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(56, 17);
+            this.radioButton1.TabIndex = 96;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Mobile";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // ListTieuCuc
             // 
@@ -329,18 +372,6 @@
             this.ListTichCuc.TabIndex = 91;
             this.ListTichCuc.ValueSeparator = ", ";
             this.ListTichCuc.DropDownClosed += new System.EventHandler(this.ListTichCuc_DropDownClosed);
-            // 
-            // lsKetQuaSearch
-            // 
-            this.lsKetQuaSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lsKetQuaSearch.Location = new System.Drawing.Point(21, 332);
-            this.lsKetQuaSearch.Name = "lsKetQuaSearch";
-            this.lsKetQuaSearch.Size = new System.Drawing.Size(352, 142);
-            this.lsKetQuaSearch.TabIndex = 100;
-            this.lsKetQuaSearch.UseCompatibleStateImageBehavior = false;
-            this.lsKetQuaSearch.View = System.Windows.Forms.View.Details;
             // 
             // UCGSDuyetBaiViet
             // 
@@ -381,11 +412,13 @@
         private System.Windows.Forms.Label label10;
         private Bunifu.Framework.UI.BunifuImageButton btnSearch;
         private Bunifu.Framework.UI.BunifuDropdown btnDoSauTimKiem;
-        private System.Windows.Forms.TextBox txtTuKhoa;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.WebBrowser webBrowser1;
+        private System.Windows.Forms.WebBrowser WebView;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListView lsKetQuaSearch;
+        private System.Windows.Forms.TextBox txtTuKhoa;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton1;
     }
 }

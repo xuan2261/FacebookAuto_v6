@@ -17,6 +17,7 @@ namespace FacebookAuto_v6
         UCTTHoatDongGD uctthdgd = new UCTTHoatDongGD();
         UCGSThemTrang ucgstt = new UCGSThemTrang();
         UCGSDuyetBaiViet ucgsdbv = new UCGSDuyetBaiViet();
+        UCGSNguoiDungFB ucgsndfb = new UCGSNguoiDungFB();
         int ktuc = 1;
         tblAdmin admin = new tblAdmin();
         public frmMain()
@@ -135,6 +136,14 @@ namespace FacebookAuto_v6
             panelMain.Controls.Clear();
             panelMain.Controls.Add(ucgsdbv);
             ucgsdbv.Dock = DockStyle.Fill;
+        }
+
+        private void ElementGSNguoiDung_Click(object sender, EventArgs e)
+        {
+            ktuc = 4;
+            panelMain.Controls.Clear();
+            panelMain.Controls.Add(ucgsndfb);
+            ucgsndfb.Dock = DockStyle.Fill;
         }
     }
 }

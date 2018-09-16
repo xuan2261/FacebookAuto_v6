@@ -290,5 +290,29 @@ namespace FacebookAuto_v6
             return idBaiViet;
         }
         //kết thúc tìm kiếm bài viết theo idpage
+
+        //cập nhật thông tin người dùng
+        public static void UpdateTTNguoiDung()
+        {
+            DataTable dt = UserFB.LoadDuLieuChuaUpdate();
+            for(int i=0;i<dt.Rows.Count;i++)
+            {
+                WebBrowser web = new WebBrowser();
+                web.Navigate("https://mobile.facebook.com" + dt.Rows[i]["IDUser"]);
+                while (web.ReadyState != WebBrowserReadyState.Complete)
+                    Application.DoEvents();
+                string htmlcontent = web.DocumentText;
+                htmlcontent = htmlcontent.Replace("amp;", "");
+                string idnumber = htmlcontent.Substring(htmlcontent.IndexOf("&id=")+4);
+                idnumber = idnumber.Remove(idnumber.IndexOf("&"));
+                tblUserFB ufb = new tblUserFB();
+                ufb.IDUser = dt.Rows[i]["IDUser"].ToString();
+                ufb.IDNumber = idnumber;
+                UserFB.Sua(ufb);
+            }
+            MessageBox.Show("Đã cập nhật thành công");
+        }
+        //kết thúc cập nhật thông tin người dùng
+
     }
 }

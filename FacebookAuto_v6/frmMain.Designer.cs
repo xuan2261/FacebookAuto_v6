@@ -210,6 +210,7 @@
             this.ElementGSNguoiDung.Name = "ElementGSNguoiDung";
             this.ElementGSNguoiDung.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.ElementGSNguoiDung.Text = "Giám sát người dùng FB";
+            this.ElementGSNguoiDung.Click += new System.EventHandler(this.ElementGSNguoiDung_Click);
             // 
             // fluentDesignFormControl1
             // 
