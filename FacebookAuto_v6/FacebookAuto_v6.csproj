@@ -262,6 +262,7 @@
     <Content Include="Firefox\sandboxbroker.dll" />
     <Content Include="Firefox\softokn3.dll" />
     <Content Include="Firefox\xul.dll" />
+    <None Include="Resources\icons8-facebook-like-48.png" />
     <None Include="Resources\icons8-search-641.png" />
     <None Include="Resources\icons8-share-50.png" />
     <None Include="Resources\icons8-ball-point-pen-64 %281%29.png" />

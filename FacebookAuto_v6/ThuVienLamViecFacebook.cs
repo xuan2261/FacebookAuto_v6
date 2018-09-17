@@ -333,5 +333,49 @@ namespace FacebookAuto_v6
             MessageBox.Show("Đã cập nhật thành công điểm");
         }
         //kết thúc tính điểm người dùng facebook
+
+        //lấy danh sách các bài viết đã thích
+        public static List<string> GetListLiked(string numberuser)
+        {
+            List<string> idrootliked = new List<string>();
+            WebBrowser web = new WebBrowser();
+            web.Navigate("https://mobile.facebook.com/search/" + numberuser + "/stories-liked");
+            while (web.ReadyState != WebBrowserReadyState.Complete)
+                Application.DoEvents();
+            string htmlcontent = web.DocumentText;
+            htmlcontent = htmlcontent.Replace("amp;", "");
+            for (int i=0;i<500;i++)
+            {
+                int kt = htmlcontent.IndexOf("H3 class=\"b");
+                // còn bài viết để duyệt
+                if (kt != -1)
+                {
+                    htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("H3 class=\"b")+20);
+                    string idroot = htmlcontent.Substring(htmlcontent.IndexOf("&id=") + 4);
+                    idroot = idroot.Remove(idroot.IndexOf("&"));
+                    idrootliked.Add(idroot);
+                }
+                //ko còn bài viết ở trang này nữa
+                else {
+                    int kt1 = htmlcontent.IndexOf("see_more_pager");
+                    //ko còn bài viết để xem
+                    if (kt1 == -1) break;
+                    //còn bài viết để xem tiếp
+                    else
+                    {
+                        string urltiep = htmlcontent.Substring(htmlcontent.IndexOf("see_more_pager"));
+                        urltiep = urltiep.Substring(urltiep.IndexOf("href=\"") + 6);
+                        urltiep = urltiep.Remove(urltiep.IndexOf("\""));
+                        web.Navigate(urltiep);
+                        while (web.ReadyState != WebBrowserReadyState.Complete)
+                            Application.DoEvents();
+                        htmlcontent = web.DocumentText;
+                        htmlcontent = htmlcontent.Replace("amp;", "");
+                    }
+                }
+            }
+            return idrootliked;
+        }
+        //kết thúc lấy danh sách các bài viết đã thích
     }
 }

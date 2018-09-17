@@ -24,8 +24,8 @@ namespace FacebookAuto_v6
         List<string> lsNoiDungBL = new List<string>();
         List<string> lsIDBinhLuan = new List<string>();
         List<string> lsTimeBinhLuan = new List<string>();
-        string tongsoluonglike="0";
-        int tongsocomment=0;
+        string tongsoluonglike = "0";
+        int tongsocomment = 0;
         public string idpost;
         string htmlcontent;
         public string danhgia;
@@ -40,7 +40,7 @@ namespace FacebookAuto_v6
 
             LsNguoiDungBL.Columns.Add("Danh sách bình luận: ");
             LsNguoiDungBL.AutoResizeColumn(0, ColumnHeaderAutoResizeStyle.HeaderSize);
-            
+
         }
         private void ResetSearch()
         {
@@ -196,26 +196,26 @@ namespace FacebookAuto_v6
                     //idUserComment = idUserComment.Replace("?", "");
                     //idUserComment = idUserComment.Replace("rc=p", "");
                     string idUserComment = htmlcontent.Remove(htmlcontent.IndexOf("&"));
-                    
+
 
                     string NameBL = htmlcontent.Substring(htmlcontent.IndexOf(">") + 1);
                     NameBL = NameBL.Remove(NameBL.IndexOf("<"));
-                    
+
 
                     htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("class=") + 5);
                     htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf(">") + 1);
 
                     string NoiDung = htmlcontent.Remove(htmlcontent.IndexOf("/DIV") - 1);
-                    
+
                     string idcomment = htmlcontent.Substring(htmlcontent.IndexOf("like_comment_id=") + 16);
                     idcomment = idcomment.Remove(idcomment.IndexOf("&"));
-                    
+
                     string TimeBL = htmlcontent.Substring(htmlcontent.IndexOf("ABBR") + 5);
                     TimeBL = TimeBL.Remove(TimeBL.IndexOf("<"));
                     if (TimeBL.IndexOf("Tháng") == -1)
                         TimeBL = TimeBL + DateTime.Now.ToShortDateString();
-                    
-                    if(CommentPost.KiemTraIDComment(idcomment) ==false)
+
+                    if (CommentPost.KiemTraIDComment(idcomment) == false)
                     {
                         lsIDUserBinhLuan.Add(idUserComment);
                         lsIDBinhLuan.Add(idcomment);
@@ -254,7 +254,7 @@ namespace FacebookAuto_v6
 
         private void LsNguoiDungBL_MouseClick(object sender, MouseEventArgs e)
         {
-            txtNoiDungBinhLuan.Text=lsNoiDungBL[LsNguoiDungBL.FocusedItem.Index];
+            txtNoiDungBinhLuan.Text = lsNoiDungBL[LsNguoiDungBL.FocusedItem.Index];
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
@@ -295,7 +295,7 @@ namespace FacebookAuto_v6
                 LikePost.Them(newlp);
             }
             //thêm từ những người bình luận
-            for (int i = 0; i < lsIDUserBinhLuan.Count; i++)
+            for (int i = 0; i < LsNguoiDungBL.Items.Count; i++)
             {
                 tblUserFB newu = new tblUserFB();
                 newu.IDUser = lsIDUserBinhLuan[i];
@@ -319,97 +319,86 @@ namespace FacebookAuto_v6
 
         private void btnTichCuc_Click(object sender, EventArgs e)
         {
-            try
-            {
-                //lưu thông tin tài khoản
-                tblUserFB newu = new tblUserFB();
-                newu.IDUser = lsIDUserBinhLuan[LsNguoiDungBL.FocusedItem.Index].ToString();
-                newu.Name = LsNguoiDungBL.FocusedItem.Text;
-                UserFB.Them(newu);
-                //lưu thông tin tài khoản
-                //lưu dữ liệu bình luận
-                tblCommentPost newcp = new tblCommentPost();
-                newcp.IDComment = lsIDBinhLuan[LsNguoiDungBL.FocusedItem.Index].ToString();
-                newcp.IDPost = idpost;
-                newcp.IDUser = lsIDUserBinhLuan[LsNguoiDungBL.FocusedItem.Index].ToString();
-                newcp.Status = 5;
-                newcp.Description = lsNoiDungBL[LsNguoiDungBL.FocusedItem.Index].ToString();
-                newcp.TimeComment = lsTimeBinhLuan[LsNguoiDungBL.FocusedItem.Index];
-                CommentPost.Them(newcp);
-                //kết thúc lưu dữ liệu bình luận
-                // loai bỏ item trong danh sách
-                LsNguoiDungBL.Items.RemoveAt(LsNguoiDungBL.FocusedItem.Index);
-                lsIDBinhLuan.RemoveAt(LsNguoiDungBL.FocusedItem.Index);
-                lsNoiDungBL.RemoveAt(LsNguoiDungBL.FocusedItem.Index);
-                lsIDUserBinhLuan.RemoveAt(LsNguoiDungBL.FocusedItem.Index);
-                //kết thúc loại bỏ item trong danh sách
-                txtNoiDungBinhLuan.Text = null;
-            }
-            catch { }
+            //lưu thông tin tài khoản
+            tblUserFB newu = new tblUserFB();
+            newu.IDUser = lsIDUserBinhLuan[LsNguoiDungBL.FocusedItem.Index].ToString();
+            newu.Name = LsNguoiDungBL.FocusedItem.Text;
+            UserFB.Them(newu);
+            //lưu thông tin tài khoản
+            //lưu dữ liệu bình luận
+            tblCommentPost newcp = new tblCommentPost();
+            newcp.IDComment = lsIDBinhLuan[LsNguoiDungBL.FocusedItem.Index].ToString();
+            newcp.IDPost = idpost;
+            newcp.IDUser = lsIDUserBinhLuan[LsNguoiDungBL.FocusedItem.Index].ToString();
+            newcp.Status = 5;
+            newcp.Description = lsNoiDungBL[LsNguoiDungBL.FocusedItem.Index].ToString();
+            newcp.TimeComment = lsTimeBinhLuan[LsNguoiDungBL.FocusedItem.Index];
+            CommentPost.Them(newcp);
+            //kết thúc lưu dữ liệu bình luận
+            // loai bỏ item trong danh sách
+            lsIDBinhLuan.RemoveAt(LsNguoiDungBL.FocusedItem.Index);
+            lsNoiDungBL.RemoveAt(LsNguoiDungBL.FocusedItem.Index);
+            lsIDUserBinhLuan.RemoveAt(LsNguoiDungBL.FocusedItem.Index);
+            LsNguoiDungBL.Items.RemoveAt(LsNguoiDungBL.FocusedItem.Index);
+            //kết thúc loại bỏ item trong danh sách
+            txtNoiDungBinhLuan.Text = null;
         }
 
         private void btnChuaXacDinh_Click(object sender, EventArgs e)
         {
-            try
-            {
-                //lưu thông tin tài khoản
-                tblUserFB newu = new tblUserFB();
-                newu.IDUser = lsIDUserBinhLuan[LsNguoiDungBL.FocusedItem.Index].ToString();
-                newu.Name = LsNguoiDungBL.FocusedItem.Text;
-                UserFB.Them(newu);
-                //lưu thông tin tài khoản
-                //lưu dữ liệu bình luận
-                tblCommentPost newcp = new tblCommentPost();
-                newcp.IDComment = lsIDBinhLuan[LsNguoiDungBL.FocusedItem.Index].ToString();
-                newcp.IDPost = idpost;
-                newcp.IDUser = lsIDUserBinhLuan[LsNguoiDungBL.FocusedItem.Index].ToString();
-                newcp.Status = 0;
-                newcp.Description = lsNoiDungBL[LsNguoiDungBL.FocusedItem.Index].ToString();
-                newcp.TimeComment = lsTimeBinhLuan[LsNguoiDungBL.FocusedItem.Index];
-                CommentPost.Them(newcp);
-                //kết thúc lưu dữ liệu bình luận
-                // loai bỏ item trong danh sách
-                LsNguoiDungBL.Items.RemoveAt(LsNguoiDungBL.FocusedItem.Index);
-                lsIDBinhLuan.RemoveAt(LsNguoiDungBL.FocusedItem.Index);
-                lsNoiDungBL.RemoveAt(LsNguoiDungBL.FocusedItem.Index);
-                lsIDUserBinhLuan.RemoveAt(LsNguoiDungBL.FocusedItem.Index);
-                //kết thúc loại bỏ item trong danh sách
+            //lưu thông tin tài khoản
+            tblUserFB newu = new tblUserFB();
+            newu.IDUser = lsIDUserBinhLuan[LsNguoiDungBL.FocusedItem.Index].ToString();
+            newu.Name = LsNguoiDungBL.FocusedItem.Text;
+            UserFB.Them(newu);
+            //lưu thông tin tài khoản
+            //lưu dữ liệu bình luận
+            tblCommentPost newcp = new tblCommentPost();
+            newcp.IDComment = lsIDBinhLuan[LsNguoiDungBL.FocusedItem.Index].ToString();
+            newcp.IDPost = idpost;
+            newcp.IDUser = lsIDUserBinhLuan[LsNguoiDungBL.FocusedItem.Index].ToString();
+            newcp.Status = 0;
+            newcp.Description = lsNoiDungBL[LsNguoiDungBL.FocusedItem.Index].ToString();
+            newcp.TimeComment = lsTimeBinhLuan[LsNguoiDungBL.FocusedItem.Index];
+            CommentPost.Them(newcp);
+            //kết thúc lưu dữ liệu bình luận
+            // loai bỏ item trong danh sách
+            lsIDBinhLuan.RemoveAt(LsNguoiDungBL.FocusedItem.Index);
+            lsNoiDungBL.RemoveAt(LsNguoiDungBL.FocusedItem.Index);
+            lsIDUserBinhLuan.RemoveAt(LsNguoiDungBL.FocusedItem.Index);
+            LsNguoiDungBL.Items.RemoveAt(LsNguoiDungBL.FocusedItem.Index);
+            //kết thúc loại bỏ item trong danh sách
 
-                txtNoiDungBinhLuan.Text = null;
-            }
-            catch { }
+            txtNoiDungBinhLuan.Text = null;
         }
 
         private void btnTieuCuc_Click(object sender, EventArgs e)
         {
-            try
-            {
-                //lưu thông tin tài khoản
-                tblUserFB newu = new tblUserFB();
-                newu.IDUser = lsIDUserBinhLuan[LsNguoiDungBL.FocusedItem.Index].ToString();
-                newu.Name = LsNguoiDungBL.FocusedItem.Text;
-                UserFB.Them(newu);
-                //lưu thông tin tài khoản
-                //lưu dữ liệu bình luận
-                tblCommentPost newcp = new tblCommentPost();
-                newcp.IDComment = lsIDBinhLuan[LsNguoiDungBL.FocusedItem.Index].ToString();
-                newcp.IDPost = idpost;
-                newcp.IDUser = lsIDUserBinhLuan[LsNguoiDungBL.FocusedItem.Index].ToString();
-                newcp.Status = -5;
-                newcp.Description = lsNoiDungBL[LsNguoiDungBL.FocusedItem.Index].ToString();
-                newcp.TimeComment = lsTimeBinhLuan[LsNguoiDungBL.FocusedItem.Index];
-                CommentPost.Them(newcp);
-                //kết thúc lưu dữ liệu bình luận
-                // loai bỏ item trong danh sách
-                LsNguoiDungBL.Items.RemoveAt(LsNguoiDungBL.FocusedItem.Index);
-                lsIDBinhLuan.RemoveAt(LsNguoiDungBL.FocusedItem.Index);
-                lsNoiDungBL.RemoveAt(LsNguoiDungBL.FocusedItem.Index);
-                lsIDUserBinhLuan.RemoveAt(LsNguoiDungBL.FocusedItem.Index);
-                //kết thúc loại bỏ item trong danh sách
-                txtNoiDungBinhLuan.Text = null;
 
-            }
-            catch { }
+            //lưu thông tin tài khoản
+            tblUserFB newu = new tblUserFB();
+            newu.IDUser = lsIDUserBinhLuan[LsNguoiDungBL.FocusedItem.Index].ToString();
+            newu.Name = LsNguoiDungBL.FocusedItem.Text;
+            UserFB.Them(newu);
+            //lưu thông tin tài khoản
+            //lưu dữ liệu bình luận
+            tblCommentPost newcp = new tblCommentPost();
+            newcp.IDComment = lsIDBinhLuan[LsNguoiDungBL.FocusedItem.Index].ToString();
+            newcp.IDPost = idpost;
+            newcp.IDUser = lsIDUserBinhLuan[LsNguoiDungBL.FocusedItem.Index].ToString();
+            newcp.Status = -5;
+            newcp.Description = lsNoiDungBL[LsNguoiDungBL.FocusedItem.Index].ToString();
+            newcp.TimeComment = lsTimeBinhLuan[LsNguoiDungBL.FocusedItem.Index];
+            CommentPost.Them(newcp);
+            //kết thúc lưu dữ liệu bình luận
+            // loai bỏ item trong danh sách
+            lsIDBinhLuan.RemoveAt(LsNguoiDungBL.FocusedItem.Index);
+            lsNoiDungBL.RemoveAt(LsNguoiDungBL.FocusedItem.Index);
+            lsIDUserBinhLuan.RemoveAt(LsNguoiDungBL.FocusedItem.Index);
+            LsNguoiDungBL.Items.RemoveAt(LsNguoiDungBL.FocusedItem.Index);
+            //kết thúc loại bỏ item trong danh sách
+            txtNoiDungBinhLuan.Text = null;
+
         }
     }
 }

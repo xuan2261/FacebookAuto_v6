@@ -25,7 +25,7 @@ namespace DAO
         }
         public static DataTable LoadDuLieuTichCuc()
         {
-            string sTruyVan = "select top 20 * from tblUserFB where Status >1 order by Status ASC";
+            string sTruyVan = "select top 20 * from tblUserFB where Status >1 order by Status DESC";
             con = DataProvider.KetNoi();
             DataTable dt = DataProvider.LayDataTable(sTruyVan, con);
             DataProvider.DongKetNoi(con);
@@ -33,7 +33,7 @@ namespace DAO
         }
         public static DataTable LoadDuLieuTieuCuc()
         {
-            string sTruyVan = "select top 20 * from tblUserFB where Status <-1 order by Status DESC";
+            string sTruyVan = "select top 20 * from tblUserFB where Status <-1 order by Status ASC";
             con = DataProvider.KetNoi();
             DataTable dt = DataProvider.LayDataTable(sTruyVan, con);
             DataProvider.DongKetNoi(con);

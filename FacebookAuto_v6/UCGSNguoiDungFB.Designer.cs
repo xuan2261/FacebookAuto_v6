@@ -28,20 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCGSNguoiDungFB));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.bunifuFlatButton1 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.bunifuFlatButton1 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.label2 = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.lsNguoiDungTichCuc = new System.Windows.Forms.ListView();
             this.lsNguoiDungTieuCuc = new System.Windows.Forms.ListView();
+            this.lsKetQua = new System.Windows.Forms.ListView();
+            this.PanelPhim = new System.Windows.Forms.Panel();
+            this.btnBaiThich = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.label4 = new System.Windows.Forms.Label();
+            this.bunifuFlatButton3 = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.label5 = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.XemThongTinChiTietToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.WebView = new Gecko.GeckoWebBrowser();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.PanelPhim.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -54,27 +66,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(928, 57);
             this.panel1.TabIndex = 101;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.Window;
-            this.label1.Location = new System.Drawing.Point(16, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(230, 29);
-            this.label1.TabIndex = 83;
-            this.label1.Text = "Đối tượng giám sát";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.SystemColors.Window;
-            this.label3.Location = new System.Drawing.Point(252, 25);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(137, 13);
-            this.label3.TabIndex = 84;
-            this.label3.Text = ">>>  Người dùng Facebook";
             // 
             // bunifuFlatButton1
             // 
@@ -111,6 +102,27 @@
             this.bunifuFlatButton1.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuFlatButton1.Click += new System.EventHandler(this.bunifuFlatButton1_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.Window;
+            this.label1.Location = new System.Drawing.Point(16, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(230, 29);
+            this.label1.TabIndex = 83;
+            this.label1.Text = "Đối tượng giám sát";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.SystemColors.Window;
+            this.label3.Location = new System.Drawing.Point(252, 25);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(137, 13);
+            this.label3.TabIndex = 84;
+            this.label3.Text = ">>>  Người dùng Facebook";
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -136,8 +148,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.lsNguoiDungTieuCuc);
-            this.splitContainer1.Size = new System.Drawing.Size(339, 495);
-            this.splitContainer1.SplitterDistance = 247;
+            this.splitContainer1.Size = new System.Drawing.Size(246, 495);
+            this.splitContainer1.SplitterDistance = 246;
             this.splitContainer1.TabIndex = 103;
             // 
             // lsNguoiDungTichCuc
@@ -147,7 +159,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lsNguoiDungTichCuc.Location = new System.Drawing.Point(21, 32);
             this.lsNguoiDungTichCuc.Name = "lsNguoiDungTichCuc";
-            this.lsNguoiDungTichCuc.Size = new System.Drawing.Size(300, 198);
+            this.lsNguoiDungTichCuc.Size = new System.Drawing.Size(207, 197);
             this.lsNguoiDungTichCuc.TabIndex = 103;
             this.lsNguoiDungTichCuc.UseCompatibleStateImageBehavior = false;
             this.lsNguoiDungTichCuc.View = System.Windows.Forms.View.Details;
@@ -159,16 +171,158 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lsNguoiDungTieuCuc.Location = new System.Drawing.Point(19, 23);
             this.lsNguoiDungTieuCuc.Name = "lsNguoiDungTieuCuc";
-            this.lsNguoiDungTieuCuc.Size = new System.Drawing.Size(300, 198);
+            this.lsNguoiDungTieuCuc.Size = new System.Drawing.Size(207, 199);
             this.lsNguoiDungTieuCuc.TabIndex = 104;
             this.lsNguoiDungTieuCuc.UseCompatibleStateImageBehavior = false;
             this.lsNguoiDungTieuCuc.View = System.Windows.Forms.View.Details;
+            // 
+            // lsKetQua
+            // 
+            this.lsKetQua.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.lsKetQua.Location = new System.Drawing.Point(411, 89);
+            this.lsKetQua.Name = "lsKetQua";
+            this.lsKetQua.Size = new System.Drawing.Size(179, 440);
+            this.lsKetQua.TabIndex = 104;
+            this.lsKetQua.UseCompatibleStateImageBehavior = false;
+            this.lsKetQua.View = System.Windows.Forms.View.Details;
+            this.lsKetQua.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lsKetQua_MouseClick);
+            // 
+            // PanelPhim
+            // 
+            this.PanelPhim.Controls.Add(this.btnBaiThich);
+            this.PanelPhim.Controls.Add(this.label4);
+            this.PanelPhim.Controls.Add(this.bunifuFlatButton3);
+            this.PanelPhim.Dock = System.Windows.Forms.DockStyle.Left;
+            this.PanelPhim.Location = new System.Drawing.Point(246, 57);
+            this.PanelPhim.Name = "PanelPhim";
+            this.PanelPhim.Size = new System.Drawing.Size(159, 495);
+            this.PanelPhim.TabIndex = 105;
+            // 
+            // btnBaiThich
+            // 
+            this.btnBaiThich.Activecolor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnBaiThich.BackColor = System.Drawing.Color.SlateGray;
+            this.btnBaiThich.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBaiThich.BorderRadius = 7;
+            this.btnBaiThich.ButtonText = "Bài đã thích";
+            this.btnBaiThich.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBaiThich.DisabledColor = System.Drawing.Color.Gray;
+            this.btnBaiThich.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnBaiThich.Iconimage = global::FacebookAuto_v6.Properties.Resources.icons8_facebook_like_48;
+            this.btnBaiThich.Iconimage_right = null;
+            this.btnBaiThich.Iconimage_right_Selected = null;
+            this.btnBaiThich.Iconimage_Selected = null;
+            this.btnBaiThich.IconMarginLeft = 0;
+            this.btnBaiThich.IconMarginRight = 0;
+            this.btnBaiThich.IconRightVisible = true;
+            this.btnBaiThich.IconRightZoom = 0D;
+            this.btnBaiThich.IconVisible = true;
+            this.btnBaiThich.IconZoom = 50D;
+            this.btnBaiThich.IsTab = false;
+            this.btnBaiThich.Location = new System.Drawing.Point(6, 32);
+            this.btnBaiThich.Name = "btnBaiThich";
+            this.btnBaiThich.Normalcolor = System.Drawing.Color.SlateGray;
+            this.btnBaiThich.OnHovercolor = System.Drawing.Color.Gray;
+            this.btnBaiThich.OnHoverTextColor = System.Drawing.Color.White;
+            this.btnBaiThich.selected = false;
+            this.btnBaiThich.Size = new System.Drawing.Size(148, 38);
+            this.btnBaiThich.TabIndex = 19;
+            this.btnBaiThich.Text = "Bài đã thích";
+            this.btnBaiThich.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBaiThich.Textcolor = System.Drawing.Color.White;
+            this.btnBaiThich.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBaiThich.Click += new System.EventHandler(this.btnBaiThich_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.SystemColors.Window;
+            this.label4.Location = new System.Drawing.Point(9, 7);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(59, 13);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Chức năng";
+            // 
+            // bunifuFlatButton3
+            // 
+            this.bunifuFlatButton3.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
+            this.bunifuFlatButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
+            this.bunifuFlatButton3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuFlatButton3.BorderRadius = 7;
+            this.bunifuFlatButton3.ButtonText = "Bài đã bình luận";
+            this.bunifuFlatButton3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bunifuFlatButton3.DisabledColor = System.Drawing.Color.Gray;
+            this.bunifuFlatButton3.Iconcolor = System.Drawing.Color.Transparent;
+            this.bunifuFlatButton3.Iconimage = ((System.Drawing.Image)(resources.GetObject("bunifuFlatButton3.Iconimage")));
+            this.bunifuFlatButton3.Iconimage_right = null;
+            this.bunifuFlatButton3.Iconimage_right_Selected = null;
+            this.bunifuFlatButton3.Iconimage_Selected = null;
+            this.bunifuFlatButton3.IconMarginLeft = 0;
+            this.bunifuFlatButton3.IconMarginRight = 0;
+            this.bunifuFlatButton3.IconRightVisible = true;
+            this.bunifuFlatButton3.IconRightZoom = 0D;
+            this.bunifuFlatButton3.IconVisible = true;
+            this.bunifuFlatButton3.IconZoom = 90D;
+            this.bunifuFlatButton3.IsTab = false;
+            this.bunifuFlatButton3.Location = new System.Drawing.Point(4, 91);
+            this.bunifuFlatButton3.Name = "bunifuFlatButton3";
+            this.bunifuFlatButton3.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
+            this.bunifuFlatButton3.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
+            this.bunifuFlatButton3.OnHoverTextColor = System.Drawing.Color.White;
+            this.bunifuFlatButton3.selected = false;
+            this.bunifuFlatButton3.Size = new System.Drawing.Size(150, 36);
+            this.bunifuFlatButton3.TabIndex = 1;
+            this.bunifuFlatButton3.Text = "Bài đã bình luận";
+            this.bunifuFlatButton3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bunifuFlatButton3.Textcolor = System.Drawing.Color.White;
+            this.bunifuFlatButton3.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.SystemColors.Window;
+            this.label5.Location = new System.Drawing.Point(411, 64);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(98, 13);
+            this.label5.TabIndex = 106;
+            this.label5.Text = "Danh sách kết quả";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.XemThongTinChiTietToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(190, 26);
+            // 
+            // XemThongTinChiTietToolStripMenuItem
+            // 
+            this.XemThongTinChiTietToolStripMenuItem.Name = "XemThongTinChiTietToolStripMenuItem";
+            this.XemThongTinChiTietToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.XemThongTinChiTietToolStripMenuItem.Text = "Xem thông tin chi tiết";
+            this.XemThongTinChiTietToolStripMenuItem.Click += new System.EventHandler(this.XemThongTinChiTietToolStripMenuItem_Click);
+            // 
+            // WebView
+            // 
+            this.WebView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.WebView.FrameEventsPropagateToMainWindow = false;
+            this.WebView.Location = new System.Drawing.Point(596, 89);
+            this.WebView.Name = "WebView";
+            this.WebView.Size = new System.Drawing.Size(329, 440);
+            this.WebView.TabIndex = 108;
+            this.WebView.UseHttpActivityObserver = false;
             // 
             // UCGSNguoiDungFB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
+            this.Controls.Add(this.WebView);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.PanelPhim);
+            this.Controls.Add(this.lsKetQua);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.panel1);
             this.Name = "UCGSNguoiDungFB";
@@ -181,7 +335,11 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.PanelPhim.ResumeLayout(false);
+            this.PanelPhim.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -195,5 +353,14 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.ListView lsNguoiDungTichCuc;
         private System.Windows.Forms.ListView lsNguoiDungTieuCuc;
+        private System.Windows.Forms.ListView lsKetQua;
+        private System.Windows.Forms.Panel PanelPhim;
+        private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private Bunifu.Framework.UI.BunifuFlatButton btnBaiThich;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem XemThongTinChiTietToolStripMenuItem;
+        private Gecko.GeckoWebBrowser WebView;
     }
 }

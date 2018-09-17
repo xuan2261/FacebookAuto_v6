@@ -24,6 +24,8 @@ namespace FacebookAuto_v6
             lsNguoiDungTichCuc.AutoResizeColumn(0, ColumnHeaderAutoResizeStyle.HeaderSize);
             lsNguoiDungTieuCuc.Columns.Add("Danh sách người dùng tiêu cực ");
             lsNguoiDungTieuCuc.AutoResizeColumn(0, ColumnHeaderAutoResizeStyle.HeaderSize);
+            lsKetQua.Columns.Add("Danh sách kết quả");
+            lsKetQua.AutoResizeColumn(0, ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
@@ -67,8 +69,82 @@ namespace FacebookAuto_v6
 
         private void UCGSNguoiDungFB_Load(object sender, EventArgs e)
         {
-            ThuVienLamViecFacebook.UpdateStatusUserFB();
+           // ThuVienLamViecFacebook.UpdateStatusUserFB();
             LoadNguoiDung();
+        }
+
+        private void btnBaiThich_Click(object sender, EventArgs e)
+        {
+
+            lsKetQua.Items.Clear();
+            //if(lsNguoiDungTichCuc.FocusedItem.Index!=null)
+            //{
+            //    MessageBox.Show("tích cực");
+            //}
+            //if (lsNguoiDungTichCuc.FocusedItem.Index!=null)
+            //{
+            //    MessageBox.Show("tiêu cực");
+            //}
+            List<string> kq = ThuVienLamViecFacebook.GetListLiked(idnguoidungtichcuc[lsNguoiDungTichCuc.FocusedItem.Index]);
+            
+            int[] ktbool = new int[kq.Count];
+            List<int> lskq = new List<int>();
+            List<string> stringkq = new List<string>();
+            for (int i = 0; i < kq.Count; i++)
+            {
+                int dem = 0;
+                if (ktbool[i] == 1) continue;
+                else
+                {
+                    for (int j = 0; j < kq.Count; j++)
+                    {
+                        if (kq[i] == kq[j] && ktbool[j] == 0)
+                        {
+                            dem++;
+                            ktbool[j] = 1;
+                        }
+                    }
+                    lskq.Add(dem);
+                    stringkq.Add(kq[i]);
+                }
+            }
+            for (int i = 0; i < lskq.Count; i++)
+            {
+                for (int j = i + 1; j < lskq.Count; j++)
+                {
+                    if (lskq[i] < lskq[j])
+                    {
+                        //cach trao doi gia tri
+                        int tmp = lskq[i];
+                        lskq[i] = lskq[j];
+                        lskq[j] = tmp;
+
+                        string tmp2 = stringkq[i];
+                        stringkq[i] = stringkq[j];
+                        stringkq[j] = tmp2;
+                    }
+                }
+            }
+            for(int i=0;i<stringkq.Count;i++)
+            {
+                lsKetQua.Items.Add(stringkq[i]);
+            }
+        }
+
+        private void lsKetQua_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (lsKetQua.FocusedItem.Bounds.Contains(e.Location))
+                {
+                    contextMenuStrip1.Show(Cursor.Position);
+                }
+            }
+        }
+
+        private void XemThongTinChiTietToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            WebView.Navigate("https://mobile.facebook.com/" + lsKetQua.FocusedItem.Text);
         }
     }
 }
