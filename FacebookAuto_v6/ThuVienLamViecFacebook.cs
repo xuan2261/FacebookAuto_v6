@@ -338,22 +338,27 @@ namespace FacebookAuto_v6
         public static List<string> GetListLiked(string numberuser)
         {
             List<string> idrootliked = new List<string>();
+            List<string> namerootliked = new List<string>();
             WebBrowser web = new WebBrowser();
             web.Navigate("https://mobile.facebook.com/search/" + numberuser + "/stories-liked");
             while (web.ReadyState != WebBrowserReadyState.Complete)
                 Application.DoEvents();
             string htmlcontent = web.DocumentText;
             htmlcontent = htmlcontent.Replace("amp;", "");
-            for (int i=0;i<500;i++)
+            for (int i=0;i<300;i++)
             {
                 int kt = htmlcontent.IndexOf("H3 class=\"b");
                 // còn bài viết để duyệt
                 if (kt != -1)
                 {
                     htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("H3 class=\"b")+20);
-                    string idroot = htmlcontent.Substring(htmlcontent.IndexOf("&id=") + 4);
-                    idroot = idroot.Remove(idroot.IndexOf("&"));
+                    htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("&id=") + 4);
+                    string idroot = htmlcontent.Remove(htmlcontent.IndexOf("&"));
+                    string nameroot = htmlcontent.Substring(htmlcontent.IndexOf("STRONG") + 10);
+                    nameroot = nameroot.Substring(nameroot.IndexOf(">") + 1);
+                    nameroot = nameroot.Remove(nameroot.IndexOf("<"));
                     idrootliked.Add(idroot);
+                    namerootliked.Add(nameroot);
                 }
                 //ko còn bài viết ở trang này nữa
                 else {
@@ -377,5 +382,53 @@ namespace FacebookAuto_v6
             return idrootliked;
         }
         //kết thúc lấy danh sách các bài viết đã thích
+
+        // lấy danh sách các nguồn đã comment
+        public static List<string> GetCommented(string numberuser)
+        {
+            List<string> lsRootComment = new List<string>();
+            WebBrowser web = new WebBrowser();
+            web.Navigate("https://mobile.facebook.com/search/" + numberuser + "/stories-commented");
+            while (web.ReadyState != WebBrowserReadyState.Complete)
+                Application.DoEvents();
+            string htmlcontent = web.DocumentText;
+            htmlcontent = htmlcontent.Replace("amp;", "");
+            for (int i = 0; i < 300; i++)
+            {
+                int kt = htmlcontent.IndexOf("H3 class=\"c");
+                //nếu như tìm thấy bài viết
+                if (kt != -1)
+                {
+                    htmlcontent = htmlcontent.Substring(kt+10);
+                    string idroot = htmlcontent.Substring(htmlcontent.IndexOf("href=\"") + 6);
+                    idroot = idroot.Remove(idroot.IndexOf("?"));
+                    lsRootComment.Add(idroot);
+                }
+                // không tìm thấy bài viết tiếp
+                else
+                {
+                    int kt1 = htmlcontent.IndexOf("see_more_pager");
+                    // nếu như tìm thấy trang tiếp theo
+                    if(kt1!=-1)
+                    {
+                        htmlcontent = htmlcontent.Substring(kt1);
+                        string urltiep = htmlcontent.Substring(htmlcontent.IndexOf("href=\"") + 6);
+                        urltiep = urltiep.Remove(urltiep.IndexOf("\""));
+                        web.Navigate(urltiep);
+                        while (web.ReadyState != WebBrowserReadyState.Complete)
+                            Application.DoEvents();
+                        htmlcontent = web.DocumentText;
+                        htmlcontent = htmlcontent.Replace("amp;", "");
+                    }
+                    //không tìm thấy trang tiếp theo
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
+            return lsRootComment;
+        }
+        //kết thúc lấy danh sách các nguồn đã comment
     }
 }

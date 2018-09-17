@@ -77,16 +77,17 @@ namespace FacebookAuto_v6
         {
 
             lsKetQua.Items.Clear();
-            //if(lsNguoiDungTichCuc.FocusedItem.Index!=null)
-            //{
-            //    MessageBox.Show("tích cực");
-            //}
-            //if (lsNguoiDungTichCuc.FocusedItem.Index!=null)
-            //{
-            //    MessageBox.Show("tiêu cực");
-            //}
-            List<string> kq = ThuVienLamViecFacebook.GetListLiked(idnguoidungtichcuc[lsNguoiDungTichCuc.FocusedItem.Index]);
-            
+            List<string> kq = new List<string>();
+            try
+            {
+                kq = ThuVienLamViecFacebook.GetListLiked(idnguoidungtichcuc[lsNguoiDungTichCuc.FocusedItem.Index]);
+            }
+            catch { }
+            try
+            {
+                 kq = ThuVienLamViecFacebook.GetListLiked(idnguoidungtieucuc[lsNguoiDungTieuCuc.FocusedItem.Index]);
+            }
+            catch { }
             int[] ktbool = new int[kq.Count];
             List<int> lskq = new List<int>();
             List<string> stringkq = new List<string>();
@@ -145,6 +146,65 @@ namespace FacebookAuto_v6
         private void XemThongTinChiTietToolStripMenuItem_Click(object sender, EventArgs e)
         {
             WebView.Navigate("https://mobile.facebook.com/" + lsKetQua.FocusedItem.Text);
+        }
+
+        private void btnDaComment_Click(object sender, EventArgs e)
+        {
+            lsKetQua.Items.Clear();
+            List<string> kq = new List<string>();
+            try
+            {
+                kq = ThuVienLamViecFacebook.GetCommented(idnguoidungtichcuc[lsNguoiDungTichCuc.FocusedItem.Index]);
+            }
+            catch { }
+            try
+            {
+                kq = ThuVienLamViecFacebook.GetCommented(idnguoidungtieucuc[lsNguoiDungTieuCuc.FocusedItem.Index]);
+            }
+            catch { }
+            int[] ktbool = new int[kq.Count];
+            List<int> lskq = new List<int>();
+            List<string> stringkq = new List<string>();
+            for (int i = 0; i < kq.Count; i++)
+            {
+                int dem = 0;
+                if (ktbool[i] == 1) continue;
+                else
+                {
+                    for (int j = 0; j < kq.Count; j++)
+                    {
+                        if (kq[i] == kq[j] && ktbool[j] == 0)
+                        {
+                            dem++;
+                            ktbool[j] = 1;
+                        }
+                    }
+                    lskq.Add(dem);
+                    stringkq.Add(kq[i]);
+                }
+            }
+            for (int i = 0; i < lskq.Count; i++)
+            {
+                for (int j = i + 1; j < lskq.Count; j++)
+                {
+                    if (lskq[i] < lskq[j])
+                    {
+                        //cach trao doi gia tri
+                        int tmp = lskq[i];
+                        lskq[i] = lskq[j];
+                        lskq[j] = tmp;
+
+                        string tmp2 = stringkq[i];
+                        stringkq[i] = stringkq[j];
+                        stringkq[j] = tmp2;
+                    }
+                }
+            }
+            for (int i = 0; i < stringkq.Count; i++)
+            {
+                lsKetQua.Items.Add(stringkq[i]);
+            }
+            MessageBox.Show("Đã load xong");
         }
     }
 }

@@ -133,6 +133,26 @@ namespace FacebookAuto_v6.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_facebook_like_481 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-facebook-like-481", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_good_quality_64 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-good-quality-64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_hand_with_pen_filled_50 {
             get {
                 object obj = ResourceManager.GetObject("icons8-hand-with-pen-filled-50", resourceCulture);
@@ -286,6 +306,16 @@ namespace FacebookAuto_v6.Properties {
         internal static System.Drawing.Bitmap icons8_smiling_filled_50 {
             get {
                 object obj = ResourceManager.GetObject("icons8-smiling-filled-50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_speech_bubble_64 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-speech-bubble-64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

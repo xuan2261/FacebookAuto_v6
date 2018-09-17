@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCGSNguoiDungFB));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.bunifuFlatButton1 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -40,13 +39,15 @@
             this.lsNguoiDungTieuCuc = new System.Windows.Forms.ListView();
             this.lsKetQua = new System.Windows.Forms.ListView();
             this.PanelPhim = new System.Windows.Forms.Panel();
-            this.btnBaiThich = new Bunifu.Framework.UI.BunifuFlatButton();
             this.label4 = new System.Windows.Forms.Label();
-            this.bunifuFlatButton3 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.label5 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.XemThongTinChiTietToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.WebView = new Gecko.GeckoWebBrowser();
+            this.btnDaComment = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.btnBaiThich = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.bunifuFlatButton1 = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.btnTrangDaThich = new Bunifu.Framework.UI.BunifuFlatButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -66,41 +67,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(928, 57);
             this.panel1.TabIndex = 101;
-            // 
-            // bunifuFlatButton1
-            // 
-            this.bunifuFlatButton1.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
-            this.bunifuFlatButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
-            this.bunifuFlatButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bunifuFlatButton1.BorderRadius = 7;
-            this.bunifuFlatButton1.ButtonText = "Cập nhật TT người dùng";
-            this.bunifuFlatButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuFlatButton1.DisabledColor = System.Drawing.Color.Gray;
-            this.bunifuFlatButton1.Iconcolor = System.Drawing.Color.Transparent;
-            this.bunifuFlatButton1.Iconimage = ((System.Drawing.Image)(resources.GetObject("bunifuFlatButton1.Iconimage")));
-            this.bunifuFlatButton1.Iconimage_right = null;
-            this.bunifuFlatButton1.Iconimage_right_Selected = null;
-            this.bunifuFlatButton1.Iconimage_Selected = null;
-            this.bunifuFlatButton1.IconMarginLeft = 0;
-            this.bunifuFlatButton1.IconMarginRight = 0;
-            this.bunifuFlatButton1.IconRightVisible = true;
-            this.bunifuFlatButton1.IconRightZoom = 0D;
-            this.bunifuFlatButton1.IconVisible = true;
-            this.bunifuFlatButton1.IconZoom = 90D;
-            this.bunifuFlatButton1.IsTab = false;
-            this.bunifuFlatButton1.Location = new System.Drawing.Point(488, 9);
-            this.bunifuFlatButton1.Name = "bunifuFlatButton1";
-            this.bunifuFlatButton1.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
-            this.bunifuFlatButton1.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
-            this.bunifuFlatButton1.OnHoverTextColor = System.Drawing.Color.White;
-            this.bunifuFlatButton1.selected = false;
-            this.bunifuFlatButton1.Size = new System.Drawing.Size(180, 39);
-            this.bunifuFlatButton1.TabIndex = 102;
-            this.bunifuFlatButton1.Text = "Cập nhật TT người dùng";
-            this.bunifuFlatButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bunifuFlatButton1.Textcolor = System.Drawing.Color.White;
-            this.bunifuFlatButton1.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuFlatButton1.Click += new System.EventHandler(this.bunifuFlatButton1_Click);
             // 
             // label1
             // 
@@ -190,49 +156,15 @@
             // 
             // PanelPhim
             // 
+            this.PanelPhim.Controls.Add(this.btnTrangDaThich);
+            this.PanelPhim.Controls.Add(this.btnDaComment);
             this.PanelPhim.Controls.Add(this.btnBaiThich);
             this.PanelPhim.Controls.Add(this.label4);
-            this.PanelPhim.Controls.Add(this.bunifuFlatButton3);
             this.PanelPhim.Dock = System.Windows.Forms.DockStyle.Left;
             this.PanelPhim.Location = new System.Drawing.Point(246, 57);
             this.PanelPhim.Name = "PanelPhim";
             this.PanelPhim.Size = new System.Drawing.Size(159, 495);
             this.PanelPhim.TabIndex = 105;
-            // 
-            // btnBaiThich
-            // 
-            this.btnBaiThich.Activecolor = System.Drawing.SystemColors.ActiveBorder;
-            this.btnBaiThich.BackColor = System.Drawing.Color.SlateGray;
-            this.btnBaiThich.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnBaiThich.BorderRadius = 7;
-            this.btnBaiThich.ButtonText = "Bài đã thích";
-            this.btnBaiThich.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBaiThich.DisabledColor = System.Drawing.Color.Gray;
-            this.btnBaiThich.Iconcolor = System.Drawing.Color.Transparent;
-            this.btnBaiThich.Iconimage = global::FacebookAuto_v6.Properties.Resources.icons8_facebook_like_48;
-            this.btnBaiThich.Iconimage_right = null;
-            this.btnBaiThich.Iconimage_right_Selected = null;
-            this.btnBaiThich.Iconimage_Selected = null;
-            this.btnBaiThich.IconMarginLeft = 0;
-            this.btnBaiThich.IconMarginRight = 0;
-            this.btnBaiThich.IconRightVisible = true;
-            this.btnBaiThich.IconRightZoom = 0D;
-            this.btnBaiThich.IconVisible = true;
-            this.btnBaiThich.IconZoom = 50D;
-            this.btnBaiThich.IsTab = false;
-            this.btnBaiThich.Location = new System.Drawing.Point(6, 32);
-            this.btnBaiThich.Name = "btnBaiThich";
-            this.btnBaiThich.Normalcolor = System.Drawing.Color.SlateGray;
-            this.btnBaiThich.OnHovercolor = System.Drawing.Color.Gray;
-            this.btnBaiThich.OnHoverTextColor = System.Drawing.Color.White;
-            this.btnBaiThich.selected = false;
-            this.btnBaiThich.Size = new System.Drawing.Size(148, 38);
-            this.btnBaiThich.TabIndex = 19;
-            this.btnBaiThich.Text = "Bài đã thích";
-            this.btnBaiThich.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBaiThich.Textcolor = System.Drawing.Color.White;
-            this.btnBaiThich.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBaiThich.Click += new System.EventHandler(this.btnBaiThich_Click);
             // 
             // label4
             // 
@@ -243,40 +175,6 @@
             this.label4.Size = new System.Drawing.Size(59, 13);
             this.label4.TabIndex = 2;
             this.label4.Text = "Chức năng";
-            // 
-            // bunifuFlatButton3
-            // 
-            this.bunifuFlatButton3.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
-            this.bunifuFlatButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
-            this.bunifuFlatButton3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bunifuFlatButton3.BorderRadius = 7;
-            this.bunifuFlatButton3.ButtonText = "Bài đã bình luận";
-            this.bunifuFlatButton3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuFlatButton3.DisabledColor = System.Drawing.Color.Gray;
-            this.bunifuFlatButton3.Iconcolor = System.Drawing.Color.Transparent;
-            this.bunifuFlatButton3.Iconimage = ((System.Drawing.Image)(resources.GetObject("bunifuFlatButton3.Iconimage")));
-            this.bunifuFlatButton3.Iconimage_right = null;
-            this.bunifuFlatButton3.Iconimage_right_Selected = null;
-            this.bunifuFlatButton3.Iconimage_Selected = null;
-            this.bunifuFlatButton3.IconMarginLeft = 0;
-            this.bunifuFlatButton3.IconMarginRight = 0;
-            this.bunifuFlatButton3.IconRightVisible = true;
-            this.bunifuFlatButton3.IconRightZoom = 0D;
-            this.bunifuFlatButton3.IconVisible = true;
-            this.bunifuFlatButton3.IconZoom = 90D;
-            this.bunifuFlatButton3.IsTab = false;
-            this.bunifuFlatButton3.Location = new System.Drawing.Point(4, 91);
-            this.bunifuFlatButton3.Name = "bunifuFlatButton3";
-            this.bunifuFlatButton3.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
-            this.bunifuFlatButton3.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
-            this.bunifuFlatButton3.OnHoverTextColor = System.Drawing.Color.White;
-            this.bunifuFlatButton3.selected = false;
-            this.bunifuFlatButton3.Size = new System.Drawing.Size(150, 36);
-            this.bunifuFlatButton3.TabIndex = 1;
-            this.bunifuFlatButton3.Text = "Bài đã bình luận";
-            this.bunifuFlatButton3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bunifuFlatButton3.Textcolor = System.Drawing.Color.White;
-            this.bunifuFlatButton3.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
             // label5
             // 
@@ -313,6 +211,145 @@
             this.WebView.Size = new System.Drawing.Size(329, 440);
             this.WebView.TabIndex = 108;
             this.WebView.UseHttpActivityObserver = false;
+            // 
+            // btnDaComment
+            // 
+            this.btnDaComment.Activecolor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnDaComment.BackColor = System.Drawing.Color.SlateGray;
+            this.btnDaComment.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnDaComment.BorderRadius = 7;
+            this.btnDaComment.ButtonText = "Đã comment";
+            this.btnDaComment.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDaComment.DisabledColor = System.Drawing.Color.Gray;
+            this.btnDaComment.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnDaComment.Iconimage = global::FacebookAuto_v6.Properties.Resources.icons8_speech_bubble_64;
+            this.btnDaComment.Iconimage_right = null;
+            this.btnDaComment.Iconimage_right_Selected = null;
+            this.btnDaComment.Iconimage_Selected = null;
+            this.btnDaComment.IconMarginLeft = 0;
+            this.btnDaComment.IconMarginRight = 0;
+            this.btnDaComment.IconRightVisible = true;
+            this.btnDaComment.IconRightZoom = 0D;
+            this.btnDaComment.IconVisible = true;
+            this.btnDaComment.IconZoom = 50D;
+            this.btnDaComment.IsTab = false;
+            this.btnDaComment.Location = new System.Drawing.Point(6, 76);
+            this.btnDaComment.Name = "btnDaComment";
+            this.btnDaComment.Normalcolor = System.Drawing.Color.SlateGray;
+            this.btnDaComment.OnHovercolor = System.Drawing.Color.Gray;
+            this.btnDaComment.OnHoverTextColor = System.Drawing.Color.White;
+            this.btnDaComment.selected = false;
+            this.btnDaComment.Size = new System.Drawing.Size(148, 38);
+            this.btnDaComment.TabIndex = 20;
+            this.btnDaComment.Text = "Đã comment";
+            this.btnDaComment.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDaComment.Textcolor = System.Drawing.Color.White;
+            this.btnDaComment.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDaComment.Click += new System.EventHandler(this.btnDaComment_Click);
+            // 
+            // btnBaiThich
+            // 
+            this.btnBaiThich.Activecolor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnBaiThich.BackColor = System.Drawing.Color.SlateGray;
+            this.btnBaiThich.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBaiThich.BorderRadius = 7;
+            this.btnBaiThich.ButtonText = "Đã thích";
+            this.btnBaiThich.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBaiThich.DisabledColor = System.Drawing.Color.Gray;
+            this.btnBaiThich.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnBaiThich.Iconimage = global::FacebookAuto_v6.Properties.Resources.icons8_facebook_like_48;
+            this.btnBaiThich.Iconimage_right = null;
+            this.btnBaiThich.Iconimage_right_Selected = null;
+            this.btnBaiThich.Iconimage_Selected = null;
+            this.btnBaiThich.IconMarginLeft = 0;
+            this.btnBaiThich.IconMarginRight = 0;
+            this.btnBaiThich.IconRightVisible = true;
+            this.btnBaiThich.IconRightZoom = 0D;
+            this.btnBaiThich.IconVisible = true;
+            this.btnBaiThich.IconZoom = 50D;
+            this.btnBaiThich.IsTab = false;
+            this.btnBaiThich.Location = new System.Drawing.Point(6, 32);
+            this.btnBaiThich.Name = "btnBaiThich";
+            this.btnBaiThich.Normalcolor = System.Drawing.Color.SlateGray;
+            this.btnBaiThich.OnHovercolor = System.Drawing.Color.Gray;
+            this.btnBaiThich.OnHoverTextColor = System.Drawing.Color.White;
+            this.btnBaiThich.selected = false;
+            this.btnBaiThich.Size = new System.Drawing.Size(148, 38);
+            this.btnBaiThich.TabIndex = 19;
+            this.btnBaiThich.Text = "Đã thích";
+            this.btnBaiThich.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBaiThich.Textcolor = System.Drawing.Color.White;
+            this.btnBaiThich.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBaiThich.Click += new System.EventHandler(this.btnBaiThich_Click);
+            // 
+            // bunifuFlatButton1
+            // 
+            this.bunifuFlatButton1.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
+            this.bunifuFlatButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
+            this.bunifuFlatButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuFlatButton1.BorderRadius = 7;
+            this.bunifuFlatButton1.ButtonText = "Cập nhật TT người dùng";
+            this.bunifuFlatButton1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bunifuFlatButton1.DisabledColor = System.Drawing.Color.Gray;
+            this.bunifuFlatButton1.Iconcolor = System.Drawing.Color.Transparent;
+            this.bunifuFlatButton1.Iconimage = ((System.Drawing.Image)(resources.GetObject("bunifuFlatButton1.Iconimage")));
+            this.bunifuFlatButton1.Iconimage_right = null;
+            this.bunifuFlatButton1.Iconimage_right_Selected = null;
+            this.bunifuFlatButton1.Iconimage_Selected = null;
+            this.bunifuFlatButton1.IconMarginLeft = 0;
+            this.bunifuFlatButton1.IconMarginRight = 0;
+            this.bunifuFlatButton1.IconRightVisible = true;
+            this.bunifuFlatButton1.IconRightZoom = 0D;
+            this.bunifuFlatButton1.IconVisible = true;
+            this.bunifuFlatButton1.IconZoom = 90D;
+            this.bunifuFlatButton1.IsTab = false;
+            this.bunifuFlatButton1.Location = new System.Drawing.Point(488, 9);
+            this.bunifuFlatButton1.Name = "bunifuFlatButton1";
+            this.bunifuFlatButton1.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
+            this.bunifuFlatButton1.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
+            this.bunifuFlatButton1.OnHoverTextColor = System.Drawing.Color.White;
+            this.bunifuFlatButton1.selected = false;
+            this.bunifuFlatButton1.Size = new System.Drawing.Size(180, 39);
+            this.bunifuFlatButton1.TabIndex = 102;
+            this.bunifuFlatButton1.Text = "Cập nhật TT người dùng";
+            this.bunifuFlatButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bunifuFlatButton1.Textcolor = System.Drawing.Color.White;
+            this.bunifuFlatButton1.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuFlatButton1.Click += new System.EventHandler(this.bunifuFlatButton1_Click);
+            // 
+            // btnTrangDaThich
+            // 
+            this.btnTrangDaThich.Activecolor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnTrangDaThich.BackColor = System.Drawing.Color.SlateGray;
+            this.btnTrangDaThich.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnTrangDaThich.BorderRadius = 7;
+            this.btnTrangDaThich.ButtonText = "Trang đã thích";
+            this.btnTrangDaThich.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTrangDaThich.DisabledColor = System.Drawing.Color.Gray;
+            this.btnTrangDaThich.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnTrangDaThich.Iconimage = global::FacebookAuto_v6.Properties.Resources.icons8_good_quality_64;
+            this.btnTrangDaThich.Iconimage_right = null;
+            this.btnTrangDaThich.Iconimage_right_Selected = null;
+            this.btnTrangDaThich.Iconimage_Selected = null;
+            this.btnTrangDaThich.IconMarginLeft = 0;
+            this.btnTrangDaThich.IconMarginRight = 0;
+            this.btnTrangDaThich.IconRightVisible = true;
+            this.btnTrangDaThich.IconRightZoom = 0D;
+            this.btnTrangDaThich.IconVisible = true;
+            this.btnTrangDaThich.IconZoom = 50D;
+            this.btnTrangDaThich.IsTab = false;
+            this.btnTrangDaThich.Location = new System.Drawing.Point(6, 120);
+            this.btnTrangDaThich.Name = "btnTrangDaThich";
+            this.btnTrangDaThich.Normalcolor = System.Drawing.Color.SlateGray;
+            this.btnTrangDaThich.OnHovercolor = System.Drawing.Color.Gray;
+            this.btnTrangDaThich.OnHoverTextColor = System.Drawing.Color.White;
+            this.btnTrangDaThich.selected = false;
+            this.btnTrangDaThich.Size = new System.Drawing.Size(148, 38);
+            this.btnTrangDaThich.TabIndex = 21;
+            this.btnTrangDaThich.Text = "Trang đã thích";
+            this.btnTrangDaThich.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTrangDaThich.Textcolor = System.Drawing.Color.White;
+            this.btnTrangDaThich.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
             // UCGSNguoiDungFB
             // 
@@ -355,12 +392,13 @@
         private System.Windows.Forms.ListView lsNguoiDungTieuCuc;
         private System.Windows.Forms.ListView lsKetQua;
         private System.Windows.Forms.Panel PanelPhim;
-        private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private Bunifu.Framework.UI.BunifuFlatButton btnBaiThich;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem XemThongTinChiTietToolStripMenuItem;
         private Gecko.GeckoWebBrowser WebView;
+        private Bunifu.Framework.UI.BunifuFlatButton btnDaComment;
+        private Bunifu.Framework.UI.BunifuFlatButton btnTrangDaThich;
     }
 }
