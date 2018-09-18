@@ -267,6 +267,7 @@ namespace FacebookAuto_v6
             htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("STRONG")+10);
             string name = htmlcontent.Substring(htmlcontent.IndexOf(">")+1);
             name = name.Remove(name.IndexOf("<"));
+            name = name.Replace("\r\n      ", "");
             string iduser = web1.Url.ToString();
             iduser = iduser.Substring(iduser.IndexOf("&id=")+4);
             iduser = iduser.Remove(iduser.IndexOf("&"));
@@ -430,5 +431,57 @@ namespace FacebookAuto_v6
             return lsRootComment;
         }
         //kết thúc lấy danh sách các nguồn đã comment
+
+        // lấy các trang đã thích
+        public static List<string> LayDanhSachTrangThiched(string numberuser)
+        {
+            List<string> lstrangdathich = new List<string>();
+            WebBrowser web = new WebBrowser();
+            web.Navigate("https://mobile.facebook.com/search/" + numberuser + "/pages-liked");
+            while (web.ReadyState != WebBrowserReadyState.Complete)
+                Application.DoEvents();
+            string htmlcontent = web.DocumentText;
+            htmlcontent = htmlcontent.Replace("amp;", "");
+            htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("TABLE class=") + 100);
+            htmlcontent = htmlcontent.Remove(htmlcontent.LastIndexOf("DIV class=\"b"));
+            for(int i=0;i<100;i++)
+            {
+                int kt = htmlcontent.IndexOf("TABLE class=");
+                //tìm thấy địa chỉ trang
+                if(kt!=-1)
+                {
+                    htmlcontent = htmlcontent.Substring(kt+10);
+                    string linkpage = htmlcontent.Substring(htmlcontent.IndexOf("href=\"") + 6);
+                    linkpage = linkpage.Remove(linkpage.IndexOf("?"));
+                    lstrangdathich.Add(linkpage);
+                }
+                //ko tìm thấy trang
+                else
+                {
+                    int kt1 = htmlcontent.IndexOf("see_more_pager");
+                    //nếu như còn xem thêm
+                    if(kt1!=-1)
+                    {
+                        string urltiep = htmlcontent.Substring(kt1);
+                        urltiep = urltiep.Substring(urltiep.IndexOf("href=\"") + 6);
+                        urltiep = urltiep.Remove(urltiep.IndexOf("\""));
+                        web.Navigate(urltiep);
+                        while (web.ReadyState != WebBrowserReadyState.Complete)
+                            Application.DoEvents();
+                        htmlcontent = web.DocumentText;
+                        htmlcontent = htmlcontent.Replace("amp;", "");
+                        htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("TABLE class=") + 100);
+                        htmlcontent = htmlcontent.Remove(htmlcontent.LastIndexOf("DIV class=\"b"));
+                    }
+                    // hết cái để duyệt 
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
+            return lstrangdathich;
+        }
+        //kết thúc lấy các trang đã thích
     }
 }

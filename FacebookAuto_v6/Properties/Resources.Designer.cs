@@ -323,6 +323,16 @@ namespace FacebookAuto_v6.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_update_user_80 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-update-user-80", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ngacnhien {
             get {
                 object obj = ResourceManager.GetObject("ngacnhien", resourceCulture);

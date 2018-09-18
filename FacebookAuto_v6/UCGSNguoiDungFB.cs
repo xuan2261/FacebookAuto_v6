@@ -27,11 +27,7 @@ namespace FacebookAuto_v6
             lsKetQua.Columns.Add("Danh sách kết quả");
             lsKetQua.AutoResizeColumn(0, ColumnHeaderAutoResizeStyle.HeaderSize);
         }
-
-        private void bunifuFlatButton1_Click(object sender, EventArgs e)
-        {
-            ThuVienLamViecFacebook.UpdateTTNguoiDung();
-        }
+        
         private void LoadNguoiDung()
         {
             DataTable nguoitichcuc = UserFB.LoadDuLieuTichCuc();
@@ -160,6 +156,70 @@ namespace FacebookAuto_v6
             try
             {
                 kq = ThuVienLamViecFacebook.GetCommented(idnguoidungtieucuc[lsNguoiDungTieuCuc.FocusedItem.Index]);
+            }
+            catch { }
+            int[] ktbool = new int[kq.Count];
+            List<int> lskq = new List<int>();
+            List<string> stringkq = new List<string>();
+            for (int i = 0; i < kq.Count; i++)
+            {
+                int dem = 0;
+                if (ktbool[i] == 1) continue;
+                else
+                {
+                    for (int j = 0; j < kq.Count; j++)
+                    {
+                        if (kq[i] == kq[j] && ktbool[j] == 0)
+                        {
+                            dem++;
+                            ktbool[j] = 1;
+                        }
+                    }
+                    lskq.Add(dem);
+                    stringkq.Add(kq[i]);
+                }
+            }
+            for (int i = 0; i < lskq.Count; i++)
+            {
+                for (int j = i + 1; j < lskq.Count; j++)
+                {
+                    if (lskq[i] < lskq[j])
+                    {
+                        //cach trao doi gia tri
+                        int tmp = lskq[i];
+                        lskq[i] = lskq[j];
+                        lskq[j] = tmp;
+
+                        string tmp2 = stringkq[i];
+                        stringkq[i] = stringkq[j];
+                        stringkq[j] = tmp2;
+                    }
+                }
+            }
+            for (int i = 0; i < stringkq.Count; i++)
+            {
+                lsKetQua.Items.Add(stringkq[i]);
+            }
+            MessageBox.Show("Đã load xong");
+        }
+
+        private void btnUpdateUser_Click(object sender, EventArgs e)
+        {
+            ThuVienLamViecFacebook.UpdateTTNguoiDung();
+        }
+
+        private void btnTrangDaThich_Click(object sender, EventArgs e)
+        {
+            lsKetQua.Items.Clear();
+            List<string> kq = new List<string>();
+            try
+            {
+                kq = ThuVienLamViecFacebook.LayDanhSachTrangThiched(idnguoidungtichcuc[lsNguoiDungTichCuc.FocusedItem.Index]);
+            }
+            catch { }
+            try
+            {
+                kq = ThuVienLamViecFacebook.LayDanhSachTrangThiched(idnguoidungtieucuc[lsNguoiDungTieuCuc.FocusedItem.Index]);
             }
             catch { }
             int[] ktbool = new int[kq.Count];

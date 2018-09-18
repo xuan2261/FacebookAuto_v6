@@ -60,6 +60,7 @@
       <HintPath>D:\STUDY\Bunifu_UI_v1.5.3.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.BonusSkins.v18.1" />
+    <Reference Include="DevExpress.Charts.v18.1.Core, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Data.v18.1" />
     <Reference Include="DevExpress.Images.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Office.v18.1.Core, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -69,6 +70,9 @@
     <Reference Include="DevExpress.Utils.v18.1" />
     <Reference Include="DevExpress.XtraBars.v18.1" />
     <Reference Include="DevExpress.Sparkline.v18.1.Core" />
+    <Reference Include="DevExpress.XtraCharts.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v18.1.UI, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v18.1.Wizard, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraEditors.v18.1" />
     <Reference Include="DevExpress.XtraGrid.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraPrinting.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -84,6 +88,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Management" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -148,6 +153,12 @@
     </Compile>
     <Compile Include="UCThaoTac.Designer.cs">
       <DependentUpon>UCThaoTac.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCTKTrang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCTKTrang.Designer.cs">
+      <DependentUpon>UCTKTrang.cs</DependentUpon>
     </Compile>
     <Compile Include="UCTTBinhLuan.cs">
       <SubType>UserControl</SubType>
@@ -214,6 +225,9 @@
     <EmbeddedResource Include="UCThaoTac.resx">
       <DependentUpon>UCThaoTac.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCTKTrang.resx">
+      <DependentUpon>UCTKTrang.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCTTBinhLuan.resx">
       <DependentUpon>UCTTBinhLuan.cs</DependentUpon>
     </EmbeddedResource>
@@ -262,6 +276,9 @@
     <Content Include="Firefox\sandboxbroker.dll" />
     <Content Include="Firefox\softokn3.dll" />
     <Content Include="Firefox\xul.dll" />
+    <None Include="Resources\icons8-update-user-80.png" />
+    <None Include="Resources\icons8-good-quality-64.png" />
+    <None Include="Resources\icons8-facebook-like-481.png" />
     <None Include="Resources\icons8-speech-bubble-64.png" />
     <None Include="Resources\icons8-facebook-like-48.png" />
     <None Include="Resources\icons8-search-641.png" />

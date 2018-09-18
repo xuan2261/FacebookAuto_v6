@@ -47,6 +47,9 @@
             this.tabGiamSat = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.ElementGSNhanVien = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.ElementGSNguoiDung = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accordionControlSeparator3 = new DevExpress.XtraBars.Navigation.AccordionControlSeparator();
+            this.tabThongKe = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.ElementTKTrang = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             this.accordionControlElement7 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement8 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -184,7 +187,9 @@
             // GroupElementQuanLy
             // 
             this.GroupElementQuanLy.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.tabGiamSat});
+            this.tabGiamSat,
+            this.accordionControlSeparator3,
+            this.tabThongKe});
             this.GroupElementQuanLy.Enabled = false;
             this.GroupElementQuanLy.Hint = "Các chức năng của người quản lý";
             this.GroupElementQuanLy.Name = "GroupElementQuanLy";
@@ -211,6 +216,25 @@
             this.ElementGSNguoiDung.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.ElementGSNguoiDung.Text = "Giám sát người dùng FB";
             this.ElementGSNguoiDung.Click += new System.EventHandler(this.ElementGSNguoiDung_Click);
+            // 
+            // accordionControlSeparator3
+            // 
+            this.accordionControlSeparator3.Name = "accordionControlSeparator3";
+            // 
+            // tabThongKe
+            // 
+            this.tabThongKe.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
+            this.ElementTKTrang});
+            this.tabThongKe.Expanded = true;
+            this.tabThongKe.Name = "tabThongKe";
+            this.tabThongKe.Text = "Thống kê";
+            // 
+            // ElementTKTrang
+            // 
+            this.ElementTKTrang.Name = "ElementTKTrang";
+            this.ElementTKTrang.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.ElementTKTrang.Text = "Trang";
+            this.ElementTKTrang.Click += new System.EventHandler(this.ElementTKTrang_Click);
             // 
             // fluentDesignFormControl1
             // 
@@ -289,6 +313,9 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement ElementGSNhanVien;
         private DevExpress.XtraBars.Navigation.AccordionControlElement ElementGSNguoiDung;
         private DevExpress.XtraBars.Navigation.AccordionControlSeparator accordionControlSeparator2;
+        private DevExpress.XtraBars.Navigation.AccordionControlSeparator accordionControlSeparator3;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement tabThongKe;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement ElementTKTrang;
     }
 }
 
