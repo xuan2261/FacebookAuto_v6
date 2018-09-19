@@ -15,6 +15,7 @@ namespace FacebookAuto_v6
 {
     public partial class UCTTHoatDongGD : UserControl
     {
+        public string taikhoan;
         public UCTTHoatDongGD()
         {
             InitializeComponent();
@@ -22,7 +23,7 @@ namespace FacebookAuto_v6
         public void LoadDuLieu()
         {
             DataTable dt = new DataTable();
-            dt = HoatDongGanDay.LoadDuLieu();
+            dt = HoatDongGanDay.LoadDuLieu(taikhoan);
             DataBaiCu.DataSource = dt;
         }
         private void UCTTHoatDongGD_Load(object sender, EventArgs e)
@@ -34,7 +35,7 @@ namespace FacebookAuto_v6
         {
             try
             {
-                TuDongBinhLuan r = new TuDongBinhLuan(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "IDPost").ToString(), gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "KhoangTime").ToString(), gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "TongComment").ToString());
+                TuDongBinhLuan r = new TuDongBinhLuan(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "IDPost").ToString(), gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "KhoangTime").ToString(), gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "TongComment").ToString(),taikhoan);
                 Thread tudong = new Thread(r.DoWork);
                 tudong.SetApartmentState(ApartmentState.STA);
                 tudong.Start();

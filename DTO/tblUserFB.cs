@@ -9,6 +9,12 @@ namespace DTO
     [Table("tblUserFB")]
     public partial class tblUserFB
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tblUserFB()
+        {
+            tblLikePosts = new HashSet<tblLikePost>();
+        }
+
         [Key]
         [StringLength(50)]
         public string IDUser { get; set; }
@@ -40,5 +46,8 @@ namespace DTO
         public int? Status { get; set; }
 
         public int? IsUpdate { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblLikePost> tblLikePosts { get; set; }
     }
 }

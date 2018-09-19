@@ -35,8 +35,7 @@ namespace FacebookAuto_v6
             dt = Admin.CheckLogin(txtUser.Text, txtPassword.Text);
             if(dt.Rows.Count==1)
             {
-                frmMain formmain = new frmMain();
-                formmain.setadmin(int.Parse(dt.Rows[0]["MucQuyen"].ToString()));
+                frmMain formmain = new frmMain(txtUser.Text, int.Parse(dt.Rows[0]["MucQuyen"].ToString()));
                 formmain.Show();
                 this.Hide();
             }
@@ -55,8 +54,7 @@ namespace FacebookAuto_v6
                 dt = Admin.CheckLogin(txtUser.Text, txtPassword.Text);
                 if (dt.Rows.Count == 1)
                 {
-                    frmMain formmain = new frmMain();
-                    formmain.setadmin(int.Parse(dt.Rows[0]["MucQuyen"].ToString()));
+                    frmMain formmain = new frmMain(txtUser.Text, int.Parse(dt.Rows[0]["MucQuyen"].ToString()));
                     formmain.Show();
                     this.Hide();
                 }

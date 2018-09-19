@@ -26,5 +26,7 @@ namespace DTO
         public string Description { get; set; }
 
         public int? Status { get; set; }
+
+        public virtual tblPost tblPost { get; set; }
     }
 }

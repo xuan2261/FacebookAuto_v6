@@ -17,17 +17,18 @@ namespace FacebookAuto_v6
         DataTable tichcuc = new DataTable();
         DataTable tieucuc = new DataTable();
         List<string> idTaiKhoanCS = new List<string>();
+        public string taikhoan;
+        int ktloadlist = 0;
         public UCTTChiaSe()
         {
             InitializeComponent();
-            LoadListAccount();
         }
 
         private void LoadListAccount()
         {
 
-            tichcuc = AccountFB.LoadDuLieuByStatus(1);
-            tieucuc = AccountFB.LoadDuLieuByStatus(-1);
+            tichcuc = AccountFB.LoadDuLieuByStatus(1,taikhoan);
+            tieucuc = AccountFB.LoadDuLieuByStatus(-1,taikhoan);
             lsCheckTKTichCuc.Items.Add("Tất cả");
             lsCheckTKTieuCuc.Items.Add("Tất cả");
             for (int i = 0; i < tichcuc.Rows.Count; i++)
@@ -113,6 +114,24 @@ namespace FacebookAuto_v6
                 }
                 else
                     idTaiKhoanCS.Add(tieucuc.Rows[int.Parse(i) - 1]["NumberIDAccount"].ToString());
+            }
+        }
+
+        private void lsCheckTKTichCuc_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (ktloadlist == 0)
+            {
+                LoadListAccount();
+                ktloadlist = 1;
+            }
+        }
+
+        private void lsCheckTKTieuCuc_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (ktloadlist == 0)
+            {
+                LoadListAccount();
+                ktloadlist = 1;
             }
         }
     }

@@ -142,6 +142,12 @@
     <Compile Include="UCGSThemTrang.Designer.cs">
       <DependentUpon>UCGSThemTrang.cs</DependentUpon>
     </Compile>
+    <Compile Include="UCQLNhanVien.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCQLNhanVien.Designer.cs">
+      <DependentUpon>UCQLNhanVien.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCQuanLyTK.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -218,6 +224,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UCGSThemTrang.resx">
       <DependentUpon>UCGSThemTrang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCQLNhanVien.resx">
+      <DependentUpon>UCQLNhanVien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCQuanLyTK.resx">
       <DependentUpon>UCQuanLyTK.cs</DependentUpon>

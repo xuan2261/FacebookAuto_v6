@@ -19,34 +19,47 @@ namespace FacebookAuto_v6
         UCGSDuyetBaiViet ucgsdbv = new UCGSDuyetBaiViet();
         UCGSNguoiDungFB ucgsndfb = new UCGSNguoiDungFB();
         UCTKTrang uctkt = new UCTKTrang();
+        UCQLNhanVien ucqlnv = new UCQLNhanVien();
         int ktuc = 1;
         tblAdmin admin = new tblAdmin();
-        public frmMain()
+        public frmMain(string taikhoan,int mucquyen)
         {
+            admin.TaiKhoan = taikhoan;
+            admin.MucQuyen = mucquyen;
             InitializeComponent();
         }
-
         private void tabThaoTac_Click(object sender, EventArgs e)
         {
 
         }
 
-        public void setadmin(int quyen)
-        {
-            admin.MucQuyen = quyen;
-        }
-
         private void frmMain_Load(object sender, EventArgs e)
         {
-            //frmLogin flogin = new frmLogin();
-            //flogin.ShowDialog();
             if(admin.MucQuyen==2)
             {
                 GroupElementQuanLy.Enabled = true;
             }
             panelMain.Controls.Add(ucthaotac);
             ucthaotac.Dock = DockStyle.Fill;
+            ucthaotac.settaikhoanchouc(admin.TaiKhoan);
+            KiemTraAccountFB();
         }
+        //kiểm tra xem đã có tài khoản facebook nào chưa?
+        private void KiemTraAccountFB()
+        {
+            DataTable nv = AccountFB.LoadDuLieuByNhanVien(admin.TaiKhoan);
+            if (nv.Rows.Count == 0)
+            {
+                MessageBox.Show("Bạn cần thêm tài khoản facebook để bắt đầu làm việc!");
+                UCQuanLyTK ucqltk = new UCQuanLyTK();
+                ktuc = 3;
+                panelMain.Controls.Clear();
+                panelMain.Controls.Add(ucqltk);
+                ucqltk.Dock = DockStyle.Fill;
+                ucqltk.taikhoan = admin.TaiKhoan;
+            }
+        }
+        //kết thúc kiểm tra xem đã có tài khoản facebook nào chưa?
 
         private void ElementBinhLuan_Click(object sender, EventArgs e)
         {
@@ -121,6 +134,7 @@ namespace FacebookAuto_v6
             panelMain.Controls.Clear();
             panelMain.Controls.Add(ucqltk);
             ucqltk.Dock = DockStyle.Fill;
+            ucqltk.taikhoan = admin.TaiKhoan;
         }
 
         private void ElementThemTrangNhom_Click(object sender, EventArgs e)
@@ -153,6 +167,14 @@ namespace FacebookAuto_v6
             panelMain.Controls.Clear();
             panelMain.Controls.Add(uctkt);
             uctkt.Dock = DockStyle.Fill;
+        }
+
+        private void ElementQuanLyNhanVien_Click(object sender, EventArgs e)
+        {
+            ktuc = 6;
+            panelMain.Controls.Clear();
+            panelMain.Controls.Add(ucqlnv);
+            ucqlnv.Dock = DockStyle.Fill;
         }
     }
 }

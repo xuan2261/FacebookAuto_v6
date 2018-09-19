@@ -35,9 +35,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.labelViTri = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.DrbtnLoaiTrang = new Bunifu.Framework.UI.BunifuDropdown();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -97,25 +97,6 @@
             this.splitContainer1.SplitterDistance = 270;
             this.splitContainer1.TabIndex = 102;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.SystemColors.Window;
-            this.label1.Location = new System.Drawing.Point(18, 24);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Loại trang";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(18, 86);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "label3";
-            // 
             // DrbtnLoaiTrang
             // 
             this.DrbtnLoaiTrang.BackColor = System.Drawing.Color.Transparent;
@@ -134,6 +115,25 @@
             this.DrbtnLoaiTrang.Size = new System.Drawing.Size(101, 30);
             this.DrbtnLoaiTrang.TabIndex = 88;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(18, 86);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "label3";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.Window;
+            this.label1.Location = new System.Drawing.Point(18, 24);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(54, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Loại trang";
+            // 
             // chart1
             // 
             chartArea1.Name = "ChartArea1";
@@ -145,7 +145,8 @@
             this.chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
-            series1.Name = "Series1";
+            series1.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Star4;
+            series1.Name = "Trang";
             this.chart1.Series.Add(series1);
             this.chart1.Size = new System.Drawing.Size(654, 539);
             this.chart1.TabIndex = 0;

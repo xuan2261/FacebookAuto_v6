@@ -14,6 +14,9 @@ namespace DTO
         public string IDPage { get; set; }
 
         [StringLength(50)]
+        public string TaiKhoan { get; set; }
+
+        [StringLength(50)]
         public string NumberPage { get; set; }
 
         [StringLength(200)]
@@ -26,5 +29,7 @@ namespace DTO
 
         [Column(TypeName = "ntext")]
         public string Description { get; set; }
+
+        public virtual tblAdmin tblAdmin { get; set; }
     }
 }

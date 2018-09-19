@@ -274,3 +274,4 @@ C:\Users\tungn\OneDrive\Documents\FacebookAuto_v6\FacebookAuto_v6\bin\Debug\es\D
 C:\Users\tungn\OneDrive\Documents\FacebookAuto_v6\FacebookAuto_v6\bin\Debug\ja\DevExpress.XtraNavBar.v18.1.resources.dll
 C:\Users\tungn\OneDrive\Documents\FacebookAuto_v6\FacebookAuto_v6\bin\Debug\ru\DevExpress.XtraNavBar.v18.1.resources.dll
 C:\Users\tungn\OneDrive\Documents\FacebookAuto_v6\FacebookAuto_v6\obj\Debug\FacebookAuto_v6.UCTKTrang.resources
+C:\Users\tungn\OneDrive\Documents\FacebookAuto_v6\FacebookAuto_v6\obj\Debug\FacebookAuto_v6.UCQLNhanVien.resources

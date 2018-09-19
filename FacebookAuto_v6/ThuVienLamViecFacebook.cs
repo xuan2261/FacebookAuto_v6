@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using DTO;
 using DAO;
 using System.Data;
+using System.Security.Cryptography;
 
 namespace FacebookAuto_v6
 {
@@ -80,6 +81,50 @@ namespace FacebookAuto_v6
             return ac;
         }
         //Kết thúc đăng nhập
+        //mã hóa mật khẩu
+        public static string Encrypt(string toEncrypt, bool useHashing)
+        {
+            byte[] keyArray;
+            byte[] toEncryptArray = Encoding.UTF8.GetBytes(toEncrypt);
+            if (useHashing)
+            {
+                var hashmd5 = new MD5CryptoServiceProvider();
+                keyArray = hashmd5.ComputeHash(Encoding.UTF8.GetBytes("Tungntdev"));
+            }
+            else keyArray = Encoding.UTF8.GetBytes("Tungntdev");
+            var tdes = new TripleDESCryptoServiceProvider
+            {
+                Key = keyArray,
+                Mode = CipherMode.ECB,
+                Padding = PaddingMode.PKCS7
+            };
+            ICryptoTransform cTransform = tdes.CreateEncryptor();
+            byte[] resultArray = cTransform.TransformFinalBlock(toEncryptArray, 0, toEncryptArray.Length);
+            return Convert.ToBase64String(resultArray, 0, resultArray.Length);
+        }
+        //kết thúc mã hóa mật khẩu
+        //giải mã mật khẩu
+        public static string Decrypt(string toDecrypt, bool useHashing)
+        {
+            byte[] keyArray;
+            byte[] toEncryptArray = Convert.FromBase64String(toDecrypt);
+            if (useHashing)
+            {
+                var hashmd5 = new MD5CryptoServiceProvider();
+                keyArray = hashmd5.ComputeHash(Encoding.UTF8.GetBytes("tungntdev"));
+            }
+            else keyArray = Encoding.UTF8.GetBytes("tungntdev");
+            var tdes = new TripleDESCryptoServiceProvider
+            {
+                Key = keyArray,
+                Mode = CipherMode.ECB,
+                Padding = PaddingMode.PKCS7
+            };
+            ICryptoTransform cTransform = tdes.CreateDecryptor();
+            byte[] resultArray = cTransform.TransformFinalBlock(toEncryptArray, 0, toEncryptArray.Length);
+            return Encoding.UTF8.GetString(resultArray);
+        }
+        //kết thúc giải mã mật khẩu
         //
         //đăng nhập lấy fb_dtsg
         public static string DNLay_fb_dtsg(string user,string pass)
@@ -278,7 +323,6 @@ namespace FacebookAuto_v6
             string timepost = htmlcontent.Substring(htmlcontent.IndexOf("ABBR") + 5);
             timepost = timepost.Remove(timepost.IndexOf("<"));
             if (!timepost.Contains("Tháng")) timepost += DateTime.Now.ToShortDateString(); 
-            p.TimePost = timepost;
             return p;
         }
         //kết thúc lấy thông tin bài viết

@@ -14,6 +14,7 @@ namespace FacebookAuto_v6
 {
     public partial class UCQuanLyTK : UserControl
     {
+        public string taikhoan;
         public UCQuanLyTK()
         {
             InitializeComponent();
@@ -25,6 +26,7 @@ namespace FacebookAuto_v6
             if(txtEmail.Text!="" && txtPassword.Text!="")
             {
                 tblAccountFB ac = ThuVienLamViecFacebook.DangNhap(txtEmail.Text, txtPassword.Text);
+                ac.TaiKhoan = taikhoan;
                 if (radioTichCuc.Checked == true)
                     ac.Status = 1;
                 else ac.Status = -1;

@@ -16,6 +16,9 @@ namespace DTO
         [StringLength(500)]
         public string Password { get; set; }
 
+        [StringLength(50)]
+        public string TaiKhoan { get; set; }
+
         [Required]
         [StringLength(100)]
         public string LinkAccount { get; set; }
@@ -45,5 +48,7 @@ namespace DTO
         public string ImageLink { get; set; }
 
         public int? Status { get; set; }
+
+        public virtual tblAdmin tblAdmin { get; set; }
     }
 }

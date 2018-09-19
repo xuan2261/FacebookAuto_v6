@@ -28,8 +28,8 @@ namespace FacebookAuto_v6
             chart1.DataSource = dt;
             chart1.ChartAreas["ChartArea1"].AxisX.Title = "Tên Trang";
             chart1.ChartAreas["ChartArea1"].AxisY.Title = "Số bài";
-            chart1.Series["Series1"].XValueMember = "NameRoot";
-            chart1.Series["Series1"].YValueMembers = "soluong";
+            chart1.Series["Trang"].XValueMember = "NameRoot";
+            chart1.Series["Trang"].YValueMembers = "soluong";
         }
     }
 }

@@ -50,7 +50,7 @@ namespace DAO
             try
             {
                 con = DataProvider.KetNoi();
-                string sTruyVan = string.Format("Update tblPost set Status=N'{0}', CountLike='{1}', CountComment='{2}' where IDPost = '{3}'", p.Status,p.CountLike,p.CountComment, p.IDPost);
+                string sTruyVan = string.Format("Update tblPost set Status=N'{0}', CountLike='{1}', CountComment+='{2}' ,TimePost='{3}'where IDPost = '{4}'", p.Status,p.CountLike,p.CountComment,p.TimePost, p.IDPost);
                 DataProvider.ThucThiTruyVanNonQuery(sTruyVan, con);
                 DataProvider.DongKetNoi(con);
                 return true;

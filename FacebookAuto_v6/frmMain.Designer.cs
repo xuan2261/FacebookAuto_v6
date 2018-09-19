@@ -54,6 +54,8 @@
             this.accordionControlElement7 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement8 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.panelMain = new System.Windows.Forms.Panel();
+            this.ElementQuanLyNhanVien = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accordionControlSeparator4 = new DevExpress.XtraBars.Navigation.AccordionControlSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.TabControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             this.SuspendLayout();
@@ -189,7 +191,9 @@
             this.GroupElementQuanLy.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.tabGiamSat,
             this.accordionControlSeparator3,
-            this.tabThongKe});
+            this.tabThongKe,
+            this.accordionControlSeparator4,
+            this.ElementQuanLyNhanVien});
             this.GroupElementQuanLy.Enabled = false;
             this.GroupElementQuanLy.Hint = "Các chức năng của người quản lý";
             this.GroupElementQuanLy.Name = "GroupElementQuanLy";
@@ -266,6 +270,17 @@
             this.panelMain.Size = new System.Drawing.Size(947, 596);
             this.panelMain.TabIndex = 3;
             // 
+            // ElementQuanLyNhanVien
+            // 
+            this.ElementQuanLyNhanVien.Name = "ElementQuanLyNhanVien";
+            this.ElementQuanLyNhanVien.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.ElementQuanLyNhanVien.Text = "Quản lý nhân viên";
+            this.ElementQuanLyNhanVien.Click += new System.EventHandler(this.ElementQuanLyNhanVien_Click);
+            // 
+            // accordionControlSeparator4
+            // 
+            this.accordionControlSeparator4.Name = "accordionControlSeparator4";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -316,6 +331,8 @@
         private DevExpress.XtraBars.Navigation.AccordionControlSeparator accordionControlSeparator3;
         private DevExpress.XtraBars.Navigation.AccordionControlElement tabThongKe;
         private DevExpress.XtraBars.Navigation.AccordionControlElement ElementTKTrang;
+        private DevExpress.XtraBars.Navigation.AccordionControlSeparator accordionControlSeparator4;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement ElementQuanLyNhanVien;
     }
 }
 

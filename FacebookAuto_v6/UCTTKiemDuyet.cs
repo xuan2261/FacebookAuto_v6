@@ -29,6 +29,8 @@ namespace FacebookAuto_v6
         public string idpost;
         string htmlcontent;
         public string danhgia;
+        public string taikhoan;
+        public string timepost;
         public UCTTKiemDuyet()
         {
             InitializeComponent();
@@ -262,6 +264,7 @@ namespace FacebookAuto_v6
             // cập nhật thông tin bài viết
             tblPost p = new tblPost();
             p.IDPost = idpost;
+            p.TimePost = DateTime.Parse(timepost);
             p.CountComment = tongsocomment;
             p.CountLike = int.Parse(tongsoluonglike);
             if (danhgia == "Tích cực") p.Status = "Tích cực";

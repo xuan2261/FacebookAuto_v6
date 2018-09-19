@@ -42,7 +42,7 @@ namespace DAO
         {
             try
             {
-                string sTruyVan = string.Format("Insert into tblWork(IDPost,KhoangTime,TongComment,TienDo,TrangThai) values(N'{0}',N'{1}',N'{2}',N'{3}',N'{4}')", w.IDPost, w.KhoangTime,w.TongComment,w.TienDo,w.TrangThai);
+                string sTruyVan = string.Format("Insert into tblWork(IDPost,KhoangTime,TongComment,TienDo,TrangThai,TaiKhoan) values(N'{0}',N'{1}',N'{2}',N'{3}',N'{4}',N'{5}')", w.IDPost, w.KhoangTime,w.TongComment,w.TienDo,w.TrangThai,w.TaiKhoan);
                 con = DataProvider.KetNoi();
                 DataProvider.ThucThiTruyVanNonQuery(sTruyVan, con);
                 DataProvider.DongKetNoi(con);
@@ -100,12 +100,12 @@ namespace DAO
                 return false;
             }
         }
-        public static bool KiemTraTienDo(string idpost)
+        public static bool KiemTraTienDo(string idpost,string taikhoan)
         {
             try
             {
                 con = DataProvider.KetNoi();
-                string sTruyVan = string.Format("select TongComment-TienDo as kt from tblWork where IDPost='{0}'", idpost);
+                string sTruyVan = string.Format("select TongComment-TienDo as kt from tblWork where IDPost='{0}' and TaiKhoan=N'{1}'", idpost,taikhoan);
                 DataTable dt = DataProvider.LayDataTable(sTruyVan, con);
                 DataProvider.DongKetNoi(con);
                 if (dt.Rows[0]["kt"].ToString() != "0")

@@ -20,5 +20,9 @@ namespace DTO
         public string IDUserFB { get; set; }
 
         public int? Status { get; set; }
+
+        public virtual tblPost tblPost { get; set; }
+
+        public virtual tblUserFB tblUserFB { get; set; }
     }
 }

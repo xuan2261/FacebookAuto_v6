@@ -20,10 +20,17 @@ namespace FacebookAuto_v6
         UCTTKiemDuyet ttkd = new UCTTKiemDuyet();
         UCTTHoatDongGD tthdgd = new UCTTHoatDongGD();
         string urlfacebook= "https://mobile.facebook.com/";
+        public void settaikhoanchouc(string tk)
+        {
+            ttbl.taikhoan = tk;
+            tthdgd.taikhoan = tk;
+            ttcs.taikhoan = tk;
+            ttcx.taikhoan = tk;
+            ttkd.taikhoan = tk;
+        }
         public UCThaoTac()
         {
             InitializeComponent();
-            LoadBinhLuan();
         }
 
         public void btnKiemTra_Click(object sender, EventArgs e)
@@ -68,6 +75,7 @@ namespace FacebookAuto_v6
             labelViTri.Text = ">>>  Kiểm duyệt";
             if (radioTichCuc.Checked == true) ttkd.danhgia = "Tích cực";
             else ttkd.danhgia = "Tiêu cực";
+            ttkd.timepost = DatePost.Value.ToShortDateString();
         }
         //load lại webview
         public void getdulieufrmkhac(string idpost)
@@ -117,6 +125,16 @@ namespace FacebookAuto_v6
         {
             if (radioTichCuc.Checked == true) ttkd.danhgia = "Tích cực";
             else ttkd.danhgia = "Tiêu cực";
+        }
+
+        private void DatePost_ValueChanged(object sender, EventArgs e)
+        {
+            ttkd.timepost = DatePost.Value.ToShortDateString();
+        }
+
+        private void UCThaoTac_Load(object sender, EventArgs e)
+        {
+            LoadBinhLuan();
         }
     }
 }
