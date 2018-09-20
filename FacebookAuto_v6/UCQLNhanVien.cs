@@ -29,6 +29,17 @@ namespace FacebookAuto_v6
             admin.MucQuyen = btnQuyen.selectedIndex;
             if (Admin.Them(admin) == true) MessageBox.Show("Đã thêm thành công nhân viên");
             else MessageBox.Show("Chưa thêm được nhân viên");
+            LoadDuLieuNhanVien();
+        }
+
+        private void UCQLNhanVien_Load(object sender, EventArgs e)
+        {
+            LoadDuLieuNhanVien();
+        }
+        private void LoadDuLieuNhanVien()
+        {
+            DataTable dt = Admin.LoadDuLieuNhanVien();
+            gridControl1.DataSource = dt;
         }
     }
 }

@@ -236,6 +236,12 @@ namespace FacebookAuto_v6
                 DanhGia(1);
             }
             //kết thúc thêm thông tin trang vào sql
+            //thêm thông tin vào nhóm sql
+            if(DrbtnLoaiTim.selectedIndex==1)
+            {
+
+            }
+            //kết thúc thêm thông tin vào nhóm sql
         }
         //đánh giá trang, nhóm
         private void DanhGia(int kt)
@@ -252,21 +258,29 @@ namespace FacebookAuto_v6
                     pg.Status = kt;
                     pg.TaiKhoan = taikhoan;
                     DAO.Pages.Them(pg);
-                    //xóa cái vừa đánh giá khỏi danh sách
-                    lsIDPage.RemoveAt(item.Index);
-                    lsNamePage.RemoveAt(item.Index);
-                    lsLinkImgPage.RemoveAt(item.Index);
-                    lsKetQuaSearch.Items.RemoveAt(item.Index);
                 }
                 //thêm vào groups
                 if (DrbtnLoaiTim.selectedIndex == 1)
                 {
-
+                    tblGroup newgroup = new tblGroup();
+                    newgroup.IDGroup = lsIDPage[item.Index];
+                    newgroup.Name = lsNamePage[item.Index];
+                    newgroup.ImgLink = lsLinkImgPage[item.Index];
+                    newgroup.Status = kt;
+                    newgroup.TaiKhoan = taikhoan;
+                    DAO.Group.Them(newgroup);
                 }
+                //xóa cái vừa đánh giá khỏi danh sách
+                lsIDPage.RemoveAt(item.Index);
+                lsNamePage.RemoveAt(item.Index);
+                lsLinkImgPage.RemoveAt(item.Index);
+                lsKetQuaSearch.Items.RemoveAt(item.Index);
+                lsKetQuaSearch.Items.RemoveAt(item.Index);
             }
+
             MessageBox.Show("Đã thêm vào danh sách");
         }
-
+        
         private void btnKhongXacDinh1_Click(object sender, EventArgs e)
         {
             DanhGia(0);

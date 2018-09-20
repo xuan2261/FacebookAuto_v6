@@ -527,5 +527,49 @@ namespace FacebookAuto_v6
             return lstrangdathich;
         }
         //kết thúc lấy các trang đã thích
+
+        //join group
+        public static void JoinGroup(string idgroup)
+        {
+            WebBrowser web = new WebBrowser();
+            web.Navigate("https://mobile.facebook.com/" + idgroup);
+            while (web.ReadyState != WebBrowserReadyState.Complete)
+                Application.DoEvents();
+            string htmlcontent = web.DocumentText;
+            htmlcontent = htmlcontent.Replace("amp;", "");
+            int ktjoin = htmlcontent.IndexOf("/a/group/join/?group_id=");
+            //Chưa join vào group
+            if(ktjoin!=-1)
+            {
+                htmlcontent = htmlcontent.Substring(ktjoin);
+                string url = htmlcontent.Remove(htmlcontent.IndexOf("\""));
+                web.Navigate("https://mobile.facebook.com" + url);
+                while (web.ReadyState != WebBrowserReadyState.Complete)
+                    Application.DoEvents();
+                string kttiep = web.Url.ToString();
+                //trường hợp cần trả lời câu hỏi
+                if(kttiep.Contains("membership_criteria_answer"))
+                {
+                    htmlcontent = web.DocumentText;
+                    string action = htmlcontent.Substring(htmlcontent.IndexOf("/groups/membership_criteria_answer"));
+                    action = "https://mobile.facebook.com"+action.Remove(action.IndexOf("\""));
+                    string jazoest = htmlcontent.Substring(htmlcontent.IndexOf("jazoest"));
+                    jazoest = jazoest.Substring(jazoest.IndexOf("value=\"") + 7);
+                    jazoest = jazoest.Remove(jazoest.IndexOf("\""));
+                    string fb_dtsg = htmlcontent.Substring(htmlcontent.IndexOf("fb_dtsg"));
+                    fb_dtsg = fb_dtsg.Substring(fb_dtsg.IndexOf("value=\"") + 7);
+                    fb_dtsg = fb_dtsg.Remove(fb_dtsg.IndexOf("\""));
+                    //bắt đầu trả lời
+                    string postdata = "fb_dtsg="+fb_dtsg+"&jazoest="+jazoest+"&questionnaire_answers[]=,,";
+                    System.Text.Encoding encoding = System.Text.Encoding.UTF8;
+                    byte[] bytes = encoding.GetBytes(postdata);
+                    web.Navigate(action, string.Empty, bytes, "Content-Type: application/x-www-form-urlencoded");
+
+                    while (web.ReadyState != WebBrowserReadyState.Complete)
+                        Application.DoEvents();
+                }
+            }
+        }
+        //kết thúc join group
     }
 }

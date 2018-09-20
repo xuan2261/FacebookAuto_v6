@@ -41,6 +41,10 @@
             this.txtThongTin = new System.Windows.Forms.RichTextBox();
             this.btnQuyen = new Bunifu.Framework.UI.BunifuDropdown();
             this.btnThem = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -197,11 +201,30 @@
             this.btnThem.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
+            // gridControl1
+            // 
+            this.gridControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gridControl1.Location = new System.Drawing.Point(0, 262);
+            this.gridControl1.MainView = this.gridView1;
+            this.gridControl1.Name = "gridControl1";
+            this.gridControl1.Size = new System.Drawing.Size(928, 334);
+            this.gridControl1.TabIndex = 91;
+            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            // 
+            // gridView1
+            // 
+            this.gridView1.GridControl = this.gridControl1;
+            this.gridView1.Name = "gridView1";
+            // 
             // UCQLNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
+            this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.btnThem);
             this.Controls.Add(this.btnQuyen);
             this.Controls.Add(this.txtThongTin);
@@ -217,6 +240,9 @@
             this.Controls.Add(this.label2);
             this.Name = "UCQLNhanVien";
             this.Size = new System.Drawing.Size(928, 596);
+            this.Load += new System.EventHandler(this.UCQLNhanVien_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -237,5 +263,7 @@
         private System.Windows.Forms.RichTextBox txtThongTin;
         private Bunifu.Framework.UI.BunifuDropdown btnQuyen;
         private Bunifu.Framework.UI.BunifuFlatButton btnThem;
+        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
     }
 }

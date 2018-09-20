@@ -65,7 +65,7 @@ namespace FacebookAuto_v6
 
         private void UCGSNguoiDungFB_Load(object sender, EventArgs e)
         {
-           // ThuVienLamViecFacebook.UpdateStatusUserFB();
+            ThuVienLamViecFacebook.UpdateStatusUserFB();
             LoadNguoiDung();
         }
 
