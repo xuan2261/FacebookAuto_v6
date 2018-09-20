@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Net;
 using System.IO;
 using DTO;
+using DAO;
 
 namespace FacebookAuto_v6
 {
@@ -128,6 +129,7 @@ namespace FacebookAuto_v6
                     htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("DIV") + 10);
                     htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("DIV") + 15);
                     string kq = htmlcontent.Remove(htmlcontent.IndexOf("<"));
+                    lsNamePage.Add(kq);
                     htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("DIV class") + 15);
                     kq = kq + " : " + htmlcontent.Remove(htmlcontent.IndexOf("<"));
                     lskq.Add(kq);
@@ -230,18 +232,7 @@ namespace FacebookAuto_v6
 
         private void btnTichCuc1_Click(object sender, EventArgs e)
         {
-            // thêm thông tin trang vào sql
-            if(DrbtnLoaiTim.selectedIndex==0)
-            {
                 DanhGia(1);
-            }
-            //kết thúc thêm thông tin trang vào sql
-            //thêm thông tin vào nhóm sql
-            if(DrbtnLoaiTim.selectedIndex==1)
-            {
-
-            }
-            //kết thúc thêm thông tin vào nhóm sql
         }
         //đánh giá trang, nhóm
         private void DanhGia(int kt)
@@ -269,15 +260,21 @@ namespace FacebookAuto_v6
                     newgroup.Status = kt;
                     newgroup.TaiKhoan = taikhoan;
                     DAO.Group.Them(newgroup);
+
+                    DataTable dt = AccountFB.LoadDuLieuByNhanVien(taikhoan);
+                    for(int i=0;i<dt.Rows.Count;i++)
+                    {
+                        ThuVienLamViecFacebook.DangXuat();
+                        ThuVienLamViecFacebook.DNKhongLayTT(dt.Rows[i]["NumberIDAccount"].ToString());
+                        ThuVienLamViecFacebook.JoinGroup(lsIDPage[item.Index]);
+                    }
                 }
                 //xóa cái vừa đánh giá khỏi danh sách
                 lsIDPage.RemoveAt(item.Index);
                 lsNamePage.RemoveAt(item.Index);
                 lsLinkImgPage.RemoveAt(item.Index);
                 lsKetQuaSearch.Items.RemoveAt(item.Index);
-                lsKetQuaSearch.Items.RemoveAt(item.Index);
             }
-
             MessageBox.Show("Đã thêm vào danh sách");
         }
         

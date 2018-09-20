@@ -31,8 +31,27 @@ namespace FacebookAuto_v6
         }
         private void LoadListPage()
         {
+            ListTichCuc.Items.Clear();
+            ListTieuCuc.Items.Clear();
             pagetichcuc = Pages.LoadDuLieuByTrangThai("1",taikhoan);
             pagetieucuc = Pages.LoadDuLieuByTrangThai("-1",taikhoan);
+            ListTichCuc.Items.Add("Tất cả");
+            ListTieuCuc.Items.Add("Tất cả");
+            for (int i = 0; i < pagetichcuc.Rows.Count; i++)
+            {
+                ListTichCuc.Items.Add(pagetichcuc.Rows[i]["Name"].ToString());
+            }
+            for (int i = 0; i < pagetieucuc.Rows.Count; i++)
+            {
+                ListTieuCuc.Items.Add(pagetieucuc.Rows[i]["Name"].ToString());
+            }
+        }
+        private void LoadListGroup()
+        {
+            ListTichCuc.Items.Clear();
+            ListTieuCuc.Items.Clear();
+            pagetichcuc = Group.LoadDuLieuByTrangThai("1", taikhoan);
+            pagetieucuc = Group.LoadDuLieuByTrangThai("-1", taikhoan);
             ListTichCuc.Items.Add("Tất cả");
             ListTieuCuc.Items.Add("Tất cả");
             for (int i = 0; i < pagetichcuc.Rows.Count; i++)
@@ -244,7 +263,10 @@ namespace FacebookAuto_v6
         {
             if (ktloadlistpage == 0)
             {
-                LoadListPage();
+                if (DrbtnLoaiTim.selectedIndex == 0)
+                    LoadListPage();
+                else
+                    LoadListGroup();
                 ktloadlistpage = 1;
             }
         }
@@ -253,9 +275,17 @@ namespace FacebookAuto_v6
         {
             if (ktloadlistpage == 0)
             {
-                LoadListPage();
+                if (DrbtnLoaiTim.selectedIndex == 0)
+                    LoadListPage();
+                else
+                    LoadListGroup();
                 ktloadlistpage = 1;
             }
+        }
+
+        private void DrbtnLoaiTim_Enter(object sender, EventArgs e)
+        {
+            ktloadlistpage = 0;
         }
     }
 }

@@ -45,6 +45,7 @@
             this.repositoryItemProgressBar1 = new DevExpress.XtraEditors.Repository.RepositoryItemProgressBar();
             this.TrangThai = new DevExpress.XtraGrid.Columns.GridColumn();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.btnLoadLaiDL = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DataBaiCu)).BeginInit();
             this.MenuChuotPhai.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -53,14 +54,16 @@
             // 
             // DataBaiCu
             // 
+            this.DataBaiCu.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.DataBaiCu.ContextMenuStrip = this.MenuChuotPhai;
-            this.DataBaiCu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DataBaiCu.Location = new System.Drawing.Point(0, 0);
+            this.DataBaiCu.Location = new System.Drawing.Point(0, 26);
             this.DataBaiCu.MainView = this.gridView1;
             this.DataBaiCu.Name = "DataBaiCu";
             this.DataBaiCu.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemProgressBar1});
-            this.DataBaiCu.Size = new System.Drawing.Size(508, 499);
+            this.DataBaiCu.Size = new System.Drawing.Size(508, 473);
             this.DataBaiCu.TabIndex = 1;
             this.DataBaiCu.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -74,40 +77,40 @@
             this.TamDungTatCaToolStripMenuItem,
             this.xemChiTietToolStripMenuItem});
             this.MenuChuotPhai.Name = "MenuChuotPhai";
-            this.MenuChuotPhai.Size = new System.Drawing.Size(181, 136);
+            this.MenuChuotPhai.Size = new System.Drawing.Size(162, 114);
             // 
             // TiepTucToolStripMenuItem
             // 
             this.TiepTucToolStripMenuItem.Name = "TiepTucToolStripMenuItem";
-            this.TiepTucToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.TiepTucToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.TiepTucToolStripMenuItem.Text = "Tiếp tục";
             this.TiepTucToolStripMenuItem.Click += new System.EventHandler(this.tiếpTụcToolStripMenuItem_Click);
             // 
             // TamDungToolStripMenuItem
             // 
             this.TamDungToolStripMenuItem.Name = "TamDungToolStripMenuItem";
-            this.TamDungToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.TamDungToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.TamDungToolStripMenuItem.Text = "Tạm dừng";
             this.TamDungToolStripMenuItem.Click += new System.EventHandler(this.tạmDừngToolStripMenuItem_Click);
             // 
             // BatDauTatCaToolStripMenuItem
             // 
             this.BatDauTatCaToolStripMenuItem.Name = "BatDauTatCaToolStripMenuItem";
-            this.BatDauTatCaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.BatDauTatCaToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.BatDauTatCaToolStripMenuItem.Text = "Bắt đầu tất cả";
             this.BatDauTatCaToolStripMenuItem.Click += new System.EventHandler(this.BatDauTatCaToolStripMenuItem_Click);
             // 
             // TamDungTatCaToolStripMenuItem
             // 
             this.TamDungTatCaToolStripMenuItem.Name = "TamDungTatCaToolStripMenuItem";
-            this.TamDungTatCaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.TamDungTatCaToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.TamDungTatCaToolStripMenuItem.Text = "Tạm dừng tất cả";
             this.TamDungTatCaToolStripMenuItem.Click += new System.EventHandler(this.TamDungTatCaToolStripMenuItem_Click);
             // 
             // xemChiTietToolStripMenuItem
             // 
             this.xemChiTietToolStripMenuItem.Name = "xemChiTietToolStripMenuItem";
-            this.xemChiTietToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.xemChiTietToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.xemChiTietToolStripMenuItem.Text = "Xem chi tiết";
             this.xemChiTietToolStripMenuItem.Click += new System.EventHandler(this.xemChiTietToolStripMenuItem_Click);
             // 
@@ -214,11 +217,23 @@
             this.timer1.Interval = 10000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // btnLoadLaiDL
+            // 
+            this.btnLoadLaiDL.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnLoadLaiDL.Location = new System.Drawing.Point(0, 0);
+            this.btnLoadLaiDL.Name = "btnLoadLaiDL";
+            this.btnLoadLaiDL.Size = new System.Drawing.Size(508, 29);
+            this.btnLoadLaiDL.TabIndex = 2;
+            this.btnLoadLaiDL.Text = "Load lại dữ liệu";
+            this.btnLoadLaiDL.UseVisualStyleBackColor = true;
+            this.btnLoadLaiDL.Click += new System.EventHandler(this.btnLoadLaiDL_Click);
+            // 
             // UCTTHoatDongGD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
+            this.Controls.Add(this.btnLoadLaiDL);
             this.Controls.Add(this.DataBaiCu);
             this.Name = "UCTTHoatDongGD";
             this.Size = new System.Drawing.Size(508, 499);
@@ -248,5 +263,6 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ToolStripMenuItem xemChiTietToolStripMenuItem;
         private DevExpress.XtraGrid.Columns.GridColumn NoiDung;
+        private System.Windows.Forms.Button btnLoadLaiDL;
     }
 }

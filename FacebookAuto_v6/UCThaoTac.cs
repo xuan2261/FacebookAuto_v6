@@ -40,6 +40,7 @@ namespace FacebookAuto_v6
             //lưu thông tin bài viết
             WebView.Navigate(urlfacebook+txtIDBaiViet.Text);
             tblPost p = ThuVienLamViecFacebook.LayThongTinPost(txtIDBaiViet.Text);
+            p.TimePost = DateTime.Now;
             Post.Them(p);
             //kết thúc lưu luôn thông tin bài viết 
             ttbl.idpost = txtIDBaiViet.Text;

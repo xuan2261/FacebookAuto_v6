@@ -92,5 +92,10 @@ namespace FacebookAuto_v6
             }
             LoadDuLieu();
         }
+
+        private void btnLoadLaiDL_Click(object sender, EventArgs e)
+        {
+            LoadDuLieu();
+        }
     }
 }

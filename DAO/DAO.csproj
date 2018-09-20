@@ -45,6 +45,7 @@
     <Compile Include="Admin.cs" />
     <Compile Include="CommentPost.cs" />
     <Compile Include="DataProvider.cs" />
+    <Compile Include="Group.cs" />
     <Compile Include="HoatDongGanDay.cs" />
     <Compile Include="LikePost.cs" />
     <Compile Include="Pages.cs" />
