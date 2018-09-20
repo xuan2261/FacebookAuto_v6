@@ -17,6 +17,8 @@ namespace FacebookAuto_v6
         DataTable pagetieucuc = new DataTable();
         List<string> lsIDPage = new List<string>();
         string url = "https://mobile.facebook.com/";
+        public string taikhoan;
+        int ktloadlistpage = 0;
         public UCGSDuyetBaiViet()
         {
             InitializeComponent();
@@ -26,12 +28,11 @@ namespace FacebookAuto_v6
 
         private void UCGSDuyetBaiViet_Load(object sender, EventArgs e)
         {
-            LoadListPage();
         }
         private void LoadListPage()
         {
-            pagetichcuc = Pages.LoadDuLieuByTrangThai("1");
-            pagetieucuc = Pages.LoadDuLieuByTrangThai("-1");
+            pagetichcuc = Pages.LoadDuLieuByTrangThai("1",taikhoan);
+            pagetieucuc = Pages.LoadDuLieuByTrangThai("-1",taikhoan);
             ListTichCuc.Items.Add("Tất cả");
             ListTieuCuc.Items.Add("Tất cả");
             for (int i = 0; i < pagetichcuc.Rows.Count; i++)
@@ -236,6 +237,24 @@ namespace FacebookAuto_v6
             else
             {
                 url = "https://mobile.facebook.com/";
+            }
+        }
+
+        private void ListTichCuc_Enter(object sender, EventArgs e)
+        {
+            if (ktloadlistpage == 0)
+            {
+                LoadListPage();
+                ktloadlistpage = 1;
+            }
+        }
+
+        private void ListTieuCuc_Enter(object sender, EventArgs e)
+        {
+            if (ktloadlistpage == 0)
+            {
+                LoadListPage();
+                ktloadlistpage = 1;
             }
         }
     }

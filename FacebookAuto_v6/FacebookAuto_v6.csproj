@@ -196,6 +196,12 @@
     <Compile Include="UCTTKiemDuyet.Designer.cs">
       <DependentUpon>UCTTKiemDuyet.cs</DependentUpon>
     </Compile>
+    <Compile Include="UCTTKiemDuyetGanDay.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCTTKiemDuyetGanDay.Designer.cs">
+      <DependentUpon>UCTTKiemDuyetGanDay.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmAutoFacebook.resx">
       <DependentUpon>frmAutoFacebook.cs</DependentUpon>
     </EmbeddedResource>
@@ -251,6 +257,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UCTTKiemDuyet.resx">
       <DependentUpon>UCTTKiemDuyet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCTTKiemDuyetGanDay.resx">
+      <DependentUpon>UCTTKiemDuyetGanDay.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="Firefox\omni.ja" />

@@ -21,11 +21,11 @@ namespace DTO
         [Column(TypeName = "ntext")]
         public string Noidung { get; set; }
 
+        [Key]
+        [Column(Order = 2)]
         [StringLength(50)]
         public string TaiKhoan { get; set; }
 
         public virtual tblAdmin tblAdmin { get; set; }
-
-        public virtual tblWork tblWork { get; set; }
     }
 }

@@ -20,5 +20,14 @@ namespace DAO
             DataProvider.DongKetNoi(con);
             return dt;
         }
+
+        public static DataTable LoadKiemDuyetGanDay()
+        {
+            string sTruyVan = "select* from tblPost";
+            con = DataProvider.KetNoi();
+            DataTable dt = DataProvider.LayDataTable(sTruyVan, con);
+            DataProvider.DongKetNoi(con);
+            return dt;
+        }
     }
 }

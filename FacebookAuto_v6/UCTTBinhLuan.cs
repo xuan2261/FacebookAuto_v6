@@ -21,6 +21,8 @@ namespace FacebookAuto_v6
         List<string> idTaiKhoanBinhLuan = new List<string>();
         Dictionary<string, Thread> danhsach = new Dictionary<string, Thread>();
         public string taikhoan;
+        public string danhgia = "Tích cực";
+        public string timepost;
         int loadlist = 0;
         public UCTTBinhLuan()
         {
@@ -46,6 +48,14 @@ namespace FacebookAuto_v6
         }
         private void btnBatDauBinhLuan_Click(object sender, EventArgs e)
         {
+            //cập nhật lại thông tin bài viết
+            tblPost p = new tblPost();
+            p.IDPost = idpost;
+            p.TimePost = DateTime.Parse(timepost);
+            if (danhgia == "Tích cực") p.Status = "Tích cực";
+            else p.Status = "Tiêu cực";
+            Post.Sua(p);
+            //kết thúc cập nhật thông tin bài viết
             //lưu các thông số bình luận lại
             //lưu tài khoản bình luận lại vào bảng workaccount
             tblWorkAccount wa = new tblWorkAccount();
@@ -79,8 +89,9 @@ namespace FacebookAuto_v6
             Thread tudong = new Thread(r.DoWork);
             tudong.SetApartmentState(ApartmentState.STA);
             tudong.Start();
+            // chỗ này chưa đc vì chưa thêm đc vào danh sách luồng đang chạy chung
             danhsach.Add(idpost, tudong);
-            Work.updatetrangthai(idpost, "Đang bình luận");
+            Work.updatetrangthai(idpost, "Đang bình luận",taikhoan);
             MessageBox.Show("Đã thêm công việc thành công");
         }
         private void UCTTBinhLuan_Load(object sender, EventArgs e)
@@ -150,7 +161,8 @@ namespace FacebookAuto_v6
                     idTaiKhoanBinhLuan.Add(tieucuc.Rows[int.Parse(i) - 1]["NumberIDAccount"].ToString());
             }
         }
-        private void lsCheckTKTichCuc_MouseDown(object sender, MouseEventArgs e)
+
+        private void lsCheckTKTichCuc_Enter(object sender, EventArgs e)
         {
             if (loadlist == 0)
             {
@@ -159,7 +171,7 @@ namespace FacebookAuto_v6
             }
         }
 
-        private void lsCheckTKTieuCuc_MouseDown(object sender, MouseEventArgs e)
+        private void lsCheckTKTieuCuc_Enter(object sender, EventArgs e)
         {
             if (loadlist == 0)
             {

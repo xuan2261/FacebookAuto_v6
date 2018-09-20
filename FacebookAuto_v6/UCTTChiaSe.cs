@@ -50,6 +50,8 @@ namespace FacebookAuto_v6
 
         private void btnBatDauChiaSe_Click(object sender, EventArgs e)
         {
+            // cập nhật thông tin bài viết
+            //kết thúc cập nhật thông tin bài viết
             for (int i = 0; i < idTaiKhoanCS.Count; i++)
             {
                 ThuVienLamViecFacebook.DangXuat();

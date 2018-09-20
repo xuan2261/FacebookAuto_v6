@@ -20,9 +20,9 @@ namespace DAO
             DataProvider.DongKetNoi(con);
             return dt;
         }
-        public static DataTable LoadDuLieuByTrangThai(string trangthai)
+        public static DataTable LoadDuLieuByTrangThai(string trangthai,string taikhoan)
         {
-            string sTruyVan = "select * from tblPage where Status='"+trangthai+"'" ;
+            string sTruyVan = "select * from tblPage where Status='"+trangthai+ "' and TaiKhoan=N'"+taikhoan+"'";
             con = DataProvider.KetNoi();
             DataTable dt = DataProvider.LayDataTable(sTruyVan, con);
             DataProvider.DongKetNoi(con);
@@ -33,7 +33,7 @@ namespace DAO
         {
             try
             {
-                string sTruyVan = string.Format("Insert into tblPage(IDPage,NumberPage,Name,ImgLink,Status,Description) values('{0}',N'{1}',N'{2}',N'{3}',N'{4}',N'{5}')", page.IDPage, page.NumberPage, page.Name, page.ImgLink, page.Status, page.Description);
+                string sTruyVan = string.Format("Insert into tblPage(IDPage,NumberPage,Name,ImgLink,Status,Description,TaiKhoan) values('{0}',N'{1}',N'{2}',N'{3}',N'{4}',N'{5}',N'{6}')", page.IDPage, page.NumberPage, page.Name, page.ImgLink, page.Status, page.Description,page.TaiKhoan);
                 con = DataProvider.KetNoi();
                 DataProvider.ThucThiTruyVanNonQuery(sTruyVan, con);
                 DataProvider.DongKetNoi(con);

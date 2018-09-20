@@ -27,6 +27,36 @@ namespace DTO
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<tblAdmin>()
+                .HasMany(e => e.tblAccountFBs)
+                .WithRequired(e => e.tblAdmin)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<tblAdmin>()
+                .HasMany(e => e.tblGroups)
+                .WithRequired(e => e.tblAdmin)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<tblAdmin>()
+                .HasMany(e => e.tblPages)
+                .WithRequired(e => e.tblAdmin)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<tblAdmin>()
+                .HasMany(e => e.tblWorks)
+                .WithRequired(e => e.tblAdmin)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<tblAdmin>()
+                .HasMany(e => e.tblWorkAccounts)
+                .WithRequired(e => e.tblAdmin)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<tblAdmin>()
+                .HasMany(e => e.tblWorkComments)
+                .WithRequired(e => e.tblAdmin)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<tblPost>()
                 .HasMany(e => e.tblLikePosts)
                 .WithRequired(e => e.tblPost)
@@ -36,16 +66,6 @@ namespace DTO
                 .HasMany(e => e.tblLikePosts)
                 .WithRequired(e => e.tblUserFB)
                 .HasForeignKey(e => e.IDUserFB)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<tblWork>()
-                .HasMany(e => e.tblWorkAccounts)
-                .WithRequired(e => e.tblWork)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<tblWork>()
-                .HasMany(e => e.tblWorkComments)
-                .WithRequired(e => e.tblWork)
                 .WillCascadeOnDelete(false);
         }
     }

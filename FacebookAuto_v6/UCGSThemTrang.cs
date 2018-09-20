@@ -21,6 +21,7 @@ namespace FacebookAuto_v6
         List<string> danhsachtichcuc = new List<string>();
         List<string> danhsachtieucuc = new List<string>();
         WebBrowser web1 = new WebBrowser();
+        public string taikhoan;
         string url = "https://mobile.facebook.com/";
         public UCGSThemTrang()
         {
@@ -249,6 +250,7 @@ namespace FacebookAuto_v6
                     pg.Name = lsNamePage[item.Index];
                     pg.ImgLink = lsLinkImgPage[item.Index];
                     pg.Status = kt;
+                    pg.TaiKhoan = taikhoan;
                     DAO.Pages.Them(pg);
                     //xóa cái vừa đánh giá khỏi danh sách
                     lsIDPage.RemoveAt(item.Index);

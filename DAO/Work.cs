@@ -20,6 +20,14 @@ namespace DAO
             DataProvider.DongKetNoi(con);
             return dt;
         }
+        public static DataTable LoadDuLieuByTaiKhoan(string taikhoan)
+        {
+            string sTruyVan = "Select * from tblWork TaiKhoan=N'"+taikhoan+"'";
+            con = DataProvider.KetNoi();
+            DataTable dt = DataProvider.LayDataTable(sTruyVan, con);
+            DataProvider.DongKetNoi(con);
+            return dt;
+        }
         public static string layDuLieuTienDo(string idpost)
         {
             string sTruyVan = "select TienDo from tblWork where IDPost='"+idpost+"'";
@@ -54,12 +62,12 @@ namespace DAO
             }
         }
 
-        public static bool updatetrangthai(string idpost,string trangthai)
+        public static bool updatetrangthai(string idpost,string trangthai,string taikhoan)
         {
             try
             {
                 con = DataProvider.KetNoi();
-                string sTruyVan = string.Format("Update tblWork set TrangThai=N'{0}' where IDPost = '{1}'",trangthai , idpost);
+                string sTruyVan = string.Format("Update tblWork set TrangThai=N'{0}' where IDPost = '{1}' and TaiKhoan=N'{2}'",trangthai , idpost,taikhoan);
                 DataProvider.ThucThiTruyVanNonQuery(sTruyVan, con);
                 DataProvider.DongKetNoi(con);
                 return true;
@@ -69,12 +77,12 @@ namespace DAO
                 return false;
             }
         }
-        public static bool updatetrangthaitamdung()
+        public static bool updatetrangthaitamdung(string taikhoan)
         {
             try
             {
                 con = DataProvider.KetNoi();
-                string sTruyVan = string.Format("update tblWork set TrangThai=N'Tạm dừng' where TrangThai=N'Đang bình luận'");
+                string sTruyVan = string.Format("update tblWork set TrangThai=N'Tạm dừng' where TrangThai=N'Đang bình luận' and TaiKhoan=N'"+taikhoan+"'");
                 DataProvider.ThucThiTruyVanNonQuery(sTruyVan, con);
                 DataProvider.DongKetNoi(con);
                 return true;
@@ -85,12 +93,12 @@ namespace DAO
             }
         }
 
-        public static bool updatetiendo(string idpost)
+        public static bool updatetiendo(string idpost,string taikhoan)
         {
             try
             {
                 con = DataProvider.KetNoi();
-                string sTruyVan = string.Format("update tblWork set TienDo+=1 where IDPost='{0}'",idpost);
+                string sTruyVan = string.Format("update tblWork set TienDo+=1 where IDPost='{0}' and TaiKhoan=N'{1}'",idpost,taikhoan);
                 DataProvider.ThucThiTruyVanNonQuery(sTruyVan, con);
                 DataProvider.DongKetNoi(con);
                 return true;
@@ -125,12 +133,12 @@ namespace DAO
                 return false;
             }
         }
-        public static bool Xoa(string idpost)
+        public static bool Xoa(string idpost,string taikhoan)
         {
             try
             {
                 con = DataProvider.KetNoi();
-                string sTruyVan = string.Format("Delete From tblWork where IDPost = '{0}'", idpost);
+                string sTruyVan = string.Format("Delete From tblWork where IDPost = '{0}' and TaiKhoan=N'{1}'", idpost,taikhoan);
                 DataProvider.ThucThiTruyVanNonQuery(sTruyVan, con);
                 DataProvider.DongKetNoi(con);
                 return true;

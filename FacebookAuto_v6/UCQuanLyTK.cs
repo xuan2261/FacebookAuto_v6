@@ -51,7 +51,7 @@ namespace FacebookAuto_v6
         private void LoadData()
         {
             DataTable dt = new DataTable();
-            dt = AccountFB.LoadDuLieu();
+            dt = AccountFB.LoadDuLieuByNhanVien(taikhoan);
             gridControl1.DataSource = dt;
         }
 

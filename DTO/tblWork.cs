@@ -9,17 +9,13 @@ namespace DTO
     [Table("tblWork")]
     public partial class tblWork
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tblWork()
-        {
-            tblWorkAccounts = new HashSet<tblWorkAccount>();
-            tblWorkComments = new HashSet<tblWorkComment>();
-        }
-
         [Key]
+        [Column(Order = 0)]
         [StringLength(50)]
         public string IDPost { get; set; }
 
+        [Key]
+        [Column(Order = 1)]
         [StringLength(50)]
         public string TaiKhoan { get; set; }
 
@@ -33,11 +29,5 @@ namespace DTO
         public string TrangThai { get; set; }
 
         public virtual tblAdmin tblAdmin { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblWorkAccount> tblWorkAccounts { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblWorkComment> tblWorkComments { get; set; }
     }
 }

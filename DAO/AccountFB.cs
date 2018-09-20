@@ -38,7 +38,7 @@ namespace DAO
         }
         public static DataTable LoadDuLieuByNhanVien(string nhanvien)
         {
-            string sTruyVan = "select * from tblAccountFB where TaiKhoan=N'"+nhanvien+"'";
+            string sTruyVan = "select Email,NumberIDAccount,Name,Sex,Birthday,AddressNow,Phone,Status from tblAccountFB where TaiKhoan=N'" + nhanvien+"'";
             con = DataProvider.KetNoi();
             DataTable dt = DataProvider.LayDataTable(sTruyVan, con);
             DataProvider.DongKetNoi(con);

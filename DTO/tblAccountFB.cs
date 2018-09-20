@@ -10,16 +10,18 @@ namespace DTO
     public partial class tblAccountFB
     {
         [Key]
+        [Column(Order = 0)]
         [StringLength(50)]
         public string Email { get; set; }
 
         [StringLength(500)]
         public string Password { get; set; }
 
+        [Key]
+        [Column(Order = 1)]
         [StringLength(50)]
         public string TaiKhoan { get; set; }
 
-        [Required]
         [StringLength(100)]
         public string LinkAccount { get; set; }
 

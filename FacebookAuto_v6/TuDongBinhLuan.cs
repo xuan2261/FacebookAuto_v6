@@ -56,7 +56,7 @@ namespace FacebookAuto_v6
                 ThuVienLamViecFacebook.BinhLuan(idpost, noidungcomment, idaccountbl, fb_dtsg);
                 //thay đổi trạng thái của hoạt động
 
-                Work.updatetiendo(idpost);
+                Work.updatetiendo(idpost,taikhoan);
                 try
                 {
                     getreload();

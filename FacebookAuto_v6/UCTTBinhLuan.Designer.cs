@@ -33,6 +33,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtNoiDungBinhLuan = new System.Windows.Forms.RichTextBox();
             this.panelphosisaduoibinhluan = new System.Windows.Forms.Panel();
+            this.lsCheckTKTieuCuc = new FacebookAuto_v5.ListCheckBoxDropDown();
+            this.lsCheckTKTichCuc = new FacebookAuto_v5.ListCheckBoxDropDown();
             this.label11 = new System.Windows.Forms.Label();
             this.btnBatDauBinhLuan = new Bunifu.Framework.UI.BunifuFlatButton();
             this.numSoBL = new System.Windows.Forms.NumericUpDown();
@@ -42,8 +44,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.btnThem = new Bunifu.Framework.UI.BunifuImageButton();
-            this.lsCheckTKTieuCuc = new FacebookAuto_v5.ListCheckBoxDropDown();
-            this.lsCheckTKTichCuc = new FacebookAuto_v5.ListCheckBoxDropDown();
             this.panelphosisaduoibinhluan.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numSoBL)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numKhoangTime)).BeginInit();
@@ -109,6 +109,40 @@
             this.panelphosisaduoibinhluan.Name = "panelphosisaduoibinhluan";
             this.panelphosisaduoibinhluan.Size = new System.Drawing.Size(526, 246);
             this.panelphosisaduoibinhluan.TabIndex = 17;
+            // 
+            // lsCheckTKTieuCuc
+            // 
+            this.lsCheckTKTieuCuc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lsCheckTKTieuCuc.CheckOnClick = true;
+            this.lsCheckTKTieuCuc.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.lsCheckTKTieuCuc.DropDownHeight = 1;
+            this.lsCheckTKTieuCuc.FormattingEnabled = true;
+            this.lsCheckTKTieuCuc.IntegralHeight = false;
+            this.lsCheckTKTieuCuc.Location = new System.Drawing.Point(137, 80);
+            this.lsCheckTKTieuCuc.Name = "lsCheckTKTieuCuc";
+            this.lsCheckTKTieuCuc.Size = new System.Drawing.Size(371, 21);
+            this.lsCheckTKTieuCuc.TabIndex = 21;
+            this.lsCheckTKTieuCuc.ValueSeparator = ", ";
+            this.lsCheckTKTieuCuc.DropDownClosed += new System.EventHandler(this.lsCheckTKTieuCuc_DropDownClosed);
+            this.lsCheckTKTieuCuc.Enter += new System.EventHandler(this.lsCheckTKTieuCuc_Enter);
+            // 
+            // lsCheckTKTichCuc
+            // 
+            this.lsCheckTKTichCuc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lsCheckTKTichCuc.CheckOnClick = true;
+            this.lsCheckTKTichCuc.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.lsCheckTKTichCuc.DropDownHeight = 1;
+            this.lsCheckTKTichCuc.FormattingEnabled = true;
+            this.lsCheckTKTichCuc.IntegralHeight = false;
+            this.lsCheckTKTichCuc.Location = new System.Drawing.Point(137, 26);
+            this.lsCheckTKTichCuc.Name = "lsCheckTKTichCuc";
+            this.lsCheckTKTichCuc.Size = new System.Drawing.Size(371, 21);
+            this.lsCheckTKTichCuc.TabIndex = 20;
+            this.lsCheckTKTichCuc.ValueSeparator = ", ";
+            this.lsCheckTKTichCuc.DropDownClosed += new System.EventHandler(this.lsCheckTKTichCuc_DropDownClosed);
+            this.lsCheckTKTichCuc.Enter += new System.EventHandler(this.lsCheckTKTichCuc_Enter);
             // 
             // label11
             // 
@@ -252,40 +286,6 @@
             this.btnThem.TabStop = false;
             this.btnThem.Zoom = 10;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
-            // 
-            // lsCheckTKTieuCuc
-            // 
-            this.lsCheckTKTieuCuc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lsCheckTKTieuCuc.CheckOnClick = true;
-            this.lsCheckTKTieuCuc.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.lsCheckTKTieuCuc.DropDownHeight = 1;
-            this.lsCheckTKTieuCuc.FormattingEnabled = true;
-            this.lsCheckTKTieuCuc.IntegralHeight = false;
-            this.lsCheckTKTieuCuc.Location = new System.Drawing.Point(137, 80);
-            this.lsCheckTKTieuCuc.Name = "lsCheckTKTieuCuc";
-            this.lsCheckTKTieuCuc.Size = new System.Drawing.Size(371, 21);
-            this.lsCheckTKTieuCuc.TabIndex = 21;
-            this.lsCheckTKTieuCuc.ValueSeparator = ", ";
-            this.lsCheckTKTieuCuc.DropDownClosed += new System.EventHandler(this.lsCheckTKTieuCuc_DropDownClosed);
-            this.lsCheckTKTieuCuc.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lsCheckTKTieuCuc_MouseDown);
-            // 
-            // lsCheckTKTichCuc
-            // 
-            this.lsCheckTKTichCuc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lsCheckTKTichCuc.CheckOnClick = true;
-            this.lsCheckTKTichCuc.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.lsCheckTKTichCuc.DropDownHeight = 1;
-            this.lsCheckTKTichCuc.FormattingEnabled = true;
-            this.lsCheckTKTichCuc.IntegralHeight = false;
-            this.lsCheckTKTichCuc.Location = new System.Drawing.Point(137, 26);
-            this.lsCheckTKTichCuc.Name = "lsCheckTKTichCuc";
-            this.lsCheckTKTichCuc.Size = new System.Drawing.Size(371, 21);
-            this.lsCheckTKTichCuc.TabIndex = 20;
-            this.lsCheckTKTichCuc.ValueSeparator = ", ";
-            this.lsCheckTKTichCuc.DropDownClosed += new System.EventHandler(this.lsCheckTKTichCuc_DropDownClosed);
-            this.lsCheckTKTichCuc.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lsCheckTKTichCuc_MouseDown);
             // 
             // UCTTBinhLuan
             // 

@@ -37,7 +37,7 @@ namespace DTO
         public int? CountComment { get; set; }
 
         [Column(TypeName = "date")]
-        public DateTime TimePost { get; set; }
+        public DateTime? TimePost { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblCommentPost> tblCommentPosts { get; set; }
