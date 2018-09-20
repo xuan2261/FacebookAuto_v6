@@ -10,8 +10,14 @@ namespace DTO
     public partial class tblWork
     {
         [Key]
+        [Column(Order = 0)]
         [StringLength(50)]
         public string IDPost { get; set; }
+
+        [Key]
+        [Column(Order = 1)]
+        [StringLength(50)]
+        public string TaiKhoan { get; set; }
 
         public int? KhoangTime { get; set; }
 
@@ -21,5 +27,7 @@ namespace DTO
 
         [StringLength(50)]
         public string TrangThai { get; set; }
+
+        public virtual tblAdmin tblAdmin { get; set; }
     }
 }

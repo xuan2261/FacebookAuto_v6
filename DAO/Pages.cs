@@ -14,15 +14,15 @@ namespace DAO
         private static SqlConnection con;
         public static DataTable LoadDuLieu()
         {
-            string sTruyVan = "Select * from tblPages";
+            string sTruyVan = "Select * from tblPage";
             con = DataProvider.KetNoi();
             DataTable dt = DataProvider.LayDataTable(sTruyVan, con);
             DataProvider.DongKetNoi(con);
             return dt;
         }
-        public static DataTable LoadDuLieuByID(string id)
+        public static DataTable LoadDuLieuByTrangThai(string trangthai,string taikhoan)
         {
-            string sTruyVan = "select * from tblPages where IDPage=" + id;
+            string sTruyVan = "select * from tblPage where Status='"+trangthai+ "' and TaiKhoan=N'"+taikhoan+"'";
             con = DataProvider.KetNoi();
             DataTable dt = DataProvider.LayDataTable(sTruyVan, con);
             DataProvider.DongKetNoi(con);
@@ -33,7 +33,7 @@ namespace DAO
         {
             try
             {
-                string sTruyVan = string.Format("Insert into tblPages(IDPage,NumberPage,Name,ImgLink,Status,Description) values('{0}',N'{1}','{2}',N'{3}',N'{4}',N'{5}')", page.IDPage, page.NumberPage, page.Name, page.ImgLink, page.Status, page.Description);
+                string sTruyVan = string.Format("Insert into tblPage(IDPage,NumberPage,Name,ImgLink,Status,Description,TaiKhoan) values('{0}',N'{1}',N'{2}',N'{3}',N'{4}',N'{5}',N'{6}')", page.IDPage, page.NumberPage, page.Name, page.ImgLink, page.Status, page.Description,page.TaiKhoan);
                 con = DataProvider.KetNoi();
                 DataProvider.ThucThiTruyVanNonQuery(sTruyVan, con);
                 DataProvider.DongKetNoi(con);
@@ -50,7 +50,7 @@ namespace DAO
             try
             {
                 con = DataProvider.KetNoi();
-                string sTruyVan = string.Format("Update tblPages set Status='{0}' where IDPage = '{1}'", page.Status, page.IDPage);
+                string sTruyVan = string.Format("Update tblPage set Status='{0}' where IDPage = '{1}'", page.Status, page.IDPage);
                 DataProvider.ThucThiTruyVanNonQuery(sTruyVan, con);
                 DataProvider.DongKetNoi(con);
                 return true;
@@ -65,7 +65,7 @@ namespace DAO
             try
             {
                 con = DataProvider.KetNoi();
-                string sTruyVan = string.Format("Update tblPages set Status='{0}' where IDPage = '{1}'", Status, IDPage);
+                string sTruyVan = string.Format("Update tblPage set Status='{0}' where IDPage = '{1}'", Status, IDPage);
                 DataProvider.ThucThiTruyVanNonQuery(sTruyVan, con);
                 DataProvider.DongKetNoi(con);
                 return true;
@@ -81,7 +81,7 @@ namespace DAO
             try
             {
                 con = DataProvider.KetNoi();
-                string sTruyVan = string.Format("Delete From tblPages where IDPage = '{0}'", IDPage);
+                string sTruyVan = string.Format("Delete From tblPage where IDPage = '{0}'", IDPage);
                 DataProvider.ThucThiTruyVanNonQuery(sTruyVan, con);
                 DataProvider.DongKetNoi(con);
                 return true;

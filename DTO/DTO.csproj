@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="dbFacebookAuto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sysdiagram.cs" />
     <Compile Include="tblAccountFB.cs" />
     <Compile Include="tblAdmin.cs" />
     <Compile Include="tblCommentPost.cs" />

@@ -60,6 +60,7 @@
       <HintPath>D:\STUDY\Bunifu_UI_v1.5.3.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.BonusSkins.v18.1" />
+    <Reference Include="DevExpress.Charts.v18.1.Core, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Data.v18.1" />
     <Reference Include="DevExpress.Images.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Office.v18.1.Core, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -69,6 +70,9 @@
     <Reference Include="DevExpress.Utils.v18.1" />
     <Reference Include="DevExpress.XtraBars.v18.1" />
     <Reference Include="DevExpress.Sparkline.v18.1.Core" />
+    <Reference Include="DevExpress.XtraCharts.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v18.1.UI, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v18.1.Wizard, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraEditors.v18.1" />
     <Reference Include="DevExpress.XtraGrid.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraPrinting.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -84,6 +88,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Management" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -119,11 +124,29 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ThuVienLamViecFacebook.cs" />
     <Compile Include="TuDongBinhLuan.cs" />
+    <Compile Include="UCGSDuyetBaiViet.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCGSDuyetBaiViet.Designer.cs">
+      <DependentUpon>UCGSDuyetBaiViet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCGSNguoiDungFB.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCGSNguoiDungFB.Designer.cs">
+      <DependentUpon>UCGSNguoiDungFB.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCGSThemTrang.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UCGSThemTrang.Designer.cs">
       <DependentUpon>UCGSThemTrang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCQLNhanVien.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCQLNhanVien.Designer.cs">
+      <DependentUpon>UCQLNhanVien.cs</DependentUpon>
     </Compile>
     <Compile Include="UCQuanLyTK.cs">
       <SubType>UserControl</SubType>
@@ -136,6 +159,12 @@
     </Compile>
     <Compile Include="UCThaoTac.Designer.cs">
       <DependentUpon>UCThaoTac.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCTKTrang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCTKTrang.Designer.cs">
+      <DependentUpon>UCTKTrang.cs</DependentUpon>
     </Compile>
     <Compile Include="UCTTBinhLuan.cs">
       <SubType>UserControl</SubType>
@@ -167,6 +196,12 @@
     <Compile Include="UCTTKiemDuyet.Designer.cs">
       <DependentUpon>UCTTKiemDuyet.cs</DependentUpon>
     </Compile>
+    <Compile Include="UCTTKiemDuyetGanDay.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCTTKiemDuyetGanDay.Designer.cs">
+      <DependentUpon>UCTTKiemDuyetGanDay.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmAutoFacebook.resx">
       <DependentUpon>frmAutoFacebook.cs</DependentUpon>
     </EmbeddedResource>
@@ -187,14 +222,26 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UCGSDuyetBaiViet.resx">
+      <DependentUpon>UCGSDuyetBaiViet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCGSNguoiDungFB.resx">
+      <DependentUpon>UCGSNguoiDungFB.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCGSThemTrang.resx">
       <DependentUpon>UCGSThemTrang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCQLNhanVien.resx">
+      <DependentUpon>UCQLNhanVien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCQuanLyTK.resx">
       <DependentUpon>UCQuanLyTK.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCThaoTac.resx">
       <DependentUpon>UCThaoTac.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCTKTrang.resx">
+      <DependentUpon>UCTKTrang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCTTBinhLuan.resx">
       <DependentUpon>UCTTBinhLuan.cs</DependentUpon>
@@ -210,6 +257,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UCTTKiemDuyet.resx">
       <DependentUpon>UCTTKiemDuyet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCTTKiemDuyetGanDay.resx">
+      <DependentUpon>UCTTKiemDuyetGanDay.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="Firefox\omni.ja" />
@@ -244,6 +294,16 @@
     <Content Include="Firefox\sandboxbroker.dll" />
     <Content Include="Firefox\softokn3.dll" />
     <Content Include="Firefox\xul.dll" />
+    <None Include="Resources\icons8-update-user-80.png" />
+    <None Include="Resources\icons8-good-quality-64.png" />
+    <None Include="Resources\icons8-facebook-like-481.png" />
+    <None Include="Resources\icons8-speech-bubble-64.png" />
+    <None Include="Resources\icons8-facebook-like-48.png" />
+    <None Include="Resources\icons8-search-641.png" />
+    <None Include="Resources\icons8-share-50.png" />
+    <None Include="Resources\icons8-ball-point-pen-64 %281%29.png" />
+    <None Include="Resources\icons8-ball-point-pen-64.png" />
+    <None Include="Resources\icons8-plus-64.png" />
     <None Include="Resources\icons8-checkmark-64 %281%29.png" />
     <None Include="Resources\icons8-save-as-48.png" />
     <None Include="Resources\icons8-iris-scan-48.png" />

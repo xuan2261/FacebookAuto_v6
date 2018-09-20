@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.DataBaiCu = new DevExpress.XtraGrid.GridControl();
             this.MenuChuotPhai = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.TiepTucToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,30 +45,25 @@
             this.repositoryItemProgressBar1 = new DevExpress.XtraEditors.Repository.RepositoryItemProgressBar();
             this.TrangThai = new DevExpress.XtraGrid.Columns.GridColumn();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.btnLoadLaiDL = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DataBaiCu)).BeginInit();
             this.MenuChuotPhai.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar1)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel1
-            // 
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(508, 109);
-            this.panel1.TabIndex = 0;
-            // 
             // DataBaiCu
             // 
+            this.DataBaiCu.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.DataBaiCu.ContextMenuStrip = this.MenuChuotPhai;
-            this.DataBaiCu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DataBaiCu.Location = new System.Drawing.Point(0, 109);
+            this.DataBaiCu.Location = new System.Drawing.Point(0, 26);
             this.DataBaiCu.MainView = this.gridView1;
             this.DataBaiCu.Name = "DataBaiCu";
             this.DataBaiCu.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemProgressBar1});
-            this.DataBaiCu.Size = new System.Drawing.Size(508, 390);
+            this.DataBaiCu.Size = new System.Drawing.Size(508, 473);
             this.DataBaiCu.TabIndex = 1;
             this.DataBaiCu.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -104,12 +98,14 @@
             this.BatDauTatCaToolStripMenuItem.Name = "BatDauTatCaToolStripMenuItem";
             this.BatDauTatCaToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.BatDauTatCaToolStripMenuItem.Text = "Bắt đầu tất cả";
+            this.BatDauTatCaToolStripMenuItem.Click += new System.EventHandler(this.BatDauTatCaToolStripMenuItem_Click);
             // 
             // TamDungTatCaToolStripMenuItem
             // 
             this.TamDungTatCaToolStripMenuItem.Name = "TamDungTatCaToolStripMenuItem";
             this.TamDungTatCaToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.TamDungTatCaToolStripMenuItem.Text = "Tạm dừng tất cả";
+            this.TamDungTatCaToolStripMenuItem.Click += new System.EventHandler(this.TamDungTatCaToolStripMenuItem_Click);
             // 
             // xemChiTietToolStripMenuItem
             // 
@@ -143,6 +139,11 @@
             this.gridView1.GridControl = this.DataBaiCu;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.ReadOnly = true;
+            this.gridView1.OptionsCustomization.CustomizationFormSearchBoxVisible = true;
+            this.gridView1.OptionsFind.AlwaysVisible = true;
+            this.gridView1.OptionsFind.FindMode = DevExpress.XtraEditors.FindMode.Always;
+            this.gridView1.OptionsFind.FindNullPrompt = "Nhập từ khóa tìm kiếm dữ liệu bất kì ............";
+            this.gridView1.OptionsFind.SearchInPreview = true;
             // 
             // IDPost
             // 
@@ -216,13 +217,24 @@
             this.timer1.Interval = 10000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // btnLoadLaiDL
+            // 
+            this.btnLoadLaiDL.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnLoadLaiDL.Location = new System.Drawing.Point(0, 0);
+            this.btnLoadLaiDL.Name = "btnLoadLaiDL";
+            this.btnLoadLaiDL.Size = new System.Drawing.Size(508, 29);
+            this.btnLoadLaiDL.TabIndex = 2;
+            this.btnLoadLaiDL.Text = "Load lại dữ liệu";
+            this.btnLoadLaiDL.UseVisualStyleBackColor = true;
+            this.btnLoadLaiDL.Click += new System.EventHandler(this.btnLoadLaiDL_Click);
+            // 
             // UCTTHoatDongGD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
+            this.Controls.Add(this.btnLoadLaiDL);
             this.Controls.Add(this.DataBaiCu);
-            this.Controls.Add(this.panel1);
             this.Name = "UCTTHoatDongGD";
             this.Size = new System.Drawing.Size(508, 499);
             this.Load += new System.EventHandler(this.UCTTHoatDongGD_Load);
@@ -235,8 +247,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel1;
         private DevExpress.XtraGrid.GridControl DataBaiCu;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Columns.GridColumn IDPost;
@@ -253,5 +263,6 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ToolStripMenuItem xemChiTietToolStripMenuItem;
         private DevExpress.XtraGrid.Columns.GridColumn NoiDung;
+        private System.Windows.Forms.Button btnLoadLaiDL;
     }
 }

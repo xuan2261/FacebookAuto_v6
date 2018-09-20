@@ -28,9 +28,17 @@ namespace DAO
             DataProvider.DongKetNoi(con);
             return dt;
         }
-        public static DataTable LoadDuLieuByStatus(int status)
+        public static DataTable LoadDuLieuByStatus(int status,string taikhoan)
         {
-            string sTruyVan = "Select * from tblAccountFB where Status='"+status+"'";
+            string sTruyVan = "Select * from tblAccountFB where Status='"+status+ "' and TaiKhoan=N'"+taikhoan+"'";
+            con = DataProvider.KetNoi();
+            DataTable dt = DataProvider.LayDataTable(sTruyVan, con);
+            DataProvider.DongKetNoi(con);
+            return dt;
+        }
+        public static DataTable LoadDuLieuByNhanVien(string nhanvien)
+        {
+            string sTruyVan = "select Email,NumberIDAccount,Name,Sex,Birthday,AddressNow,Phone,Status from tblAccountFB where TaiKhoan=N'" + nhanvien+"'";
             con = DataProvider.KetNoi();
             DataTable dt = DataProvider.LayDataTable(sTruyVan, con);
             DataProvider.DongKetNoi(con);
@@ -40,7 +48,7 @@ namespace DAO
         {
             try
             {
-                string sTruyVan = string.Format("Insert into tblAccountFB(Email,Password,LinkAccount,NumberIDAccount,Name,Sex,Birthday,Address,AddressNow,Phone,ImageLink,Status) values(N'{0}',N'{1}','{2}',N'{3}',N'{4}',N'{5}',N'{6}',N'{7}',N'{8}',N'{9}',N'{10}',N'{11}')", ac.Email,ac.Password,ac.LinkAccount,ac.NumberIDAccount,ac.Name,ac.Sex,ac.Birthday,ac.Address,ac.AddressNow,ac.Phone,ac.ImageLink,ac.Status);
+                string sTruyVan = string.Format("Insert into tblAccountFB(Email,Password,LinkAccount,NumberIDAccount,Name,Sex,Birthday,Address,AddressNow,Phone,ImageLink,Status,TaiKhoan) values(N'{0}',N'{1}','{2}',N'{3}',N'{4}',N'{5}',N'{6}',N'{7}',N'{8}',N'{9}',N'{10}',N'{11}',N'{12}')", ac.Email,ac.Password,ac.LinkAccount,ac.NumberIDAccount,ac.Name,ac.Sex,ac.Birthday,ac.Address,ac.AddressNow,ac.Phone,ac.ImageLink,ac.Status,ac.TaiKhoan);
                 con = DataProvider.KetNoi();
                 DataProvider.ThucThiTruyVanNonQuery(sTruyVan, con);
                 DataProvider.DongKetNoi(con);

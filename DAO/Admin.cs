@@ -20,7 +20,14 @@ namespace DAO
             DataProvider.DongKetNoi(con);
             return dt;
         }
-
+        public static DataTable LoadDuLieuNhanVien()
+        {
+            string sTruyVan = "Select TaiKhoan N'Tài khoản', MucQuyen N'Quyền hạn',Name N'Tên', ThongTin N'Thông tin' from tblAdmin where MucQuyen<2";
+            con = DataProvider.KetNoi();
+            DataTable dt = DataProvider.LayDataTable(sTruyVan, con);
+            DataProvider.DongKetNoi(con);
+            return dt;
+        }
         public static DataTable CheckLogin(string tk,string mk)
         {
             string sTruyVan = "Select * from tblAdmin where TaiKhoan='"+tk+"' and MatKhau='"+mk+"'";

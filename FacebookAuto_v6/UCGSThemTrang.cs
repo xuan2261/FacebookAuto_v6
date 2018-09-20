@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
 using System.IO;
+using DTO;
+using DAO;
 
 namespace FacebookAuto_v6
 {
@@ -20,6 +22,7 @@ namespace FacebookAuto_v6
         List<string> danhsachtichcuc = new List<string>();
         List<string> danhsachtieucuc = new List<string>();
         WebBrowser web1 = new WebBrowser();
+        public string taikhoan;
         string url = "https://mobile.facebook.com/";
         public UCGSThemTrang()
         {
@@ -126,6 +129,7 @@ namespace FacebookAuto_v6
                     htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("DIV") + 10);
                     htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("DIV") + 15);
                     string kq = htmlcontent.Remove(htmlcontent.IndexOf("<"));
+                    lsNamePage.Add(kq);
                     htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("DIV class") + 15);
                     kq = kq + " : " + htmlcontent.Remove(htmlcontent.IndexOf("<"));
                     lskq.Add(kq);
@@ -224,6 +228,64 @@ namespace FacebookAuto_v6
                 url = "https://web.facebook.com/";
             else
                 url = "https://mobile.facebook.com/";
+        }
+
+        private void btnTichCuc1_Click(object sender, EventArgs e)
+        {
+                DanhGia(1);
+        }
+        //đánh giá trang, nhóm
+        private void DanhGia(int kt)
+        {
+            foreach (ListViewItem item in lsKetQuaSearch.SelectedItems)
+            {
+                // thêm vào pages
+                if (DrbtnLoaiTim.selectedIndex == 0)
+                {
+                    tblPage pg = new tblPage();
+                    pg.IDPage = lsIDPage[item.Index];
+                    pg.Name = lsNamePage[item.Index];
+                    pg.ImgLink = lsLinkImgPage[item.Index];
+                    pg.Status = kt;
+                    pg.TaiKhoan = taikhoan;
+                    DAO.Pages.Them(pg);
+                }
+                //thêm vào groups
+                if (DrbtnLoaiTim.selectedIndex == 1)
+                {
+                    tblGroup newgroup = new tblGroup();
+                    newgroup.IDGroup = lsIDPage[item.Index];
+                    newgroup.Name = lsNamePage[item.Index];
+                    newgroup.ImgLink = lsLinkImgPage[item.Index];
+                    newgroup.Status = kt;
+                    newgroup.TaiKhoan = taikhoan;
+                    DAO.Group.Them(newgroup);
+
+                    DataTable dt = AccountFB.LoadDuLieuByNhanVien(taikhoan);
+                    for(int i=0;i<dt.Rows.Count;i++)
+                    {
+                        ThuVienLamViecFacebook.DangXuat();
+                        ThuVienLamViecFacebook.DNKhongLayTT(dt.Rows[i]["NumberIDAccount"].ToString());
+                        ThuVienLamViecFacebook.JoinGroup(lsIDPage[item.Index]);
+                    }
+                }
+                //xóa cái vừa đánh giá khỏi danh sách
+                lsIDPage.RemoveAt(item.Index);
+                lsNamePage.RemoveAt(item.Index);
+                lsLinkImgPage.RemoveAt(item.Index);
+                lsKetQuaSearch.Items.RemoveAt(item.Index);
+            }
+            MessageBox.Show("Đã thêm vào danh sách");
+        }
+        
+        private void btnKhongXacDinh1_Click(object sender, EventArgs e)
+        {
+            DanhGia(0);
+        }
+
+        private void btnTieuCuc1_Click(object sender, EventArgs e)
+        {
+            DanhGia(-1);
         }
     }
 }

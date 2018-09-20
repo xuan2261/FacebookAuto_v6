@@ -75,6 +75,7 @@
             this.lsCheckTKTieuCuc.TabIndex = 21;
             this.lsCheckTKTieuCuc.ValueSeparator = ", ";
             this.lsCheckTKTieuCuc.DropDownClosed += new System.EventHandler(this.lsCheckTKTieuCuc_DropDownClosed);
+            this.lsCheckTKTieuCuc.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lsCheckTKTieuCuc_MouseDown);
             // 
             // lsCheckTKTichCuc
             // 
@@ -91,6 +92,7 @@
             this.lsCheckTKTichCuc.TabIndex = 20;
             this.lsCheckTKTichCuc.ValueSeparator = ", ";
             this.lsCheckTKTichCuc.DropDownClosed += new System.EventHandler(this.lsCheckTKTichCuc_DropDownClosed);
+            this.lsCheckTKTichCuc.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lsCheckTKTichCuc_MouseDown);
             // 
             // label12
             // 
@@ -112,7 +114,7 @@
             this.bunifuProgressBar1.Location = new System.Drawing.Point(74, 208);
             this.bunifuProgressBar1.MaximumValue = 100;
             this.bunifuProgressBar1.Name = "bunifuProgressBar1";
-            this.bunifuProgressBar1.ProgressColor = System.Drawing.Color.Teal;
+            this.bunifuProgressBar1.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(190)))), ((int)(((byte)(166)))));
             this.bunifuProgressBar1.Size = new System.Drawing.Size(434, 10);
             this.bunifuProgressBar1.TabIndex = 15;
             this.bunifuProgressBar1.Value = 0;
@@ -127,7 +129,7 @@
             this.btnBatDauChiaSe.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBatDauChiaSe.DisabledColor = System.Drawing.Color.Gray;
             this.btnBatDauChiaSe.Iconcolor = System.Drawing.Color.Transparent;
-            this.btnBatDauChiaSe.Iconimage = global::FacebookAuto_v6.Properties.Resources.icons8_share_filled_50;
+            this.btnBatDauChiaSe.Iconimage = global::FacebookAuto_v6.Properties.Resources.icons8_share_50;
             this.btnBatDauChiaSe.Iconimage_right = null;
             this.btnBatDauChiaSe.Iconimage_right_Selected = null;
             this.btnBatDauChiaSe.Iconimage_Selected = null;
@@ -217,9 +219,9 @@
             // btnThem
             // 
             this.btnThem.BackColor = System.Drawing.Color.Transparent;
-            this.btnThem.Image = global::FacebookAuto_v6.Properties.Resources.icons8_plus_48;
+            this.btnThem.Image = global::FacebookAuto_v6.Properties.Resources.icons8_plus_64;
             this.btnThem.ImageActive = null;
-            this.btnThem.Location = new System.Drawing.Point(236, 144);
+            this.btnThem.Location = new System.Drawing.Point(236, 112);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(30, 30);
             this.btnThem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;

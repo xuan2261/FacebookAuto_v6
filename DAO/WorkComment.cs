@@ -16,9 +16,9 @@ namespace DAO
             DataProvider.DongKetNoi(con);
             return dt;
         }
-        public static string LayNoiDungComment(string idpost)
+        public static string LayNoiDungComment(string idpost,string taikhoan)
         {
-            string sTruyVan = "select Noidung from tblWorkComment where IDPost='" + idpost + "'";
+            string sTruyVan = "select Noidung from tblWorkComment where IDPost='" + idpost + "' and TaiKhoan=N'"+taikhoan+"'";
             con = DataProvider.KetNoi();
             DataTable dt = DataProvider.LayDataTable(sTruyVan, con);
             DataProvider.DongKetNoi(con);
@@ -30,7 +30,7 @@ namespace DAO
         {
             try
             {
-                string sTruyVan = string.Format("Insert into tblWorkComment(IDPost,NoiDung) values(N'{0}',N'{1}')", wc.IDPost,wc.Noidung);
+                string sTruyVan = string.Format("Insert into tblWorkComment(IDPost,NoiDung,TaiKhoan) values(N'{0}',N'{1}',N'{2}')", wc.IDPost,wc.Noidung,wc.TaiKhoan);
                 con = DataProvider.KetNoi();
                 DataProvider.ThucThiTruyVanNonQuery(sTruyVan, con);
                 DataProvider.DongKetNoi(con);

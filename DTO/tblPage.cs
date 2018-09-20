@@ -10,8 +10,14 @@ namespace DTO
     public partial class tblPage
     {
         [Key]
+        [Column(Order = 0)]
         [StringLength(50)]
         public string IDPage { get; set; }
+
+        [Key]
+        [Column(Order = 1)]
+        [StringLength(50)]
+        public string TaiKhoan { get; set; }
 
         [StringLength(50)]
         public string NumberPage { get; set; }
@@ -26,5 +32,7 @@ namespace DTO
 
         [Column(TypeName = "ntext")]
         public string Description { get; set; }
+
+        public virtual tblAdmin tblAdmin { get; set; }
     }
 }

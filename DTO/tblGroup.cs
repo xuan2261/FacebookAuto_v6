@@ -10,8 +10,14 @@ namespace DTO
     public partial class tblGroup
     {
         [Key]
+        [Column(Order = 0)]
         [StringLength(50)]
         public string IDGroup { get; set; }
+
+        [Key]
+        [Column(Order = 1)]
+        [StringLength(50)]
+        public string TaiKhoan { get; set; }
 
         [StringLength(100)]
         public string Name { get; set; }
@@ -23,5 +29,7 @@ namespace DTO
 
         [Column(TypeName = "ntext")]
         public string Description { get; set; }
+
+        public virtual tblAdmin tblAdmin { get; set; }
     }
 }

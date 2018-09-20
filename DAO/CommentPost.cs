@@ -20,6 +20,17 @@ namespace DAO
             DataProvider.DongKetNoi(con);
             return dt;
         }
+        public static bool KiemTraIDComment(string idcomment)
+        {
+            string sTruyVan = "select * from tblCommentPost where IDComment='"+idcomment+"'";
+            con = DataProvider.KetNoi();
+            DataTable dt = DataProvider.LayDataTable(sTruyVan, con);
+            DataProvider.DongKetNoi(con);
+            if (dt.Rows.Count >= 1 && dt.Rows[0]["Status"].ToString()!="0")
+                return true;
+            else
+                return false;
+        }
         public static bool Them(tblCommentPost cp)
         {
             try

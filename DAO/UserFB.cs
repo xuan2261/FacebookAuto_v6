@@ -15,7 +15,30 @@ namespace DAO
             DataProvider.DongKetNoi(con);
             return dt;
         }
-
+        public static DataTable LoadDuLieuChuaUpdate()
+        {
+            string sTruyVan = "select * from tblUserFB where IsUpdate=0";
+            con = DataProvider.KetNoi();
+            DataTable dt = DataProvider.LayDataTable(sTruyVan, con);
+            DataProvider.DongKetNoi(con);
+            return dt;
+        }
+        public static DataTable LoadDuLieuTichCuc()
+        {
+            string sTruyVan = "select top 20 * from tblUserFB where Status >1 order by Status DESC";
+            con = DataProvider.KetNoi();
+            DataTable dt = DataProvider.LayDataTable(sTruyVan, con);
+            DataProvider.DongKetNoi(con);
+            return dt;
+        }
+        public static DataTable LoadDuLieuTieuCuc()
+        {
+            string sTruyVan = "select top 20 * from tblUserFB where Status <-1 order by Status ASC";
+            con = DataProvider.KetNoi();
+            DataTable dt = DataProvider.LayDataTable(sTruyVan, con);
+            DataProvider.DongKetNoi(con);
+            return dt;
+        }
         public static bool Them(tblUserFB us)
         {
             try
@@ -31,13 +54,27 @@ namespace DAO
                 return false;
             }
         }
-
+        public static bool CapNhatStatus(string iduser)
+        {
+            try
+            {
+                string sTruyVan = string.Format("declare @t int, @u int, @kq int select @t = sum(lp.Status) + sum(cp.Status) from tblLikePost lp, tblCommentPost cp where lp.IDUserFB = '{0}' select @u = sum(Status) from tblCommentPost where IDUser = '{1}' if (@u is null and @t is not null) select @kq = @t if (@u is null and @t is null) select @kq = 0 if (@u is not null and @t is null) select @kq = @u else select @kq = @u + @t update tblUserFB set Status = @kq where IDUser = N'{2}'",iduser,iduser,iduser );
+                con = DataProvider.KetNoi();
+                DataProvider.ThucThiTruyVanNonQuery(sTruyVan, con);
+                DataProvider.DongKetNoi(con);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
         public static bool Sua(tblUserFB us)
         {
             try
             {
                 con = DataProvider.KetNoi();
-                string sTruyVan = string.Format("Update tblUserFB set Status='{0}' where IDUser = '{1}'", us.Status, us.IDUser);
+                string sTruyVan = string.Format("Update tblUserFB set IDNumber='{0}',IsUpdate=1, ImgLink=N'{1}' where IDUser = '{2}'", us.IDNumber, us.ImgLink,us.IDUser);
                 DataProvider.ThucThiTruyVanNonQuery(sTruyVan, con);
                 DataProvider.DongKetNoi(con);
                 return true;

@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using DTO;
 using DAO;
 using System.Data;
+using System.Security.Cryptography;
 
 namespace FacebookAuto_v6
 {
@@ -80,6 +81,50 @@ namespace FacebookAuto_v6
             return ac;
         }
         //Kết thúc đăng nhập
+        //mã hóa mật khẩu
+        public static string Encrypt(string toEncrypt, bool useHashing)
+        {
+            byte[] keyArray;
+            byte[] toEncryptArray = Encoding.UTF8.GetBytes(toEncrypt);
+            if (useHashing)
+            {
+                var hashmd5 = new MD5CryptoServiceProvider();
+                keyArray = hashmd5.ComputeHash(Encoding.UTF8.GetBytes("Tungntdev"));
+            }
+            else keyArray = Encoding.UTF8.GetBytes("Tungntdev");
+            var tdes = new TripleDESCryptoServiceProvider
+            {
+                Key = keyArray,
+                Mode = CipherMode.ECB,
+                Padding = PaddingMode.PKCS7
+            };
+            ICryptoTransform cTransform = tdes.CreateEncryptor();
+            byte[] resultArray = cTransform.TransformFinalBlock(toEncryptArray, 0, toEncryptArray.Length);
+            return Convert.ToBase64String(resultArray, 0, resultArray.Length);
+        }
+        //kết thúc mã hóa mật khẩu
+        //giải mã mật khẩu
+        public static string Decrypt(string toDecrypt, bool useHashing)
+        {
+            byte[] keyArray;
+            byte[] toEncryptArray = Convert.FromBase64String(toDecrypt);
+            if (useHashing)
+            {
+                var hashmd5 = new MD5CryptoServiceProvider();
+                keyArray = hashmd5.ComputeHash(Encoding.UTF8.GetBytes("tungntdev"));
+            }
+            else keyArray = Encoding.UTF8.GetBytes("tungntdev");
+            var tdes = new TripleDESCryptoServiceProvider
+            {
+                Key = keyArray,
+                Mode = CipherMode.ECB,
+                Padding = PaddingMode.PKCS7
+            };
+            ICryptoTransform cTransform = tdes.CreateDecryptor();
+            byte[] resultArray = cTransform.TransformFinalBlock(toEncryptArray, 0, toEncryptArray.Length);
+            return Encoding.UTF8.GetString(resultArray);
+        }
+        //kết thúc giải mã mật khẩu
         //
         //đăng nhập lấy fb_dtsg
         public static string DNLay_fb_dtsg(string user,string pass)
@@ -267,6 +312,7 @@ namespace FacebookAuto_v6
             htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("STRONG")+10);
             string name = htmlcontent.Substring(htmlcontent.IndexOf(">")+1);
             name = name.Remove(name.IndexOf("<"));
+            name = name.Replace("\r\n      ", "");
             string iduser = web1.Url.ToString();
             iduser = iduser.Substring(iduser.IndexOf("&id=")+4);
             iduser = iduser.Remove(iduser.IndexOf("&"));
@@ -277,9 +323,253 @@ namespace FacebookAuto_v6
             string timepost = htmlcontent.Substring(htmlcontent.IndexOf("ABBR") + 5);
             timepost = timepost.Remove(timepost.IndexOf("<"));
             if (!timepost.Contains("Tháng")) timepost += DateTime.Now.ToShortDateString(); 
-            p.TimePost = timepost;
             return p;
         }
         //kết thúc lấy thông tin bài viết
+
+        //tìm kiếm bài viết theo idpage
+        public List<string> TimBaiViet(string idpage,string tukhoa)
+        {
+            List<string> idBaiViet = new List<string>();
+
+            return idBaiViet;
+        }
+        //kết thúc tìm kiếm bài viết theo idpage
+
+        //cập nhật thông tin người dùng
+        public static void UpdateTTNguoiDung()
+        {
+            DataTable dt = UserFB.LoadDuLieuChuaUpdate();
+            for(int i=0;i<dt.Rows.Count;i++)
+            {
+                try
+                {
+                    WebBrowser web = new WebBrowser();
+                    web.Navigate("https://mobile.facebook.com" + dt.Rows[i]["IDUser"]);
+                    while (web.ReadyState != WebBrowserReadyState.Complete)
+                        Application.DoEvents();
+                    string htmlcontent = web.DocumentText;
+                    htmlcontent = htmlcontent.Replace("amp;", "");
+                    string idnumber = htmlcontent.Substring(htmlcontent.IndexOf("&id=") + 4);
+                    idnumber = idnumber.Remove(idnumber.IndexOf("&"));
+                    string linkimg = htmlcontent.Substring(htmlcontent.IndexOf("u_0_") + 10);
+                    linkimg = linkimg.Substring(linkimg.IndexOf("https://z-p3-scontent.fhan7-1"));
+                    linkimg = linkimg.Remove(linkimg.IndexOf("\""));
+                    tblUserFB ufb = new tblUserFB();
+                    ufb.IDUser = dt.Rows[i]["IDUser"].ToString();
+                    ufb.IDNumber = idnumber;
+                    ufb.ImgLink = linkimg;
+                    UserFB.Sua(ufb);
+                }
+                catch { }
+            }
+            //cập nhật thông tin trạng thái người dùng
+            MessageBox.Show("Đã cập nhật thành công");
+        }
+        //kết thúc cập nhật thông tin người dùng
+        //tính điểm người dùng facebook
+        public static void UpdateStatusUserFB()
+        {
+            DataTable dt = UserFB.LoadDuLieu();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                UserFB.CapNhatStatus(dt.Rows[i]["IDUser"].ToString());
+            }
+            MessageBox.Show("Đã cập nhật thành công điểm");
+        }
+        //kết thúc tính điểm người dùng facebook
+
+        //lấy danh sách các bài viết đã thích
+        public static List<string> GetListLiked(string numberuser)
+        {
+            List<string> idrootliked = new List<string>();
+            List<string> namerootliked = new List<string>();
+            WebBrowser web = new WebBrowser();
+            web.Navigate("https://mobile.facebook.com/search/" + numberuser + "/stories-liked");
+            while (web.ReadyState != WebBrowserReadyState.Complete)
+                Application.DoEvents();
+            string htmlcontent = web.DocumentText;
+            htmlcontent = htmlcontent.Replace("amp;", "");
+            for (int i=0;i<300;i++)
+            {
+                int kt = htmlcontent.IndexOf("H3 class=\"b");
+                // còn bài viết để duyệt
+                if (kt != -1)
+                {
+                    htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("H3 class=\"b")+20);
+                    htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("&id=") + 4);
+                    string idroot = htmlcontent.Remove(htmlcontent.IndexOf("&"));
+                    string nameroot = htmlcontent.Substring(htmlcontent.IndexOf("STRONG") + 10);
+                    nameroot = nameroot.Substring(nameroot.IndexOf(">") + 1);
+                    nameroot = nameroot.Remove(nameroot.IndexOf("<"));
+                    idrootliked.Add(idroot);
+                    namerootliked.Add(nameroot);
+                }
+                //ko còn bài viết ở trang này nữa
+                else {
+                    int kt1 = htmlcontent.IndexOf("see_more_pager");
+                    //ko còn bài viết để xem
+                    if (kt1 == -1) break;
+                    //còn bài viết để xem tiếp
+                    else
+                    {
+                        string urltiep = htmlcontent.Substring(htmlcontent.IndexOf("see_more_pager"));
+                        urltiep = urltiep.Substring(urltiep.IndexOf("href=\"") + 6);
+                        urltiep = urltiep.Remove(urltiep.IndexOf("\""));
+                        web.Navigate(urltiep);
+                        while (web.ReadyState != WebBrowserReadyState.Complete)
+                            Application.DoEvents();
+                        htmlcontent = web.DocumentText;
+                        htmlcontent = htmlcontent.Replace("amp;", "");
+                    }
+                }
+            }
+            return idrootliked;
+        }
+        //kết thúc lấy danh sách các bài viết đã thích
+
+        // lấy danh sách các nguồn đã comment
+        public static List<string> GetCommented(string numberuser)
+        {
+            List<string> lsRootComment = new List<string>();
+            WebBrowser web = new WebBrowser();
+            web.Navigate("https://mobile.facebook.com/search/" + numberuser + "/stories-commented");
+            while (web.ReadyState != WebBrowserReadyState.Complete)
+                Application.DoEvents();
+            string htmlcontent = web.DocumentText;
+            htmlcontent = htmlcontent.Replace("amp;", "");
+            for (int i = 0; i < 300; i++)
+            {
+                int kt = htmlcontent.IndexOf("H3 class=\"c");
+                //nếu như tìm thấy bài viết
+                if (kt != -1)
+                {
+                    htmlcontent = htmlcontent.Substring(kt+10);
+                    string idroot = htmlcontent.Substring(htmlcontent.IndexOf("href=\"") + 6);
+                    idroot = idroot.Remove(idroot.IndexOf("?"));
+                    lsRootComment.Add(idroot);
+                }
+                // không tìm thấy bài viết tiếp
+                else
+                {
+                    int kt1 = htmlcontent.IndexOf("see_more_pager");
+                    // nếu như tìm thấy trang tiếp theo
+                    if(kt1!=-1)
+                    {
+                        htmlcontent = htmlcontent.Substring(kt1);
+                        string urltiep = htmlcontent.Substring(htmlcontent.IndexOf("href=\"") + 6);
+                        urltiep = urltiep.Remove(urltiep.IndexOf("\""));
+                        web.Navigate(urltiep);
+                        while (web.ReadyState != WebBrowserReadyState.Complete)
+                            Application.DoEvents();
+                        htmlcontent = web.DocumentText;
+                        htmlcontent = htmlcontent.Replace("amp;", "");
+                    }
+                    //không tìm thấy trang tiếp theo
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
+            return lsRootComment;
+        }
+        //kết thúc lấy danh sách các nguồn đã comment
+
+        // lấy các trang đã thích
+        public static List<string> LayDanhSachTrangThiched(string numberuser)
+        {
+            List<string> lstrangdathich = new List<string>();
+            WebBrowser web = new WebBrowser();
+            web.Navigate("https://mobile.facebook.com/search/" + numberuser + "/pages-liked");
+            while (web.ReadyState != WebBrowserReadyState.Complete)
+                Application.DoEvents();
+            string htmlcontent = web.DocumentText;
+            htmlcontent = htmlcontent.Replace("amp;", "");
+            htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("TABLE class=") + 100);
+            htmlcontent = htmlcontent.Remove(htmlcontent.LastIndexOf("DIV class=\"b"));
+            for(int i=0;i<100;i++)
+            {
+                int kt = htmlcontent.IndexOf("TABLE class=");
+                //tìm thấy địa chỉ trang
+                if(kt!=-1)
+                {
+                    htmlcontent = htmlcontent.Substring(kt+10);
+                    string linkpage = htmlcontent.Substring(htmlcontent.IndexOf("href=\"") + 6);
+                    linkpage = linkpage.Remove(linkpage.IndexOf("?"));
+                    lstrangdathich.Add(linkpage);
+                }
+                //ko tìm thấy trang
+                else
+                {
+                    int kt1 = htmlcontent.IndexOf("see_more_pager");
+                    //nếu như còn xem thêm
+                    if(kt1!=-1)
+                    {
+                        string urltiep = htmlcontent.Substring(kt1);
+                        urltiep = urltiep.Substring(urltiep.IndexOf("href=\"") + 6);
+                        urltiep = urltiep.Remove(urltiep.IndexOf("\""));
+                        web.Navigate(urltiep);
+                        while (web.ReadyState != WebBrowserReadyState.Complete)
+                            Application.DoEvents();
+                        htmlcontent = web.DocumentText;
+                        htmlcontent = htmlcontent.Replace("amp;", "");
+                        htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("TABLE class=") + 100);
+                        htmlcontent = htmlcontent.Remove(htmlcontent.LastIndexOf("DIV class=\"b"));
+                    }
+                    // hết cái để duyệt 
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
+            return lstrangdathich;
+        }
+        //kết thúc lấy các trang đã thích
+
+        //join group
+        public static void JoinGroup(string idgroup)
+        {
+            WebBrowser web = new WebBrowser();
+            web.Navigate("https://mobile.facebook.com/" + idgroup);
+            while (web.ReadyState != WebBrowserReadyState.Complete)
+                Application.DoEvents();
+            string htmlcontent = web.DocumentText;
+            htmlcontent = htmlcontent.Replace("amp;", "");
+            int ktjoin = htmlcontent.IndexOf("/a/group/join/?group_id=");
+            //Chưa join vào group
+            if(ktjoin!=-1)
+            {
+                htmlcontent = htmlcontent.Substring(ktjoin);
+                string url = htmlcontent.Remove(htmlcontent.IndexOf("\""));
+                web.Navigate("https://mobile.facebook.com" + url);
+                while (web.ReadyState != WebBrowserReadyState.Complete)
+                    Application.DoEvents();
+                string kttiep = web.Url.ToString();
+                //trường hợp cần trả lời câu hỏi
+                if(kttiep.Contains("membership_criteria_answer"))
+                {
+                    htmlcontent = web.DocumentText;
+                    string action = htmlcontent.Substring(htmlcontent.IndexOf("/groups/membership_criteria_answer"));
+                    action = "https://mobile.facebook.com"+action.Remove(action.IndexOf("\""));
+                    string jazoest = htmlcontent.Substring(htmlcontent.IndexOf("jazoest"));
+                    jazoest = jazoest.Substring(jazoest.IndexOf("value=\"") + 7);
+                    jazoest = jazoest.Remove(jazoest.IndexOf("\""));
+                    string fb_dtsg = htmlcontent.Substring(htmlcontent.IndexOf("fb_dtsg"));
+                    fb_dtsg = fb_dtsg.Substring(fb_dtsg.IndexOf("value=\"") + 7);
+                    fb_dtsg = fb_dtsg.Remove(fb_dtsg.IndexOf("\""));
+                    //bắt đầu trả lời
+                    string postdata = "fb_dtsg="+fb_dtsg+"&jazoest="+jazoest+"&questionnaire_answers[]=,,";
+                    System.Text.Encoding encoding = System.Text.Encoding.UTF8;
+                    byte[] bytes = encoding.GetBytes(postdata);
+                    web.Navigate(action, string.Empty, bytes, "Content-Type: application/x-www-form-urlencoded");
+
+                    while (web.ReadyState != WebBrowserReadyState.Complete)
+                        Application.DoEvents();
+                }
+            }
+        }
+        //kết thúc join group
     }
 }
