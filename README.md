@@ -10,3 +10,7 @@ Những công việc cần hoàn thiện:
 -- tiếp tục hoàn thiện giao diện quản lý người dùng facebook
 
 
+
+cho phép thao tác bình luận, chia sẻ, kiểm duyệt với bài duyệt bài viết trang nhóm
+
+

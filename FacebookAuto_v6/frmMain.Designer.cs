@@ -319,13 +319,8 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement GroupElemtNhanVien;
         private DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl fluentDesignFormControl1;
         private DevExpress.XtraBars.Navigation.AccordionControlElement tabThaoTac;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement ElementBinhLuan;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement ElementCamXuc;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement ElementChiaSe;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement ElementKiemDuyet;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement7;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement8;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement ElementHoatDong;
         private DevExpress.XtraBars.Navigation.AccordionControlSeparator accordionControlSeparator1;
         private DevExpress.XtraBars.Navigation.AccordionControlElement tabGiamSatTrang;
         private DevExpress.XtraBars.Navigation.AccordionControlElement GroupElementQuanLy;
@@ -342,7 +337,12 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement ElementTKTrang;
         private DevExpress.XtraBars.Navigation.AccordionControlSeparator accordionControlSeparator4;
         private DevExpress.XtraBars.Navigation.AccordionControlElement ElementQuanLyNhanVien;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement ElementKiemDuyetGanDay;
+        public DevExpress.XtraBars.Navigation.AccordionControlElement ElementBinhLuan;
+        public DevExpress.XtraBars.Navigation.AccordionControlElement ElementCamXuc;
+        public DevExpress.XtraBars.Navigation.AccordionControlElement ElementChiaSe;
+        public DevExpress.XtraBars.Navigation.AccordionControlElement ElementKiemDuyet;
+        public DevExpress.XtraBars.Navigation.AccordionControlElement ElementHoatDong;
+        public DevExpress.XtraBars.Navigation.AccordionControlElement ElementKiemDuyetGanDay;
     }
 }
 

@@ -34,7 +34,18 @@ namespace FacebookAuto_v6
         {
             InitializeComponent();
         }
-
+        public void setkiemduyet(string idpost)
+        {
+            txtIDBaiViet.Text = idpost;
+            WebView.Navigate(urlfacebook + idpost);
+            tblPost p = ThuVienLamViecFacebook.LayThongTinPost(idpost);
+            p.TimePost = DateTime.Now;
+            Post.Them(p);
+            //kết thúc lưu luôn thông tin bài viết 
+            ttbl.idpost = idpost;
+            ttcx.idpost = idpost;
+            ttkd.idpost = idpost;
+        }
         public void btnKiemTra_Click(object sender, EventArgs e)
         {
             //lưu thông tin bài viết
@@ -103,6 +114,7 @@ namespace FacebookAuto_v6
             labelViTri.Text = ">>>  Kiểm duyệt gần đây";
             ttkdgd.sentidpost = new UCTTKiemDuyetGanDay.SendIDPost(getdulieufrmkhac);
             ttkdgd.kiemduyettieptuc = new UCTTKiemDuyetGanDay.KiemDuyetTiepTuc(getfrmkiemduyet);
+            
         }
         //load lại webview
         public void getdulieufrmkhac(string idpost,string status,string timepost)

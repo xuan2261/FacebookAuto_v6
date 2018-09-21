@@ -230,11 +230,6 @@ namespace FacebookAuto_v6
             //kết thúc tìm kiếm trong trang web
         }
 
-        private void lsKetQuaSearch_MouseClick(object sender, MouseEventArgs e)
-        {
-            WebView.Navigate(url + lsKetQuaSearch.FocusedItem.Text);
-        }
-
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             if(radioButton1.Checked==true)
@@ -286,6 +281,32 @@ namespace FacebookAuto_v6
         private void DrbtnLoaiTim_Enter(object sender, EventArgs e)
         {
             ktloadlistpage = 0;
+        }
+
+        private void XemChiTiet_Click(object sender, EventArgs e)
+        {
+            WebView.Navigate(url + lsKetQuaSearch.FocusedItem.Text);
+        }
+        public delegate void ThaoTacNghiepVu(string idpost, string loainghiepvu);
+        public ThaoTacNghiepVu thaotacnghiepvu;
+        private void NghiepVuBinhLuan_Click(object sender, EventArgs e)
+        {
+            thaotacnghiepvu(lsKetQuaSearch.FocusedItem.Text, "1");
+        }
+
+        private void NghiepVuChiaSe_Click(object sender, EventArgs e)
+        {
+            thaotacnghiepvu(lsKetQuaSearch.FocusedItem.Text, "3");
+        }
+
+        private void NghiepVuBayToCamXuc_Click(object sender, EventArgs e)
+        {
+            thaotacnghiepvu(lsKetQuaSearch.FocusedItem.Text, "2");
+        }
+
+        private void NghiepVuKiemDuyet_Click(object sender, EventArgs e)
+        {
+            thaotacnghiepvu(lsKetQuaSearch.FocusedItem.Text, "4");
         }
     }
 }

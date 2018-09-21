@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label2 = new System.Windows.Forms.Label();
             this.labelViTri = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -43,6 +44,12 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.lsKetQuaSearch = new System.Windows.Forms.ListView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.XemChiTiet = new System.Windows.Forms.ToolStripMenuItem();
+            this.NghiepVuBinhLuan = new System.Windows.Forms.ToolStripMenuItem();
+            this.NghiepVuChiaSe = new System.Windows.Forms.ToolStripMenuItem();
+            this.NghiepVuBayToCamXuc = new System.Windows.Forms.ToolStripMenuItem();
+            this.NghiepVuKiemDuyet = new System.Windows.Forms.ToolStripMenuItem();
             this.txtTuKhoa = new System.Windows.Forms.TextBox();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
@@ -56,6 +63,7 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label2
@@ -273,13 +281,59 @@
             this.lsKetQuaSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.lsKetQuaSearch.ContextMenuStrip = this.contextMenuStrip1;
             this.lsKetQuaSearch.Location = new System.Drawing.Point(21, 332);
             this.lsKetQuaSearch.Name = "lsKetQuaSearch";
             this.lsKetQuaSearch.Size = new System.Drawing.Size(352, 142);
             this.lsKetQuaSearch.TabIndex = 100;
             this.lsKetQuaSearch.UseCompatibleStateImageBehavior = false;
             this.lsKetQuaSearch.View = System.Windows.Forms.View.Details;
-            this.lsKetQuaSearch.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lsKetQuaSearch_MouseClick);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.XemChiTiet,
+            this.NghiepVuBinhLuan,
+            this.NghiepVuChiaSe,
+            this.NghiepVuBayToCamXuc,
+            this.NghiepVuKiemDuyet});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(213, 136);
+            // 
+            // XemChiTiet
+            // 
+            this.XemChiTiet.Name = "XemChiTiet";
+            this.XemChiTiet.Size = new System.Drawing.Size(212, 22);
+            this.XemChiTiet.Text = "Xem chi tiết";
+            this.XemChiTiet.Click += new System.EventHandler(this.XemChiTiet_Click);
+            // 
+            // NghiepVuBinhLuan
+            // 
+            this.NghiepVuBinhLuan.Name = "NghiepVuBinhLuan";
+            this.NghiepVuBinhLuan.Size = new System.Drawing.Size(212, 22);
+            this.NghiepVuBinhLuan.Text = "Nghiệp vụ bình luận";
+            this.NghiepVuBinhLuan.Click += new System.EventHandler(this.NghiepVuBinhLuan_Click);
+            // 
+            // NghiepVuChiaSe
+            // 
+            this.NghiepVuChiaSe.Name = "NghiepVuChiaSe";
+            this.NghiepVuChiaSe.Size = new System.Drawing.Size(212, 22);
+            this.NghiepVuChiaSe.Text = "Nghiệp vụ chia sẻ";
+            this.NghiepVuChiaSe.Click += new System.EventHandler(this.NghiepVuChiaSe_Click);
+            // 
+            // NghiepVuBayToCamXuc
+            // 
+            this.NghiepVuBayToCamXuc.Name = "NghiepVuBayToCamXuc";
+            this.NghiepVuBayToCamXuc.Size = new System.Drawing.Size(212, 22);
+            this.NghiepVuBayToCamXuc.Text = "Nghiệp vụ bày tỏ cảm xúc";
+            this.NghiepVuBayToCamXuc.Click += new System.EventHandler(this.NghiepVuBayToCamXuc_Click);
+            // 
+            // NghiepVuKiemDuyet
+            // 
+            this.NghiepVuKiemDuyet.Name = "NghiepVuKiemDuyet";
+            this.NghiepVuKiemDuyet.Size = new System.Drawing.Size(212, 22);
+            this.NghiepVuKiemDuyet.Text = "Nghiệp vụ kiểm duyệt";
+            this.NghiepVuKiemDuyet.Click += new System.EventHandler(this.NghiepVuKiemDuyet_Click);
             // 
             // txtTuKhoa
             // 
@@ -394,6 +448,7 @@
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -422,5 +477,11 @@
         private System.Windows.Forms.TextBox txtTuKhoa;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem XemChiTiet;
+        private System.Windows.Forms.ToolStripMenuItem NghiepVuBinhLuan;
+        private System.Windows.Forms.ToolStripMenuItem NghiepVuChiaSe;
+        private System.Windows.Forms.ToolStripMenuItem NghiepVuBayToCamXuc;
+        private System.Windows.Forms.ToolStripMenuItem NghiepVuKiemDuyet;
     }
 }

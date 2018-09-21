@@ -145,7 +145,62 @@ namespace FacebookAuto_v6
             ucgstt.Dock = DockStyle.Fill;
             ucgstt.taikhoan = admin.TaiKhoan;
         }
-
+        public void LoadNghiepVu(string idpost,string nghiepvu)
+        {
+            //bình luận
+            if(nghiepvu=="1")
+            {
+                if (ktuc != 1)
+                {
+                    panelMain.Controls.Clear();
+                    panelMain.Controls.Add(ucthaotac);
+                    ucthaotac.Dock = DockStyle.Fill;
+                }
+                ucthaotac.LoadBinhLuan();
+                ktuc = 1;
+                ucthaotac.setkiemduyet(idpost);
+                ElementBinhLuan.Expanded = true;
+            }
+            //nếu là bày tỏ cảm xúc
+            if (nghiepvu == "2")
+            {
+                if (ktuc != 1)
+                {
+                    panelMain.Controls.Clear();
+                    panelMain.Controls.Add(ucthaotac);
+                    ucthaotac.Dock = DockStyle.Fill;
+                }
+                ucthaotac.LoadCamXuc();
+                ktuc = 1;
+                ucthaotac.setkiemduyet(idpost);
+            }
+            //neeus la chia sẻ
+            if (nghiepvu == "3")
+            {
+                if (ktuc != 1)
+                {
+                    panelMain.Controls.Clear();
+                    panelMain.Controls.Add(ucthaotac);
+                    ucthaotac.Dock = DockStyle.Fill;
+                }
+                ucthaotac.LoadChiaSe();
+                ktuc = 1;
+                ucthaotac.setkiemduyet(idpost);
+            }
+            //nếu là tiếp tục kiểm duyệt
+            if (nghiepvu == "4")
+            {
+                if (ktuc != 1)
+                {
+                    panelMain.Controls.Clear();
+                    panelMain.Controls.Add(ucthaotac);
+                    ucthaotac.Dock = DockStyle.Fill;
+                }
+                ucthaotac.LoadKiemDuyet();
+                ktuc = 1;
+                ucthaotac.setkiemduyet(idpost);
+            }
+        }
         private void ElementDuyetBaiViet_Click(object sender, EventArgs e)
         {
             ktuc = 2;
@@ -153,6 +208,7 @@ namespace FacebookAuto_v6
             panelMain.Controls.Add(ucgsdbv);
             ucgsdbv.Dock = DockStyle.Fill;
             ucgsdbv.taikhoan = admin.TaiKhoan;
+            ucgsdbv.thaotacnghiepvu = new UCGSDuyetBaiViet.ThaoTacNghiepVu(LoadNghiepVu);
         }
 
         private void ElementGSNguoiDung_Click(object sender, EventArgs e)
@@ -178,7 +234,6 @@ namespace FacebookAuto_v6
             panelMain.Controls.Add(ucqlnv);
             ucqlnv.Dock = DockStyle.Fill;
         }
-
         private void ElementKiemDuyetGanDay_Click(object sender, EventArgs e)
         {
             if (ktuc != 1)

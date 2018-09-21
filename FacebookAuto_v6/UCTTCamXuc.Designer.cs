@@ -110,7 +110,7 @@
             this.lsCheckTKTieuCuc.TabIndex = 25;
             this.lsCheckTKTieuCuc.ValueSeparator = ", ";
             this.lsCheckTKTieuCuc.DropDownClosed += new System.EventHandler(this.lsCheckTKTieuCuc_DropDownClosed);
-            this.lsCheckTKTieuCuc.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lsCheckTKTieuCuc_MouseDown);
+            this.lsCheckTKTieuCuc.Enter += new System.EventHandler(this.lsCheckTKTieuCuc_Enter);
             // 
             // lsCheckTKTichCuc
             // 
@@ -127,7 +127,7 @@
             this.lsCheckTKTichCuc.TabIndex = 24;
             this.lsCheckTKTichCuc.ValueSeparator = ", ";
             this.lsCheckTKTichCuc.DropDownClosed += new System.EventHandler(this.lsCheckTKTichCuc_DropDownClosed);
-            this.lsCheckTKTichCuc.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lsCheckTKTichCuc_MouseDown);
+            this.lsCheckTKTichCuc.Enter += new System.EventHandler(this.lsCheckTKTichCuc_Enter);
             // 
             // btnPhanNo
             // 
