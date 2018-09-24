@@ -20,6 +20,14 @@ namespace DAO
             DataProvider.DongKetNoi(con);
             return dt;
         }
+        public static DataTable LoadDuLieuLamViecCu(string taikhoan,string idpost)
+        {
+            string sTruyVan = "select KhoangTime,TongComment from tblWork where TaiKhoan='"+taikhoan+"' and IDPost='"+idpost+"'";
+            con = DataProvider.KetNoi();
+            DataTable dt = DataProvider.LayDataTable(sTruyVan, con);
+            DataProvider.DongKetNoi(con);
+            return dt;
+        }
         public static DataTable LoadDuLieuByTaiKhoan(string taikhoan)
         {
             string sTruyVan = "Select * from tblWork TaiKhoan=N'"+taikhoan+"'";

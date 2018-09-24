@@ -127,6 +127,15 @@ namespace FacebookAuto_v6
         public void getdulieufrmganday(string idpost)
         {
             WebView.Navigate(urlfacebook + idpost);
+            txtIDBaiViet.Text = idpost;
+        }
+        public void setBLCu(string idpost)
+        {
+            WebView.Navigate(urlfacebook + idpost);
+            txtIDBaiViet.Text = idpost;
+            ttbl.ktblcu = 1;
+            ttbl.idpost = idpost;
+            LoadBinhLuan();
         }
         public void LoadHoatDongGanDay()
         {
@@ -134,6 +143,7 @@ namespace FacebookAuto_v6
             splitContainerControl1.Panel2.Controls.Add(tthdgd);
             tthdgd.Dock = DockStyle.Fill;
             tthdgd.sentidpost = new UCTTHoatDongGD.SendIDPost(getdulieufrmganday);
+            tthdgd.setBL = new UCTTHoatDongGD.SetChinhBL(setBLCu);
             labelViTri.Text = ">>>  Hoạt động gần đây";
         }
 

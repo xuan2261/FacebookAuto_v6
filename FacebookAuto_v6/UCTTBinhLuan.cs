@@ -24,6 +24,7 @@ namespace FacebookAuto_v6
         public string danhgia = "Tích cực";
         public string timepost;
         int loadlist = 0;
+        public int ktblcu = 0;
         public UCTTBinhLuan()
         {
             InitializeComponent();
@@ -96,7 +97,7 @@ namespace FacebookAuto_v6
         }
         private void UCTTBinhLuan_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -178,6 +179,37 @@ namespace FacebookAuto_v6
                 LoadListAccount();
                 loadlist = 1;
             }
+        }
+
+        private void UCTTBinhLuan_VisibleChanged(object sender, EventArgs e)
+        {
+            // trường hợp khi bình luận tiếp tục sửa đổi từ cơ sở dữ liệu
+            if (ktblcu != 0)
+            {
+                //load lại các bình luận đã lưu
+                DataTable dt = WorkComment.LoadListNoiDungBL(idpost, taikhoan);
+                for(int i=0;i<dt.Rows.Count;i++)
+                {
+                    LsNoiDungBinhLuan.Items.Add(dt.Rows[i]["NoiDung"].ToString());
+                }
+                //kết thúc load lại các bình luận đã lưu
+                //load lại số lượng và khoảng thời gian 
+                dt = Work.LoadDuLieuLamViecCu(taikhoan, idpost);
+                numKhoangTime.Value = int.Parse(dt.Rows[0]["KhoangTime"].ToString());
+                numSoBL.Value = int.Parse(dt.Rows[0]["TongComment"].ToString());
+                //kết thúc load lại số lượng và khoảng thời gian
+                ktblcu = 0;
+            }
+        }
+
+        private void Xoa_Click(object sender, EventArgs e)
+        {
+            // xóa nội dung bình luận trong danh sách bình luận
+            try
+            {
+                LsNoiDungBinhLuan.Items.RemoveAt(LsNoiDungBinhLuan.FocusedItem.Index);
+            }
+            catch { MessageBox.Show("Không có gì để xóa"); }
         }
     }
 }

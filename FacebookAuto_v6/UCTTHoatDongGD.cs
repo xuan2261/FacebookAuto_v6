@@ -97,5 +97,11 @@ namespace FacebookAuto_v6
         {
             LoadDuLieu();
         }
+        public delegate void SetChinhBL(string idpost);
+        public SetChinhBL setBL;
+        private void ChinhSuaBinhLuan_Click(object sender, EventArgs e)
+        {
+            setBL(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "IDPost").ToString());
+        }
     }
 }

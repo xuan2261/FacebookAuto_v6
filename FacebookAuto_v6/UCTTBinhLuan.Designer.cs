@@ -28,13 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.LsNoiDungBinhLuan = new System.Windows.Forms.ListView();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtNoiDungBinhLuan = new System.Windows.Forms.RichTextBox();
             this.panelphosisaduoibinhluan = new System.Windows.Forms.Panel();
-            this.lsCheckTKTieuCuc = new FacebookAuto_v5.ListCheckBoxDropDown();
-            this.lsCheckTKTichCuc = new FacebookAuto_v5.ListCheckBoxDropDown();
             this.label11 = new System.Windows.Forms.Label();
             this.btnBatDauBinhLuan = new Bunifu.Framework.UI.BunifuFlatButton();
             this.numSoBL = new System.Windows.Forms.NumericUpDown();
@@ -44,10 +43,15 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.btnThem = new Bunifu.Framework.UI.BunifuImageButton();
+            this.lsCheckTKTieuCuc = new FacebookAuto_v5.ListCheckBoxDropDown();
+            this.lsCheckTKTichCuc = new FacebookAuto_v5.ListCheckBoxDropDown();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.Xoa = new System.Windows.Forms.ToolStripMenuItem();
             this.panelphosisaduoibinhluan.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numSoBL)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numKhoangTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnThem)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // LsNoiDungBinhLuan
@@ -55,6 +59,7 @@
             this.LsNoiDungBinhLuan.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.LsNoiDungBinhLuan.ContextMenuStrip = this.contextMenuStrip1;
             this.LsNoiDungBinhLuan.Location = new System.Drawing.Point(272, 30);
             this.LsNoiDungBinhLuan.Name = "LsNoiDungBinhLuan";
             this.LsNoiDungBinhLuan.Size = new System.Drawing.Size(236, 208);
@@ -109,40 +114,6 @@
             this.panelphosisaduoibinhluan.Name = "panelphosisaduoibinhluan";
             this.panelphosisaduoibinhluan.Size = new System.Drawing.Size(526, 246);
             this.panelphosisaduoibinhluan.TabIndex = 17;
-            // 
-            // lsCheckTKTieuCuc
-            // 
-            this.lsCheckTKTieuCuc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lsCheckTKTieuCuc.CheckOnClick = true;
-            this.lsCheckTKTieuCuc.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.lsCheckTKTieuCuc.DropDownHeight = 1;
-            this.lsCheckTKTieuCuc.FormattingEnabled = true;
-            this.lsCheckTKTieuCuc.IntegralHeight = false;
-            this.lsCheckTKTieuCuc.Location = new System.Drawing.Point(137, 80);
-            this.lsCheckTKTieuCuc.Name = "lsCheckTKTieuCuc";
-            this.lsCheckTKTieuCuc.Size = new System.Drawing.Size(371, 21);
-            this.lsCheckTKTieuCuc.TabIndex = 21;
-            this.lsCheckTKTieuCuc.ValueSeparator = ", ";
-            this.lsCheckTKTieuCuc.DropDownClosed += new System.EventHandler(this.lsCheckTKTieuCuc_DropDownClosed);
-            this.lsCheckTKTieuCuc.Enter += new System.EventHandler(this.lsCheckTKTieuCuc_Enter);
-            // 
-            // lsCheckTKTichCuc
-            // 
-            this.lsCheckTKTichCuc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lsCheckTKTichCuc.CheckOnClick = true;
-            this.lsCheckTKTichCuc.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.lsCheckTKTichCuc.DropDownHeight = 1;
-            this.lsCheckTKTichCuc.FormattingEnabled = true;
-            this.lsCheckTKTichCuc.IntegralHeight = false;
-            this.lsCheckTKTichCuc.Location = new System.Drawing.Point(137, 26);
-            this.lsCheckTKTichCuc.Name = "lsCheckTKTichCuc";
-            this.lsCheckTKTichCuc.Size = new System.Drawing.Size(371, 21);
-            this.lsCheckTKTichCuc.TabIndex = 20;
-            this.lsCheckTKTichCuc.ValueSeparator = ", ";
-            this.lsCheckTKTichCuc.DropDownClosed += new System.EventHandler(this.lsCheckTKTichCuc_DropDownClosed);
-            this.lsCheckTKTichCuc.Enter += new System.EventHandler(this.lsCheckTKTichCuc_Enter);
             // 
             // label11
             // 
@@ -287,6 +258,54 @@
             this.btnThem.Zoom = 10;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
+            // lsCheckTKTieuCuc
+            // 
+            this.lsCheckTKTieuCuc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lsCheckTKTieuCuc.CheckOnClick = true;
+            this.lsCheckTKTieuCuc.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.lsCheckTKTieuCuc.DropDownHeight = 1;
+            this.lsCheckTKTieuCuc.FormattingEnabled = true;
+            this.lsCheckTKTieuCuc.IntegralHeight = false;
+            this.lsCheckTKTieuCuc.Location = new System.Drawing.Point(137, 80);
+            this.lsCheckTKTieuCuc.Name = "lsCheckTKTieuCuc";
+            this.lsCheckTKTieuCuc.Size = new System.Drawing.Size(371, 21);
+            this.lsCheckTKTieuCuc.TabIndex = 21;
+            this.lsCheckTKTieuCuc.ValueSeparator = ", ";
+            this.lsCheckTKTieuCuc.DropDownClosed += new System.EventHandler(this.lsCheckTKTieuCuc_DropDownClosed);
+            this.lsCheckTKTieuCuc.Enter += new System.EventHandler(this.lsCheckTKTieuCuc_Enter);
+            // 
+            // lsCheckTKTichCuc
+            // 
+            this.lsCheckTKTichCuc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lsCheckTKTichCuc.CheckOnClick = true;
+            this.lsCheckTKTichCuc.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.lsCheckTKTichCuc.DropDownHeight = 1;
+            this.lsCheckTKTichCuc.FormattingEnabled = true;
+            this.lsCheckTKTichCuc.IntegralHeight = false;
+            this.lsCheckTKTichCuc.Location = new System.Drawing.Point(137, 26);
+            this.lsCheckTKTichCuc.Name = "lsCheckTKTichCuc";
+            this.lsCheckTKTichCuc.Size = new System.Drawing.Size(371, 21);
+            this.lsCheckTKTichCuc.TabIndex = 20;
+            this.lsCheckTKTichCuc.ValueSeparator = ", ";
+            this.lsCheckTKTichCuc.DropDownClosed += new System.EventHandler(this.lsCheckTKTichCuc_DropDownClosed);
+            this.lsCheckTKTichCuc.Enter += new System.EventHandler(this.lsCheckTKTichCuc_Enter);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Xoa});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 48);
+            // 
+            // Xoa
+            // 
+            this.Xoa.Name = "Xoa";
+            this.Xoa.Size = new System.Drawing.Size(180, 22);
+            this.Xoa.Text = "Xóa";
+            this.Xoa.Click += new System.EventHandler(this.Xoa_Click);
+            // 
             // UCTTBinhLuan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -301,11 +320,13 @@
             this.Name = "UCTTBinhLuan";
             this.Size = new System.Drawing.Size(526, 490);
             this.Load += new System.EventHandler(this.UCTTBinhLuan_Load);
+            this.VisibleChanged += new System.EventHandler(this.UCTTBinhLuan_VisibleChanged);
             this.panelphosisaduoibinhluan.ResumeLayout(false);
             this.panelphosisaduoibinhluan.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numSoBL)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numKhoangTime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnThem)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -329,5 +350,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem Xoa;
     }
 }

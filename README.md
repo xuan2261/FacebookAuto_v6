@@ -14,3 +14,10 @@ Những công việc cần hoàn thiện:
 cho phép thao tác bình luận, chia sẻ, kiểm duyệt với bài duyệt bài viết trang nhóm
 
 
+-- công việc cần khắc phục
+
+tiếp tục thay đổi bình luận từ bài viết cũ
+
+xem lại thao tác lấy noi dung bình luận cho từng bài viết
+lấy nội dung đc nhưng còn cần thêm list tài khoản đã dùng(hơi khó)
+lưu thông tin mới và bắt đầu bình luận lại

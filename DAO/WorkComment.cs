@@ -16,6 +16,14 @@ namespace DAO
             DataProvider.DongKetNoi(con);
             return dt;
         }
+        public static DataTable LoadListNoiDungBL(string idpost, string taikhoan)
+        {
+            string sTruyVan = "select Noidung from tblWorkComment where TaiKhoan='"+taikhoan+"' and IDPost='"+idpost+"'";
+            con = DataProvider.KetNoi();
+            DataTable dt = DataProvider.LayDataTable(sTruyVan, con);
+            DataProvider.DongKetNoi(con);
+            return dt;
+        }
         public static string LayNoiDungComment(string idpost,string taikhoan)
         {
             string sTruyVan = "select Noidung from tblWorkComment where IDPost='" + idpost + "' and TaiKhoan=N'"+taikhoan+"'";
