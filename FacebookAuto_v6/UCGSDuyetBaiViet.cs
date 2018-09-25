@@ -73,11 +73,11 @@ namespace FacebookAuto_v6
                 if (i == "0")
                 {
                     for (int t = 0; t < pagetichcuc.Rows.Count; t++)
-                        lsIDPage.Add(pagetichcuc.Rows[t]["IDPage"].ToString());
+                        lsIDPage.Add(pagetichcuc.Rows[t]["IDGroup"].ToString());
                     break;
                 }
                 else
-                    lsIDPage.Add(pagetichcuc.Rows[int.Parse(i) - 1]["IDPage"].ToString());
+                    lsIDPage.Add(pagetichcuc.Rows[int.Parse(i) - 1]["IDGroup"].ToString());
             }
             foreach (var item in ListTieuCuc.CheckedIndices)
             {

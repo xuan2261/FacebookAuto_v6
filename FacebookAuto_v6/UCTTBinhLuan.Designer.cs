@@ -43,10 +43,10 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.btnThem = new Bunifu.Framework.UI.BunifuImageButton();
-            this.lsCheckTKTieuCuc = new FacebookAuto_v5.ListCheckBoxDropDown();
-            this.lsCheckTKTichCuc = new FacebookAuto_v5.ListCheckBoxDropDown();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.Xoa = new System.Windows.Forms.ToolStripMenuItem();
+            this.lsCheckTKTieuCuc = new FacebookAuto_v5.ListCheckBoxDropDown();
+            this.lsCheckTKTichCuc = new FacebookAuto_v5.ListCheckBoxDropDown();
             this.panelphosisaduoibinhluan.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numSoBL)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numKhoangTime)).BeginInit();
@@ -249,7 +249,7 @@
             this.btnThem.BackColor = System.Drawing.Color.Transparent;
             this.btnThem.Image = global::FacebookAuto_v6.Properties.Resources.icons8_plus_64;
             this.btnThem.ImageActive = null;
-            this.btnThem.Location = new System.Drawing.Point(236, 144);
+            this.btnThem.Location = new System.Drawing.Point(236, 129);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(30, 30);
             this.btnThem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -257,6 +257,20 @@
             this.btnThem.TabStop = false;
             this.btnThem.Zoom = 10;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Xoa});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(95, 26);
+            // 
+            // Xoa
+            // 
+            this.Xoa.Name = "Xoa";
+            this.Xoa.Size = new System.Drawing.Size(94, 22);
+            this.Xoa.Text = "Xóa";
+            this.Xoa.Click += new System.EventHandler(this.Xoa_Click);
             // 
             // lsCheckTKTieuCuc
             // 
@@ -291,20 +305,6 @@
             this.lsCheckTKTichCuc.ValueSeparator = ", ";
             this.lsCheckTKTichCuc.DropDownClosed += new System.EventHandler(this.lsCheckTKTichCuc_DropDownClosed);
             this.lsCheckTKTichCuc.Enter += new System.EventHandler(this.lsCheckTKTichCuc_Enter);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Xoa});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 48);
-            // 
-            // Xoa
-            // 
-            this.Xoa.Name = "Xoa";
-            this.Xoa.Size = new System.Drawing.Size(180, 22);
-            this.Xoa.Text = "Xóa";
-            this.Xoa.Click += new System.EventHandler(this.Xoa_Click);
             // 
             // UCTTBinhLuan
             // 

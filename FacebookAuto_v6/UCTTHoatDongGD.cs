@@ -97,11 +97,14 @@ namespace FacebookAuto_v6
         {
             LoadDuLieu();
         }
-        public delegate void SetChinhBL(string idpost);
+        public delegate void SetChinhBL(string idpost,string trangthai,string timepost);
         public SetChinhBL setBL;
         private void ChinhSuaBinhLuan_Click(object sender, EventArgs e)
         {
-            setBL(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "IDPost").ToString());
+            string idpost = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "IDPost").ToString();
+            string trangthai= gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "Status").ToString();
+            string timepost= gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "TimePost").ToString();
+            setBL(idpost,trangthai,timepost);
         }
     }
 }

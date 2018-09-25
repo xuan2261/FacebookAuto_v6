@@ -19,5 +19,7 @@ cho phép thao tác bình luận, chia sẻ, kiểm duyệt với bài duyệt b
 tiếp tục thay đổi bình luận từ bài viết cũ
 
 xem lại thao tác lấy noi dung bình luận cho từng bài viết
-lấy nội dung đc nhưng còn cần thêm list tài khoản đã dùng(hơi khó)
+
 lưu thông tin mới và bắt đầu bình luận lại
+
+duyệt bài viết trong nhóm còn chưa có (chưa cụ thể)

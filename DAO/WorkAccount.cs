@@ -31,6 +31,16 @@ namespace DAO
             string idbinhluan = dt.Rows[r.Next(0,dt.Rows.Count)]["IDAccountComment"].ToString();
             return idbinhluan;
         }
+        public static bool CheckTK(string idaccount,string taikhoan,string idpost)
+        {
+            string sTruyVan = "select * from tblWorkAccount where TaiKhoan='"+taikhoan+"' and IDAccountComment='"+idaccount+"' and IDPost='"+idpost+"'";
+            con = DataProvider.KetNoi();
+            DataTable dt = DataProvider.LayDataTable(sTruyVan, con);
+            DataProvider.DongKetNoi(con);
+            if (dt.Rows.Count == 0)
+                return false;
+            else return true;
+        }
         public static bool Them(tblWorkAccount wa)
         {
             try
@@ -63,12 +73,12 @@ namespace DAO
             }
         }
 
-        public static bool Xoa(string idpost)
+        public static bool Xoa(string idpost,string taikhoan)
         {
             try
             {
                 con = DataProvider.KetNoi();
-                string sTruyVan = string.Format("Delete From tblWorkAccount where IDPost = '{0}'", idpost);
+                string sTruyVan = string.Format("Delete From tblWorkAccount where IDPost = '{0}' and TaiKhoan=N'{1}'", idpost,taikhoan);
                 DataProvider.ThucThiTruyVanNonQuery(sTruyVan, con);
                 DataProvider.DongKetNoi(con);
                 return true;

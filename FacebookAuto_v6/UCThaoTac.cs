@@ -21,6 +21,7 @@ namespace FacebookAuto_v6
         UCTTHoatDongGD tthdgd = new UCTTHoatDongGD();
         UCTTKiemDuyetGanDay ttkdgd = new UCTTKiemDuyetGanDay();
         string urlfacebook= "https://mobile.facebook.com/";
+        string taikhoan;
         public void settaikhoanchouc(string tk)
         {
             ttbl.taikhoan = tk;
@@ -29,6 +30,7 @@ namespace FacebookAuto_v6
             ttcx.taikhoan = tk;
             ttkd.taikhoan = tk;
             ttkdgd.taikhoan = tk;
+            taikhoan = tk;
         }
         public UCThaoTac()
         {
@@ -54,6 +56,19 @@ namespace FacebookAuto_v6
             p.TimePost = DateTime.Now;
             Post.Them(p);
             //kết thúc lưu luôn thông tin bài viết 
+            //kiểm tra xem bài viết có trong work không
+            if (Work.LoadDuLieuLamViecCu(taikhoan, txtIDBaiViet.Text).Rows.Count!=0)
+            {
+                ttbl.ktblcu = 1;
+                ttbl.idpost = txtIDBaiViet.Text;
+                LoadBinhLuan();
+                //load lại thông tin bài viết
+                DataTable dt = Post.LoadDuLieuByID(txtIDBaiViet.Text);
+                DatePost.Value = DateTime.Parse(dt.Rows[0]["TimePost"].ToString());
+                if (dt.Rows[0]["Status"].ToString() == "Tiêu cực") radioTieuCuc.Checked = true;
+                else radioTichCuc.Checked = true;
+            }
+            //kết thúc kiểm tra work 
             ttbl.idpost = txtIDBaiViet.Text;
             ttcx.idpost = txtIDBaiViet.Text;
             ttkd.idpost = txtIDBaiViet.Text;
@@ -129,12 +144,15 @@ namespace FacebookAuto_v6
             WebView.Navigate(urlfacebook + idpost);
             txtIDBaiViet.Text = idpost;
         }
-        public void setBLCu(string idpost)
+        public void setBLCu(string idpost,string Status,string timepost)
         {
             WebView.Navigate(urlfacebook + idpost);
             txtIDBaiViet.Text = idpost;
             ttbl.ktblcu = 1;
             ttbl.idpost = idpost;
+            DatePost.Value = DateTime.Parse(timepost);
+            if (Status == "Tiêu Cực") radioTieuCuc.Checked = true;
+            else radioTichCuc.Checked = true;
             LoadBinhLuan();
         }
         public void LoadHoatDongGanDay()
