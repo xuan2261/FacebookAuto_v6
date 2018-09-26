@@ -32,6 +32,8 @@ namespace FacebookAuto_v6
         {
             DataTable nguoitichcuc = UserFB.LoadDuLieuTichCuc();
             DataTable nguoitieucuc = UserFB.LoadDuLieuTieuCuc();
+            lsNguoiDungTichCuc.Items.Clear();
+            lsNguoiDungTieuCuc.Items.Clear();
             ImageList imglisttichcuc = new ImageList();
             imglisttichcuc.ImageSize = new Size(40, 40);
             ImageList imglisttieucuc = new ImageList();
@@ -313,7 +315,54 @@ namespace FacebookAuto_v6
             catch { }
             try
             {
-                kq = ThuVienLamViecFacebook.GetCommented(idnguoidungtieucuc[lsNguoiDungTieuCuc.FocusedItem.Index]);
+                string numberuser = idnguoidungtieucuc[lsNguoiDungTieuCuc.FocusedItem.Index];
+                WebBrowser web = new WebBrowser();
+                web.Navigate("https://mobile.facebook.com/search/" + numberuser + "/stories-commented");
+                while (web.ReadyState != WebBrowserReadyState.Complete)
+                    Application.DoEvents();
+                string htmlcontent = web.DocumentText;
+                htmlcontent = htmlcontent.Replace("amp;", "");
+                for (int i = 0; i < 300; i++)
+                {
+                    int kt = htmlcontent.IndexOf("H3 class=\"c");
+                    //nếu như tìm thấy bài viết
+                    if (kt != -1)
+                    {
+                        htmlcontent = htmlcontent.Substring(kt + 10);
+                        htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("href=\"") + 6);
+                        string idroot = htmlcontent.Remove(htmlcontent.IndexOf("?"));
+                        string nameroot = htmlcontent.Substring(htmlcontent.IndexOf(">") + 1);
+                        nameroot = nameroot.Remove(nameroot.IndexOf("<"));
+                        nameroot = nameroot.Replace("\r\n      ", "");
+                        string idpost = htmlcontent.Substring(htmlcontent.IndexOf("like_") + 5);
+                        idpost = idpost.Remove(idpost.IndexOf("\""));
+                        lsRootComment.Add(idroot);
+                        lsNameRootComment.Add(nameroot);
+                        lsidComment.Add(idpost);
+                    }
+                    // không tìm thấy bài viết tiếp
+                    else
+                    {
+                        int kt1 = htmlcontent.IndexOf("see_more_pager");
+                        // nếu như tìm thấy trang tiếp theo
+                        if (kt1 != -1)
+                        {
+                            htmlcontent = htmlcontent.Substring(kt1);
+                            string urltiep = htmlcontent.Substring(htmlcontent.IndexOf("href=\"") + 6);
+                            urltiep = urltiep.Remove(urltiep.IndexOf("\""));
+                            web.Navigate(urltiep);
+                            while (web.ReadyState != WebBrowserReadyState.Complete)
+                                Application.DoEvents();
+                            htmlcontent = web.DocumentText;
+                            htmlcontent = htmlcontent.Replace("amp;", "");
+                        }
+                        //không tìm thấy trang tiếp theo
+                        else
+                        {
+                            break;
+                        }
+                    }
+                }
             }
             catch { }
             int[] ktbool = new int[lsNameRootComment.Count];
