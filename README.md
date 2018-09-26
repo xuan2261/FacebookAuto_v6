@@ -6,20 +6,12 @@ Những công việc cần hoàn thiện:
 --Hoàn thiện chức năng chia sẻ( mới chỉ có giao diện chưa thực hiện đc)
 --Hoàn thiện chức năng thêm nhóm, đánh giá ngóm, thêm bằng link.
 -- hoàn thiện giao diện theo dõi người dùng
--- hoàn thiện giao diện quản lý nhân viên
 -- tiếp tục hoàn thiện giao diện quản lý người dùng facebook
 
-
-
-cho phép thao tác bình luận, chia sẻ, kiểm duyệt với bài duyệt bài viết trang nhóm
-
-
--- công việc cần khắc phục
-
-tiếp tục thay đổi bình luận từ bài viết cũ
-
-xem lại thao tác lấy noi dung bình luận cho từng bài viết
 
 lưu thông tin mới và bắt đầu bình luận lại
 
 duyệt bài viết trong nhóm còn chưa có (chưa cụ thể)
+
+cho phép xem thêm những bài viết đã thích và comment ở phần admin
+Cho phép hiển thị thêm danh sách bài viết đã thích ...

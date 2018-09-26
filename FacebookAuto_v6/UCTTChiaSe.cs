@@ -35,7 +35,7 @@ namespace FacebookAuto_v6
             {
                 lsCheckTKTichCuc.Items.Add(tichcuc.Rows[i]["Name"].ToString());
             }
-            for (int i = 0; i < tichcuc.Rows.Count; i++)
+            for (int i = 0; i < tieucuc.Rows.Count; i++)
             {
                 lsCheckTKTieuCuc.Items.Add(tieucuc.Rows[i]["Name"].ToString());
             }

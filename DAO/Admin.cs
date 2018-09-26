@@ -14,7 +14,7 @@ namespace DAO
         private static SqlConnection con;
         public static DataTable LoadDuLieu()
         {
-            string sTruyVan = "Select * from tblAdmin";
+            string sTruyVan = "Select * from tblAdmin where MucQuyen=0";
             con = DataProvider.KetNoi();
             DataTable dt = DataProvider.LayDataTable(sTruyVan, con);
             DataProvider.DongKetNoi(con);

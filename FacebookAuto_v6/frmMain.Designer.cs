@@ -222,6 +222,7 @@
             this.ElementGSNhanVien.Name = "ElementGSNhanVien";
             this.ElementGSNhanVien.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.ElementGSNhanVien.Text = "Giám sát nhân viên";
+            this.ElementGSNhanVien.Click += new System.EventHandler(this.ElementGSNhanVien_Click);
             // 
             // ElementGSNguoiDung
             // 

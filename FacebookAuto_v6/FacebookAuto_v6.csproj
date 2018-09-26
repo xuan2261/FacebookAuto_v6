@@ -136,6 +136,12 @@
     <Compile Include="UCGSNguoiDungFB.Designer.cs">
       <DependentUpon>UCGSNguoiDungFB.cs</DependentUpon>
     </Compile>
+    <Compile Include="UCGSNhanVien.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCGSNhanVien.Designer.cs">
+      <DependentUpon>UCGSNhanVien.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCGSThemTrang.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -227,6 +233,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UCGSNguoiDungFB.resx">
       <DependentUpon>UCGSNguoiDungFB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCGSNhanVien.resx">
+      <DependentUpon>UCGSNhanVien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCGSThemTrang.resx">
       <DependentUpon>UCGSThemTrang.cs</DependentUpon>

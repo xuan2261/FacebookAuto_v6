@@ -65,44 +65,92 @@ namespace FacebookAuto_v6
 
         private void UCGSNguoiDungFB_Load(object sender, EventArgs e)
         {
-            ThuVienLamViecFacebook.UpdateStatusUserFB();
+            //
             LoadNguoiDung();
         }
-
+        List<string> lsidroot  = new List<string>();
         private void btnBaiThich_Click(object sender, EventArgs e)
         {
 
             lsKetQua.Items.Clear();
-            List<string> kq = new List<string>();
+            List<string> idrootliked = new List<string>();
+            List<string> namerootliked = new List<string>();
+            List<string> danhsachidpost = new List<string>();
             try
             {
-                kq = ThuVienLamViecFacebook.GetListLiked(idnguoidungtichcuc[lsNguoiDungTichCuc.FocusedItem.Index]);
+                WebBrowser web = new WebBrowser();
+                string numberuser = idnguoidungtichcuc[lsNguoiDungTichCuc.FocusedItem.Index];
+                web.Navigate("https://mobile.facebook.com/search/" + numberuser + "/stories-liked");
+                while (web.ReadyState != WebBrowserReadyState.Complete)
+                    Application.DoEvents();
+                string htmlcontent = web.DocumentText;
+                htmlcontent = htmlcontent.Replace("amp;", "");
+                for (int i = 0; i < 300; i++)
+                {
+                    int kt = htmlcontent.IndexOf("H3 class=\"b");
+                    // còn bài viết để duyệt
+                    if (kt != -1)
+                    {
+                        string idpost = htmlcontent.Substring(htmlcontent.IndexOf("like_") + 5);
+                        idpost = idpost.Remove(idpost.IndexOf("\""));
+                        htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("H3 class=\"b") + 20);
+                        htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("&id=") + 4);
+                        string idroot = htmlcontent.Remove(htmlcontent.IndexOf("&"));
+                        string nameroot = htmlcontent.Substring(htmlcontent.IndexOf("STRONG") + 10);
+                        nameroot = nameroot.Substring(nameroot.IndexOf(">") + 1);
+                        nameroot = nameroot.Remove(nameroot.IndexOf("<"));
+                        nameroot = nameroot.Replace("\r\n      ", "");
+                        idrootliked.Add(idroot);
+                        danhsachidpost.Add(idpost);
+                        namerootliked.Add(nameroot);
+                    }
+                    //ko còn bài viết ở trang này nữa
+                    else
+                    {
+                        int kt1 = htmlcontent.IndexOf("see_more_pager");
+                        //ko còn bài viết để xem
+                        if (kt1 == -1) break;
+                        //còn bài viết để xem tiếp
+                        else
+                        {
+                            string urltiep = htmlcontent.Substring(htmlcontent.IndexOf("see_more_pager"));
+                            urltiep = urltiep.Substring(urltiep.IndexOf("href=\"") + 6);
+                            urltiep = urltiep.Remove(urltiep.IndexOf("\""));
+                            web.Navigate(urltiep);
+                            while (web.ReadyState != WebBrowserReadyState.Complete)
+                                Application.DoEvents();
+                            htmlcontent = web.DocumentText;
+                            htmlcontent = htmlcontent.Replace("amp;", "");
+                        }
+                    }
+                }
             }
             catch { }
             try
             {
-                 kq = ThuVienLamViecFacebook.GetListLiked(idnguoidungtieucuc[lsNguoiDungTieuCuc.FocusedItem.Index]);
+                 //kq = ThuVienLamViecFacebook.GetListLiked(idnguoidungtieucuc[lsNguoiDungTieuCuc.FocusedItem.Index]);
             }
             catch { }
-            int[] ktbool = new int[kq.Count];
+            int[] ktbool = new int[idrootliked.Count];
             List<int> lskq = new List<int>();
             List<string> stringkq = new List<string>();
-            for (int i = 0; i < kq.Count; i++)
+            for (int i = 0; i < idrootliked.Count; i++)
             {
                 int dem = 0;
                 if (ktbool[i] == 1) continue;
                 else
                 {
-                    for (int j = 0; j < kq.Count; j++)
+                    for (int j = 0; j < idrootliked.Count; j++)
                     {
-                        if (kq[i] == kq[j] && ktbool[j] == 0)
+                        if (idrootliked[i] == idrootliked[j] && ktbool[j] == 0)
                         {
                             dem++;
                             ktbool[j] = 1;
                         }
                     }
                     lskq.Add(dem);
-                    stringkq.Add(kq[i]);
+                    stringkq.Add(namerootliked[i]);
+                    lsidroot.Add(idrootliked[i]);
                 }
             }
             for (int i = 0; i < lskq.Count; i++)
@@ -119,6 +167,10 @@ namespace FacebookAuto_v6
                         string tmp2 = stringkq[i];
                         stringkq[i] = stringkq[j];
                         stringkq[j] = tmp2;
+
+                        string tmp3 = lsidroot[i];
+                        lsidroot[i] = lsidroot[j];
+                        lsidroot[j] = tmp3;
                     }
                 }
             }
@@ -141,7 +193,7 @@ namespace FacebookAuto_v6
 
         private void XemThongTinChiTietToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            WebView.Navigate("https://mobile.facebook.com/" + lsKetQua.FocusedItem.Text);
+            WebView.Navigate("https://mobile.facebook.com/" + lsidroot[lsKetQua.FocusedItem.Index]);
         }
 
         private void btnDaComment_Click(object sender, EventArgs e)
@@ -206,6 +258,7 @@ namespace FacebookAuto_v6
         private void btnUpdateUser_Click(object sender, EventArgs e)
         {
             ThuVienLamViecFacebook.UpdateTTNguoiDung();
+            ThuVienLamViecFacebook.UpdateStatusUserFB();
         }
 
         private void btnTrangDaThich_Click(object sender, EventArgs e)
