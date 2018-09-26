@@ -47,6 +47,9 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.XemThongTinChiTietToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.WebView = new Gecko.GeckoWebBrowser();
+            this.lsViewIDPostThich = new System.Windows.Forms.ListView();
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.XemThongTinBaiViet = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -54,6 +57,7 @@
             this.splitContainer1.SuspendLayout();
             this.PanelPhim.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
+            this.contextMenuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -113,8 +117,8 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.btnUpdateUser);
             this.splitContainer1.Panel2.Controls.Add(this.lsNguoiDungTieuCuc);
-            this.splitContainer1.Size = new System.Drawing.Size(210, 495);
-            this.splitContainer1.SplitterDistance = 246;
+            this.splitContainer1.Size = new System.Drawing.Size(210, 534);
+            this.splitContainer1.SplitterDistance = 265;
             this.splitContainer1.TabIndex = 103;
             // 
             // lsNguoiDungTichCuc
@@ -124,7 +128,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lsNguoiDungTichCuc.Location = new System.Drawing.Point(7, 32);
             this.lsNguoiDungTichCuc.Name = "lsNguoiDungTichCuc";
-            this.lsNguoiDungTichCuc.Size = new System.Drawing.Size(200, 210);
+            this.lsNguoiDungTichCuc.Size = new System.Drawing.Size(200, 229);
             this.lsNguoiDungTichCuc.TabIndex = 103;
             this.lsNguoiDungTichCuc.UseCompatibleStateImageBehavior = false;
             this.lsNguoiDungTichCuc.View = System.Windows.Forms.View.Details;
@@ -171,18 +175,16 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lsNguoiDungTieuCuc.Location = new System.Drawing.Point(6, 43);
             this.lsNguoiDungTieuCuc.Name = "lsNguoiDungTieuCuc";
-            this.lsNguoiDungTieuCuc.Size = new System.Drawing.Size(200, 200);
+            this.lsNguoiDungTieuCuc.Size = new System.Drawing.Size(200, 220);
             this.lsNguoiDungTieuCuc.TabIndex = 104;
             this.lsNguoiDungTieuCuc.UseCompatibleStateImageBehavior = false;
             this.lsNguoiDungTieuCuc.View = System.Windows.Forms.View.Details;
             // 
             // lsKetQua
             // 
-            this.lsKetQua.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.lsKetQua.Location = new System.Drawing.Point(375, 89);
             this.lsKetQua.Name = "lsKetQua";
-            this.lsKetQua.Size = new System.Drawing.Size(179, 440);
+            this.lsKetQua.Size = new System.Drawing.Size(179, 274);
             this.lsKetQua.TabIndex = 104;
             this.lsKetQua.UseCompatibleStateImageBehavior = false;
             this.lsKetQua.View = System.Windows.Forms.View.Details;
@@ -197,7 +199,7 @@
             this.PanelPhim.Dock = System.Windows.Forms.DockStyle.Left;
             this.PanelPhim.Location = new System.Drawing.Point(210, 57);
             this.PanelPhim.Name = "PanelPhim";
-            this.PanelPhim.Size = new System.Drawing.Size(159, 495);
+            this.PanelPhim.Size = new System.Drawing.Size(159, 534);
             this.PanelPhim.TabIndex = 105;
             // 
             // btnTrangDaThich
@@ -347,15 +349,42 @@
             this.WebView.FrameEventsPropagateToMainWindow = false;
             this.WebView.Location = new System.Drawing.Point(560, 89);
             this.WebView.Name = "WebView";
-            this.WebView.Size = new System.Drawing.Size(365, 440);
+            this.WebView.Size = new System.Drawing.Size(365, 499);
             this.WebView.TabIndex = 108;
             this.WebView.UseHttpActivityObserver = false;
+            // 
+            // lsViewIDPostThich
+            // 
+            this.lsViewIDPostThich.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.lsViewIDPostThich.ContextMenuStrip = this.contextMenuStrip2;
+            this.lsViewIDPostThich.Location = new System.Drawing.Point(375, 369);
+            this.lsViewIDPostThich.Name = "lsViewIDPostThich";
+            this.lsViewIDPostThich.Size = new System.Drawing.Size(179, 220);
+            this.lsViewIDPostThich.TabIndex = 109;
+            this.lsViewIDPostThich.UseCompatibleStateImageBehavior = false;
+            this.lsViewIDPostThich.View = System.Windows.Forms.View.Details;
+            // 
+            // contextMenuStrip2
+            // 
+            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.XemThongTinBaiViet});
+            this.contextMenuStrip2.Name = "contextMenuStrip2";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(192, 48);
+            // 
+            // XemThongTinBaiViet
+            // 
+            this.XemThongTinBaiViet.Name = "XemThongTinBaiViet";
+            this.XemThongTinBaiViet.Size = new System.Drawing.Size(191, 22);
+            this.XemThongTinBaiViet.Text = "Xem thông tin bài viết";
+            this.XemThongTinBaiViet.Click += new System.EventHandler(this.XemThongTinBaiViet_Click);
             // 
             // UCGSNguoiDungFB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
+            this.Controls.Add(this.lsViewIDPostThich);
             this.Controls.Add(this.WebView);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.PanelPhim);
@@ -363,7 +392,7 @@
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.panel1);
             this.Name = "UCGSNguoiDungFB";
-            this.Size = new System.Drawing.Size(928, 552);
+            this.Size = new System.Drawing.Size(928, 591);
             this.Load += new System.EventHandler(this.UCGSNguoiDungFB_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -375,6 +404,7 @@
             this.PanelPhim.ResumeLayout(false);
             this.PanelPhim.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
+            this.contextMenuStrip2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -400,5 +430,8 @@
         private Bunifu.Framework.UI.BunifuFlatButton btnDaComment;
         private Bunifu.Framework.UI.BunifuFlatButton btnTrangDaThich;
         private Bunifu.Framework.UI.BunifuFlatButton btnUpdateUser;
+        private System.Windows.Forms.ListView lsViewIDPostThich;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
+        private System.Windows.Forms.ToolStripMenuItem XemThongTinBaiViet;
     }
 }

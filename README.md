@@ -13,5 +13,4 @@ lưu thông tin mới và bắt đầu bình luận lại
 
 duyệt bài viết trong nhóm còn chưa có (chưa cụ thể)
 
-cho phép xem thêm những bài viết đã thích và comment ở phần admin
-Cho phép hiển thị thêm danh sách bài viết đã thích ...
+chức nang hiển thị của bài viết đã comment hơi có vấn đề, không chỉ rõ đc địa chỉ bài viết....
