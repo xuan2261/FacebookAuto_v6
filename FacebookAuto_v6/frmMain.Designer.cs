@@ -57,6 +57,7 @@
             this.accordionControlElement7 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement8 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.panelMain = new System.Windows.Forms.Panel();
+            this.ElementTKNhanVien = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             ((System.ComponentModel.ISupportInitialize)(this.TabControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             this.SuspendLayout();
@@ -238,7 +239,8 @@
             // tabThongKe
             // 
             this.tabThongKe.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.ElementTKTrang});
+            this.ElementTKTrang,
+            this.ElementTKNhanVien});
             this.tabThongKe.Expanded = true;
             this.tabThongKe.Name = "tabThongKe";
             this.tabThongKe.Text = "Thống kê";
@@ -290,6 +292,13 @@
             this.panelMain.Name = "panelMain";
             this.panelMain.Size = new System.Drawing.Size(947, 596);
             this.panelMain.TabIndex = 3;
+            // 
+            // ElementTKNhanVien
+            // 
+            this.ElementTKNhanVien.Name = "ElementTKNhanVien";
+            this.ElementTKNhanVien.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.ElementTKNhanVien.Text = "Nhân viên";
+            this.ElementTKNhanVien.Click += new System.EventHandler(this.ElementTKNhanVien_Click);
             // 
             // frmMain
             // 
@@ -344,6 +353,7 @@
         public DevExpress.XtraBars.Navigation.AccordionControlElement ElementKiemDuyet;
         public DevExpress.XtraBars.Navigation.AccordionControlElement ElementHoatDong;
         public DevExpress.XtraBars.Navigation.AccordionControlElement ElementKiemDuyetGanDay;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement ElementTKNhanVien;
     }
 }
 

@@ -64,6 +64,7 @@
     <Compile Include="tblWork.cs" />
     <Compile Include="tblWorkAccount.cs" />
     <Compile Include="tblWorkComment.cs" />
+    <Compile Include="tblWorked.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

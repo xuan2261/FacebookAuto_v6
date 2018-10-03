@@ -24,6 +24,7 @@ namespace DTO
         public virtual DbSet<tblWork> tblWorks { get; set; }
         public virtual DbSet<tblWorkAccount> tblWorkAccounts { get; set; }
         public virtual DbSet<tblWorkComment> tblWorkComments { get; set; }
+        public virtual DbSet<tblWorked> tblWorkeds { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

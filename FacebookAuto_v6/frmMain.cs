@@ -21,6 +21,7 @@ namespace FacebookAuto_v6
         UCTKTrang uctkt = new UCTKTrang();
         UCQLNhanVien ucqlnv = new UCQLNhanVien();
         UCGSNhanVien ucgsnv = new UCGSNhanVien();
+        UCTKNhanVien uctknv = new UCTKNhanVien();
         int ktuc = 1;
         tblAdmin admin = new tblAdmin();
         public frmMain(string taikhoan,int mucquyen)
@@ -253,6 +254,14 @@ namespace FacebookAuto_v6
             panelMain.Controls.Clear();
             panelMain.Controls.Add(ucgsnv);
             ucgsnv.Dock = DockStyle.Fill;
+        }
+
+        private void ElementTKNhanVien_Click(object sender, EventArgs e)
+        {
+            ktuc = 5;
+            panelMain.Controls.Clear();
+            panelMain.Controls.Add(uctknv);
+            uctknv.Dock = DockStyle.Fill;
         }
     }
 }
