@@ -14,3 +14,7 @@ lưu thông tin mới và bắt đầu bình luận lại
 duyệt bài viết trong nhóm còn chưa có (chưa cụ thể)
 
 chức nang hiển thị của bài viết đã comment hơi có vấn đề, không chỉ rõ đc địa chỉ bài viết....
+
+
+
+cho phép upload bài viết lên trang, nhóm

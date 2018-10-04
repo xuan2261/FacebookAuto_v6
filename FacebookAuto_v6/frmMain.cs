@@ -17,11 +17,13 @@ namespace FacebookAuto_v6
         UCTTHoatDongGD uctthdgd = new UCTTHoatDongGD();
         UCGSThemTrang ucgstt = new UCGSThemTrang();
         UCGSDuyetBaiViet ucgsdbv = new UCGSDuyetBaiViet();
+        UCGSDangBai ucgsdb = new UCGSDangBai();
         UCGSNguoiDungFB ucgsndfb = new UCGSNguoiDungFB();
         UCTKTrang uctkt = new UCTKTrang();
         UCQLNhanVien ucqlnv = new UCQLNhanVien();
         UCGSNhanVien ucgsnv = new UCGSNhanVien();
         UCTKNhanVien uctknv = new UCTKNhanVien();
+        
         int ktuc = 1;
         tblAdmin admin = new tblAdmin();
         public frmMain(string taikhoan,int mucquyen)
@@ -262,6 +264,15 @@ namespace FacebookAuto_v6
             panelMain.Controls.Clear();
             panelMain.Controls.Add(uctknv);
             uctknv.Dock = DockStyle.Fill;
+        }
+
+        private void accordionControlElement1_Click(object sender, EventArgs e)
+        {
+            ktuc = 2;
+            panelMain.Controls.Clear();
+            panelMain.Controls.Add(ucgsdb);
+            ucgsdb.Dock = DockStyle.Fill;
+            ucgsdb.taikhoan = admin.TaiKhoan;
         }
     }
 }

@@ -51,12 +51,12 @@
             this.NghiepVuBayToCamXuc = new System.Windows.Forms.ToolStripMenuItem();
             this.NghiepVuKiemDuyet = new System.Windows.Forms.ToolStripMenuItem();
             this.txtTuKhoa = new System.Windows.Forms.TextBox();
+            this.ListTieuCuc = new FacebookAuto_v5.ListCheckBoxDropDown();
+            this.ListTichCuc = new FacebookAuto_v5.ListCheckBoxDropDown();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.WebView = new System.Windows.Forms.WebBrowser();
             this.label1 = new System.Windows.Forms.Label();
-            this.ListTieuCuc = new FacebookAuto_v5.ListCheckBoxDropDown();
-            this.ListTichCuc = new FacebookAuto_v5.ListCheckBoxDropDown();
             ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -73,9 +73,9 @@
             this.label2.ForeColor = System.Drawing.SystemColors.Window;
             this.label2.Location = new System.Drawing.Point(16, 13);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(259, 29);
+            this.label2.Size = new System.Drawing.Size(258, 29);
             this.label2.TabIndex = 83;
-            this.label2.Text = "Giám sát trang, nhóm";
+            this.label2.Text = "Thao tác trang, nhóm";
             // 
             // labelViTri
             // 
@@ -298,7 +298,7 @@
             this.NghiepVuBayToCamXuc,
             this.NghiepVuKiemDuyet});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(213, 136);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(213, 114);
             // 
             // XemChiTiet
             // 
@@ -344,6 +344,42 @@
             this.txtTuKhoa.Name = "txtTuKhoa";
             this.txtTuKhoa.Size = new System.Drawing.Size(233, 26);
             this.txtTuKhoa.TabIndex = 99;
+            // 
+            // ListTieuCuc
+            // 
+            this.ListTieuCuc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ListTieuCuc.CheckOnClick = true;
+            this.ListTieuCuc.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.ListTieuCuc.DropDownHeight = 1;
+            this.ListTieuCuc.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.ListTieuCuc.FormattingEnabled = true;
+            this.ListTieuCuc.IntegralHeight = false;
+            this.ListTieuCuc.Location = new System.Drawing.Point(140, 120);
+            this.ListTieuCuc.Name = "ListTieuCuc";
+            this.ListTieuCuc.Size = new System.Drawing.Size(233, 21);
+            this.ListTieuCuc.TabIndex = 92;
+            this.ListTieuCuc.ValueSeparator = ", ";
+            this.ListTieuCuc.DropDownClosed += new System.EventHandler(this.ListTieuCuc_DropDownClosed);
+            this.ListTieuCuc.Enter += new System.EventHandler(this.ListTieuCuc_Enter);
+            // 
+            // ListTichCuc
+            // 
+            this.ListTichCuc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ListTichCuc.CheckOnClick = true;
+            this.ListTichCuc.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.ListTichCuc.DropDownHeight = 1;
+            this.ListTichCuc.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.ListTichCuc.FormattingEnabled = true;
+            this.ListTichCuc.IntegralHeight = false;
+            this.ListTichCuc.Location = new System.Drawing.Point(140, 70);
+            this.ListTichCuc.Name = "ListTichCuc";
+            this.ListTichCuc.Size = new System.Drawing.Size(233, 21);
+            this.ListTichCuc.TabIndex = 91;
+            this.ListTichCuc.ValueSeparator = ", ";
+            this.ListTichCuc.DropDownClosed += new System.EventHandler(this.ListTichCuc_DropDownClosed);
+            this.ListTichCuc.Enter += new System.EventHandler(this.ListTichCuc_Enter);
             // 
             // radioButton2
             // 
@@ -392,42 +428,6 @@
             this.label1.Size = new System.Drawing.Size(121, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Thông tin bài viết ";
-            // 
-            // ListTieuCuc
-            // 
-            this.ListTieuCuc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ListTieuCuc.CheckOnClick = true;
-            this.ListTieuCuc.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.ListTieuCuc.DropDownHeight = 1;
-            this.ListTieuCuc.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.ListTieuCuc.FormattingEnabled = true;
-            this.ListTieuCuc.IntegralHeight = false;
-            this.ListTieuCuc.Location = new System.Drawing.Point(140, 120);
-            this.ListTieuCuc.Name = "ListTieuCuc";
-            this.ListTieuCuc.Size = new System.Drawing.Size(233, 21);
-            this.ListTieuCuc.TabIndex = 92;
-            this.ListTieuCuc.ValueSeparator = ", ";
-            this.ListTieuCuc.DropDownClosed += new System.EventHandler(this.ListTieuCuc_DropDownClosed);
-            this.ListTieuCuc.Enter += new System.EventHandler(this.ListTieuCuc_Enter);
-            // 
-            // ListTichCuc
-            // 
-            this.ListTichCuc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ListTichCuc.CheckOnClick = true;
-            this.ListTichCuc.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.ListTichCuc.DropDownHeight = 1;
-            this.ListTichCuc.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.ListTichCuc.FormattingEnabled = true;
-            this.ListTichCuc.IntegralHeight = false;
-            this.ListTichCuc.Location = new System.Drawing.Point(140, 70);
-            this.ListTichCuc.Name = "ListTichCuc";
-            this.ListTichCuc.Size = new System.Drawing.Size(233, 21);
-            this.ListTichCuc.TabIndex = 91;
-            this.ListTichCuc.ValueSeparator = ", ";
-            this.ListTichCuc.DropDownClosed += new System.EventHandler(this.ListTichCuc_DropDownClosed);
-            this.ListTichCuc.Enter += new System.EventHandler(this.ListTichCuc_Enter);
             // 
             // UCGSDuyetBaiViet
             // 
