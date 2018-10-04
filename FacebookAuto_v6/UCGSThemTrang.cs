@@ -58,43 +58,47 @@ namespace FacebookAuto_v6
                 imglist.Images.Clear();
                 for (int i = 0; i < 50; i++)
                 {
-                    htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("TD class=\"o b") + 15);
-                    //bắt đầu lấy link ảnh
-                    string urlimg = htmlcontent.Substring(htmlcontent.IndexOf("https://"));
-                    urlimg = urlimg.Remove(urlimg.IndexOf("\""));
-                    urlimg = urlimg.Replace("amp;", "");
-                    lsLinkImgPage.Add(urlimg);
-                    WebClient webClient = new WebClient();
-                    byte[] data = webClient.DownloadData(urlimg);
-                    MemoryStream mem = new MemoryStream(data);
-                    imglist.Images.Add(Image.FromStream(mem));
-                    //Kết thúc lấy link ảnh
-                    //
-                    //Bắt đầu lấy thông tin
-                    htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("DIV") + 10);
-                    htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("DIV") + 15);
-                    string kq = htmlcontent.Remove(htmlcontent.IndexOf("<"));
-                    lsNamePage.Add(kq);
-                    htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("DIV class") + 15);
-                    kq = kq + " : " + htmlcontent.Remove(htmlcontent.IndexOf("<"));
-                    lskq.Add(kq);
-                    //lay id
-                    string id = htmlcontent.Substring(htmlcontent.IndexOf("/a/profile.php"));
-                    id = id.Substring(id.IndexOf("id=") + 3);
-                    id = id.Remove(id.IndexOf("&"));
-                    lsIDPage.Add(id);
-                    //ket thuc lay id
-                    ProgressBarTim.Value += 2;
-                    if (htmlcontent.IndexOf("TD class=\"o b") == -1)
+                    try
                     {
-                        string url = htmlcontent.Substring(htmlcontent.IndexOf("see_more_pager") + 25);
-                        url = url.Remove(url.IndexOf("\">"));
-                        url = url.Replace("amp;", "");
-                        web1.Navigate(url);
-                        while (web1.ReadyState != WebBrowserReadyState.Complete)
-                            Application.DoEvents();
-                        htmlcontent = web1.DocumentText;
+                        htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("TD class=\"o b") + 15);
+                        //bắt đầu lấy link ảnh
+                        string urlimg = htmlcontent.Substring(htmlcontent.IndexOf("https://"));
+                        urlimg = urlimg.Remove(urlimg.IndexOf("\""));
+                        urlimg = urlimg.Replace("amp;", "");
+                        lsLinkImgPage.Add(urlimg);
+                        WebClient webClient = new WebClient();
+                        byte[] data = webClient.DownloadData(urlimg);
+                        MemoryStream mem = new MemoryStream(data);
+                        imglist.Images.Add(Image.FromStream(mem));
+                        //Kết thúc lấy link ảnh
+                        //
+                        //Bắt đầu lấy thông tin
+                        htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("DIV") + 10);
+                        htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("DIV") + 15);
+                        string kq = htmlcontent.Remove(htmlcontent.IndexOf("<"));
+                        lsNamePage.Add(kq);
+                        htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("DIV class") + 15);
+                        kq = kq + " : " + htmlcontent.Remove(htmlcontent.IndexOf("<"));
+                        lskq.Add(kq);
+                        //lay id
+                        string id = htmlcontent.Substring(htmlcontent.IndexOf("/a/profile.php"));
+                        id = id.Substring(id.IndexOf("id=") + 3);
+                        id = id.Remove(id.IndexOf("&"));
+                        lsIDPage.Add(id);
+                        //ket thuc lay id
+                        ProgressBarTim.Value += 2;
+                        if (htmlcontent.IndexOf("TD class=\"o b") == -1)
+                        {
+                            string url = htmlcontent.Substring(htmlcontent.IndexOf("see_more_pager") + 25);
+                            url = url.Remove(url.IndexOf("\">"));
+                            url = url.Replace("amp;", "");
+                            web1.Navigate(url);
+                            while (web1.ReadyState != WebBrowserReadyState.Complete)
+                                Application.DoEvents();
+                            htmlcontent = web1.DocumentText;
+                        }
                     }
+                    catch { break; }
                     //Kết thúc lấy thông tin
                 }
             }

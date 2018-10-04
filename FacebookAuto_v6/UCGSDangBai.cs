@@ -19,6 +19,14 @@ namespace FacebookAuto_v6
         int kttrangtieucuc = 0;
         int ktnhomtichcuc = 0;
         int ktnhomtieucuc = 0;
+        DataTable tichcuc;
+        DataTable tieucuc;
+        DataTable dttrangtichcuc;
+        DataTable dttrangtieucuc;
+        DataTable dtnhomtichcuc;
+        DataTable dtnhomtieucuc;
+        List<string> idtaikhoandangbai;
+        List<string> matkhautaikhoandangbai;
         public UCGSDangBai()
         {
             InitializeComponent();
@@ -30,10 +38,10 @@ namespace FacebookAuto_v6
         }
         private void loadchecklistbox()
         {
-            DataTable dttrangtichcuc = Pages.LoadDuLieuByTrangThai("1", taikhoan);
-            DataTable dttrangtieucuc = Pages.LoadDuLieuByTrangThai("-1", taikhoan);
-            DataTable dtnhomtichcuc = Group.LoadDuLieuByTrangThai("1", taikhoan);
-            DataTable dtnhomtieucuc = Group.LoadDuLieuByTrangThai("-1", taikhoan);
+            dttrangtichcuc = Pages.LoadDuLieuByTrangThai("1", taikhoan);
+            dttrangtieucuc = Pages.LoadDuLieuByTrangThai("-1", taikhoan);
+            dtnhomtichcuc = Group.LoadDuLieuByTrangThai("1", taikhoan);
+            dtnhomtieucuc = Group.LoadDuLieuByTrangThai("-1", taikhoan);
             for (int i = 0; i < dttrangtichcuc.Rows.Count; i++)
                 ckTrangTichCuc.Items.Add(dttrangtichcuc.Rows[i]["Name"]);
             for (int i = 0; i < dttrangtieucuc.Rows.Count; i++)
@@ -42,6 +50,21 @@ namespace FacebookAuto_v6
                 ckNhomTichCuc.Items.Add(dtnhomtichcuc.Rows[i]["Name"]);
             for (int i = 0; i < dtnhomtieucuc.Rows.Count; i++)
                 ckNhomTieuCuc.Items.Add(dtnhomtieucuc.Rows[i]["Name"]);
+        }
+        private void LoadListAccount()
+        {
+            tichcuc = AccountFB.LoadDuLieuByStatus(1, taikhoan);
+            tieucuc = AccountFB.LoadDuLieuByStatus(-1, taikhoan);
+            lsCheckTKTichCuc.Items.Add("Tất cả");
+            lsCheckTKTieuCuc.Items.Add("Tất cả");
+            for (int i = 0; i < tichcuc.Rows.Count; i++)
+            {
+                lsCheckTKTichCuc.Items.Add(tichcuc.Rows[i]["Name"].ToString());
+            }
+            for (int i = 0; i < tieucuc.Rows.Count; i++)
+            {
+                lsCheckTKTieuCuc.Items.Add(tieucuc.Rows[i]["Name"].ToString());
+            }
         }
         private void UCGSDangBai_Load(object sender, EventArgs e)
         {
@@ -53,7 +76,11 @@ namespace FacebookAuto_v6
             if (taikhoan != "")
             {
                 if (ktloadchecklistbox == 0)
+                {
                     loadchecklistbox();
+                    LoadListAccount();
+                }
+
                 ktloadchecklistbox = 1;
             }
         }
@@ -143,6 +170,131 @@ namespace FacebookAuto_v6
                 }
                 ktnhomtieucuc = 0;
                 btnNhomTieuCuc.Text = "Chọn tất cả nhóm tiêu cực";
+            }
+        }
+
+        private void btnDangBai_Click(object sender, EventArgs e)
+        {
+            int sotaikhoan = 0;
+            for (int i = 0; i < ckTrangTichCuc.Items.Count; i++)
+            {
+                if (ckTrangTichCuc.GetItemCheckState(i) == CheckState.Checked)
+                {
+                    ThuVienLamViecFacebook.DangXuat();
+                    string fb_dtsg = ThuVienLamViecFacebook.DNLay_fb_dtsg(idtaikhoandangbai[sotaikhoan++], matkhautaikhoandangbai[sotaikhoan++]);
+                    ThuVienLamViecFacebook.DangBaiViet(idtaikhoandangbai[sotaikhoan - 1], txtNoiDungChiaSe.Text, fb_dtsg, dttrangtichcuc.Rows[i]["IDPage"].ToString());
+                }
+            }
+            for(int i=0;i<ckTrangTieuCuc.Items.Count;i++)
+            {
+                if (ckTrangTieuCuc.GetItemCheckState(i) == CheckState.Checked)
+                {
+                    ThuVienLamViecFacebook.DangXuat();
+                    string fb_dtsg = ThuVienLamViecFacebook.DNLay_fb_dtsg(idtaikhoandangbai[sotaikhoan++], matkhautaikhoandangbai[sotaikhoan++]);
+                    ThuVienLamViecFacebook.DangBaiViet(idtaikhoandangbai[sotaikhoan - 1], txtNoiDungChiaSe.Text, fb_dtsg, dttrangtichcuc.Rows[i]["IDPage"].ToString());
+                }
+            }
+            for (int i = 0; i < ckNhomTichCuc.Items.Count; i++)
+            {
+                if (ckNhomTichCuc.GetItemCheckState(i) == CheckState.Checked)
+                {
+                    ThuVienLamViecFacebook.DangXuat();
+                    string fb_dtsg = ThuVienLamViecFacebook.DNLay_fb_dtsg(idtaikhoandangbai[sotaikhoan++], matkhautaikhoandangbai[sotaikhoan++]);
+                    ThuVienLamViecFacebook.DangBaiViet(idtaikhoandangbai[sotaikhoan - 1], txtNoiDungChiaSe.Text, fb_dtsg, dttrangtichcuc.Rows[i]["IDPage"].ToString());
+                }
+            }
+            for (int i = 0; i < ckNhomTieuCuc.Items.Count; i++)
+            {
+                if (ckNhomTieuCuc.GetItemCheckState(i) == CheckState.Checked)
+                {
+                    ThuVienLamViecFacebook.DangXuat();
+                    string fb_dtsg = ThuVienLamViecFacebook.DNLay_fb_dtsg(idtaikhoandangbai[sotaikhoan++], matkhautaikhoandangbai[sotaikhoan++]);
+                    ThuVienLamViecFacebook.DangBaiViet(idtaikhoandangbai[sotaikhoan - 1], txtNoiDungChiaSe.Text, fb_dtsg, dttrangtichcuc.Rows[i]["IDPage"].ToString());
+                }
+            }
+
+            MessageBox.Show("Đã đăng bài thành công!");
+        }
+
+        private void lsCheckTKTichCuc_DropDownClosed(object sender, EventArgs e)
+        {
+            idtaikhoandangbai = new List<string>();
+            matkhautaikhoandangbai = new List<string>();
+            //lấy ra list tài khoản sử dụng để đăng bài
+            foreach (var item in lsCheckTKTichCuc.CheckedIndices)
+            {
+                string i = item.ToString();
+                if (i == "0")
+                {
+                    for (int t = 0; t < tichcuc.Rows.Count; t++)
+                    {
+                        idtaikhoandangbai.Add(tichcuc.Rows[t]["NumberIDAccount"].ToString());
+                        matkhautaikhoandangbai.Add(tichcuc.Rows[t]["Password"].ToString());
+                    }
+                }
+                else
+                {
+                    idtaikhoandangbai.Add(tichcuc.Rows[int.Parse(i) - 1]["NumberIDAccount"].ToString());
+                    matkhautaikhoandangbai.Add(tichcuc.Rows[int.Parse(i) - 1]["Password"].ToString());
+                }
+            }
+            foreach (var item in lsCheckTKTieuCuc.CheckedIndices)
+            {
+                string i = item.ToString();
+                if (i == "0")
+                {
+                    for (int t = 0; t < tieucuc.Rows.Count; t++)
+                    {
+                        idtaikhoandangbai.Add(tieucuc.Rows[t]["NumberIDAccount"].ToString());
+                        matkhautaikhoandangbai.Add(tieucuc.Rows[t]["Password"].ToString());
+                    }
+                }
+                else
+                {
+                    idtaikhoandangbai.Add(tieucuc.Rows[int.Parse(i) - 1]["NumberIDAccount"].ToString());
+                    matkhautaikhoandangbai.Add(tieucuc.Rows[int.Parse(i) - 1]["Password"].ToString());
+                }
+            }
+        }
+
+        private void lsCheckTKTieuCuc_DropDownClosed(object sender, EventArgs e)
+        {
+            idtaikhoandangbai = new List<string>();
+            matkhautaikhoandangbai = new List<string>();
+            //lấy ra list tài khoản sử dụng để đăng bài
+            foreach (var item in lsCheckTKTichCuc.CheckedIndices)
+            {
+                string i = item.ToString();
+                if (i == "0")
+                {
+                    for (int t = 0; t < tichcuc.Rows.Count; t++)
+                    {
+                        idtaikhoandangbai.Add(tichcuc.Rows[t]["NumberIDAccount"].ToString());
+                        matkhautaikhoandangbai.Add(tichcuc.Rows[t]["Password"].ToString());
+                    }
+                }
+                else
+                {
+                    idtaikhoandangbai.Add(tichcuc.Rows[int.Parse(i) - 1]["NumberIDAccount"].ToString());
+                    matkhautaikhoandangbai.Add(tichcuc.Rows[int.Parse(i) - 1]["Password"].ToString());
+                }
+            }
+            foreach (var item in lsCheckTKTieuCuc.CheckedIndices)
+            {
+                string i = item.ToString();
+                if (i == "0")
+                {
+                    for (int t = 0; t < tieucuc.Rows.Count; t++)
+                    {
+                        idtaikhoandangbai.Add(tieucuc.Rows[t]["NumberIDAccount"].ToString());
+                        matkhautaikhoandangbai.Add(tieucuc.Rows[t]["Password"].ToString());
+                    }
+                }
+                else
+                {
+                    idtaikhoandangbai.Add(tieucuc.Rows[int.Parse(i) - 1]["NumberIDAccount"].ToString());
+                    matkhautaikhoandangbai.Add(tieucuc.Rows[int.Parse(i) - 1]["Password"].ToString());
+                }
             }
         }
     }
