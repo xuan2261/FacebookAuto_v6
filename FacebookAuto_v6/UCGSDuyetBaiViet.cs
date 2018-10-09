@@ -88,11 +88,11 @@ namespace FacebookAuto_v6
                     if (i == "0")
                     {
                         for (int t = 0; t < pagetieucuc.Rows.Count; t++)
-                            lsIDPage.Add(pagetieucuc.Rows[t]["IDPage"].ToString());
+                            lsIDPage.Add(pagetieucuc.Rows[t]["IDGroup"].ToString());
                         break;
                     }
                     else
-                        lsIDPage.Add(pagetieucuc.Rows[int.Parse(i) - 1]["IDPage"].ToString());
+                        lsIDPage.Add(pagetieucuc.Rows[int.Parse(i) - 1]["IDGroup"].ToString());
                 }
             }
             if (ktpageorgroup == 0)
@@ -147,11 +147,11 @@ namespace FacebookAuto_v6
                     if (i == "0")
                     {
                         for (int t = 0; t < pagetieucuc.Rows.Count; t++)
-                            lsIDPage.Add(pagetieucuc.Rows[t]["IDPage"].ToString());
+                            lsIDPage.Add(pagetieucuc.Rows[t]["IDGroup"].ToString());
                         break;
                     }
                     else
-                        lsIDPage.Add(pagetieucuc.Rows[int.Parse(i) - 1]["IDPage"].ToString());
+                        lsIDPage.Add(pagetieucuc.Rows[int.Parse(i) - 1]["IDGroup"].ToString());
                 }
             }
             if (ktpageorgroup == 0)
@@ -341,9 +341,7 @@ namespace FacebookAuto_v6
 
         private void DrbtnLoaiTim_Enter(object sender, EventArgs e)
         {
-            ktloadlistpage = 0;
-            if (DrbtnLoaiTim.selectedIndex == 0) ktpageorgroup = 0;
-            else ktpageorgroup = 1;
+            
         }
 
         private void XemChiTiet_Click(object sender, EventArgs e)
@@ -370,6 +368,13 @@ namespace FacebookAuto_v6
         private void NghiepVuKiemDuyet_Click(object sender, EventArgs e)
         {
             thaotacnghiepvu(lsKetQuaSearch.FocusedItem.Text, "4");
+        }
+
+        private void DrbtnLoaiTim_Leave(object sender, EventArgs e)
+        {
+            ktloadlistpage = 0;
+            if (DrbtnLoaiTim.selectedIndex == 0) ktpageorgroup = 0;
+            else ktpageorgroup = 1;
         }
     }
 }

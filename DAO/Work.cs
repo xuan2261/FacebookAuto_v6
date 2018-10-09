@@ -36,6 +36,14 @@ namespace DAO
             DataProvider.DongKetNoi(con);
             return dt;
         }
+        public static DataTable LoadDuLieuNhanVienForAdmin(string taikhoan)
+        {
+            string sTruyVan = "select w.IDPost as N'ID bài viết',p.Description as N'Nội dung' ,p.Status as N'Trạng thái',p.TimePost as N'Thời gian' from tblWork w,tblPost p where TaiKhoan='" + taikhoan + "' and w.IDPost=p.IDPost";
+            con = DataProvider.KetNoi();
+            DataTable dt = DataProvider.LayDataTable(sTruyVan, con);
+            DataProvider.DongKetNoi(con);
+            return dt;
+        }
         public static DataTable LoadDuLieuByTaiKhoan(string taikhoan)
         {
             string sTruyVan = "Select * from tblWork TaiKhoan=N'"+taikhoan+"'";

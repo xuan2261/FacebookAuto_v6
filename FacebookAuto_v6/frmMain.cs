@@ -128,6 +128,7 @@ namespace FacebookAuto_v6
         private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
             Work.updatetrangthaitamdung(admin.TaiKhoan);
+            Environment.Exit(Environment.ExitCode);
             Application.Exit();
         }
 

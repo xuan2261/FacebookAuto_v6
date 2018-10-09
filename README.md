@@ -16,5 +16,12 @@ duyệt bài viết trong nhóm còn chưa có (chưa cụ thể)
 chức nang hiển thị của bài viết đã comment hơi có vấn đề, không chỉ rõ đc địa chỉ bài viết....
 
 
+thêm chức năng xóa tài khoản cho nhân viên quản lý
 
-cho phép upload bài viết lên trang, nhóm
+
+chức năng xem dạng web của facebook bị lỗi với toàn bộ 
+
+
+
+
+

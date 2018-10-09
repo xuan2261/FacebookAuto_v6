@@ -49,6 +49,33 @@ namespace FacebookAuto_v6
         }
         private void btnBatDauBinhLuan_Click(object sender, EventArgs e)
         {
+            // lấy danh sách bình luận
+            idTaiKhoanBinhLuan = new List<string>();
+            //lấy ra list tài khoản sử dụng để bình luận
+            foreach (var item in lsCheckTKTichCuc.CheckedIndices)
+            {
+                string i = item.ToString();
+                if (i == "0")
+                {
+                    for (int t = 0; t < tichcuc.Rows.Count; t++)
+                        idTaiKhoanBinhLuan.Add(tichcuc.Rows[t]["NumberIDAccount"].ToString());
+                }
+                else
+                    idTaiKhoanBinhLuan.Add(tichcuc.Rows[int.Parse(i) - 1]["NumberIDAccount"].ToString());
+            }
+            foreach (var item in lsCheckTKTieuCuc.CheckedIndices)
+            {
+                string i = item.ToString();
+                if (i == "0")
+                {
+                    for (int t = 0; t < tieucuc.Rows.Count; t++)
+                        idTaiKhoanBinhLuan.Add(tieucuc.Rows[t]["NumberIDAccount"].ToString());
+                }
+                else
+                    idTaiKhoanBinhLuan.Add(tieucuc.Rows[int.Parse(i) - 1]["NumberIDAccount"].ToString());
+            }
+            //kết thúc lấy danh sách bình luận
+
             //cập nhật lại thông tin bài viết
             tblPost p = new tblPost();
             p.IDPost = idpost;
@@ -119,58 +146,12 @@ namespace FacebookAuto_v6
 
         private void lsCheckTKTichCuc_DropDownClosed(object sender, EventArgs e)
         {
-            idTaiKhoanBinhLuan = new List<string>();
-            //lấy ra list tài khoản sử dụng để bình lu
-            foreach (var item in lsCheckTKTichCuc.CheckedIndices)
-            {
-                string i = item.ToString();
-                if(i=="0")
-                {
-                    for(int t=0;t<tichcuc.Rows.Count; t++)
-                    idTaiKhoanBinhLuan.Add(tichcuc.Rows[t]["NumberIDAccount"].ToString());
-                }
-                else
-                    idTaiKhoanBinhLuan.Add(tichcuc.Rows[int.Parse(i) - 1]["NumberIDAccount"].ToString());
-            }
-            foreach (var item in lsCheckTKTieuCuc.CheckedIndices)
-            {
-                string i = item.ToString();
-                if (i == "0")
-                {
-                    for (int t = 0; t < tieucuc.Rows.Count; t++)
-                        idTaiKhoanBinhLuan.Add(tieucuc.Rows[t]["NumberIDAccount"].ToString());
-                }
-                else
-                    idTaiKhoanBinhLuan.Add(tieucuc.Rows[int.Parse(i) - 1]["NumberIDAccount"].ToString());
-            }
+            
         }
 
         private void lsCheckTKTieuCuc_DropDownClosed(object sender, EventArgs e)
         {
-            idTaiKhoanBinhLuan = new List<string>();
-            //lấy ra list tài khoản sử dụng để bình lu
-            foreach (var item in lsCheckTKTichCuc.CheckedIndices)
-            {
-                string i = item.ToString();
-                if (i == "0")
-                {
-                    for (int t = 0; t < tichcuc.Rows.Count; t++)
-                        idTaiKhoanBinhLuan.Add(tichcuc.Rows[t]["NumberIDAccount"].ToString());
-                }
-                else
-                    idTaiKhoanBinhLuan.Add(tichcuc.Rows[int.Parse(i) - 1]["NumberIDAccount"].ToString());
-            }
-            foreach (var item in lsCheckTKTieuCuc.CheckedIndices)
-            {
-                string i = item.ToString();
-                if (i == "0")
-                {
-                    for (int t = 0; t < tieucuc.Rows.Count; t++)
-                        idTaiKhoanBinhLuan.Add(tieucuc.Rows[t]["NumberIDAccount"].ToString());
-                }
-                else
-                    idTaiKhoanBinhLuan.Add(tieucuc.Rows[int.Parse(i) - 1]["NumberIDAccount"].ToString());
-            }
+            
         }
 
         private void lsCheckTKTichCuc_Enter(object sender, EventArgs e)

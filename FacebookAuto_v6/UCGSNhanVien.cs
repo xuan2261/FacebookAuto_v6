@@ -37,7 +37,13 @@ namespace FacebookAuto_v6
         }
         private void LoadBaiVietByNhanVien(string nhanvien)
         {
+            gridViewBaiViet.Columns.Clear();
             GridBaiViet.DataSource = Work.LoadDuLieuNhanVien(nhanvien);
+            GridBaiViet.ContextMenuStrip = contextMenuStrip2;
+            gridViewBaiViet.Columns[0].Caption = "ID bài viết";
+            gridViewBaiViet.Columns[1].Caption = "Nội dung";
+            gridViewBaiViet.Columns[2].Caption = "Trạng thái";
+            gridViewBaiViet.Columns[3].Caption = "Thời gian";
         }
 
         private void XemCacBinhLuan_Click(object sender, EventArgs e)
@@ -49,6 +55,24 @@ namespace FacebookAuto_v6
             {
                 lsViewBinhLuan.Items.Add(dt.Rows[i]["NoiDung"].ToString());
             }
+            webView.Navigate("https://mobile.facebook.com/" + idpost);
+        }
+
+        private void CacBaiDaDang_Click(object sender, EventArgs e)
+        {
+            nhanvien = gridViewNhanVien.GetRowCellValue(gridViewNhanVien.FocusedRowHandle, "TaiKhoan").ToString();
+            gridViewBaiViet.Columns.Clear();
+            GridBaiViet.DataSource = Posted.LoadDuLieuByNhanVien(nhanvien);
+            GridBaiViet.ContextMenuStrip = contextMenuStrip3;
+            gridViewBaiViet.Columns[0].Caption = "ID bài viết";
+            gridViewBaiViet.Columns[1].Caption = "Nôị dung";
+            gridViewBaiViet.Columns[2].Caption = "ID Nguồn";
+            gridViewBaiViet.Columns[3].Caption = "Thời gian";
+        }
+
+        private void XemChiTiet_Click(object sender, EventArgs e)
+        {
+            string idpost = gridViewBaiViet.GetRowCellValue(gridViewBaiViet.FocusedRowHandle, "IDPosted").ToString();
             webView.Navigate("https://mobile.facebook.com/" + idpost);
         }
     }

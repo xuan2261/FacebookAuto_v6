@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.DrbtnLoaiTim = new Bunifu.Framework.UI.BunifuDropdown();
             this.txtSearch = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.label2 = new System.Windows.Forms.Label();
@@ -38,7 +39,6 @@
             this.ProgressBarTim = new Bunifu.Framework.UI.BunifuProgressBar();
             this.lbTrangThaiTim = new System.Windows.Forms.Label();
             this.lsKetQuaSearch = new System.Windows.Forms.ListView();
-            this.WebView = new System.Windows.Forms.WebBrowser();
             this.label4 = new System.Windows.Forms.Label();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
@@ -50,6 +50,11 @@
             this.btnTieuCuc = new Bunifu.Framework.UI.BunifuImageButton();
             this.btnTichCuc = new Bunifu.Framework.UI.BunifuImageButton();
             this.btnSearch = new Bunifu.Framework.UI.BunifuImageButton();
+            this.WebView = new Gecko.GeckoWebBrowser();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.XemThongTin = new System.Windows.Forms.ToolStripMenuItem();
+            this.ThemVaoTieuCuc = new System.Windows.Forms.ToolStripMenuItem();
+            this.ThemVaoTichCuc = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.btnKhongXacDinh1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnTieuCuc1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnTichCuc1)).BeginInit();
@@ -57,6 +62,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnTieuCuc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnTichCuc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // DrbtnLoaiTim
@@ -96,6 +102,7 @@
             this.txtSearch.Size = new System.Drawing.Size(237, 33);
             this.txtSearch.TabIndex = 78;
             this.txtSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearch_KeyPress);
             // 
             // label2
             // 
@@ -188,7 +195,8 @@
             // 
             this.lsKetQuaSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.lsKetQuaSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(77)))), ((int)(((byte)(92)))));
+            this.lsKetQuaSearch.BackColor = System.Drawing.Color.White;
+            this.lsKetQuaSearch.ContextMenuStrip = this.contextMenuStrip1;
             this.lsKetQuaSearch.ForeColor = System.Drawing.SystemColors.MenuText;
             this.lsKetQuaSearch.Location = new System.Drawing.Point(14, 218);
             this.lsKetQuaSearch.Name = "lsKetQuaSearch";
@@ -196,18 +204,6 @@
             this.lsKetQuaSearch.TabIndex = 89;
             this.lsKetQuaSearch.UseCompatibleStateImageBehavior = false;
             this.lsKetQuaSearch.View = System.Windows.Forms.View.Details;
-            this.lsKetQuaSearch.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lsKetQuaSearch_MouseClick);
-            // 
-            // WebView
-            // 
-            this.WebView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.WebView.Location = new System.Drawing.Point(463, 218);
-            this.WebView.MinimumSize = new System.Drawing.Size(20, 20);
-            this.WebView.Name = "WebView";
-            this.WebView.Size = new System.Drawing.Size(455, 325);
-            this.WebView.TabIndex = 92;
             // 
             // label4
             // 
@@ -356,11 +352,54 @@
             this.btnSearch.Zoom = 10;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
+            // WebView
+            // 
+            this.WebView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.WebView.FrameEventsPropagateToMainWindow = false;
+            this.WebView.Location = new System.Drawing.Point(467, 218);
+            this.WebView.Name = "WebView";
+            this.WebView.Size = new System.Drawing.Size(451, 289);
+            this.WebView.TabIndex = 100;
+            this.WebView.UseHttpActivityObserver = false;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.XemThongTin,
+            this.ThemVaoTieuCuc,
+            this.ThemVaoTichCuc});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(173, 70);
+            // 
+            // XemThongTin
+            // 
+            this.XemThongTin.Name = "XemThongTin";
+            this.XemThongTin.Size = new System.Drawing.Size(172, 22);
+            this.XemThongTin.Text = "Xem thông tin";
+            this.XemThongTin.Click += new System.EventHandler(this.XemThongTin_Click);
+            // 
+            // ThemVaoTieuCuc
+            // 
+            this.ThemVaoTieuCuc.Name = "ThemVaoTieuCuc";
+            this.ThemVaoTieuCuc.Size = new System.Drawing.Size(172, 22);
+            this.ThemVaoTieuCuc.Text = "Thêm vào tiêu cực";
+            this.ThemVaoTieuCuc.Click += new System.EventHandler(this.ThemVaoTieuCuc_Click);
+            // 
+            // ThemVaoTichCuc
+            // 
+            this.ThemVaoTichCuc.Name = "ThemVaoTichCuc";
+            this.ThemVaoTichCuc.Size = new System.Drawing.Size(172, 22);
+            this.ThemVaoTichCuc.Text = "Thêm vào tích cực";
+            this.ThemVaoTichCuc.Click += new System.EventHandler(this.ThemVaoTichCuc_Click);
+            // 
             // UCGSThemTrang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
+            this.Controls.Add(this.WebView);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnKhongXacDinh1);
             this.Controls.Add(this.btnTieuCuc1);
@@ -368,7 +407,6 @@
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.WebView);
             this.Controls.Add(this.ProgressBarTim);
             this.Controls.Add(this.lbTrangThaiTim);
             this.Controls.Add(this.lsKetQuaSearch);
@@ -392,6 +430,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnTieuCuc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnTichCuc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -413,7 +452,6 @@
         private Bunifu.Framework.UI.BunifuProgressBar ProgressBarTim;
         private System.Windows.Forms.Label lbTrangThaiTim;
         private System.Windows.Forms.ListView lsKetQuaSearch;
-        private System.Windows.Forms.WebBrowser WebView;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButton2;
@@ -421,5 +459,10 @@
         private Bunifu.Framework.UI.BunifuImageButton btnKhongXacDinh1;
         private Bunifu.Framework.UI.BunifuImageButton btnTieuCuc1;
         private Bunifu.Framework.UI.BunifuImageButton btnTichCuc1;
+        private Gecko.GeckoWebBrowser WebView;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem XemThongTin;
+        private System.Windows.Forms.ToolStripMenuItem ThemVaoTieuCuc;
+        private System.Windows.Forms.ToolStripMenuItem ThemVaoTichCuc;
     }
 }

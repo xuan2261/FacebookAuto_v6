@@ -34,17 +34,17 @@
             this.labelViTri = new System.Windows.Forms.Label();
             this.paneltop = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.DatePost = new System.Windows.Forms.DateTimePicker();
             this.radioTichCuc = new System.Windows.Forms.RadioButton();
             this.radioTieuCuc = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnKiemTra = new Bunifu.Framework.UI.BunifuFlatButton();
             this.radioWeb = new System.Windows.Forms.RadioButton();
             this.radioMobile = new System.Windows.Forms.RadioButton();
             this.label4 = new System.Windows.Forms.Label();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
-            this.WebView = new System.Windows.Forms.WebBrowser();
-            this.DatePost = new System.Windows.Forms.DateTimePicker();
-            this.label5 = new System.Windows.Forms.Label();
-            this.btnKiemTra = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.WebView = new Gecko.GeckoWebBrowser();
             this.paneltop.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -131,6 +131,25 @@
             this.panel1.Size = new System.Drawing.Size(507, 100);
             this.panel1.TabIndex = 24;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.SystemColors.Window;
+            this.label5.Location = new System.Drawing.Point(284, 76);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(96, 13);
+            this.label5.TabIndex = 25;
+            this.label5.Text = "Thời gian đăng bài";
+            // 
+            // DatePost
+            // 
+            this.DatePost.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DatePost.Location = new System.Drawing.Point(402, 72);
+            this.DatePost.Name = "DatePost";
+            this.DatePost.Size = new System.Drawing.Size(86, 20);
+            this.DatePost.TabIndex = 24;
+            this.DatePost.ValueChanged += new System.EventHandler(this.DatePost_ValueChanged);
+            // 
             // radioTichCuc
             // 
             this.radioTichCuc.AutoSize = true;
@@ -166,6 +185,41 @@
             this.label3.Size = new System.Drawing.Size(87, 13);
             this.label3.TabIndex = 21;
             this.label3.Text = "Đánh giá bài viết";
+            // 
+            // btnKiemTra
+            // 
+            this.btnKiemTra.Activecolor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnKiemTra.BackColor = System.Drawing.Color.SlateGray;
+            this.btnKiemTra.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnKiemTra.BorderRadius = 7;
+            this.btnKiemTra.ButtonText = "    Kiểm tra";
+            this.btnKiemTra.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnKiemTra.DisabledColor = System.Drawing.Color.Gray;
+            this.btnKiemTra.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnKiemTra.Iconimage = global::FacebookAuto_v6.Properties.Resources.icons8_checkmark_64__1_;
+            this.btnKiemTra.Iconimage_right = null;
+            this.btnKiemTra.Iconimage_right_Selected = null;
+            this.btnKiemTra.Iconimage_Selected = null;
+            this.btnKiemTra.IconMarginLeft = 0;
+            this.btnKiemTra.IconMarginRight = 0;
+            this.btnKiemTra.IconRightVisible = true;
+            this.btnKiemTra.IconRightZoom = 0D;
+            this.btnKiemTra.IconVisible = true;
+            this.btnKiemTra.IconZoom = 50D;
+            this.btnKiemTra.IsTab = false;
+            this.btnKiemTra.Location = new System.Drawing.Point(299, 61);
+            this.btnKiemTra.Name = "btnKiemTra";
+            this.btnKiemTra.Normalcolor = System.Drawing.Color.SlateGray;
+            this.btnKiemTra.OnHovercolor = System.Drawing.Color.Gray;
+            this.btnKiemTra.OnHoverTextColor = System.Drawing.Color.White;
+            this.btnKiemTra.selected = false;
+            this.btnKiemTra.Size = new System.Drawing.Size(113, 33);
+            this.btnKiemTra.TabIndex = 4;
+            this.btnKiemTra.Text = "    Kiểm tra";
+            this.btnKiemTra.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnKiemTra.Textcolor = System.Drawing.Color.White;
+            this.btnKiemTra.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnKiemTra.Click += new System.EventHandler(this.btnKiemTra_Click);
             // 
             // radioWeb
             // 
@@ -218,68 +272,13 @@
             // 
             // WebView
             // 
-            this.WebView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.WebView.Location = new System.Drawing.Point(8, 6);
-            this.WebView.MinimumSize = new System.Drawing.Size(20, 20);
+            this.WebView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.WebView.FrameEventsPropagateToMainWindow = false;
+            this.WebView.Location = new System.Drawing.Point(0, 0);
             this.WebView.Name = "WebView";
-            this.WebView.Size = new System.Drawing.Size(404, 437);
-            this.WebView.TabIndex = 4;
-            // 
-            // DatePost
-            // 
-            this.DatePost.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DatePost.Location = new System.Drawing.Point(402, 72);
-            this.DatePost.Name = "DatePost";
-            this.DatePost.Size = new System.Drawing.Size(86, 20);
-            this.DatePost.TabIndex = 24;
-            this.DatePost.ValueChanged += new System.EventHandler(this.DatePost_ValueChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.ForeColor = System.Drawing.SystemColors.Window;
-            this.label5.Location = new System.Drawing.Point(284, 76);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(96, 13);
-            this.label5.TabIndex = 25;
-            this.label5.Text = "Thời gian đăng bài";
-            // 
-            // btnKiemTra
-            // 
-            this.btnKiemTra.Activecolor = System.Drawing.SystemColors.ActiveBorder;
-            this.btnKiemTra.BackColor = System.Drawing.Color.SlateGray;
-            this.btnKiemTra.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnKiemTra.BorderRadius = 7;
-            this.btnKiemTra.ButtonText = "    Kiểm tra";
-            this.btnKiemTra.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnKiemTra.DisabledColor = System.Drawing.Color.Gray;
-            this.btnKiemTra.Iconcolor = System.Drawing.Color.Transparent;
-            this.btnKiemTra.Iconimage = global::FacebookAuto_v6.Properties.Resources.icons8_checkmark_64__1_;
-            this.btnKiemTra.Iconimage_right = null;
-            this.btnKiemTra.Iconimage_right_Selected = null;
-            this.btnKiemTra.Iconimage_Selected = null;
-            this.btnKiemTra.IconMarginLeft = 0;
-            this.btnKiemTra.IconMarginRight = 0;
-            this.btnKiemTra.IconRightVisible = true;
-            this.btnKiemTra.IconRightZoom = 0D;
-            this.btnKiemTra.IconVisible = true;
-            this.btnKiemTra.IconZoom = 50D;
-            this.btnKiemTra.IsTab = false;
-            this.btnKiemTra.Location = new System.Drawing.Point(299, 61);
-            this.btnKiemTra.Name = "btnKiemTra";
-            this.btnKiemTra.Normalcolor = System.Drawing.Color.SlateGray;
-            this.btnKiemTra.OnHovercolor = System.Drawing.Color.Gray;
-            this.btnKiemTra.OnHoverTextColor = System.Drawing.Color.White;
-            this.btnKiemTra.selected = false;
-            this.btnKiemTra.Size = new System.Drawing.Size(113, 33);
-            this.btnKiemTra.TabIndex = 4;
-            this.btnKiemTra.Text = "    Kiểm tra";
-            this.btnKiemTra.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnKiemTra.Textcolor = System.Drawing.Color.White;
-            this.btnKiemTra.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnKiemTra.Click += new System.EventHandler(this.btnKiemTra_Click);
+            this.WebView.Size = new System.Drawing.Size(417, 446);
+            this.WebView.TabIndex = 0;
+            this.WebView.UseHttpActivityObserver = false;
             // 
             // UCThaoTac
             // 
@@ -312,12 +311,12 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.RadioButton radioWeb;
         private System.Windows.Forms.RadioButton radioMobile;
-        private System.Windows.Forms.WebBrowser WebView;
         private System.Windows.Forms.RadioButton radioTieuCuc;
         private System.Windows.Forms.RadioButton radioTichCuc;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker DatePost;
+        private Gecko.GeckoWebBrowser WebView;
     }
 }

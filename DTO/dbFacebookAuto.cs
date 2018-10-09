@@ -20,6 +20,7 @@ namespace DTO
         public virtual DbSet<tblLikePost> tblLikePosts { get; set; }
         public virtual DbSet<tblPage> tblPages { get; set; }
         public virtual DbSet<tblPost> tblPosts { get; set; }
+        public virtual DbSet<tblPosted> tblPosteds { get; set; }
         public virtual DbSet<tblUserFB> tblUserFBs { get; set; }
         public virtual DbSet<tblWork> tblWorks { get; set; }
         public virtual DbSet<tblWorkAccount> tblWorkAccounts { get; set; }

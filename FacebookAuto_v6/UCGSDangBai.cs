@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DAO;
+using DTO;
 
 namespace FacebookAuto_v6
 {
@@ -27,6 +28,7 @@ namespace FacebookAuto_v6
         DataTable dtnhomtieucuc;
         List<string> idtaikhoandangbai;
         List<string> matkhautaikhoandangbai;
+        List<string> idnguondangbai=new List<string>();
         public UCGSDangBai()
         {
             InitializeComponent();
@@ -175,45 +177,81 @@ namespace FacebookAuto_v6
 
         private void btnDangBai_Click(object sender, EventArgs e)
         {
-            int sotaikhoan = 0;
+            lbTrangThaiDang.Text = "Đang đăng bài";
+            ProgressDang.Value = 0;
+            // lấy hết id nguồn để đăng bài
             for (int i = 0; i < ckTrangTichCuc.Items.Count; i++)
             {
                 if (ckTrangTichCuc.GetItemCheckState(i) == CheckState.Checked)
                 {
-                    ThuVienLamViecFacebook.DangXuat();
-                    string fb_dtsg = ThuVienLamViecFacebook.DNLay_fb_dtsg(idtaikhoandangbai[sotaikhoan++], matkhautaikhoandangbai[sotaikhoan++]);
-                    ThuVienLamViecFacebook.DangBaiViet(idtaikhoandangbai[sotaikhoan - 1], txtNoiDungChiaSe.Text, fb_dtsg, dttrangtichcuc.Rows[i]["IDPage"].ToString());
+                    //ThuVienLamViecFacebook.DangXuat();
+                    //ThuVienLamViecFacebook.DNKhongLayTT(idtaikhoandangbai[sotaikhoan]);
+                    //ThuVienLamViecFacebook.DangBaiViet(txtNoiDungChiaSe.Text, dttrangtichcuc.Rows[i]["IDPage"].ToString());
+                    idnguondangbai.Add(dttrangtichcuc.Rows[i]["IDPage"].ToString());
                 }
             }
             for(int i=0;i<ckTrangTieuCuc.Items.Count;i++)
             {
                 if (ckTrangTieuCuc.GetItemCheckState(i) == CheckState.Checked)
                 {
-                    ThuVienLamViecFacebook.DangXuat();
-                    string fb_dtsg = ThuVienLamViecFacebook.DNLay_fb_dtsg(idtaikhoandangbai[sotaikhoan++], matkhautaikhoandangbai[sotaikhoan++]);
-                    ThuVienLamViecFacebook.DangBaiViet(idtaikhoandangbai[sotaikhoan - 1], txtNoiDungChiaSe.Text, fb_dtsg, dttrangtichcuc.Rows[i]["IDPage"].ToString());
+                    idnguondangbai.Add(dttrangtichcuc.Rows[i]["IDPage"].ToString());
                 }
             }
             for (int i = 0; i < ckNhomTichCuc.Items.Count; i++)
             {
                 if (ckNhomTichCuc.GetItemCheckState(i) == CheckState.Checked)
                 {
-                    ThuVienLamViecFacebook.DangXuat();
-                    string fb_dtsg = ThuVienLamViecFacebook.DNLay_fb_dtsg(idtaikhoandangbai[sotaikhoan++], matkhautaikhoandangbai[sotaikhoan++]);
-                    ThuVienLamViecFacebook.DangBaiViet(idtaikhoandangbai[sotaikhoan - 1], txtNoiDungChiaSe.Text, fb_dtsg, dttrangtichcuc.Rows[i]["IDPage"].ToString());
+                    idnguondangbai.Add(dttrangtichcuc.Rows[i]["IDPage"].ToString());
                 }
             }
             for (int i = 0; i < ckNhomTieuCuc.Items.Count; i++)
             {
                 if (ckNhomTieuCuc.GetItemCheckState(i) == CheckState.Checked)
                 {
-                    ThuVienLamViecFacebook.DangXuat();
-                    string fb_dtsg = ThuVienLamViecFacebook.DNLay_fb_dtsg(idtaikhoandangbai[sotaikhoan++], matkhautaikhoandangbai[sotaikhoan++]);
-                    ThuVienLamViecFacebook.DangBaiViet(idtaikhoandangbai[sotaikhoan - 1], txtNoiDungChiaSe.Text, fb_dtsg, dttrangtichcuc.Rows[i]["IDPage"].ToString());
+                    idnguondangbai.Add(dttrangtichcuc.Rows[i]["IDPage"].ToString());
                 }
             }
-
-            MessageBox.Show("Đã đăng bài thành công!");
+            //kết thúc lấy nguồn để đăng bài
+            //bắt đầu đăng bài
+            for(int i=0;i<idtaikhoandangbai.Count;i++)
+            {
+                ThuVienLamViecFacebook.DangXuat();
+                ThuVienLamViecFacebook.DNKhongLayTT(idtaikhoandangbai[i]);
+                if (idnguondangbai.Count >= idtaikhoandangbai.Count)
+                {
+                    for (int j = (int)i * idnguondangbai.Count / idtaikhoandangbai.Count; j < (int)(i + 1) * (idnguondangbai.Count / idtaikhoandangbai.Count); j++)
+                    {
+                        string idposted = ThuVienLamViecFacebook.DangBaiViet(txtNoiDungChiaSe.Text, idnguondangbai[j]);
+                        tblPosted pd = new tblPosted();
+                        pd.IDNguon = idnguondangbai[j];
+                        pd.IDPosted = idposted;
+                        pd.NoiDung = txtNoiDungChiaSe.Text;
+                        pd.TaiKhoan = taikhoan;
+                        pd.TimePost = DateTime.Now;
+                        Posted.Them(pd);
+                        ProgressDang.Value += (int)100 / idnguondangbai.Count;
+                    }
+                }
+                else
+                {
+                    for (int j = 0; j <idnguondangbai.Count; j++)
+                    {
+                        string idposted = ThuVienLamViecFacebook.DangBaiViet(txtNoiDungChiaSe.Text, idnguondangbai[j]);
+                        tblPosted pd = new tblPosted();
+                        pd.IDNguon = idnguondangbai[j];
+                        pd.IDPosted = idposted;
+                        pd.NoiDung = txtNoiDungChiaSe.Text;
+                        pd.TaiKhoan = taikhoan;
+                        pd.TimePost = DateTime.Now;
+                        Posted.Them(pd);
+                        ProgressDang.Value += (int)100 / idnguondangbai.Count;
+                    }
+                    break;
+                }
+            }
+            //kết thúc đăng bài
+            ProgressDang.Value = 100;
+            lbTrangThaiDang.Text = "Đã đăng bài";
         }
 
         private void lsCheckTKTichCuc_DropDownClosed(object sender, EventArgs e)

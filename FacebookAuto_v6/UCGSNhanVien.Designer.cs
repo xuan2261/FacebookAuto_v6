@@ -34,6 +34,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.GridNhanVien = new DevExpress.XtraGrid.GridControl();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.CacBaiBL = new System.Windows.Forms.ToolStripMenuItem();
+            this.CacBaiDaDang = new System.Windows.Forms.ToolStripMenuItem();
             this.gridViewNhanVien = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.TaiKhoan = new DevExpress.XtraGrid.Columns.GridColumn();
             this.name = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -44,21 +47,18 @@
             this.label6 = new System.Windows.Forms.Label();
             this.GridBaiViet = new DevExpress.XtraGrid.GridControl();
             this.gridViewBaiViet = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.CacBaiBL = new System.Windows.Forms.ToolStripMenuItem();
-            this.iDPost = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Description = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Status = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.TimePost = new DevExpress.XtraGrid.Columns.GridColumn();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.XemCacBinhLuan = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.XemChiTiet = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridNhanVien)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewNhanVien)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridBaiViet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewBaiViet)).BeginInit();
-            this.contextMenuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
+            this.contextMenuStrip3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -112,6 +112,28 @@
             this.GridNhanVien.TabIndex = 104;
             this.GridNhanVien.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewNhanVien});
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.CacBaiBL,
+            this.CacBaiDaDang});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(183, 48);
+            // 
+            // CacBaiBL
+            // 
+            this.CacBaiBL.Name = "CacBaiBL";
+            this.CacBaiBL.Size = new System.Drawing.Size(182, 22);
+            this.CacBaiBL.Text = "Các bài đã bình luận";
+            this.CacBaiBL.Click += new System.EventHandler(this.CacBaiBL_Click);
+            // 
+            // CacBaiDaDang
+            // 
+            this.CacBaiDaDang.Name = "CacBaiDaDang";
+            this.CacBaiDaDang.Size = new System.Drawing.Size(182, 22);
+            this.CacBaiDaDang.Text = "Các bài đã đăng";
+            this.CacBaiDaDang.Click += new System.EventHandler(this.CacBaiDaDang_Click);
             // 
             // gridViewNhanVien
             // 
@@ -199,7 +221,6 @@
             // 
             this.GridBaiViet.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.GridBaiViet.ContextMenuStrip = this.contextMenuStrip2;
             this.GridBaiViet.Location = new System.Drawing.Point(21, 352);
             this.GridBaiViet.MainView = this.gridViewBaiViet;
             this.GridBaiViet.Name = "GridBaiViet";
@@ -210,11 +231,6 @@
             // 
             // gridViewBaiViet
             // 
-            this.gridViewBaiViet.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.iDPost,
-            this.Description,
-            this.Status,
-            this.TimePost});
             this.gridViewBaiViet.GridControl = this.GridBaiViet;
             this.gridViewBaiViet.Name = "gridViewBaiViet";
             this.gridViewBaiViet.OptionsFind.AlwaysVisible = true;
@@ -224,52 +240,6 @@
             this.gridViewBaiViet.OptionsFind.ShowClearButton = false;
             this.gridViewBaiViet.OptionsFind.ShowCloseButton = false;
             this.gridViewBaiViet.OptionsFind.ShowFindButton = false;
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.CacBaiBL});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(183, 26);
-            // 
-            // CacBaiBL
-            // 
-            this.CacBaiBL.Name = "CacBaiBL";
-            this.CacBaiBL.Size = new System.Drawing.Size(182, 22);
-            this.CacBaiBL.Text = "Các bài đã bình luận";
-            this.CacBaiBL.Click += new System.EventHandler(this.CacBaiBL_Click);
-            // 
-            // iDPost
-            // 
-            this.iDPost.Caption = "ID bài viết";
-            this.iDPost.FieldName = "IDPost";
-            this.iDPost.Name = "iDPost";
-            this.iDPost.Visible = true;
-            this.iDPost.VisibleIndex = 0;
-            // 
-            // Description
-            // 
-            this.Description.Caption = "Nội dung bài viết";
-            this.Description.FieldName = "Description";
-            this.Description.Name = "Description";
-            this.Description.Visible = true;
-            this.Description.VisibleIndex = 1;
-            // 
-            // Status
-            // 
-            this.Status.Caption = "Đánh giá";
-            this.Status.FieldName = "Status";
-            this.Status.Name = "Status";
-            this.Status.Visible = true;
-            this.Status.VisibleIndex = 2;
-            // 
-            // TimePost
-            // 
-            this.TimePost.Caption = "Thời gian bài viết";
-            this.TimePost.FieldName = "TimePost";
-            this.TimePost.Name = "TimePost";
-            this.TimePost.Visible = true;
-            this.TimePost.VisibleIndex = 3;
             // 
             // contextMenuStrip2
             // 
@@ -284,6 +254,20 @@
             this.XemCacBinhLuan.Size = new System.Drawing.Size(172, 22);
             this.XemCacBinhLuan.Text = "Xem các bình luận";
             this.XemCacBinhLuan.Click += new System.EventHandler(this.XemCacBinhLuan_Click);
+            // 
+            // contextMenuStrip3
+            // 
+            this.contextMenuStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.XemChiTiet});
+            this.contextMenuStrip3.Name = "contextMenuStrip3";
+            this.contextMenuStrip3.Size = new System.Drawing.Size(181, 48);
+            // 
+            // XemChiTiet
+            // 
+            this.XemChiTiet.Name = "XemChiTiet";
+            this.XemChiTiet.Size = new System.Drawing.Size(180, 22);
+            this.XemChiTiet.Text = "Xem chi tiết";
+            this.XemChiTiet.Click += new System.EventHandler(this.XemChiTiet_Click);
             // 
             // UCGSNhanVien
             // 
@@ -305,11 +289,12 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridNhanVien)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridViewNhanVien)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridBaiViet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewBaiViet)).EndInit();
-            this.contextMenuStrip1.ResumeLayout(false);
             this.contextMenuStrip2.ResumeLayout(false);
+            this.contextMenuStrip3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -334,11 +319,10 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewBaiViet;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem CacBaiBL;
-        private DevExpress.XtraGrid.Columns.GridColumn iDPost;
-        private DevExpress.XtraGrid.Columns.GridColumn Description;
-        private DevExpress.XtraGrid.Columns.GridColumn Status;
-        private DevExpress.XtraGrid.Columns.GridColumn TimePost;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
         private System.Windows.Forms.ToolStripMenuItem XemCacBinhLuan;
+        private System.Windows.Forms.ToolStripMenuItem CacBaiDaDang;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip3;
+        private System.Windows.Forms.ToolStripMenuItem XemChiTiet;
     }
 }

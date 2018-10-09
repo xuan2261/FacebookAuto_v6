@@ -50,6 +50,7 @@
     <Compile Include="LikePost.cs" />
     <Compile Include="Pages.cs" />
     <Compile Include="Post.cs" />
+    <Compile Include="Posted.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ThongKe.cs" />
     <Compile Include="UserFB.cs" />

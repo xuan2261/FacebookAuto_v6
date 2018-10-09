@@ -224,11 +224,7 @@ namespace FacebookAuto_v6
         {
             Search();
         }
-
-        private void lsKetQuaSearch_MouseClick(object sender, MouseEventArgs e)
-        {
-            WebView.Navigate(url + lsIDPage[lsKetQuaSearch.FocusedItem.Index].ToString());
-        }
+        
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
@@ -294,6 +290,29 @@ namespace FacebookAuto_v6
         private void btnTieuCuc1_Click(object sender, EventArgs e)
         {
             DanhGia(-1);
+        }
+
+        private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                Search();
+            }
+        }
+
+        private void XemThongTin_Click(object sender, EventArgs e)
+        {
+            WebView.Navigate(url + lsIDPage[lsKetQuaSearch.FocusedItem.Index].ToString());
+        }
+
+        private void ThemVaoTieuCuc_Click(object sender, EventArgs e)
+        {
+            DanhGia(-1);
+        }
+
+        private void ThemVaoTichCuc_Click(object sender, EventArgs e)
+        {
+            DanhGia(1);
         }
     }
 }

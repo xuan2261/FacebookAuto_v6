@@ -55,8 +55,8 @@
             this.ListTichCuc = new FacebookAuto_v5.ListCheckBoxDropDown();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.WebView = new System.Windows.Forms.WebBrowser();
             this.label1 = new System.Windows.Forms.Label();
+            this.WebView = new Gecko.GeckoWebBrowser();
             ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -140,6 +140,7 @@
             this.DrbtnLoaiTim.Size = new System.Drawing.Size(100, 30);
             this.DrbtnLoaiTim.TabIndex = 87;
             this.DrbtnLoaiTim.Enter += new System.EventHandler(this.DrbtnLoaiTim_Enter);
+            this.DrbtnLoaiTim.Leave += new System.EventHandler(this.DrbtnLoaiTim_Leave);
             // 
             // label9
             // 
@@ -268,9 +269,9 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.WebView);
             this.splitContainer1.Panel2.Controls.Add(this.radioButton2);
             this.splitContainer1.Panel2.Controls.Add(this.radioButton1);
-            this.splitContainer1.Panel2.Controls.Add(this.WebView);
             this.splitContainer1.Panel2.Controls.Add(this.label1);
             this.splitContainer1.Size = new System.Drawing.Size(928, 495);
             this.splitContainer1.SplitterDistance = 395;
@@ -407,17 +408,6 @@
             this.radioButton1.UseVisualStyleBackColor = true;
             this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
-            // WebView
-            // 
-            this.WebView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.WebView.Location = new System.Drawing.Point(19, 70);
-            this.WebView.MinimumSize = new System.Drawing.Size(20, 20);
-            this.WebView.Name = "WebView";
-            this.WebView.Size = new System.Drawing.Size(493, 404);
-            this.WebView.TabIndex = 1;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -428,6 +418,18 @@
             this.label1.Size = new System.Drawing.Size(121, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Thông tin bài viết ";
+            // 
+            // WebView
+            // 
+            this.WebView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.WebView.FrameEventsPropagateToMainWindow = false;
+            this.WebView.Location = new System.Drawing.Point(19, 70);
+            this.WebView.Name = "WebView";
+            this.WebView.Size = new System.Drawing.Size(490, 404);
+            this.WebView.TabIndex = 98;
+            this.WebView.UseHttpActivityObserver = false;
             // 
             // UCGSDuyetBaiViet
             // 
@@ -471,7 +473,6 @@
         private Bunifu.Framework.UI.BunifuDropdown btnDoSauTimKiem;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.WebBrowser WebView;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListView lsKetQuaSearch;
         private System.Windows.Forms.TextBox txtTuKhoa;
@@ -483,5 +484,6 @@
         private System.Windows.Forms.ToolStripMenuItem NghiepVuChiaSe;
         private System.Windows.Forms.ToolStripMenuItem NghiepVuBayToCamXuc;
         private System.Windows.Forms.ToolStripMenuItem NghiepVuKiemDuyet;
+        private Gecko.GeckoWebBrowser WebView;
     }
 }

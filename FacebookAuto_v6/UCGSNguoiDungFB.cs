@@ -185,6 +185,7 @@ namespace FacebookAuto_v6
             {
                 lsKetQua.Items.Add(stringkq[i]);
             }
+            lsViewIDPostThich.Columns.Clear();
             lsViewIDPostThich.Columns.Add("Danh sách bài viết đã thích");
             lsViewIDPostThich.AutoResizeColumn(0, ColumnHeaderAutoResizeStyle.HeaderSize);
             for (int i=0;i<danhsachidpost.Count;i++)
@@ -324,6 +325,7 @@ namespace FacebookAuto_v6
             {
                 lsKetQua.Items.Add(stringkq[i]);
             }
+            lsViewIDPostThich.Columns.Clear();
             lsViewIDPostThich.Columns.Add("Danh sách đã bình luận");
             lsViewIDPostThich.AutoResizeColumn(0, ColumnHeaderAutoResizeStyle.HeaderSize);
             for (int i = 0; i < lsidComment.Count; i++)

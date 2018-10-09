@@ -35,6 +35,7 @@ namespace FacebookAuto_v6
         public UCThaoTac()
         {
             InitializeComponent();
+            Xpcom.Initialize("Firefox");
         }
         public void setkiemduyet(string idpost)
         {
@@ -138,6 +139,7 @@ namespace FacebookAuto_v6
             if (status == "Tiêu cực") radioTieuCuc.Checked = true;
             else radioTichCuc.Checked = true;
             DatePost.Value = DateTime.Parse(timepost);
+            txtIDBaiViet.Text = idpost;
         }
         public void getdulieufrmganday(string idpost)
         {

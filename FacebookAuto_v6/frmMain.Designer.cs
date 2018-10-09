@@ -78,7 +78,7 @@
             this.TabControl.OptionsMinimizing.NormalWidth = 173;
             this.TabControl.RootDisplayMode = DevExpress.XtraBars.Navigation.AccordionControlRootDisplayMode.Footer;
             this.TabControl.SelectElementMode = DevExpress.XtraBars.Navigation.SelectElementMode.MouseDown;
-            this.TabControl.Size = new System.Drawing.Size(190, 596);
+            this.TabControl.Size = new System.Drawing.Size(173, 596);
             this.TabControl.TabIndex = 1;
             this.TabControl.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             // 
@@ -194,14 +194,14 @@
             // 
             this.ElementDuyetBaiViet.Name = "ElementDuyetBaiViet";
             this.ElementDuyetBaiViet.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.ElementDuyetBaiViet.Text = "Duyệt bài viết trang, nhóm";
+            this.ElementDuyetBaiViet.Text = "Tìm bài trong trang, nhóm";
             this.ElementDuyetBaiViet.Click += new System.EventHandler(this.ElementDuyetBaiViet_Click);
             // 
             // accordionControlElement1
             // 
             this.accordionControlElement1.Name = "accordionControlElement1";
             this.accordionControlElement1.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.accordionControlElement1.Text = "Đăng bài viết trang, nhóm";
+            this.accordionControlElement1.Text = "Đăng bài lên trang, nhóm";
             this.accordionControlElement1.Click += new System.EventHandler(this.accordionControlElement1_Click);
             // 
             // accordionControlSeparator2
@@ -314,9 +314,9 @@
             // panelMain
             // 
             this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelMain.Location = new System.Drawing.Point(190, 30);
+            this.panelMain.Location = new System.Drawing.Point(173, 30);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(951, 596);
+            this.panelMain.Size = new System.Drawing.Size(968, 596);
             this.panelMain.TabIndex = 3;
             // 
             // frmMain
