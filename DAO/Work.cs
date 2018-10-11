@@ -20,6 +20,30 @@ namespace DAO
             DataProvider.DongKetNoi(con);
             return dt;
         }
+        public static DataTable LoadDuLieuLamViecCu(string taikhoan,string idpost)
+        {
+            string sTruyVan = "select KhoangTime,TongComment from tblWork where TaiKhoan='"+taikhoan+"' and IDPost='"+idpost+"'";
+            con = DataProvider.KetNoi();
+            DataTable dt = DataProvider.LayDataTable(sTruyVan, con);
+            DataProvider.DongKetNoi(con);
+            return dt;
+        }
+        public static DataTable LoadDuLieuNhanVien(string taikhoan)
+        {
+            string sTruyVan = "select w.IDPost,p.Description,p.Status,p.TimePost from tblWork w,tblPost p where TaiKhoan='" + taikhoan+"' and w.IDPost=p.IDPost";
+            con = DataProvider.KetNoi();
+            DataTable dt = DataProvider.LayDataTable(sTruyVan, con);
+            DataProvider.DongKetNoi(con);
+            return dt;
+        }
+        public static DataTable LoadDuLieuNhanVienForAdmin(string taikhoan)
+        {
+            string sTruyVan = "select w.IDPost as N'ID bài viết',p.Description as N'Nội dung' ,p.Status as N'Trạng thái',p.TimePost as N'Thời gian' from tblWork w,tblPost p where TaiKhoan='" + taikhoan + "' and w.IDPost=p.IDPost";
+            con = DataProvider.KetNoi();
+            DataTable dt = DataProvider.LayDataTable(sTruyVan, con);
+            DataProvider.DongKetNoi(con);
+            return dt;
+        }
         public static DataTable LoadDuLieuByTaiKhoan(string taikhoan)
         {
             string sTruyVan = "Select * from tblWork TaiKhoan=N'"+taikhoan+"'";

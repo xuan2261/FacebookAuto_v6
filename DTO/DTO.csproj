@@ -60,10 +60,12 @@
     <Compile Include="tblLikePost.cs" />
     <Compile Include="tblPage.cs" />
     <Compile Include="tblPost.cs" />
+    <Compile Include="tblPosted.cs" />
     <Compile Include="tblUserFB.cs" />
     <Compile Include="tblWork.cs" />
     <Compile Include="tblWorkAccount.cs" />
     <Compile Include="tblWorkComment.cs" />
+    <Compile Include="tblWorked.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

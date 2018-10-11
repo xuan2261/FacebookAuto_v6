@@ -59,5 +59,15 @@ namespace FacebookAuto_v6
         {
             LoadData();
         }
+
+        private void Xoa_Click(object sender, EventArgs e)
+        {
+            string email= gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "Email").ToString();
+            if(AccountFB.Xoa(email, taikhoan))
+            {
+                MessageBox.Show("Đã xóa tài khoản!");
+                LoadData();
+            }
+        }
     }
 }

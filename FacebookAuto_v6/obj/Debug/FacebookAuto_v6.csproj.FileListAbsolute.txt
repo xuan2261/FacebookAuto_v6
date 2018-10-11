@@ -276,3 +276,6 @@ C:\Users\tungn\OneDrive\Documents\FacebookAuto_v6\FacebookAuto_v6\bin\Debug\ru\D
 C:\Users\tungn\OneDrive\Documents\FacebookAuto_v6\FacebookAuto_v6\obj\Debug\FacebookAuto_v6.UCTKTrang.resources
 C:\Users\tungn\OneDrive\Documents\FacebookAuto_v6\FacebookAuto_v6\obj\Debug\FacebookAuto_v6.UCQLNhanVien.resources
 C:\Users\tungn\OneDrive\Documents\FacebookAuto_v6\FacebookAuto_v6\obj\Debug\FacebookAuto_v6.UCTTKiemDuyetGanDay.resources
+C:\Users\tungn\OneDrive\Documents\FacebookAuto_v6\FacebookAuto_v6\obj\Debug\FacebookAuto_v6.UCGSNhanVien.resources
+C:\Users\tungn\OneDrive\Documents\FacebookAuto_v6\FacebookAuto_v6\obj\Debug\FacebookAuto_v6.UCTKNhanVien.resources
+C:\Users\tungn\OneDrive\Documents\FacebookAuto_v6\FacebookAuto_v6\obj\Debug\FacebookAuto_v6.UCGSDangBai.resources

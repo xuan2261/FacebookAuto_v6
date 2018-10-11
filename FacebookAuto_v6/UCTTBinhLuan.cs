@@ -24,6 +24,7 @@ namespace FacebookAuto_v6
         public string danhgia = "Tích cực";
         public string timepost;
         int loadlist = 0;
+        public int ktblcu = 0;
         public UCTTBinhLuan()
         {
             InitializeComponent();
@@ -41,13 +42,40 @@ namespace FacebookAuto_v6
             {
                 lsCheckTKTichCuc.Items.Add(tichcuc.Rows[i]["Name"].ToString());
             }
-            for (int i = 0; i < tichcuc.Rows.Count; i++)
+            for (int i = 0; i < tieucuc.Rows.Count; i++)
             {
                 lsCheckTKTieuCuc.Items.Add(tieucuc.Rows[i]["Name"].ToString());
             }
         }
         private void btnBatDauBinhLuan_Click(object sender, EventArgs e)
         {
+            // lấy danh sách bình luận
+            idTaiKhoanBinhLuan = new List<string>();
+            //lấy ra list tài khoản sử dụng để bình luận
+            foreach (var item in lsCheckTKTichCuc.CheckedIndices)
+            {
+                string i = item.ToString();
+                if (i == "0")
+                {
+                    for (int t = 0; t < tichcuc.Rows.Count; t++)
+                        idTaiKhoanBinhLuan.Add(tichcuc.Rows[t]["NumberIDAccount"].ToString());
+                }
+                else
+                    idTaiKhoanBinhLuan.Add(tichcuc.Rows[int.Parse(i) - 1]["NumberIDAccount"].ToString());
+            }
+            foreach (var item in lsCheckTKTieuCuc.CheckedIndices)
+            {
+                string i = item.ToString();
+                if (i == "0")
+                {
+                    for (int t = 0; t < tieucuc.Rows.Count; t++)
+                        idTaiKhoanBinhLuan.Add(tieucuc.Rows[t]["NumberIDAccount"].ToString());
+                }
+                else
+                    idTaiKhoanBinhLuan.Add(tieucuc.Rows[int.Parse(i) - 1]["NumberIDAccount"].ToString());
+            }
+            //kết thúc lấy danh sách bình luận
+
             //cập nhật lại thông tin bài viết
             tblPost p = new tblPost();
             p.IDPost = idpost;
@@ -56,6 +84,16 @@ namespace FacebookAuto_v6
             else p.Status = "Tiêu cực";
             Post.Sua(p);
             //kết thúc cập nhật thông tin bài viết
+            //kiểm tra xem bài viết đã được bình luận chưa
+            if(Work.LoadDuLieuLamViecCu(taikhoan,idpost).Rows.Count!=0)
+            {
+                //xóa dữ liệu đã lưu cũ
+                //xoá trong work
+                Work.Xoa(idpost, taikhoan);
+                WorkAccount.Xoa(idpost, taikhoan);
+                WorkComment.Xoa(idpost, taikhoan);
+            }
+            //kết thúc kiểm tra bài viết đã được bình luận chưa
             //lưu các thông số bình luận lại
             //lưu tài khoản bình luận lại vào bảng workaccount
             tblWorkAccount wa = new tblWorkAccount();
@@ -96,7 +134,7 @@ namespace FacebookAuto_v6
         }
         private void UCTTBinhLuan_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -108,58 +146,12 @@ namespace FacebookAuto_v6
 
         private void lsCheckTKTichCuc_DropDownClosed(object sender, EventArgs e)
         {
-            idTaiKhoanBinhLuan = new List<string>();
-            //lấy ra list tài khoản sử dụng để bình lu
-            foreach (var item in lsCheckTKTichCuc.CheckedIndices)
-            {
-                string i = item.ToString();
-                if(i=="0")
-                {
-                    for(int t=0;t<tichcuc.Rows.Count; t++)
-                    idTaiKhoanBinhLuan.Add(tichcuc.Rows[t]["NumberIDAccount"].ToString());
-                }
-                else
-                    idTaiKhoanBinhLuan.Add(tichcuc.Rows[int.Parse(i) - 1]["NumberIDAccount"].ToString());
-            }
-            foreach (var item in lsCheckTKTieuCuc.CheckedIndices)
-            {
-                string i = item.ToString();
-                if (i == "0")
-                {
-                    for (int t = 0; t < tieucuc.Rows.Count; t++)
-                        idTaiKhoanBinhLuan.Add(tieucuc.Rows[t]["NumberIDAccount"].ToString());
-                }
-                else
-                    idTaiKhoanBinhLuan.Add(tieucuc.Rows[int.Parse(i) - 1]["NumberIDAccount"].ToString());
-            }
+            
         }
 
         private void lsCheckTKTieuCuc_DropDownClosed(object sender, EventArgs e)
         {
-            idTaiKhoanBinhLuan = new List<string>();
-            //lấy ra list tài khoản sử dụng để bình lu
-            foreach (var item in lsCheckTKTichCuc.CheckedIndices)
-            {
-                string i = item.ToString();
-                if (i == "0")
-                {
-                    for (int t = 0; t < tichcuc.Rows.Count; t++)
-                        idTaiKhoanBinhLuan.Add(tichcuc.Rows[t]["NumberIDAccount"].ToString());
-                }
-                else
-                    idTaiKhoanBinhLuan.Add(tichcuc.Rows[int.Parse(i) - 1]["NumberIDAccount"].ToString());
-            }
-            foreach (var item in lsCheckTKTieuCuc.CheckedIndices)
-            {
-                string i = item.ToString();
-                if (i == "0")
-                {
-                    for (int t = 0; t < tieucuc.Rows.Count; t++)
-                        idTaiKhoanBinhLuan.Add(tieucuc.Rows[t]["NumberIDAccount"].ToString());
-                }
-                else
-                    idTaiKhoanBinhLuan.Add(tieucuc.Rows[int.Parse(i) - 1]["NumberIDAccount"].ToString());
-            }
+            
         }
 
         private void lsCheckTKTichCuc_Enter(object sender, EventArgs e)
@@ -178,6 +170,61 @@ namespace FacebookAuto_v6
                 LoadListAccount();
                 loadlist = 1;
             }
+        }
+
+        private void UCTTBinhLuan_VisibleChanged(object sender, EventArgs e)
+        {
+            // trường hợp khi bình luận tiếp tục sửa đổi từ cơ sở dữ liệu
+            if (ktblcu != 0)
+            {
+                //load lại các bình luận đã lưu
+                DataTable dt = WorkComment.LoadListNoiDungBL(idpost, taikhoan);
+                LsNoiDungBinhLuan.Items.Clear();
+                for(int i=0;i<dt.Rows.Count;i++)
+                {
+                    LsNoiDungBinhLuan.Items.Add(dt.Rows[i]["NoiDung"].ToString());
+                }
+                //kết thúc load lại các bình luận đã lưu
+                //load lại số lượng và khoảng thời gian
+                dt = Work.LoadDuLieuLamViecCu(taikhoan, idpost);
+                numKhoangTime.Value = int.Parse(dt.Rows[0]["KhoangTime"].ToString());
+                numSoBL.Value = int.Parse(dt.Rows[0]["TongComment"].ToString());
+                //kết thúc load lại số lượng và khoảng thời gian
+                //set tài khoản bình luận 
+                if (loadlist == 0)
+                {
+                    LoadListAccount();
+                    loadlist = 1;
+                }
+                for (int i=0;i<tichcuc.Rows.Count;i++)
+                {
+                    //nếu như tìm thấy tài khoản bình luận trong danh sách
+                    if (WorkAccount.CheckTK(tichcuc.Rows[i]["NumberIDAccount"].ToString(), taikhoan, idpost))
+                    {
+                        lsCheckTKTichCuc.SetItemChecked(i+1, true);
+                    }
+                }
+                for (int i = 0; i < tieucuc.Rows.Count; i++)
+                {
+                    //nếu như tìm thấy tài khoản bình luận trong danh sách
+                    if (WorkAccount.CheckTK(tieucuc.Rows[i]["NumberIDAccount"].ToString(), taikhoan, idpost))
+                    {
+                        lsCheckTKTieuCuc.SetItemChecked(i+1, true);
+                    }
+                }
+                //kết thúc set tài khoản bình luận
+                ktblcu = 0;
+            }
+        }
+
+        private void Xoa_Click(object sender, EventArgs e)
+        {
+            // xóa nội dung bình luận trong danh sách bình luận
+            try
+            {
+                LsNoiDungBinhLuan.Items.RemoveAt(LsNoiDungBinhLuan.FocusedItem.Index);
+            }
+            catch { MessageBox.Show("Không có gì để xóa"); }
         }
     }
 }

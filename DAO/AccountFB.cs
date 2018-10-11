@@ -76,12 +76,12 @@ namespace DAO
             }
         }
 
-        public static bool Xoa(string Email)
+        public static bool Xoa(string Email,string taikhoan)
         {
             try
             {
                 con = DataProvider.KetNoi();
-                string sTruyVan = string.Format("Delete From tblAccountFB where Email = '{0}'", Email);
+                string sTruyVan = string.Format("Delete From tblAccountFB where Email = '{0}' and TaiKhoan='{1}'", Email,taikhoan);
                 DataProvider.ThucThiTruyVanNonQuery(sTruyVan, con);
                 DataProvider.DongKetNoi(con);
                 return true;

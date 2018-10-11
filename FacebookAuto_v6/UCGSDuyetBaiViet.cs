@@ -19,6 +19,7 @@ namespace FacebookAuto_v6
         string url = "https://mobile.facebook.com/";
         public string taikhoan;
         int ktloadlistpage = 0;
+        int ktpageorgroup=0;
         public UCGSDuyetBaiViet()
         {
             InitializeComponent();
@@ -67,58 +68,118 @@ namespace FacebookAuto_v6
         private void ListTichCuc_DropDownClosed(object sender, EventArgs e)
         {
             lsIDPage = new List<string>();
-            foreach (var item in ListTichCuc.CheckedIndices)
+            if (ktpageorgroup == 1)
             {
-                string i = item.ToString();
-                if (i == "0")
+                foreach (var item in ListTichCuc.CheckedIndices)
                 {
-                    for (int t = 0; t < pagetichcuc.Rows.Count; t++)
-                        lsIDPage.Add(pagetichcuc.Rows[t]["IDPage"].ToString());
-                    break;
+                    string i = item.ToString();
+                    if (i == "0")
+                    {
+                        for (int t = 0; t < pagetichcuc.Rows.Count; t++)
+                            lsIDPage.Add(pagetichcuc.Rows[t]["IDGroup"].ToString());
+                        break;
+                    }
+                    else
+                        lsIDPage.Add(pagetichcuc.Rows[int.Parse(i) - 1]["IDGroup"].ToString());
                 }
-                else
-                    lsIDPage.Add(pagetichcuc.Rows[int.Parse(i) - 1]["IDPage"].ToString());
+                foreach (var item in ListTieuCuc.CheckedIndices)
+                {
+                    string i = item.ToString();
+                    if (i == "0")
+                    {
+                        for (int t = 0; t < pagetieucuc.Rows.Count; t++)
+                            lsIDPage.Add(pagetieucuc.Rows[t]["IDGroup"].ToString());
+                        break;
+                    }
+                    else
+                        lsIDPage.Add(pagetieucuc.Rows[int.Parse(i) - 1]["IDGroup"].ToString());
+                }
             }
-            foreach (var item in ListTieuCuc.CheckedIndices)
+            if (ktpageorgroup == 0)
             {
-                string i = item.ToString();
-                if (i == "0")
+                foreach (var item in ListTichCuc.CheckedIndices)
                 {
-                    for (int t = 0; t < pagetieucuc.Rows.Count; t++)
-                        lsIDPage.Add(pagetieucuc.Rows[t]["IDPage"].ToString());
-                    break;
+                    string i = item.ToString();
+                    if (i == "0")
+                    {
+                        for (int t = 0; t < pagetichcuc.Rows.Count; t++)
+                            lsIDPage.Add(pagetichcuc.Rows[t]["IDPage"].ToString());
+                        break;
+                    }
+                    else
+                        lsIDPage.Add(pagetichcuc.Rows[int.Parse(i) - 1]["IDPage"].ToString());
                 }
-                else
-                    lsIDPage.Add(pagetieucuc.Rows[int.Parse(i) - 1]["IDPage"].ToString());
+                foreach (var item in ListTieuCuc.CheckedIndices)
+                {
+                    string i = item.ToString();
+                    if (i == "0")
+                    {
+                        for (int t = 0; t < pagetieucuc.Rows.Count; t++)
+                            lsIDPage.Add(pagetieucuc.Rows[t]["IDPage"].ToString());
+                        break;
+                    }
+                    else
+                        lsIDPage.Add(pagetieucuc.Rows[int.Parse(i) - 1]["IDPage"].ToString());
+                }
             }
         }
 
         private void ListTieuCuc_DropDownClosed(object sender, EventArgs e)
         {
             lsIDPage = new List<string>();
-            foreach (var item in ListTichCuc.CheckedIndices)
+            if (ktpageorgroup == 1)
             {
-                string i = item.ToString();
-                if (i == "0")
+                foreach (var item in ListTichCuc.CheckedIndices)
                 {
-                    for (int t = 0; t < pagetichcuc.Rows.Count; t++)
-                        lsIDPage.Add(pagetichcuc.Rows[t]["IDPage"].ToString());
-                    break;
+                    string i = item.ToString();
+                    if (i == "0")
+                    {
+                        for (int t = 0; t < pagetichcuc.Rows.Count; t++)
+                            lsIDPage.Add(pagetichcuc.Rows[t]["IDGroup"].ToString());
+                        break;
+                    }
+                    else
+                        lsIDPage.Add(pagetichcuc.Rows[int.Parse(i) - 1]["IDGroup"].ToString());
                 }
-                else
-                    lsIDPage.Add(pagetichcuc.Rows[int.Parse(i) - 1]["IDPage"].ToString());
+                foreach (var item in ListTieuCuc.CheckedIndices)
+                {
+                    string i = item.ToString();
+                    if (i == "0")
+                    {
+                        for (int t = 0; t < pagetieucuc.Rows.Count; t++)
+                            lsIDPage.Add(pagetieucuc.Rows[t]["IDGroup"].ToString());
+                        break;
+                    }
+                    else
+                        lsIDPage.Add(pagetieucuc.Rows[int.Parse(i) - 1]["IDGroup"].ToString());
+                }
             }
-            foreach (var item in ListTieuCuc.CheckedIndices)
+            if (ktpageorgroup == 0)
             {
-                string i = item.ToString();
-                if (i == "0")
+                foreach (var item in ListTichCuc.CheckedIndices)
                 {
-                    for (int t = 0; t < pagetieucuc.Rows.Count; t++)
-                        lsIDPage.Add(pagetieucuc.Rows[t]["IDPage"].ToString());
-                    break;
+                    string i = item.ToString();
+                    if (i == "0")
+                    {
+                        for (int t = 0; t < pagetichcuc.Rows.Count; t++)
+                            lsIDPage.Add(pagetichcuc.Rows[t]["IDPage"].ToString());
+                        break;
+                    }
+                    else
+                        lsIDPage.Add(pagetichcuc.Rows[int.Parse(i) - 1]["IDPage"].ToString());
                 }
-                else
-                    lsIDPage.Add(pagetieucuc.Rows[int.Parse(i) - 1]["IDPage"].ToString());
+                foreach (var item in ListTieuCuc.CheckedIndices)
+                {
+                    string i = item.ToString();
+                    if (i == "0")
+                    {
+                        for (int t = 0; t < pagetieucuc.Rows.Count; t++)
+                            lsIDPage.Add(pagetieucuc.Rows[t]["IDPage"].ToString());
+                        break;
+                    }
+                    else
+                        lsIDPage.Add(pagetieucuc.Rows[int.Parse(i) - 1]["IDPage"].ToString());
+                }
             }
         }
 
@@ -230,11 +291,6 @@ namespace FacebookAuto_v6
             //kết thúc tìm kiếm trong trang web
         }
 
-        private void lsKetQuaSearch_MouseClick(object sender, MouseEventArgs e)
-        {
-            WebView.Navigate(url + lsKetQuaSearch.FocusedItem.Text);
-        }
-
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             if(radioButton1.Checked==true)
@@ -285,7 +341,40 @@ namespace FacebookAuto_v6
 
         private void DrbtnLoaiTim_Enter(object sender, EventArgs e)
         {
+            
+        }
+
+        private void XemChiTiet_Click(object sender, EventArgs e)
+        {
+            WebView.Navigate(url + lsKetQuaSearch.FocusedItem.Text);
+        }
+        public delegate void ThaoTacNghiepVu(string idpost, string loainghiepvu);
+        public ThaoTacNghiepVu thaotacnghiepvu;
+        private void NghiepVuBinhLuan_Click(object sender, EventArgs e)
+        {
+            thaotacnghiepvu(lsKetQuaSearch.FocusedItem.Text, "1");
+        }
+
+        private void NghiepVuChiaSe_Click(object sender, EventArgs e)
+        {
+            thaotacnghiepvu(lsKetQuaSearch.FocusedItem.Text, "3");
+        }
+
+        private void NghiepVuBayToCamXuc_Click(object sender, EventArgs e)
+        {
+            thaotacnghiepvu(lsKetQuaSearch.FocusedItem.Text, "2");
+        }
+
+        private void NghiepVuKiemDuyet_Click(object sender, EventArgs e)
+        {
+            thaotacnghiepvu(lsKetQuaSearch.FocusedItem.Text, "4");
+        }
+
+        private void DrbtnLoaiTim_Leave(object sender, EventArgs e)
+        {
             ktloadlistpage = 0;
+            if (DrbtnLoaiTim.selectedIndex == 0) ktpageorgroup = 0;
+            else ktpageorgroup = 1;
         }
     }
 }

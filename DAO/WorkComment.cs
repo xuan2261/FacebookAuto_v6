@@ -16,6 +16,14 @@ namespace DAO
             DataProvider.DongKetNoi(con);
             return dt;
         }
+        public static DataTable LoadListNoiDungBL(string idpost, string taikhoan)
+        {
+            string sTruyVan = "select Noidung from tblWorkComment where TaiKhoan='"+taikhoan+"' and IDPost='"+idpost+"'";
+            con = DataProvider.KetNoi();
+            DataTable dt = DataProvider.LayDataTable(sTruyVan, con);
+            DataProvider.DongKetNoi(con);
+            return dt;
+        }
         public static string LayNoiDungComment(string idpost,string taikhoan)
         {
             string sTruyVan = "select Noidung from tblWorkComment where IDPost='" + idpost + "' and TaiKhoan=N'"+taikhoan+"'";
@@ -58,12 +66,12 @@ namespace DAO
             }
         }
 
-        public static bool Xoa(string idcomment)
+        public static bool Xoa(string idpost,string taikhoan)
         {
             try
             {
                 con = DataProvider.KetNoi();
-                string sTruyVan = string.Format("Delete From tblWorkComment where IDComment = '{0}'", idcomment);
+                string sTruyVan = string.Format("Delete From tblWorkComment where IDPost = '{0}' and TaiKhoan=N'{1}'", idpost,taikhoan);
                 DataProvider.ThucThiTruyVanNonQuery(sTruyVan, con);
                 DataProvider.DongKetNoi(con);
                 return true;

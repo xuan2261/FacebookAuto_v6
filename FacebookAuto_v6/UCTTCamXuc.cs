@@ -49,7 +49,7 @@ namespace FacebookAuto_v6
             {
                 lsCheckTKTichCuc.Items.Add(tichcuc.Rows[i]["Name"].ToString());
             }
-            for (int i = 0; i < tichcuc.Rows.Count; i++)
+            for (int i = 0; i < tieucuc.Rows.Count; i++)
             {
                 lsCheckTKTieuCuc.Items.Add(tieucuc.Rows[i]["Name"].ToString());
             }
@@ -190,8 +190,8 @@ namespace FacebookAuto_v6
                     idTaiKhoanCamXuc.Add(tieucuc.Rows[int.Parse(i) - 1]["NumberIDAccount"].ToString());
             }
         }
-
-        private void lsCheckTKTichCuc_MouseDown(object sender, MouseEventArgs e)
+        
+        private void lsCheckTKTichCuc_Enter(object sender, EventArgs e)
         {
             if (loadlist == 0)
             {
@@ -200,7 +200,7 @@ namespace FacebookAuto_v6
             }
         }
 
-        private void lsCheckTKTieuCuc_MouseDown(object sender, MouseEventArgs e)
+        private void lsCheckTKTieuCuc_Enter(object sender, EventArgs e)
         {
             if (loadlist == 0)
             {

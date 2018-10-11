@@ -32,7 +32,7 @@ namespace FacebookAuto_v6
         {
             for (;;)
             {
-                Thread.Sleep(10000);
+                Thread.Sleep(30000);
                 if (Work.KiemTraTienDo(idpost,taikhoan) == false)
                 {
                     MessageBox.Show("Đã bình luận xong với bài viết có id= " + idpost);
@@ -55,7 +55,15 @@ namespace FacebookAuto_v6
                 // bắt đầu bình luận
                 ThuVienLamViecFacebook.BinhLuan(idpost, noidungcomment, idaccountbl, fb_dtsg);
                 //thay đổi trạng thái của hoạt động
-
+                //lưu thông tin vào worked
+                tblWorked wd = new tblWorked();
+                wd.IDPost = idpost;
+                wd.IDAccoutFB = idaccountbl;
+                wd.NoiDung = noidungcomment;
+                wd.TaiKhoan = taikhoan;
+                wd.TimeComment = DateTime.Now;
+                Worked.Them(wd);
+                //kết thúc lưu thông tin vào worked
                 Work.updatetiendo(idpost,taikhoan);
                 try
                 {

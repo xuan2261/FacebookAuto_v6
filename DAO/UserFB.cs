@@ -58,7 +58,7 @@ namespace DAO
         {
             try
             {
-                string sTruyVan = string.Format("declare @t int, @u int, @kq int select @t = sum(lp.Status) + sum(cp.Status) from tblLikePost lp, tblCommentPost cp where lp.IDUserFB = '{0}' select @u = sum(Status) from tblCommentPost where IDUser = '{1}' if (@u is null and @t is not null) select @kq = @t if (@u is null and @t is null) select @kq = 0 if (@u is not null and @t is null) select @kq = @u else select @kq = @u + @t update tblUserFB set Status = @kq where IDUser = N'{2}'",iduser,iduser,iduser );
+                string sTruyVan = string.Format("declare @t int, @u int, @kq int select @t = sum(Status) from tblCommentPost where IDUser='{0}' select @u = sum(Status) from tblCommentPost where IDUser = '{1}'  if (@u is null and @t is not null) select @kq = @t if (@u is null and @t is null) select @kq = 0 if (@u is not null and @t is null) select @kq = @u else select @kq = @u + @t update tblUserFB set Status = @kq where IDUser = N'{2}'", iduser,iduser,iduser );
                 con = DataProvider.KetNoi();
                 DataProvider.ThucThiTruyVanNonQuery(sTruyVan, con);
                 DataProvider.DongKetNoi(con);

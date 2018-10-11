@@ -124,6 +124,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ThuVienLamViecFacebook.cs" />
     <Compile Include="TuDongBinhLuan.cs" />
+    <Compile Include="UCGSDangBai.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCGSDangBai.Designer.cs">
+      <DependentUpon>UCGSDangBai.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCGSDuyetBaiViet.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -135,6 +141,12 @@
     </Compile>
     <Compile Include="UCGSNguoiDungFB.Designer.cs">
       <DependentUpon>UCGSNguoiDungFB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCGSNhanVien.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCGSNhanVien.Designer.cs">
+      <DependentUpon>UCGSNhanVien.cs</DependentUpon>
     </Compile>
     <Compile Include="UCGSThemTrang.cs">
       <SubType>UserControl</SubType>
@@ -159,6 +171,12 @@
     </Compile>
     <Compile Include="UCThaoTac.Designer.cs">
       <DependentUpon>UCThaoTac.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCTKNhanVien.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCTKNhanVien.Designer.cs">
+      <DependentUpon>UCTKNhanVien.cs</DependentUpon>
     </Compile>
     <Compile Include="UCTKTrang.cs">
       <SubType>UserControl</SubType>
@@ -222,11 +240,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UCGSDangBai.resx">
+      <DependentUpon>UCGSDangBai.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCGSDuyetBaiViet.resx">
       <DependentUpon>UCGSDuyetBaiViet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCGSNguoiDungFB.resx">
       <DependentUpon>UCGSNguoiDungFB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCGSNhanVien.resx">
+      <DependentUpon>UCGSNhanVien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCGSThemTrang.resx">
       <DependentUpon>UCGSThemTrang.cs</DependentUpon>
@@ -239,6 +263,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UCThaoTac.resx">
       <DependentUpon>UCThaoTac.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCTKNhanVien.resx">
+      <DependentUpon>UCTKNhanVien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCTKTrang.resx">
       <DependentUpon>UCTKTrang.cs</DependentUpon>
@@ -294,6 +321,7 @@
     <Content Include="Firefox\sandboxbroker.dll" />
     <Content Include="Firefox\softokn3.dll" />
     <Content Include="Firefox\xul.dll" />
+    <None Include="Resources\icons8-new-post-64.png" />
     <None Include="Resources\icons8-update-user-80.png" />
     <None Include="Resources\icons8-good-quality-64.png" />
     <None Include="Resources\icons8-facebook-like-481.png" />

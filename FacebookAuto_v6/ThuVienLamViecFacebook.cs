@@ -571,5 +571,53 @@ namespace FacebookAuto_v6
             }
         }
         //kết thúc join group
+
+        //đăng bài lên page, group
+        public static string DangBaiViet(string noidung,string idnguon)
+        {
+            WebBrowser web1 = new WebBrowser();
+            web1.ScriptErrorsSuppressed = true;
+            web1.Navigate("https://mobile.facebook.com/"+idnguon);
+            while (web1.ReadyState != WebBrowserReadyState.Complete)
+                Application.DoEvents();
+            string htmlcontent = web1.DocumentText;
+            htmlcontent = htmlcontent.Replace("amp;", "");
+            string url = htmlcontent.Substring(htmlcontent.IndexOf("/composer/mbasic/?av="));
+            url = url.Remove(url.IndexOf("\""));
+            string fb_dtsg = htmlcontent.Substring(htmlcontent.IndexOf("fb_dtsg"));
+            fb_dtsg = fb_dtsg.Substring(fb_dtsg.IndexOf("value=\"") + 7);
+            fb_dtsg = fb_dtsg.Remove(fb_dtsg.IndexOf("\""));
+            string jazoest= htmlcontent.Substring(htmlcontent.IndexOf("jazoest"));
+            jazoest = jazoest.Substring(jazoest.IndexOf("value=\"") + 7);
+            jazoest = jazoest.Remove(jazoest.IndexOf("\""));
+            string target = htmlcontent.Substring(htmlcontent.IndexOf("target"));
+            target = target.Substring(target.IndexOf("value=\"") + 7);
+            target = target.Remove(target.IndexOf("\""));
+
+            string postdata = "fb_dtsg="+fb_dtsg+"&jazoest="+jazoest+"&target="+target+"&c_src=group&cwevent=composer_entry&referrer=group&ctype=inline&cver=amber&rst_icv=&xc_message="+noidung+"&view_post=Đăng";
+            System.Text.Encoding encoding = System.Text.Encoding.UTF8;
+            byte[] bytes = encoding.GetBytes(postdata);
+            web1.Navigate("https://mobile.facebook.com"+url, string.Empty, bytes, "Content-Type: application/x-www-form-urlencoded");
+            while (web1.ReadyState != WebBrowserReadyState.Complete)
+                Application.DoEvents();
+
+            // lấy id bài viết nếu có
+            web1.Navigate("https://mobile.facebook.com/" + idnguon + "?v=timeline&filter=2&refid=17&_rdr");
+            while (web1.ReadyState != WebBrowserReadyState.Complete)
+                Application.DoEvents();
+            htmlcontent = web1.DocumentText;
+            htmlcontent = htmlcontent.Replace("amp;", "");
+            noidung = noidung.Remove(10);
+            string idpost = "";
+            try
+            {
+                idpost = htmlcontent.Substring(htmlcontent.IndexOf(noidung));
+                idpost = idpost.Substring(idpost.IndexOf("id=\"like_") + 9);
+                idpost = idpost.Remove(idpost.IndexOf("\""));
+            }
+            catch { }
+            return idpost;
+        }
+        //kết thúc đăng bài lên page, group
     }
 }

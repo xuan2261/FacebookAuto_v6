@@ -36,6 +36,7 @@
             this.BatDauTatCaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TamDungTatCaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.xemChiTietToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ChinhSuaBinhLuan = new System.Windows.Forms.ToolStripMenuItem();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.IDPost = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Status = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -75,44 +76,52 @@
             this.TamDungToolStripMenuItem,
             this.BatDauTatCaToolStripMenuItem,
             this.TamDungTatCaToolStripMenuItem,
-            this.xemChiTietToolStripMenuItem});
+            this.xemChiTietToolStripMenuItem,
+            this.ChinhSuaBinhLuan});
             this.MenuChuotPhai.Name = "MenuChuotPhai";
-            this.MenuChuotPhai.Size = new System.Drawing.Size(162, 114);
+            this.MenuChuotPhai.Size = new System.Drawing.Size(181, 136);
             // 
             // TiepTucToolStripMenuItem
             // 
             this.TiepTucToolStripMenuItem.Name = "TiepTucToolStripMenuItem";
-            this.TiepTucToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.TiepTucToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.TiepTucToolStripMenuItem.Text = "Tiếp tục";
             this.TiepTucToolStripMenuItem.Click += new System.EventHandler(this.tiếpTụcToolStripMenuItem_Click);
             // 
             // TamDungToolStripMenuItem
             // 
             this.TamDungToolStripMenuItem.Name = "TamDungToolStripMenuItem";
-            this.TamDungToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.TamDungToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.TamDungToolStripMenuItem.Text = "Tạm dừng";
             this.TamDungToolStripMenuItem.Click += new System.EventHandler(this.tạmDừngToolStripMenuItem_Click);
             // 
             // BatDauTatCaToolStripMenuItem
             // 
             this.BatDauTatCaToolStripMenuItem.Name = "BatDauTatCaToolStripMenuItem";
-            this.BatDauTatCaToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.BatDauTatCaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.BatDauTatCaToolStripMenuItem.Text = "Bắt đầu tất cả";
             this.BatDauTatCaToolStripMenuItem.Click += new System.EventHandler(this.BatDauTatCaToolStripMenuItem_Click);
             // 
             // TamDungTatCaToolStripMenuItem
             // 
             this.TamDungTatCaToolStripMenuItem.Name = "TamDungTatCaToolStripMenuItem";
-            this.TamDungTatCaToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.TamDungTatCaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.TamDungTatCaToolStripMenuItem.Text = "Tạm dừng tất cả";
             this.TamDungTatCaToolStripMenuItem.Click += new System.EventHandler(this.TamDungTatCaToolStripMenuItem_Click);
             // 
             // xemChiTietToolStripMenuItem
             // 
             this.xemChiTietToolStripMenuItem.Name = "xemChiTietToolStripMenuItem";
-            this.xemChiTietToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.xemChiTietToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.xemChiTietToolStripMenuItem.Text = "Xem chi tiết";
             this.xemChiTietToolStripMenuItem.Click += new System.EventHandler(this.xemChiTietToolStripMenuItem_Click);
+            // 
+            // ChinhSuaBinhLuan
+            // 
+            this.ChinhSuaBinhLuan.Name = "ChinhSuaBinhLuan";
+            this.ChinhSuaBinhLuan.Size = new System.Drawing.Size(180, 22);
+            this.ChinhSuaBinhLuan.Text = "Chỉnh sửa bình luận";
+            this.ChinhSuaBinhLuan.Click += new System.EventHandler(this.ChinhSuaBinhLuan_Click);
             // 
             // gridView1
             // 
@@ -264,5 +273,6 @@
         private System.Windows.Forms.ToolStripMenuItem xemChiTietToolStripMenuItem;
         private DevExpress.XtraGrid.Columns.GridColumn NoiDung;
         private System.Windows.Forms.Button btnLoadLaiDL;
+        private System.Windows.Forms.ToolStripMenuItem ChinhSuaBinhLuan;
     }
 }

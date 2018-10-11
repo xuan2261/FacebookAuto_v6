@@ -21,6 +21,7 @@ namespace FacebookAuto_v6
         UCTTHoatDongGD tthdgd = new UCTTHoatDongGD();
         UCTTKiemDuyetGanDay ttkdgd = new UCTTKiemDuyetGanDay();
         string urlfacebook= "https://mobile.facebook.com/";
+        string taikhoan;
         public void settaikhoanchouc(string tk)
         {
             ttbl.taikhoan = tk;
@@ -29,12 +30,25 @@ namespace FacebookAuto_v6
             ttcx.taikhoan = tk;
             ttkd.taikhoan = tk;
             ttkdgd.taikhoan = tk;
+            taikhoan = tk;
         }
         public UCThaoTac()
         {
             InitializeComponent();
+            Xpcom.Initialize("Firefox");
         }
-
+        public void setkiemduyet(string idpost)
+        {
+            txtIDBaiViet.Text = idpost;
+            WebView.Navigate(urlfacebook + idpost);
+            tblPost p = ThuVienLamViecFacebook.LayThongTinPost(idpost);
+            p.TimePost = DateTime.Now;
+            Post.Them(p);
+            //kết thúc lưu luôn thông tin bài viết 
+            ttbl.idpost = idpost;
+            ttcx.idpost = idpost;
+            ttkd.idpost = idpost;
+        }
         public void btnKiemTra_Click(object sender, EventArgs e)
         {
             //lưu thông tin bài viết
@@ -43,6 +57,19 @@ namespace FacebookAuto_v6
             p.TimePost = DateTime.Now;
             Post.Them(p);
             //kết thúc lưu luôn thông tin bài viết 
+            //kiểm tra xem bài viết có trong work không
+            if (Work.LoadDuLieuLamViecCu(taikhoan, txtIDBaiViet.Text).Rows.Count!=0)
+            {
+                ttbl.ktblcu = 1;
+                ttbl.idpost = txtIDBaiViet.Text;
+                LoadBinhLuan();
+                //load lại thông tin bài viết
+                DataTable dt = Post.LoadDuLieuByID(txtIDBaiViet.Text);
+                DatePost.Value = DateTime.Parse(dt.Rows[0]["TimePost"].ToString());
+                if (dt.Rows[0]["Status"].ToString() == "Tiêu cực") radioTieuCuc.Checked = true;
+                else radioTichCuc.Checked = true;
+            }
+            //kết thúc kiểm tra work 
             ttbl.idpost = txtIDBaiViet.Text;
             ttcx.idpost = txtIDBaiViet.Text;
             ttkd.idpost = txtIDBaiViet.Text;
@@ -103,6 +130,7 @@ namespace FacebookAuto_v6
             labelViTri.Text = ">>>  Kiểm duyệt gần đây";
             ttkdgd.sentidpost = new UCTTKiemDuyetGanDay.SendIDPost(getdulieufrmkhac);
             ttkdgd.kiemduyettieptuc = new UCTTKiemDuyetGanDay.KiemDuyetTiepTuc(getfrmkiemduyet);
+            
         }
         //load lại webview
         public void getdulieufrmkhac(string idpost,string status,string timepost)
@@ -111,10 +139,23 @@ namespace FacebookAuto_v6
             if (status == "Tiêu cực") radioTieuCuc.Checked = true;
             else radioTichCuc.Checked = true;
             DatePost.Value = DateTime.Parse(timepost);
+            txtIDBaiViet.Text = idpost;
         }
         public void getdulieufrmganday(string idpost)
         {
             WebView.Navigate(urlfacebook + idpost);
+            txtIDBaiViet.Text = idpost;
+        }
+        public void setBLCu(string idpost,string Status,string timepost)
+        {
+            WebView.Navigate(urlfacebook + idpost);
+            txtIDBaiViet.Text = idpost;
+            ttbl.ktblcu = 1;
+            ttbl.idpost = idpost;
+            DatePost.Value = DateTime.Parse(timepost);
+            if (Status == "Tiêu Cực") radioTieuCuc.Checked = true;
+            else radioTichCuc.Checked = true;
+            LoadBinhLuan();
         }
         public void LoadHoatDongGanDay()
         {
@@ -122,6 +163,7 @@ namespace FacebookAuto_v6
             splitContainerControl1.Panel2.Controls.Add(tthdgd);
             tthdgd.Dock = DockStyle.Fill;
             tthdgd.sentidpost = new UCTTHoatDongGD.SendIDPost(getdulieufrmganday);
+            tthdgd.setBL = new UCTTHoatDongGD.SetChinhBL(setBLCu);
             labelViTri.Text = ">>>  Hoạt động gần đây";
         }
 

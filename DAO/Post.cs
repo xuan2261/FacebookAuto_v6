@@ -22,7 +22,7 @@ namespace DAO
         }
         public static DataTable LoadDuLieuByID(string id)
         {
-            string sTruyVan = "select * from tblPost where IDPost=" + id;
+            string sTruyVan = "select * from tblPost where IDPost='" + id+"'";
             con = DataProvider.KetNoi();
             DataTable dt = DataProvider.LayDataTable(sTruyVan, con);
             DataProvider.DongKetNoi(con);
