@@ -28,6 +28,14 @@ namespace DAO
             DataProvider.DongKetNoi(con);
             return dt;
         }
+        public static DataTable LoadDuLieuByThang(string taikhoan, string nam,string thang)
+        {
+            string sTruyVan = "select day(TimeComment) as N'Ngay',  count(IDWorked) as N'SoLuong' from tblWorked where TaiKhoan='" + taikhoan + "' and year(TimeComment)='" + nam + "' and MONTH(TimeComment)='"+thang+"' group by day(TimeComment)";
+            con = DataProvider.KetNoi();
+            DataTable dt = DataProvider.LayDataTable(sTruyVan, con);
+            DataProvider.DongKetNoi(con);
+            return dt;
+        }
         public static bool Them(tblWorked wd)
         {
             try

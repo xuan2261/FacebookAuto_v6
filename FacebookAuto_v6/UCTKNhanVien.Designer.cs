@@ -32,15 +32,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.labelViTri = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.chartControl1 = new DevExpress.XtraCharts.ChartControl();
-            this.label1 = new System.Windows.Forms.Label();
-            this.DrbtnLoaiTim = new Bunifu.Framework.UI.BunifuDropdown();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.bunifuDropdown1 = new Bunifu.Framework.UI.BunifuDropdown();
-            this.label5 = new System.Windows.Forms.Label();
-            this.bunifuDropdown2 = new Bunifu.Framework.UI.BunifuDropdown();
             this.btnLocKQ = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.label5 = new System.Windows.Forms.Label();
+            this.DrbtnNhanVien = new Bunifu.Framework.UI.BunifuDropdown();
+            this.label4 = new System.Windows.Forms.Label();
+            this.DrbtnThang = new Bunifu.Framework.UI.BunifuDropdown();
+            this.label3 = new System.Windows.Forms.Label();
+            this.DrbtnLoaiTim = new Bunifu.Framework.UI.BunifuDropdown();
+            this.label1 = new System.Windows.Forms.Label();
+            this.chartControl1 = new DevExpress.XtraCharts.ChartControl();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -90,9 +90,9 @@
             // 
             this.splitContainer1.Panel1.Controls.Add(this.btnLocKQ);
             this.splitContainer1.Panel1.Controls.Add(this.label5);
-            this.splitContainer1.Panel1.Controls.Add(this.bunifuDropdown2);
+            this.splitContainer1.Panel1.Controls.Add(this.DrbtnNhanVien);
             this.splitContainer1.Panel1.Controls.Add(this.label4);
-            this.splitContainer1.Panel1.Controls.Add(this.bunifuDropdown1);
+            this.splitContainer1.Panel1.Controls.Add(this.DrbtnThang);
             this.splitContainer1.Panel1.Controls.Add(this.label3);
             this.splitContainer1.Panel1.Controls.Add(this.DrbtnLoaiTim);
             this.splitContainer1.Panel1.Controls.Add(this.label1);
@@ -103,122 +103,6 @@
             this.splitContainer1.Size = new System.Drawing.Size(928, 539);
             this.splitContainer1.SplitterDistance = 259;
             this.splitContainer1.TabIndex = 104;
-            // 
-            // chartControl1
-            // 
-            this.chartControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chartControl1.Legend.Name = "Default Legend";
-            this.chartControl1.Location = new System.Drawing.Point(0, 0);
-            this.chartControl1.Name = "chartControl1";
-            this.chartControl1.SeriesSerializable = new DevExpress.XtraCharts.Series[0];
-            this.chartControl1.Size = new System.Drawing.Size(665, 539);
-            this.chartControl1.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.SystemColors.Window;
-            this.label1.Location = new System.Drawing.Point(18, 28);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Thống kế theo";
-            // 
-            // DrbtnLoaiTim
-            // 
-            this.DrbtnLoaiTim.BackColor = System.Drawing.Color.Transparent;
-            this.DrbtnLoaiTim.BorderRadius = 7;
-            this.DrbtnLoaiTim.DisabledColor = System.Drawing.Color.Gray;
-            this.DrbtnLoaiTim.ForeColor = System.Drawing.Color.White;
-            this.DrbtnLoaiTim.Items = new string[] {
-        "2018",
-        "2017",
-        "2016"};
-            this.DrbtnLoaiTim.Location = new System.Drawing.Point(122, 139);
-            this.DrbtnLoaiTim.Margin = new System.Windows.Forms.Padding(4);
-            this.DrbtnLoaiTim.Name = "DrbtnLoaiTim";
-            this.DrbtnLoaiTim.NomalColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(77)))), ((int)(((byte)(92)))));
-            this.DrbtnLoaiTim.onHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.DrbtnLoaiTim.selectedIndex = 0;
-            this.DrbtnLoaiTim.Size = new System.Drawing.Size(119, 30);
-            this.DrbtnLoaiTim.TabIndex = 88;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.SystemColors.Window;
-            this.label3.Location = new System.Drawing.Point(18, 147);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(55, 13);
-            this.label3.TabIndex = 89;
-            this.label3.Text = "Chọn năm";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.SystemColors.Window;
-            this.label4.Location = new System.Drawing.Point(18, 209);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(62, 13);
-            this.label4.TabIndex = 92;
-            this.label4.Text = "Chọn tháng";
-            // 
-            // bunifuDropdown1
-            // 
-            this.bunifuDropdown1.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuDropdown1.BorderRadius = 7;
-            this.bunifuDropdown1.DisabledColor = System.Drawing.Color.Gray;
-            this.bunifuDropdown1.ForeColor = System.Drawing.Color.White;
-            this.bunifuDropdown1.Items = new string[] {
-        "Tất cả",
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6",
-        "6",
-        "7",
-        "8",
-        "9",
-        "10",
-        "11",
-        "12"};
-            this.bunifuDropdown1.Location = new System.Drawing.Point(122, 200);
-            this.bunifuDropdown1.Margin = new System.Windows.Forms.Padding(4);
-            this.bunifuDropdown1.Name = "bunifuDropdown1";
-            this.bunifuDropdown1.NomalColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(77)))), ((int)(((byte)(92)))));
-            this.bunifuDropdown1.onHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.bunifuDropdown1.selectedIndex = 0;
-            this.bunifuDropdown1.Size = new System.Drawing.Size(119, 30);
-            this.bunifuDropdown1.TabIndex = 91;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.ForeColor = System.Drawing.SystemColors.Window;
-            this.label5.Location = new System.Drawing.Point(18, 85);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(82, 13);
-            this.label5.TabIndex = 94;
-            this.label5.Text = "Chọn nhân viên";
-            // 
-            // bunifuDropdown2
-            // 
-            this.bunifuDropdown2.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuDropdown2.BorderRadius = 7;
-            this.bunifuDropdown2.DisabledColor = System.Drawing.Color.Gray;
-            this.bunifuDropdown2.ForeColor = System.Drawing.Color.White;
-            this.bunifuDropdown2.Items = new string[] {
-        "Tất cả"};
-            this.bunifuDropdown2.Location = new System.Drawing.Point(122, 77);
-            this.bunifuDropdown2.Margin = new System.Windows.Forms.Padding(4);
-            this.bunifuDropdown2.Name = "bunifuDropdown2";
-            this.bunifuDropdown2.NomalColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(77)))), ((int)(((byte)(92)))));
-            this.bunifuDropdown2.onHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.bunifuDropdown2.selectedIndex = 0;
-            this.bunifuDropdown2.Size = new System.Drawing.Size(119, 30);
-            this.bunifuDropdown2.TabIndex = 93;
             // 
             // btnLocKQ
             // 
@@ -255,6 +139,122 @@
             this.btnLocKQ.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLocKQ.Click += new System.EventHandler(this.btnLocKQ_Click);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.SystemColors.Window;
+            this.label5.Location = new System.Drawing.Point(18, 85);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(82, 13);
+            this.label5.TabIndex = 94;
+            this.label5.Text = "Chọn nhân viên";
+            // 
+            // DrbtnNhanVien
+            // 
+            this.DrbtnNhanVien.BackColor = System.Drawing.Color.Transparent;
+            this.DrbtnNhanVien.BorderRadius = 7;
+            this.DrbtnNhanVien.DisabledColor = System.Drawing.Color.Gray;
+            this.DrbtnNhanVien.ForeColor = System.Drawing.Color.White;
+            this.DrbtnNhanVien.Items = new string[] {
+        "Tất cả"};
+            this.DrbtnNhanVien.Location = new System.Drawing.Point(122, 77);
+            this.DrbtnNhanVien.Margin = new System.Windows.Forms.Padding(4);
+            this.DrbtnNhanVien.Name = "DrbtnNhanVien";
+            this.DrbtnNhanVien.NomalColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(77)))), ((int)(((byte)(92)))));
+            this.DrbtnNhanVien.onHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.DrbtnNhanVien.selectedIndex = 0;
+            this.DrbtnNhanVien.Size = new System.Drawing.Size(119, 30);
+            this.DrbtnNhanVien.TabIndex = 93;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.SystemColors.Window;
+            this.label4.Location = new System.Drawing.Point(18, 209);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(62, 13);
+            this.label4.TabIndex = 92;
+            this.label4.Text = "Chọn tháng";
+            // 
+            // DrbtnThang
+            // 
+            this.DrbtnThang.BackColor = System.Drawing.Color.Transparent;
+            this.DrbtnThang.BorderRadius = 7;
+            this.DrbtnThang.DisabledColor = System.Drawing.Color.Gray;
+            this.DrbtnThang.ForeColor = System.Drawing.Color.White;
+            this.DrbtnThang.Items = new string[] {
+        "Tất cả",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12"};
+            this.DrbtnThang.Location = new System.Drawing.Point(122, 200);
+            this.DrbtnThang.Margin = new System.Windows.Forms.Padding(4);
+            this.DrbtnThang.Name = "DrbtnThang";
+            this.DrbtnThang.NomalColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(77)))), ((int)(((byte)(92)))));
+            this.DrbtnThang.onHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.DrbtnThang.selectedIndex = 0;
+            this.DrbtnThang.Size = new System.Drawing.Size(119, 30);
+            this.DrbtnThang.TabIndex = 91;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.SystemColors.Window;
+            this.label3.Location = new System.Drawing.Point(18, 147);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(55, 13);
+            this.label3.TabIndex = 89;
+            this.label3.Text = "Chọn năm";
+            // 
+            // DrbtnLoaiTim
+            // 
+            this.DrbtnLoaiTim.BackColor = System.Drawing.Color.Transparent;
+            this.DrbtnLoaiTim.BorderRadius = 7;
+            this.DrbtnLoaiTim.DisabledColor = System.Drawing.Color.Gray;
+            this.DrbtnLoaiTim.ForeColor = System.Drawing.Color.White;
+            this.DrbtnLoaiTim.Items = new string[] {
+        "2018",
+        "2017",
+        "2016"};
+            this.DrbtnLoaiTim.Location = new System.Drawing.Point(122, 139);
+            this.DrbtnLoaiTim.Margin = new System.Windows.Forms.Padding(4);
+            this.DrbtnLoaiTim.Name = "DrbtnLoaiTim";
+            this.DrbtnLoaiTim.NomalColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(77)))), ((int)(((byte)(92)))));
+            this.DrbtnLoaiTim.onHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.DrbtnLoaiTim.selectedIndex = 0;
+            this.DrbtnLoaiTim.Size = new System.Drawing.Size(119, 30);
+            this.DrbtnLoaiTim.TabIndex = 88;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.Window;
+            this.label1.Location = new System.Drawing.Point(18, 28);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(77, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Thống kế theo";
+            // 
+            // chartControl1
+            // 
+            this.chartControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chartControl1.Legend.Name = "Default Legend";
+            this.chartControl1.Location = new System.Drawing.Point(0, 0);
+            this.chartControl1.Name = "chartControl1";
+            this.chartControl1.SeriesSerializable = new DevExpress.XtraCharts.Series[0];
+            this.chartControl1.Size = new System.Drawing.Size(665, 539);
+            this.chartControl1.TabIndex = 0;
+            // 
             // UCTKNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -286,11 +286,11 @@
         private DevExpress.XtraCharts.ChartControl chartControl1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
-        private Bunifu.Framework.UI.BunifuDropdown bunifuDropdown1;
+        private Bunifu.Framework.UI.BunifuDropdown DrbtnThang;
         private System.Windows.Forms.Label label3;
         private Bunifu.Framework.UI.BunifuDropdown DrbtnLoaiTim;
         private System.Windows.Forms.Label label5;
-        private Bunifu.Framework.UI.BunifuDropdown bunifuDropdown2;
+        private Bunifu.Framework.UI.BunifuDropdown DrbtnNhanVien;
         private Bunifu.Framework.UI.BunifuFlatButton btnLocKQ;
     }
 }

@@ -41,5 +41,15 @@ namespace FacebookAuto_v6
             DataTable dt = Admin.LoadDuLieuNhanVien();
             gridControl1.DataSource = dt;
         }
+
+        private void Xoa_Click(object sender, EventArgs e)
+        {
+            string taikhoan = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "Tài khoản").ToString();
+            if (Admin.Xoa(taikhoan))
+            {
+                MessageBox.Show("Đã xóa tài khoản!");
+                LoadDuLieuNhanVien();
+            }
+        }
     }
 }

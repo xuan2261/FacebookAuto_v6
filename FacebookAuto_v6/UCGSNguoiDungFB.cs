@@ -22,13 +22,6 @@ namespace FacebookAuto_v6
         public UCGSNguoiDungFB()
         {
             InitializeComponent();
-            //lsNguoiDungTichCuc.Columns.Add("Danh sách người dùng tích cực ");
-            //lsNguoiDungTichCuc.AutoResizeColumn(0, ColumnHeaderAutoResizeStyle.HeaderSize);
-            
-            //lsNguoiDungTieuCuc.Columns.Add("Danh sách người dùng tiêu cực ");
-            //lsNguoiDungTieuCuc.AutoResizeColumn(0, ColumnHeaderAutoResizeStyle.HeaderSize);
-            //lsKetQua.Columns.Add("Danh sách kết quả");
-            //lsKetQua.AutoResizeColumn(0, ColumnHeaderAutoResizeStyle.HeaderSize);
         }
         
         private void LoadNguoiDung()
@@ -47,8 +40,17 @@ namespace FacebookAuto_v6
                 idnguoidungtichcuc.Add(nguoitichcuc.Rows[i]["IDNumber"].ToString());
                 WebClient webClient = new WebClient();
                 string urlimg = nguoitichcuc.Rows[i]["ImgLink"].ToString();
-                if (urlimg == "") urlimg = "https://z-p3-scontent.fhan7-1.fna.fbcdn.net/v/t1.0-1/cp0/e15/q65/c19.0.64.64/p64x64/10354686_10150004552801856_220367501106153455_n.jpg?_nc_cat=1&efg=eyJpIjoiYiJ9&oh=aa3384ecfcdd7529ca4458c6c4fd5ad9&oe=5C23A3FC";
-                byte[] data = webClient.DownloadData(urlimg);
+                byte[] data;
+                try
+                {
+                    data = webClient.DownloadData(urlimg);
+                }
+                catch
+                {
+                    urlimg = "https://z-p3-scontent.fhan7-1.fna.fbcdn.net/v/t1.0-1/cp0/e15/q65/c19.0.64.64/p64x64/10354686_10150004552801856_220367501106153455_n.jpg?_nc_cat=1&efg=eyJpIjoiYiJ9&oh=aa3384ecfcdd7529ca4458c6c4fd5ad9&oe=5C23A3FC";
+                    data = webClient.DownloadData(urlimg);
+                }
+
                 MemoryStream mem = new MemoryStream(data);
                 imglisttichcuc.Images.Add(Image.FromStream(mem));
             }
