@@ -314,5 +314,20 @@ namespace FacebookAuto_v6
         {
             DanhGia(1);
         }
+
+        private void listView2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelViTri_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

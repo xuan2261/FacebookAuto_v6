@@ -279,3 +279,4 @@ C:\Users\tungn\OneDrive\Documents\FacebookAuto_v6\FacebookAuto_v6\obj\Debug\Face
 C:\Users\tungn\OneDrive\Documents\FacebookAuto_v6\FacebookAuto_v6\obj\Debug\FacebookAuto_v6.UCGSNhanVien.resources
 C:\Users\tungn\OneDrive\Documents\FacebookAuto_v6\FacebookAuto_v6\obj\Debug\FacebookAuto_v6.UCTKNhanVien.resources
 C:\Users\tungn\OneDrive\Documents\FacebookAuto_v6\FacebookAuto_v6\obj\Debug\FacebookAuto_v6.UCGSDangBai.resources
+C:\Users\tungn\OneDrive\Documents\FacebookAuto_v6\FacebookAuto_v6\obj\Debug\FacebookAuto_v6.UCGSQLTrangNhom.resources

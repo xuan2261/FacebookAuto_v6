@@ -23,6 +23,7 @@ namespace FacebookAuto_v6
         UCQLNhanVien ucqlnv = new UCQLNhanVien();
         UCGSNhanVien ucgsnv = new UCGSNhanVien();
         UCTKNhanVien uctknv = new UCTKNhanVien();
+        UCGSQLTrangNhom ucgsqltn = new UCGSQLTrangNhom();
         
         int ktuc = 1;
         tblAdmin admin = new tblAdmin();
@@ -274,6 +275,15 @@ namespace FacebookAuto_v6
             panelMain.Controls.Add(ucgsdb);
             ucgsdb.Dock = DockStyle.Fill;
             ucgsdb.taikhoan = admin.TaiKhoan;
+        }
+
+        private void ElementQuanLyTrangNhom_Click(object sender, EventArgs e)
+        {
+            ktuc = 2;
+            panelMain.Controls.Clear();
+            panelMain.Controls.Add(ucgsqltn);
+            ucgsqltn.Dock = DockStyle.Fill;
+            ucgsqltn.taikhoan = admin.TaiKhoan;
         }
     }
 }

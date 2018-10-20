@@ -43,6 +43,7 @@
             this.ElementThemTrangNhom = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.ElementDuyetBaiViet = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.ElementQuanLyTrangNhom = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlSeparator2 = new DevExpress.XtraBars.Navigation.AccordionControlSeparator();
             this.ElementQLTaiKhoan = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.GroupElementQuanLy = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -59,8 +60,10 @@
             this.accordionControlElement7 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement8 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.panelMain = new System.Windows.Forms.Panel();
+            this.spinEdit1 = new DevExpress.XtraEditors.SpinEdit();
             ((System.ComponentModel.ISupportInitialize)(this.TabControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spinEdit1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // TabControl
@@ -142,7 +145,7 @@
             // 
             this.ElementKiemDuyet.Name = "ElementKiemDuyet";
             this.ElementKiemDuyet.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.ElementKiemDuyet.Text = "Xét duyệt bài viết";
+            this.ElementKiemDuyet.Text = "Kiểm duyệt bài viết";
             this.ElementKiemDuyet.Click += new System.EventHandler(this.ElementKiemDuyet_Click);
             // 
             // ElementHoatDong
@@ -156,7 +159,7 @@
             // 
             this.ElementKiemDuyetGanDay.Name = "ElementKiemDuyetGanDay";
             this.ElementKiemDuyetGanDay.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.ElementKiemDuyetGanDay.Text = "Xét duyệt gần đây";
+            this.ElementKiemDuyetGanDay.Text = "Kiểm duyệt gần đây";
             this.ElementKiemDuyetGanDay.Click += new System.EventHandler(this.ElementKiemDuyetGanDay_Click);
             // 
             // accordionControlSeparator1
@@ -168,7 +171,8 @@
             this.tabGiamSatTrang.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.ElementThemTrangNhom,
             this.ElementDuyetBaiViet,
-            this.accordionControlElement1});
+            this.accordionControlElement1,
+            this.ElementQuanLyTrangNhom});
             this.tabGiamSatTrang.Expanded = true;
             this.tabGiamSatTrang.HeaderTemplate.AddRange(new DevExpress.XtraBars.Navigation.HeaderElementInfo[] {
             new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.Image),
@@ -203,6 +207,18 @@
             this.accordionControlElement1.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accordionControlElement1.Text = "Đăng bài lên trang, nhóm";
             this.accordionControlElement1.Click += new System.EventHandler(this.accordionControlElement1_Click);
+            // 
+            // ElementQuanLyTrangNhom
+            // 
+            this.ElementQuanLyTrangNhom.HeaderTemplate.AddRange(new DevExpress.XtraBars.Navigation.HeaderElementInfo[] {
+            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.Text),
+            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.Image),
+            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.HeaderControl),
+            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.ContextButtons)});
+            this.ElementQuanLyTrangNhom.Name = "ElementQuanLyTrangNhom";
+            this.ElementQuanLyTrangNhom.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.ElementQuanLyTrangNhom.Text = "Quản lý trang, nhóm";
+            this.ElementQuanLyTrangNhom.Click += new System.EventHandler(this.ElementQuanLyTrangNhom_Click);
             // 
             // accordionControlSeparator2
             // 
@@ -319,6 +335,20 @@
             this.panelMain.Size = new System.Drawing.Size(968, 596);
             this.panelMain.TabIndex = 3;
             // 
+            // spinEdit1
+            // 
+            this.spinEdit1.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.spinEdit1.Location = new System.Drawing.Point(46, 423);
+            this.spinEdit1.Name = "spinEdit1";
+            this.spinEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.spinEdit1.Size = new System.Drawing.Size(100, 20);
+            this.spinEdit1.TabIndex = 3;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -326,6 +356,7 @@
             this.ClientSize = new System.Drawing.Size(1141, 626);
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.TabControl);
+            this.Controls.Add(this.spinEdit1);
             this.Controls.Add(this.fluentDesignFormControl1);
             this.FluentDesignFormControl = this.fluentDesignFormControl1;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -339,6 +370,7 @@
             this.Load += new System.EventHandler(this.frmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.TabControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spinEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -374,6 +406,8 @@
         public DevExpress.XtraBars.Navigation.AccordionControlElement ElementKiemDuyetGanDay;
         private DevExpress.XtraBars.Navigation.AccordionControlElement ElementTKNhanVien;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement1;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement ElementQuanLyTrangNhom;
+        private DevExpress.XtraEditors.SpinEdit spinEdit1;
     }
 }
 

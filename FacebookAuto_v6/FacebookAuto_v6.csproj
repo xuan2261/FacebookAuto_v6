@@ -148,6 +148,12 @@
     <Compile Include="UCGSNhanVien.Designer.cs">
       <DependentUpon>UCGSNhanVien.cs</DependentUpon>
     </Compile>
+    <Compile Include="UCGSQLTrangNhom.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCGSQLTrangNhom.Designer.cs">
+      <DependentUpon>UCGSQLTrangNhom.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCGSThemTrang.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -251,6 +257,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UCGSNhanVien.resx">
       <DependentUpon>UCGSNhanVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCGSQLTrangNhom.resx">
+      <DependentUpon>UCGSQLTrangNhom.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCGSThemTrang.resx">
       <DependentUpon>UCGSThemTrang.cs</DependentUpon>

@@ -39,30 +39,30 @@
             this.ProgressBarTim = new Bunifu.Framework.UI.BunifuProgressBar();
             this.lbTrangThaiTim = new System.Windows.Forms.Label();
             this.lsKetQuaSearch = new System.Windows.Forms.ListView();
-            this.label4 = new System.Windows.Forms.Label();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.label5 = new System.Windows.Forms.Label();
-            this.btnKhongXacDinh1 = new Bunifu.Framework.UI.BunifuImageButton();
-            this.btnTieuCuc1 = new Bunifu.Framework.UI.BunifuImageButton();
-            this.btnTichCuc1 = new Bunifu.Framework.UI.BunifuImageButton();
-            this.btnKhongXacDinh = new Bunifu.Framework.UI.BunifuImageButton();
-            this.btnTieuCuc = new Bunifu.Framework.UI.BunifuImageButton();
-            this.btnTichCuc = new Bunifu.Framework.UI.BunifuImageButton();
-            this.btnSearch = new Bunifu.Framework.UI.BunifuImageButton();
-            this.WebView = new Gecko.GeckoWebBrowser();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.XemThongTin = new System.Windows.Forms.ToolStripMenuItem();
             this.ThemVaoTieuCuc = new System.Windows.Forms.ToolStripMenuItem();
             this.ThemVaoTichCuc = new System.Windows.Forms.ToolStripMenuItem();
-            ((System.ComponentModel.ISupportInitialize)(this.btnKhongXacDinh1)).BeginInit();
+            this.label4 = new System.Windows.Forms.Label();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnTieuCuc1 = new Bunifu.Framework.UI.BunifuImageButton();
+            this.btnTichCuc1 = new Bunifu.Framework.UI.BunifuImageButton();
+            this.btnTieuCuc = new Bunifu.Framework.UI.BunifuImageButton();
+            this.btnTichCuc = new Bunifu.Framework.UI.BunifuImageButton();
+            this.btnSearch = new Bunifu.Framework.UI.BunifuImageButton();
+            this.WebView = new Gecko.GeckoWebBrowser();
+            this.btnKhongXacDinh1 = new Bunifu.Framework.UI.BunifuImageButton();
+            this.btnKhongXacDinh = new Bunifu.Framework.UI.BunifuImageButton();
+            this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnTieuCuc1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnTichCuc1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnKhongXacDinh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnTieuCuc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnTichCuc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).BeginInit();
-            this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnKhongXacDinh1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnKhongXacDinh)).BeginInit();
             this.SuspendLayout();
             // 
             // DrbtnLoaiTim
@@ -114,6 +114,7 @@
             this.label2.Size = new System.Drawing.Size(259, 29);
             this.label2.TabIndex = 81;
             this.label2.Text = "Giám sát trang, nhóm";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // labelViTri
             // 
@@ -124,6 +125,7 @@
             this.labelViTri.Size = new System.Drawing.Size(117, 13);
             this.labelViTri.TabIndex = 82;
             this.labelViTri.Text = ">>>  Thêm trang, nhóm";
+            this.labelViTri.Click += new System.EventHandler(this.labelViTri_Click);
             // 
             // label1
             // 
@@ -138,7 +140,6 @@
             // 
             // txtLink
             // 
-            this.txtLink.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtLink.BackColor = System.Drawing.Color.DimGray;
             this.txtLink.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtLink.Font = new System.Drawing.Font("Century Gothic", 8F);
@@ -159,7 +160,6 @@
             // 
             // label3
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.SystemColors.Window;
             this.label3.Location = new System.Drawing.Point(460, 138);
@@ -204,6 +204,36 @@
             this.lsKetQuaSearch.TabIndex = 89;
             this.lsKetQuaSearch.UseCompatibleStateImageBehavior = false;
             this.lsKetQuaSearch.View = System.Windows.Forms.View.Details;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.XemThongTin,
+            this.ThemVaoTieuCuc,
+            this.ThemVaoTichCuc});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(173, 70);
+            // 
+            // XemThongTin
+            // 
+            this.XemThongTin.Name = "XemThongTin";
+            this.XemThongTin.Size = new System.Drawing.Size(172, 22);
+            this.XemThongTin.Text = "Xem thông tin";
+            this.XemThongTin.Click += new System.EventHandler(this.XemThongTin_Click);
+            // 
+            // ThemVaoTieuCuc
+            // 
+            this.ThemVaoTieuCuc.Name = "ThemVaoTieuCuc";
+            this.ThemVaoTieuCuc.Size = new System.Drawing.Size(172, 22);
+            this.ThemVaoTieuCuc.Text = "Thêm vào tiêu cực";
+            this.ThemVaoTieuCuc.Click += new System.EventHandler(this.ThemVaoTieuCuc_Click);
+            // 
+            // ThemVaoTichCuc
+            // 
+            this.ThemVaoTichCuc.Name = "ThemVaoTichCuc";
+            this.ThemVaoTichCuc.Size = new System.Drawing.Size(172, 22);
+            this.ThemVaoTichCuc.Text = "Thêm vào tích cực";
+            this.ThemVaoTichCuc.Click += new System.EventHandler(this.ThemVaoTichCuc_Click);
             // 
             // label4
             // 
@@ -251,21 +281,6 @@
             this.label5.TabIndex = 99;
             this.label5.Text = "Đánh giá";
             // 
-            // btnKhongXacDinh1
-            // 
-            this.btnKhongXacDinh1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnKhongXacDinh1.BackColor = System.Drawing.Color.Transparent;
-            this.btnKhongXacDinh1.Image = global::FacebookAuto_v6.Properties.Resources.icons8_neutral_48;
-            this.btnKhongXacDinh1.ImageActive = null;
-            this.btnKhongXacDinh1.Location = new System.Drawing.Point(215, 513);
-            this.btnKhongXacDinh1.Name = "btnKhongXacDinh1";
-            this.btnKhongXacDinh1.Size = new System.Drawing.Size(30, 30);
-            this.btnKhongXacDinh1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnKhongXacDinh1.TabIndex = 98;
-            this.btnKhongXacDinh1.TabStop = false;
-            this.btnKhongXacDinh1.Zoom = 10;
-            this.btnKhongXacDinh1.Click += new System.EventHandler(this.btnKhongXacDinh1_Click);
-            // 
             // btnTieuCuc1
             // 
             this.btnTieuCuc1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -296,23 +311,8 @@
             this.btnTichCuc1.Zoom = 10;
             this.btnTichCuc1.Click += new System.EventHandler(this.btnTichCuc1_Click);
             // 
-            // btnKhongXacDinh
-            // 
-            this.btnKhongXacDinh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnKhongXacDinh.BackColor = System.Drawing.Color.Transparent;
-            this.btnKhongXacDinh.Image = global::FacebookAuto_v6.Properties.Resources.icons8_neutral_48;
-            this.btnKhongXacDinh.ImageActive = null;
-            this.btnKhongXacDinh.Location = new System.Drawing.Point(852, 124);
-            this.btnKhongXacDinh.Name = "btnKhongXacDinh";
-            this.btnKhongXacDinh.Size = new System.Drawing.Size(30, 30);
-            this.btnKhongXacDinh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnKhongXacDinh.TabIndex = 86;
-            this.btnKhongXacDinh.TabStop = false;
-            this.btnKhongXacDinh.Zoom = 10;
-            // 
             // btnTieuCuc
             // 
-            this.btnTieuCuc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnTieuCuc.BackColor = System.Drawing.Color.Transparent;
             this.btnTieuCuc.Image = global::FacebookAuto_v6.Properties.Resources.icons8_nerd_48;
             this.btnTieuCuc.ImageActive = null;
@@ -326,7 +326,6 @@
             // 
             // btnTichCuc
             // 
-            this.btnTichCuc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnTichCuc.BackColor = System.Drawing.Color.Transparent;
             this.btnTichCuc.Image = global::FacebookAuto_v6.Properties.Resources.icons8_happy_48;
             this.btnTichCuc.ImageActive = null;
@@ -364,35 +363,33 @@
             this.WebView.TabIndex = 100;
             this.WebView.UseHttpActivityObserver = false;
             // 
-            // contextMenuStrip1
+            // btnKhongXacDinh1
             // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.XemThongTin,
-            this.ThemVaoTieuCuc,
-            this.ThemVaoTichCuc});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(173, 70);
+            this.btnKhongXacDinh1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnKhongXacDinh1.BackColor = System.Drawing.Color.Transparent;
+            this.btnKhongXacDinh1.Image = global::FacebookAuto_v6.Properties.Resources.icons8_neutral_48;
+            this.btnKhongXacDinh1.ImageActive = null;
+            this.btnKhongXacDinh1.Location = new System.Drawing.Point(215, 513);
+            this.btnKhongXacDinh1.Name = "btnKhongXacDinh1";
+            this.btnKhongXacDinh1.Size = new System.Drawing.Size(30, 30);
+            this.btnKhongXacDinh1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnKhongXacDinh1.TabIndex = 98;
+            this.btnKhongXacDinh1.TabStop = false;
+            this.btnKhongXacDinh1.Zoom = 10;
+            this.btnKhongXacDinh1.Click += new System.EventHandler(this.btnKhongXacDinh1_Click);
             // 
-            // XemThongTin
+            // btnKhongXacDinh
             // 
-            this.XemThongTin.Name = "XemThongTin";
-            this.XemThongTin.Size = new System.Drawing.Size(172, 22);
-            this.XemThongTin.Text = "Xem thông tin";
-            this.XemThongTin.Click += new System.EventHandler(this.XemThongTin_Click);
-            // 
-            // ThemVaoTieuCuc
-            // 
-            this.ThemVaoTieuCuc.Name = "ThemVaoTieuCuc";
-            this.ThemVaoTieuCuc.Size = new System.Drawing.Size(172, 22);
-            this.ThemVaoTieuCuc.Text = "Thêm vào tiêu cực";
-            this.ThemVaoTieuCuc.Click += new System.EventHandler(this.ThemVaoTieuCuc_Click);
-            // 
-            // ThemVaoTichCuc
-            // 
-            this.ThemVaoTichCuc.Name = "ThemVaoTichCuc";
-            this.ThemVaoTichCuc.Size = new System.Drawing.Size(172, 22);
-            this.ThemVaoTichCuc.Text = "Thêm vào tích cực";
-            this.ThemVaoTichCuc.Click += new System.EventHandler(this.ThemVaoTichCuc_Click);
+            this.btnKhongXacDinh.BackColor = System.Drawing.Color.Transparent;
+            this.btnKhongXacDinh.Image = global::FacebookAuto_v6.Properties.Resources.icons8_neutral_48;
+            this.btnKhongXacDinh.ImageActive = null;
+            this.btnKhongXacDinh.Location = new System.Drawing.Point(852, 124);
+            this.btnKhongXacDinh.Name = "btnKhongXacDinh";
+            this.btnKhongXacDinh.Size = new System.Drawing.Size(30, 30);
+            this.btnKhongXacDinh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnKhongXacDinh.TabIndex = 86;
+            this.btnKhongXacDinh.TabStop = false;
+            this.btnKhongXacDinh.Zoom = 10;
             // 
             // UCGSThemTrang
             // 
@@ -423,14 +420,14 @@
             this.Controls.Add(this.btnSearch);
             this.Name = "UCGSThemTrang";
             this.Size = new System.Drawing.Size(928, 552);
-            ((System.ComponentModel.ISupportInitialize)(this.btnKhongXacDinh1)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnTieuCuc1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnTichCuc1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnKhongXacDinh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnTieuCuc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnTichCuc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).EndInit();
-            this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.btnKhongXacDinh1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnKhongXacDinh)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -446,7 +443,6 @@
         private System.Windows.Forms.Label label1;
         private Bunifu.Framework.UI.BunifuMaterialTextbox txtLink;
         private System.Windows.Forms.Label label3;
-        private Bunifu.Framework.UI.BunifuImageButton btnKhongXacDinh;
         private Bunifu.Framework.UI.BunifuImageButton btnTieuCuc;
         private Bunifu.Framework.UI.BunifuImageButton btnTichCuc;
         private Bunifu.Framework.UI.BunifuProgressBar ProgressBarTim;
@@ -456,7 +452,6 @@
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.Label label5;
-        private Bunifu.Framework.UI.BunifuImageButton btnKhongXacDinh1;
         private Bunifu.Framework.UI.BunifuImageButton btnTieuCuc1;
         private Bunifu.Framework.UI.BunifuImageButton btnTichCuc1;
         private Gecko.GeckoWebBrowser WebView;
@@ -464,5 +459,7 @@
         private System.Windows.Forms.ToolStripMenuItem XemThongTin;
         private System.Windows.Forms.ToolStripMenuItem ThemVaoTieuCuc;
         private System.Windows.Forms.ToolStripMenuItem ThemVaoTichCuc;
+        private Bunifu.Framework.UI.BunifuImageButton btnKhongXacDinh1;
+        private Bunifu.Framework.UI.BunifuImageButton btnKhongXacDinh;
     }
 }
