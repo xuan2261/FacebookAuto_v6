@@ -329,5 +329,80 @@ namespace FacebookAuto_v6
         {
 
         }
+        private void DanhGiaLink(int status)
+        {
+            web1.Navigate(txtLink.Text);
+            WebView.Navigate(txtLink.Text);
+            while (web1.ReadyState != WebBrowserReadyState.Complete)
+                Application.DoEvents();
+            string htmlcontent = web1.DocumentText;
+            htmlcontent = htmlcontent.Replace("amp;", "");
+            try
+            {
+                //tìm theo trang
+                int kt = htmlcontent.IndexOf("fan&id=");
+                if (kt != -1)
+                {
+                    string id = htmlcontent.Substring(kt + 7);
+                    id = id.Remove(id.IndexOf("&"));
+                    string name = htmlcontent.Substring(htmlcontent.IndexOf("<TITLE>") + 7);
+                    name = name.Remove(name.IndexOf("<"));
+                    string img = htmlcontent.Substring(htmlcontent.IndexOf("https://z-p3-scontent.fhan9"));
+                    img = img.Remove(img.IndexOf("\""));
+                    tblPage pg = new tblPage();
+                    pg.IDPage = id;
+                    pg.ImgLink = img;
+                    pg.Name = name;
+                    pg.Status = status;
+                    pg.TaiKhoan = taikhoan;
+                    Pages.Them(pg);
+                    MessageBox.Show("Đã thêm thành công trang!");
+                }
+                else
+                {
+                    //tìm theo nhóm
+                    kt = htmlcontent.IndexOf("group_id=");
+                    string id = htmlcontent.Substring(kt + 9);
+                    id = id.Remove(id.IndexOf("&"));
+                    string name = htmlcontent.Substring(htmlcontent.IndexOf("<TITLE>") + 7);
+                    name = name.Remove(name.IndexOf("<"));
+                    string img = "https://z-p3-static.xx.fbcdn.net/rsrc.php/v3/y1/r/SY6u2OaJZhg.png";
+                    tblGroup gp = new tblGroup();
+                    gp.IDGroup = id;
+                    gp.ImgLink = img;
+                    gp.Name = name;
+                    gp.Status = status;
+                    gp.TaiKhoan = taikhoan;
+                    Group.Them(gp);
+                    DataTable dt = AccountFB.LoadDuLieuByNhanVien(taikhoan);
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        ThuVienLamViecFacebook.DangXuat();
+                        ThuVienLamViecFacebook.DNKhongLayTT(dt.Rows[i]["NumberIDAccount"].ToString());
+                        ThuVienLamViecFacebook.JoinGroup(id);
+                    }
+                    MessageBox.Show("Đã thêm thành công nhóm");
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Đã xảy ra lỗi chưa thêm được");
+            }
+
+        }
+        private void btnTichCuc_Click(object sender, EventArgs e)
+        {
+            DanhGiaLink(1);
+        }
+
+        private void btnKhongXacDinh_Click(object sender, EventArgs e)
+        {
+            DanhGiaLink(0);
+        }
+
+        private void btnTieuCuc_Click(object sender, EventArgs e)
+        {
+            DanhGiaLink(-1);
+        }
     }
 }

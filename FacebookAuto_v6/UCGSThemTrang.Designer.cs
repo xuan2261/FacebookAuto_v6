@@ -323,6 +323,7 @@
             this.btnTieuCuc.TabIndex = 85;
             this.btnTieuCuc.TabStop = false;
             this.btnTieuCuc.Zoom = 10;
+            this.btnTieuCuc.Click += new System.EventHandler(this.btnTieuCuc_Click);
             // 
             // btnTichCuc
             // 
@@ -336,6 +337,7 @@
             this.btnTichCuc.TabIndex = 84;
             this.btnTichCuc.TabStop = false;
             this.btnTichCuc.Zoom = 10;
+            this.btnTichCuc.Click += new System.EventHandler(this.btnTichCuc_Click);
             // 
             // btnSearch
             // 
@@ -390,6 +392,7 @@
             this.btnKhongXacDinh.TabIndex = 86;
             this.btnKhongXacDinh.TabStop = false;
             this.btnKhongXacDinh.Zoom = 10;
+            this.btnKhongXacDinh.Click += new System.EventHandler(this.btnKhongXacDinh_Click);
             // 
             // UCGSThemTrang
             // 
