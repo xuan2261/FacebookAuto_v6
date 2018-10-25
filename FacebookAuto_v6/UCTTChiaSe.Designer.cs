@@ -184,7 +184,7 @@
             this.LsNoiDungChiaSe.Size = new System.Drawing.Size(236, 220);
             this.LsNoiDungChiaSe.TabIndex = 22;
             this.LsNoiDungChiaSe.UseCompatibleStateImageBehavior = false;
-            this.LsNoiDungChiaSe.View = System.Windows.Forms.View.Details;
+            this.LsNoiDungChiaSe.View = System.Windows.Forms.View.List;
             // 
             // label6
             // 

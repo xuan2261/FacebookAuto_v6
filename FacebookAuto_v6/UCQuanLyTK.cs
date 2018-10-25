@@ -22,7 +22,6 @@ namespace FacebookAuto_v6
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            ThuVienLamViecFacebook.DangXuat();
             if(txtEmail.Text!="" && txtPassword.Text!="")
             {
                 tblAccountFB ac = ThuVienLamViecFacebook.DangNhap(txtEmail.Text, txtPassword.Text);
@@ -30,7 +29,7 @@ namespace FacebookAuto_v6
                 if (radioTichCuc.Checked == true)
                     ac.Status = 1;
                 else ac.Status = -1;
-                if (ac.NumberIDAccount != "")
+                if (ac.NumberIDAccount != "" && ac.NumberIDAccount!=null)
                 {
                     if (AccountFB.Them(ac))
                     {

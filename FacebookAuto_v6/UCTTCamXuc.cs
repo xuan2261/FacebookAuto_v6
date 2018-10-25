@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DAO;
+using System.Threading;
 
 namespace FacebookAuto_v6
 {
@@ -35,7 +36,7 @@ namespace FacebookAuto_v6
                 ThuVienLamViecFacebook.DangXuat();
                 ThuVienLamViecFacebook.DNKhongLayTT(idTaiKhoanCamXuc[i]);
                 ThuVienLamViecFacebook.CamXuc(idpost, 0);
-                ProgressTienDo.Value = (int)100 * (i+1) / idTaiKhoanCamXuc.Count;
+                ProgressTienDo.Value = (int)100 * (i + 1) / idTaiKhoanCamXuc.Count;
             }
             lbTienDo.Text = "Đã thích xong";
         }

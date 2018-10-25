@@ -8,6 +8,8 @@ using DTO;
 using DAO;
 using System.Data;
 using System.Security.Cryptography;
+using System.Net;
+using System.IO;
 
 namespace FacebookAuto_v6
 {
@@ -18,65 +20,77 @@ namespace FacebookAuto_v6
         public static tblAccountFB DangNhap(string user, string pass)
         {
             tblAccountFB ac = new tblAccountFB();
-            WebBrowser web1 = new WebBrowser();
-            web1.ScriptErrorsSuppressed = true;
-            string postdata = "email=" + user + "&pass=" + pass;
-            System.Text.Encoding encoding = System.Text.Encoding.UTF8;
-            byte[] bytes = encoding.GetBytes(postdata);
-            string url = "https://mobile.facebook.com/login.php";
-            web1.Navigate(url, string.Empty, bytes, "Content-Type: application/x-www-form-urlencoded");
-            while (web1.ReadyState != WebBrowserReadyState.Complete)
-                Application.DoEvents();
-            web1.Navigate("https://mobile.facebook.com");
-            while (web1.ReadyState != WebBrowserReadyState.Complete)
-                Application.DoEvents();
-            string htmlcontent = web1.DocumentText;
-            if (htmlcontent.IndexOf("fb_dtsg") != -1)
+            CookieContainer container = null;
+            string s = "&email="+user+"&pass="+pass+"";
+            CookieContainer mycontainer2 = new CookieContainer();
+            byte[] bytes = new UTF8Encoding().GetBytes(s);
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://mobile.facebook.com/login.php");
+            request.Method = "POST";
+            request.KeepAlive = true;
+            request.CookieContainer = mycontainer2;
+            request.ContentType = "application/x-www-form-urlencoded";
+            request.Referer = "https://mobile.facebook.com/profile.php?v=info";
+            request.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:64.0) Gecko/20100101 Firefox/64.0";
+            request.ContentLength = bytes.Length;
+            request.GetRequestStream().Write(bytes, 0, bytes.Length);
+            HttpWebResponse response = null;
+            response = (HttpWebResponse)request.GetResponse();
+            mycontainer2.Add(response.Cookies);
+            container = mycontainer2;
+            string str2 = new StreamReader(response.GetResponseStream()).ReadToEnd();
+
+            if (str2.IndexOf("fb_dtsg") != -1)
             {
+                // vào trang thông tin
+                request = (HttpWebRequest)WebRequest.Create("https://mobile.facebook.com/profile.php?v=info");
+                request.Method = "GET";
+                request.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:64.0) Gecko/20100101 Firefox/64.0";
+                request.CookieContainer = mycontainer2;
+                response = (HttpWebResponse)request.GetResponse();
+                mycontainer2.Add(response.Cookies);
+                container = mycontainer2;
+                string htmlcontent = new StreamReader(response.GetResponseStream()).ReadToEnd();
+                //kết thúc vào trang thông tin
+                //gán giá trị cho account
                 ac.Email = user;
                 ac.Password = pass;
-                string id = htmlcontent.Substring(htmlcontent.IndexOf("/composer/mbasic/?av=") + 21);
+                string id = htmlcontent.Substring(htmlcontent.IndexOf("profile_id=") + 11);
                 id = id.Remove(id.IndexOf("&"));
                 ac.NumberIDAccount = id;
-                web1.Navigate("https://mobile.facebook.com/profile.php?v=info&id=" + id);
-                while (web1.ReadyState != WebBrowserReadyState.Complete)
-                    Application.DoEvents();
-                htmlcontent = web1.DocumentText;
-                string name = htmlcontent.Substring(htmlcontent.LastIndexOf("<TITLE>") + 7);
+                string name = htmlcontent.Substring(htmlcontent.LastIndexOf("<title>") + 7);
                 name = name.Remove(name.IndexOf("<"));
                 ac.Name = name;
-                string current_city = htmlcontent.Substring(htmlcontent.IndexOf("current_city") + 40);
-                current_city = current_city.Substring(current_city.IndexOf("refid=17") + 10);
+                string current_city = htmlcontent.Substring(htmlcontent.IndexOf("current_city") + 12);
+                current_city = current_city.Substring(current_city.IndexOf("/span") + 5);
+                current_city = current_city.Substring(current_city.IndexOf("refid=17\"") + 10);
                 current_city = current_city.Remove(current_city.IndexOf("<"));
+                if(!current_city.Contains("class"))
                 ac.AddressNow = current_city;
-                string hometown = htmlcontent.Substring(htmlcontent.IndexOf("hometown") + 40);
+                string hometown = htmlcontent.Substring(htmlcontent.IndexOf("hometown") + 8);
+                hometown = hometown.Substring(hometown.IndexOf("/span")+5);
                 hometown = hometown.Substring(hometown.IndexOf("refid=17") + 10);
                 hometown = hometown.Remove(hometown.IndexOf("<"));
+                if(!hometown.Contains("class"))
                 ac.Address = hometown;
-                string phone = htmlcontent.Substring(htmlcontent.IndexOf("phone") + 40);
-                phone = phone.Substring(phone.IndexOf("refid=17") + 10);
+                string phone = htmlcontent.Substring(htmlcontent.LastIndexOf("ltr") + 6);
                 phone = phone.Remove(phone.IndexOf("<"));
-                ac.Phone = phone;
+                if (phone.Count() < 20)
+                    ac.Phone = phone;
                 string birthday = htmlcontent.Substring(htmlcontent.IndexOf("birthday") + 40);
-                birthday = birthday.Substring(birthday.IndexOf("top") + 10);
+                birthday = birthday.Substring(birthday.IndexOf("top") + 25);
                 birthday = birthday.Substring(birthday.IndexOf(">") + 1);
                 birthday = birthday.Remove(birthday.IndexOf("<"));
                 ac.Birthday = birthday;
                 string gender = htmlcontent.Substring(htmlcontent.IndexOf("gender") + 40);
-                gender = gender.Substring(gender.IndexOf("top") + 10);
+                gender = gender.Substring(gender.IndexOf("top") + 25);
                 gender = gender.Substring(gender.IndexOf(">") + 1);
                 gender = gender.Remove(gender.IndexOf("<"));
                 ac.Sex = gender;
-                string idimagelink = htmlcontent.Substring(htmlcontent.IndexOf("/photo.php?fbid=") + 16);
-                idimagelink = idimagelink.Remove(idimagelink.IndexOf("&"));
-                web1.Navigate("mobile.facebook.com/" + idimagelink);
-                while (web1.ReadyState != WebBrowserReadyState.Complete)
-                    Application.DoEvents();
-                string htmlcontent1 = web1.DocumentText;
-                string imagelink = htmlcontent1.Substring(htmlcontent1.IndexOf("https://z-p3-scontent"));
+                string imagelink = htmlcontent.Substring(htmlcontent.IndexOf("https://z-p3-scontent.fha"));
                 imagelink = imagelink.Remove(imagelink.IndexOf("\""));
                 imagelink = imagelink.Replace("amp;", "");
                 ac.ImageLink = imagelink;
+                // kết thúc gán giá trị cho account
             }
             return ac;
         }
@@ -149,8 +163,50 @@ namespace FacebookAuto_v6
         }
 
         // kết thúc lấy fb_dtsg
+
+            // binh luan
+        public static void BinhLuanMoi(string idpost, string noidungcomment, string idaccountbl)
+        {
+            CookieContainer container = null;
+            DataTable dt = AccountFB.LoadDuLieuByID(idaccountbl);
+            string s = "email=" + dt.Rows[0]["Email"] + "&pass=" + dt.Rows[0]["Password"];
+            CookieContainer mycontainer2 = new CookieContainer();
+            byte[] bytes = new UTF8Encoding().GetBytes(s);
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://mobile.facebook.com/login.php");
+            request.Method = "POST";
+            request.KeepAlive = true;
+            request.CookieContainer = mycontainer2;
+            request.ContentType = "application/x-www-form-urlencoded";
+            request.Referer = "https://mobile.facebook.com/";
+            request.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:64.0) Gecko/20100101 Firefox/64.0";
+            request.ContentLength = bytes.Length;
+            request.GetRequestStream().Write(bytes, 0, bytes.Length);
+            HttpWebResponse response = null;
+            response = (HttpWebResponse)request.GetResponse();
+            mycontainer2.Add(response.Cookies);
+            container = mycontainer2;
+            string htmlcontent = new StreamReader(response.GetResponseStream()).ReadToEnd();
+            string fb_dtsg = htmlcontent.Substring(htmlcontent.IndexOf("fb_dtsg"));
+            fb_dtsg = fb_dtsg.Substring(fb_dtsg.IndexOf("value") + 7);
+            fb_dtsg = fb_dtsg.Remove(fb_dtsg.IndexOf("\""));
+
+            s= "ft_ent_identifier=" + idpost + "&comment_text=" + noidungcomment + "&source=21&client_id=1521281816386%3A2357270080&reply_fbid&rootid=u_jsonp_3_w&attached_sticker_fbid=0&attached_photo_fbid=0&attached_video_fbid=0&attached_file_fbid=0&attached_share_url&av=" + idaccountbl + "&section=default&__user=" + idaccountbl + "&fb_dtsg=" + fb_dtsg;
+            bytes = new UTF8Encoding().GetBytes(s);
+            request = (HttpWebRequest)WebRequest.Create("https://www.facebook.com/ufi/add/comment/?dpr=1");
+            request.Method = "POST";
+            request.KeepAlive = true;
+            request.CookieContainer = mycontainer2;
+            request.ContentType = "application/x-www-form-urlencoded";
+            request.Referer = "https://www.facebook.com/";
+            request.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:64.0) Gecko/20100101 Firefox/64.0";
+            request.ContentLength = bytes.Length;
+            request.GetRequestStream().Write(bytes, 0, bytes.Length);
+            htmlcontent = new StreamReader(response.GetResponseStream()).ReadToEnd();
+        }
+            // ket thuc binh luan
         //đăng xuát
         
+
         public static void DangXuat()
         {
             WebBrowser web1 = new WebBrowser();
@@ -184,29 +240,14 @@ namespace FacebookAuto_v6
                 Application.DoEvents();
         }
         //kết thúc đăng nhập không lấy thông tin
-        //Bình luận
-        public static void BinhLuan(string idpost,string noidungcomment,string idaccountbl,string fb_dtsg)
-        {
-            string postdata = "ft_ent_identifier=" + idpost + "&comment_text=" + noidungcomment + "&source=21&client_id=1521281816386%3A2357270080&reply_fbid&rootid=u_jsonp_3_w&attached_sticker_fbid=0&attached_photo_fbid=0&attached_video_fbid=0&attached_file_fbid=0&attached_share_url&av=" + idaccountbl + "&section=default&__user=" + idaccountbl + "&fb_dtsg=" + fb_dtsg;
-            System.Text.Encoding encoding = System.Text.Encoding.UTF8;
-            byte[] bytes = encoding.GetBytes(postdata);
-            string url = "https://www.facebook.com/ufi/add/comment/?dpr=1";
-            WebBrowser web1 = new WebBrowser();
-            web1.Navigate(url, string.Empty, bytes, "Content-Type: application/x-www-form-urlencoded");
-
-            while (web1.ReadyState != WebBrowserReadyState.Complete)
-                Application.DoEvents();
-
-        }
-        //Kết thúc bình luận
 
 
         //bày tỏ cảm xúc
-        public static void CamXuc(string idpost,int loaicamxuc)
+        public static void CamXuc(string idpost, int loaicamxuc)
         {
             string[] camxuc = new string[6];
             WebBrowser web1 = new WebBrowser();
-            web1.Navigate("https://mobile.facebook.com/reactions/picker/?ft_id="+idpost);
+            web1.Navigate("https://mobile.facebook.com/reactions/picker/?ft_id=" + idpost);
             while (web1.ReadyState != WebBrowserReadyState.Complete)
                 Application.DoEvents();
             string htmlcontent = web1.DocumentText;
@@ -292,35 +333,33 @@ namespace FacebookAuto_v6
         public static tblPost LayThongTinPost(string idpost)
         {
             tblPost p = new tblPost();
-            WebBrowser web1 = new WebBrowser();
-            web1.Navigate("https://mobile.facebook.com/" + idpost);
-            while (web1.ReadyState != WebBrowserReadyState.Complete)
-                Application.DoEvents();
-            string htmlcontent = web1.DocumentText;
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://mobile.facebook.com/130379627917647");
+            request.Method = "GET";
+            request.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:64.0) Gecko/20100101 Firefox/64.0";
+            CookieContainer mycontainer2 = new CookieContainer();
+            request.CookieContainer = mycontainer2;
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+            mycontainer2.Add(response.Cookies);
+            CookieContainer container = mycontainer2;
+            string htmlcontent = new StreamReader(response.GetResponseStream()).ReadToEnd();
             htmlcontent = htmlcontent.Replace("amp;", "");
             string desciption;
-            try
-            {
-                desciption = htmlcontent.Substring(htmlcontent.IndexOf("TITLE") + 6);
-                desciption = desciption.Remove(desciption.IndexOf("</TITLE>"));
-            }
-            catch
-            {
-                desciption = htmlcontent.Substring(htmlcontent.IndexOf("title") + 6);
-                desciption = desciption.Remove(desciption.IndexOf("</title>"));
-            }
+            desciption = htmlcontent.Substring(htmlcontent.IndexOf("title") + 6);
+            desciption = desciption.Remove(desciption.IndexOf("</title>"));
             htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("STRONG")+10);
-            string name = htmlcontent.Substring(htmlcontent.IndexOf(">")+1);
+            string name = htmlcontent.Substring(htmlcontent.IndexOf("href=\"/profile.")+1);
+            name = name.Substring(name.IndexOf(">") + 1);
             name = name.Remove(name.IndexOf("<"));
             name = name.Replace("\r\n      ", "");
-            string iduser = web1.Url.ToString();
+            string iduser = htmlcontent.Substring(htmlcontent.LastIndexOf("content=\"http"));
             iduser = iduser.Substring(iduser.IndexOf("&id=")+4);
             iduser = iduser.Remove(iduser.IndexOf("&"));
             p.IDRoot = iduser;
             p.IDPost = idpost;
             p.NameRoot = name;
             p.Description = desciption;
-            string timepost = htmlcontent.Substring(htmlcontent.IndexOf("ABBR") + 5);
+            string timepost = htmlcontent.Substring(htmlcontent.IndexOf("abbr") + 5);
             timepost = timepost.Remove(timepost.IndexOf("<"));
             if (!timepost.Contains("Tháng")) timepost += DateTime.Now.ToShortDateString(); 
             return p;

@@ -47,13 +47,14 @@ namespace FacebookAuto_v6
                 //làm công tác bình luận
                 string idaccountbl = WorkAccount.LayIDBinhLuan(idpost,taikhoan);
                 // đăng xuất
-                ThuVienLamViecFacebook.DangXuat();
+                //ThuVienLamViecFacebook.DangXuat();
                 DataTable dtac = AccountFB.LoadDuLieuByID(idaccountbl);
                 //đăng nhập và lấy fb-dtsg
-                string fb_dtsg=ThuVienLamViecFacebook.DNLay_fb_dtsg(dtac.Rows[0]["Email"].ToString(), dtac.Rows[0]["Password"].ToString());
+                //string fb_dtsg=ThuVienLamViecFacebook.DNLay_fb_dtsg(dtac.Rows[0]["Email"].ToString(), dtac.Rows[0]["Password"].ToString());
                 string noidungcomment = WorkComment.LayNoiDungComment(idpost,taikhoan);
                 // bắt đầu bình luận
-                ThuVienLamViecFacebook.BinhLuan(idpost, noidungcomment, idaccountbl, fb_dtsg);
+                //ThuVienLamViecFacebook.BinhLuan(idpost, noidungcomment, idaccountbl, fb_dtsg);
+                ThuVienLamViecFacebook.BinhLuanMoi(idpost, noidungcomment, idaccountbl);
                 //thay đổi trạng thái của hoạt động
                 //lưu thông tin vào worked
                 tblWorked wd = new tblWorked();
