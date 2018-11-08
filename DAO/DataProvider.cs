@@ -7,7 +7,7 @@ namespace DAO
     {
         public static SqlConnection KetNoi()
         {
-            string sChuoiKetNoi = @"Data Source=Tungntdev;Initial Catalog=AutoFacebook;Integrated Security=True";
+            string sChuoiKetNoi = @"Data Source=TUNGNTDEV;Initial Catalog=AutoFacebook;Integrated Security=True";
             SqlConnection con = new SqlConnection(sChuoiKetNoi);
             con.Open();
             return con;

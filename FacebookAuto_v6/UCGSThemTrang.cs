@@ -60,7 +60,7 @@ namespace FacebookAuto_v6
                 {
                     try
                     {
-                        htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("TD class=\"o b") + 15);
+                        htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("TD class=\"q c") + 15);
                         //bắt đầu lấy link ảnh
                         string urlimg = htmlcontent.Substring(htmlcontent.IndexOf("https://"));
                         urlimg = urlimg.Remove(urlimg.IndexOf("\""));

@@ -53,23 +53,29 @@ namespace FacebookAuto_v6
         {
             //lưu thông tin bài viết
             WebView.Navigate(urlfacebook+txtIDBaiViet.Text);
-            tblPost p = ThuVienLamViecFacebook.LayThongTinPost(txtIDBaiViet.Text);
-            p.TimePost = DateTime.Now;
-            Post.Them(p);
-            //kết thúc lưu luôn thông tin bài viết 
-            //kiểm tra xem bài viết có trong work không
-            if (Work.LoadDuLieuLamViecCu(taikhoan, txtIDBaiViet.Text).Rows.Count!=0)
+            try
             {
-                ttbl.ktblcu = 1;
-                ttbl.idpost = txtIDBaiViet.Text;
-                LoadBinhLuan();
-                //load lại thông tin bài viết
-                DataTable dt = Post.LoadDuLieuByID(txtIDBaiViet.Text);
-                DatePost.Value = DateTime.Parse(dt.Rows[0]["TimePost"].ToString());
-                if (dt.Rows[0]["Status"].ToString() == "Tiêu cực") radioTieuCuc.Checked = true;
-                else radioTichCuc.Checked = true;
+                tblPost p = ThuVienLamViecFacebook.LayThongTinPost(txtIDBaiViet.Text);
+                p.TimePost = DateTime.Now;
+                Post.Them(p);
+
+                //kiểm tra xem bài viết có trong work không
+                if (Work.LoadDuLieuLamViecCu(taikhoan, txtIDBaiViet.Text).Rows.Count != 0)
+                {
+                    ttbl.ktblcu = 1;
+                    ttbl.idpost = txtIDBaiViet.Text;
+                    LoadBinhLuan();
+                    //load lại thông tin bài viết
+                    DataTable dt = Post.LoadDuLieuByID(txtIDBaiViet.Text);
+                    DatePost.Value = DateTime.Parse(dt.Rows[0]["TimePost"].ToString());
+                    if (dt.Rows[0]["Status"].ToString() == "Tiêu cực") radioTieuCuc.Checked = true;
+                    else radioTichCuc.Checked = true;
+                }
+                //kết thúc kiểm tra work 
             }
-            //kết thúc kiểm tra work 
+            catch { MessageBox.Show("Không phải bài viết công khai"); };
+            //kết thúc lưu luôn thông tin bài viết 
+            
             ttbl.idpost = txtIDBaiViet.Text;
             ttcx.idpost = txtIDBaiViet.Text;
             ttkd.idpost = txtIDBaiViet.Text;

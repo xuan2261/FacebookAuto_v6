@@ -89,11 +89,20 @@ namespace FacebookAuto_v6
             {
                 //xóa dữ liệu đã lưu cũ
                 //xoá trong work
-                Work.Xoa(idpost, taikhoan);
                 WorkAccount.Xoa(idpost, taikhoan);
                 WorkComment.Xoa(idpost, taikhoan);
             }
             //kết thúc kiểm tra bài viết đã được bình luận chưa
+            // lưu thông tin công việc bình luận lại
+            tblWork w = new tblWork();
+            w.TaiKhoan = taikhoan;
+            w.IDPost = idpost;
+            w.KhoangTime = (int)numKhoangTime.Value;
+            w.TongComment = (int)numSoBL.Value;
+            w.TienDo = 0;
+            w.TrangThai = "Đang bình luận";
+            Work.Them(w);
+            //Thêm thành công thông tin
             //lưu các thông số bình luận lại
             //lưu tài khoản bình luận lại vào bảng workaccount
             tblWorkAccount wa = new tblWorkAccount();
@@ -113,16 +122,7 @@ namespace FacebookAuto_v6
                 wc.Noidung = LsNoiDungBinhLuan.Items[i].Text;
                 WorkComment.Them(wc);
             }
-            // lưu thông tin công việc bình luận lại
-            tblWork w = new tblWork();
-            w.TaiKhoan = taikhoan;
-            w.IDPost = idpost;
-            w.KhoangTime = (int)numKhoangTime.Value;
-            w.TongComment = (int)numSoBL.Value;
-            w.TienDo = 0;
-            w.TrangThai = "Đang bình luận";
-            Work.Them(w);
-            //Thêm thành công thông tin
+            
             TuDongBinhLuan r = new TuDongBinhLuan(idpost, numKhoangTime.Value.ToString(), numSoBL.Value.ToString(),taikhoan);
             Thread tudong = new Thread(r.DoWork);
             tudong.SetApartmentState(ApartmentState.STA);

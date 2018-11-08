@@ -333,35 +333,37 @@ namespace FacebookAuto_v6
         public static tblPost LayThongTinPost(string idpost)
         {
             tblPost p = new tblPost();
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://mobile.facebook.com/130379627917647");
-            request.Method = "GET";
-            request.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:64.0) Gecko/20100101 Firefox/64.0";
-            CookieContainer mycontainer2 = new CookieContainer();
-            request.CookieContainer = mycontainer2;
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-
-            mycontainer2.Add(response.Cookies);
-            CookieContainer container = mycontainer2;
-            string htmlcontent = new StreamReader(response.GetResponseStream()).ReadToEnd();
+            WebBrowser web1 = new WebBrowser();
+            web1.Navigate("https://mobile.facebook.com/" + idpost);
+            while (web1.ReadyState != WebBrowserReadyState.Complete)
+                Application.DoEvents();
+            string htmlcontent = web1.DocumentText;
             htmlcontent = htmlcontent.Replace("amp;", "");
             string desciption;
-            desciption = htmlcontent.Substring(htmlcontent.IndexOf("title") + 6);
-            desciption = desciption.Remove(desciption.IndexOf("</title>"));
-            htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("STRONG")+10);
-            string name = htmlcontent.Substring(htmlcontent.IndexOf("href=\"/profile.")+1);
-            name = name.Substring(name.IndexOf(">") + 1);
+            try
+            {
+                desciption = htmlcontent.Substring(htmlcontent.IndexOf("TITLE") + 6);
+                desciption = desciption.Remove(desciption.IndexOf("</TITLE>"));
+            }
+            catch
+            {
+                desciption = htmlcontent.Substring(htmlcontent.IndexOf("title") + 6);
+                desciption = desciption.Remove(desciption.IndexOf("</title>"));
+            }
+            htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("STRONG") + 10);
+            string name = htmlcontent.Substring(htmlcontent.IndexOf(">") + 1);
             name = name.Remove(name.IndexOf("<"));
             name = name.Replace("\r\n      ", "");
-            string iduser = htmlcontent.Substring(htmlcontent.LastIndexOf("content=\"http"));
-            iduser = iduser.Substring(iduser.IndexOf("&id=")+4);
+            string iduser = web1.Url.ToString();
+            iduser = iduser.Substring(iduser.IndexOf("&id=") + 4);
             iduser = iduser.Remove(iduser.IndexOf("&"));
             p.IDRoot = iduser;
             p.IDPost = idpost;
             p.NameRoot = name;
             p.Description = desciption;
-            string timepost = htmlcontent.Substring(htmlcontent.IndexOf("abbr") + 5);
+            string timepost = htmlcontent.Substring(htmlcontent.IndexOf("ABBR") + 5);
             timepost = timepost.Remove(timepost.IndexOf("<"));
-            if (!timepost.Contains("Tháng")) timepost += DateTime.Now.ToShortDateString(); 
+            if (!timepost.Contains("Tháng")) timepost += DateTime.Now.ToShortDateString();
             return p;
         }
         //kết thúc lấy thông tin bài viết
