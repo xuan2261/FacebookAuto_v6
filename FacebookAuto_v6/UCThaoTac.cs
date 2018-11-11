@@ -49,6 +49,7 @@ namespace FacebookAuto_v6
             ttbl.idpost = idpost;
             ttcx.idpost = idpost;
             ttkd.idpost = idpost;
+            ttcs.idpost = idpost;
         }
         public void btnKiemTra_Click(object sender, EventArgs e)
         {
