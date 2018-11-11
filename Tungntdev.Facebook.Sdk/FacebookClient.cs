@@ -166,7 +166,14 @@ namespace Tungntdev.Facebook.Sdk
                 
             }
             p.IDPost = idpost;
-            p.NameRoot = document.SelectSingleNode("/html/body/div/div/div[2]/div/div[2]/div/div/div[1]/div[1]/table/tbody/tr/td[2]/div/h3/span/strong/a").InnerText;
+            try
+            {
+                p.NameRoot = document.SelectSingleNode("/html/body/div/div/div[2]/div/div[2]/div/div/div[1]/div[1]/table/tbody/tr/td[2]/div/h3/span/strong/a").InnerText;
+            }
+            catch
+            {
+                p.NameRoot = document.SelectSingleNode("/html/body/div/div/div[2]/div/div[2]/div/div/div[1]/div[1]/table/tbody/tr/td[2]/div/h3/strong/a").InnerText;
+            }
             string idroot = document.InnerHtml.Substring(document.InnerHtml.IndexOf("content_owner_id_new&quot;:&quot;") + 33);
             idroot = idroot.Remove(idroot.IndexOf("&"));
             p.IDRoot = idroot;

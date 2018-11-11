@@ -53,10 +53,11 @@
             this.txtTuKhoa = new System.Windows.Forms.TextBox();
             this.ListTieuCuc = new FacebookAuto_v5.ListCheckBoxDropDown();
             this.ListTichCuc = new FacebookAuto_v5.ListCheckBoxDropDown();
+            this.WebView = new Gecko.GeckoWebBrowser();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.WebView = new Gecko.GeckoWebBrowser();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -252,6 +253,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.label6);
             this.splitContainer1.Panel1.Controls.Add(this.lsKetQuaSearch);
             this.splitContainer1.Panel1.Controls.Add(this.DrbtnLoaiTim);
             this.splitContainer1.Panel1.Controls.Add(this.label9);
@@ -283,12 +285,12 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lsKetQuaSearch.ContextMenuStrip = this.contextMenuStrip1;
-            this.lsKetQuaSearch.Location = new System.Drawing.Point(21, 332);
+            this.lsKetQuaSearch.Location = new System.Drawing.Point(21, 349);
             this.lsKetQuaSearch.Name = "lsKetQuaSearch";
-            this.lsKetQuaSearch.Size = new System.Drawing.Size(352, 142);
+            this.lsKetQuaSearch.Size = new System.Drawing.Size(352, 125);
             this.lsKetQuaSearch.TabIndex = 100;
             this.lsKetQuaSearch.UseCompatibleStateImageBehavior = false;
-            this.lsKetQuaSearch.View = System.Windows.Forms.View.Details;
+            this.lsKetQuaSearch.View = System.Windows.Forms.View.List;
             // 
             // contextMenuStrip1
             // 
@@ -382,6 +384,18 @@
             this.ListTichCuc.DropDownClosed += new System.EventHandler(this.ListTichCuc_DropDownClosed);
             this.ListTichCuc.Enter += new System.EventHandler(this.ListTichCuc_Enter);
             // 
+            // WebView
+            // 
+            this.WebView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.WebView.FrameEventsPropagateToMainWindow = false;
+            this.WebView.Location = new System.Drawing.Point(19, 70);
+            this.WebView.Name = "WebView";
+            this.WebView.Size = new System.Drawing.Size(490, 404);
+            this.WebView.TabIndex = 98;
+            this.WebView.UseHttpActivityObserver = false;
+            // 
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
@@ -419,17 +433,17 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Thông tin bài viết ";
             // 
-            // WebView
+            // label6
             // 
-            this.WebView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.WebView.FrameEventsPropagateToMainWindow = false;
-            this.WebView.Location = new System.Drawing.Point(19, 70);
-            this.WebView.Name = "WebView";
-            this.WebView.Size = new System.Drawing.Size(490, 404);
-            this.WebView.TabIndex = 98;
-            this.WebView.UseHttpActivityObserver = false;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label6.ForeColor = System.Drawing.SystemColors.Control;
+            this.label6.Location = new System.Drawing.Point(20, 329);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(112, 17);
+            this.label6.TabIndex = 101;
+            this.label6.Text = "Kết quả tìm kiếm";
             // 
             // UCGSDuyetBaiViet
             // 
@@ -485,5 +499,6 @@
         private System.Windows.Forms.ToolStripMenuItem NghiepVuBayToCamXuc;
         private System.Windows.Forms.ToolStripMenuItem NghiepVuKiemDuyet;
         private Gecko.GeckoWebBrowser WebView;
+        private System.Windows.Forms.Label label6;
     }
 }

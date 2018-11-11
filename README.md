@@ -6,9 +6,7 @@ Những công việc cần hoàn thiện:
 --Hoàn thiện chức năng chia sẻ( mới chỉ có giao diện chưa thực hiện đc)
 
 
-
-vấn đề với tìm kiếm nhóm mới,
-vấn đề với bài viết riêng tư
+lỗi trong cập nhật danh sách những người dùng có tính tiêu cực 
 
 
 
