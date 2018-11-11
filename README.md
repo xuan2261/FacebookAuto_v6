@@ -7,7 +7,7 @@ Những công việc cần hoàn thiện:
 
 
 
-vấn đề với tìm kiếm trang nhóm mới,
+vấn đề với tìm kiếm nhóm mới,
 vấn đề với bài viết riêng tư
 
 

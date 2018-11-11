@@ -20,7 +20,7 @@ namespace FacebookAuto_v6
         DataTable trangtieucuc = new DataTable();
         DataTable nhomtichcuc = new DataTable();
         DataTable nhomtieucuc = new DataTable();
-        int ktloadpain=0;
+        int ktloadpain = 0;
         public UCGSQLTrangNhom()
         {
             InitializeComponent();
@@ -59,14 +59,14 @@ namespace FacebookAuto_v6
                 byte[] data = webClient.DownloadData(trangtichcuc.Rows[i]["ImgLink"].ToString());
                 MemoryStream mem = new MemoryStream(data);
                 imglisttrangtichcuc.Images.Add(Image.FromStream(mem));
-                lsViewTrangTichCuc.Items.Add(trangtichcuc.Rows[i]["Name"].ToString(),i);
+                lsViewTrangTichCuc.Items.Add(trangtichcuc.Rows[i]["Name"].ToString(), i);
             }
             for (int i = 0; i < trangtieucuc.Rows.Count; i++)
             {
                 byte[] data = webClient.DownloadData(trangtieucuc.Rows[i]["ImgLink"].ToString());
                 MemoryStream mem = new MemoryStream(data);
                 imglisttrangtieucuc.Images.Add(Image.FromStream(mem));
-                lsViewTrangTieuCuc.Items.Add(trangtichcuc.Rows[i]["Name"].ToString(), i);
+                lsViewTrangTieuCuc.Items.Add(trangtieucuc.Rows[i]["Name"].ToString(), i);
             }
             for (int i = 0; i < nhomtichcuc.Rows.Count; i++)
             {
@@ -101,12 +101,12 @@ namespace FacebookAuto_v6
 
         private void UCGSQLTrangNhom_Paint(object sender, PaintEventArgs e)
         {
-            if(ktloadpain==0&&taikhoan!="")
+            if (ktloadpain == 0 && taikhoan != "")
             {
                 LoadListTrangNhom();
                 ktloadpain = 1;
             }
-            
+
         }
     }
 }

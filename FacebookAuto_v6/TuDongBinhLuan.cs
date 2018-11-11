@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using System.Data;
 using DTO;
 using DAO;
+using Tungntdev.Facebook.Sdk;
 
 namespace FacebookAuto_v6
 {
@@ -32,7 +33,7 @@ namespace FacebookAuto_v6
         {
             for (;;)
             {
-                Thread.Sleep(30000);
+                Thread.Sleep(3000);
                 if (Work.KiemTraTienDo(idpost,taikhoan) == false)
                 {
                     MessageBox.Show("Đã bình luận xong với bài viết có id= " + idpost);
@@ -54,7 +55,10 @@ namespace FacebookAuto_v6
                 string noidungcomment = WorkComment.LayNoiDungComment(idpost,taikhoan);
                 // bắt đầu bình luận
                 //ThuVienLamViecFacebook.BinhLuan(idpost, noidungcomment, idaccountbl, fb_dtsg);
-                ThuVienLamViecFacebook.BinhLuanMoi(idpost, noidungcomment, idaccountbl);
+                //ThuVienLamViecFacebook.BinhLuanMoi(idpost, noidungcomment, idaccountbl);
+
+                FacebookClient fb = new FacebookClient();
+                fb.UpBinhLuanMoi(idpost, noidungcomment, idaccountbl);
                 //thay đổi trạng thái của hoạt động
                 //lưu thông tin vào worked
                 tblWorked wd = new tblWorked();
@@ -71,7 +75,7 @@ namespace FacebookAuto_v6
                     getreload();
                 }
                 catch { }
-                Thread.Sleep(int.Parse(time.ToString())*60000);
+                Thread.Sleep(int.Parse(time.ToString())*6000);
             }
         }
     }

@@ -1,0 +1,12 @@
+C:\Users\tungn\Downloads\Mmosoft.Facebook.Sdk-master\Mmosoft.Facebook.Sdk\bin\Debug\Mmosoft.Facebook.Sdk.dll
+C:\Users\tungn\Downloads\Mmosoft.Facebook.Sdk-master\Mmosoft.Facebook.Sdk\bin\Debug\Mmosoft.Facebook.Sdk.pdb
+C:\Users\tungn\Downloads\Mmosoft.Facebook.Sdk-master\Mmosoft.Facebook.Sdk\bin\Debug\HtmlAgilityPack.dll
+C:\Users\tungn\Downloads\Mmosoft.Facebook.Sdk-master\Mmosoft.Facebook.Sdk\bin\Debug\Newtonsoft.Json.dll
+C:\Users\tungn\Downloads\Mmosoft.Facebook.Sdk-master\Mmosoft.Facebook.Sdk\bin\Debug\HtmlAgilityPack.pdb
+C:\Users\tungn\Downloads\Mmosoft.Facebook.Sdk-master\Mmosoft.Facebook.Sdk\bin\Debug\HtmlAgilityPack.xml
+C:\Users\tungn\Downloads\Mmosoft.Facebook.Sdk-master\Mmosoft.Facebook.Sdk\bin\Debug\Newtonsoft.Json.xml
+C:\Users\tungn\Downloads\Mmosoft.Facebook.Sdk-master\Mmosoft.Facebook.Sdk\obj\Debug\Mmosoft.Facebook.Sdk.csprojAssemblyReference.cache
+C:\Users\tungn\Downloads\Mmosoft.Facebook.Sdk-master\Mmosoft.Facebook.Sdk\obj\Debug\Mmosoft.Facebook.Sdk.csproj.CoreCompileInputs.cache
+C:\Users\tungn\Downloads\Mmosoft.Facebook.Sdk-master\Mmosoft.Facebook.Sdk\obj\Debug\Mmosoft.Facebook.Sdk.csproj.CopyComplete
+C:\Users\tungn\Downloads\Mmosoft.Facebook.Sdk-master\Mmosoft.Facebook.Sdk\obj\Debug\Mmosoft.Facebook.Sdk.dll
+C:\Users\tungn\Downloads\Mmosoft.Facebook.Sdk-master\Mmosoft.Facebook.Sdk\obj\Debug\Mmosoft.Facebook.Sdk.pdb

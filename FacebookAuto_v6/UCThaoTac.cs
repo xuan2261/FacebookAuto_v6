@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using Gecko;
 using DTO;
 using DAO;
+using Tungntdev.Facebook.Sdk;
 
 namespace FacebookAuto_v6
 {
@@ -55,7 +56,9 @@ namespace FacebookAuto_v6
             WebView.Navigate(urlfacebook+txtIDBaiViet.Text);
             try
             {
-                tblPost p = ThuVienLamViecFacebook.LayThongTinPost(txtIDBaiViet.Text);
+                var fb = new FacebookClient();
+                //tblPost p = ThuVienLamViecFacebook.LayThongTinPost(txtIDBaiViet.Text);
+                tblPost p = fb.GetDetailPost(txtIDBaiViet.Text);
                 p.TimePost = DateTime.Now;
                 Post.Them(p);
 
@@ -79,6 +82,7 @@ namespace FacebookAuto_v6
             ttbl.idpost = txtIDBaiViet.Text;
             ttcx.idpost = txtIDBaiViet.Text;
             ttkd.idpost = txtIDBaiViet.Text;
+            ttcs.idpost = txtIDBaiViet.Text;
         }
         public void LoadBinhLuan()
         {

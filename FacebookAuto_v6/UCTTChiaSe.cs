@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DAO;
+using Tungntdev.Facebook.Sdk;
 
 namespace FacebookAuto_v6
 {
@@ -58,7 +59,9 @@ namespace FacebookAuto_v6
                 ThuVienLamViecFacebook.DNKhongLayTT(idTaiKhoanCS[i]);
                 Random r = new Random();
                 string noidungchiase = LsNoiDungChiaSe.Items[r.Next(0,LsNoiDungChiaSe.Items.Count)].Text;
-                ThuVienLamViecFacebook.ChiaSe(idpost, noidungchiase);
+                //ThuVienLamViecFacebook.ChiaSe(idpost, noidungchiase,idTaiKhoanCS[i]);
+                FacebookClient fb = new FacebookClient();
+                fb.ChiaSeBaiViet(idpost, noidungchiase, idTaiKhoanCS[i]);
             }
             MessageBox.Show("Đã chia sẻ thành công");
         }

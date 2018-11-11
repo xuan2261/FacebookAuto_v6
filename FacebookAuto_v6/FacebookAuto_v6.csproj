@@ -379,6 +379,10 @@
       <Project>{b2ddb5d9-fe10-4127-822c-f53dc06a7d47}</Project>
       <Name>DTO</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Tungntdev.Facebook.Sdk\Tungntdev.Facebook.Sdk.csproj">
+      <Project>{247bfe1d-3016-4a3f-8891-704540c903fc}</Project>
+      <Name>Tungntdev.Facebook.Sdk</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

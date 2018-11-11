@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DTO;
 using DAO;
+using Tungntdev.Facebook.Sdk;
 
 namespace FacebookAuto_v6
 {
@@ -22,7 +23,7 @@ namespace FacebookAuto_v6
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            if(txtEmail.Text!="" && txtPassword.Text!="")
+            /*if(txtEmail.Text!="" && txtPassword.Text!="")
             {
                 tblAccountFB ac = ThuVienLamViecFacebook.DangNhap(txtEmail.Text, txtPassword.Text);
                 ac.TaiKhoan = taikhoan;
@@ -45,6 +46,28 @@ namespace FacebookAuto_v6
                 {
                     MessageBox.Show("Thông tin đăng nhập không đúng");
                 }
+            }*/
+            var fb = new FacebookClient();
+            tblAccountFB ac = fb.GetDetailAccount(txtEmail.Text, txtPassword.Text);
+            ac.TaiKhoan = taikhoan;
+            if (radioTichCuc.Checked == true)
+                ac.Status = 1;
+            else ac.Status = -1;
+            if (ac.NumberIDAccount != "" && ac.NumberIDAccount != null)
+            {
+                if (AccountFB.Them(ac))
+                {
+                    MessageBox.Show("Đã thêm tài khoản");
+                    LoadData();
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản đã tồn tại");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Thông tin đăng nhập không đúng");
             }
         }
         private void LoadData()

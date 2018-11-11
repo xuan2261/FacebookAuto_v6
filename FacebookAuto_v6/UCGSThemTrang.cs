@@ -48,23 +48,51 @@ namespace FacebookAuto_v6
             string texttim = Uri.EscapeDataString(txtSearch.Text);
             //Tìm kiếm theo trang
             lbTrangThaiTim.Text = "Đang tìm kiếm";
+            CookieContainer container = null;
+            string s = "&email=gtunveteran11@gmail.com&pass=Loveeternal95";
+            CookieContainer mycontainer2 = new CookieContainer();
+            byte[] bytes = new UTF8Encoding().GetBytes(s);
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://mobile.facebook.com/login.php");
+            request.Method = "POST";
+            request.KeepAlive = true;
+            request.CookieContainer = mycontainer2;
+            request.ContentType = "application/x-www-form-urlencoded";
+            request.Referer = "https://mobile.facebook.com/profile.php?v=info";
+            request.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:64.0) Gecko/20100101 Firefox/64.0";
+            request.ContentLength = bytes.Length;
+            request.GetRequestStream().Write(bytes, 0, bytes.Length);
+            HttpWebResponse response = null;
+            response = (HttpWebResponse)request.GetResponse();
+            mycontainer2.Add(response.Cookies);
+            container = mycontainer2;
+            string str2 = new StreamReader(response.GetResponseStream()).ReadToEnd();
+
             if (DrbtnLoaiTim.selectedIndex == 0)
             {
-                web1.Navigate("https://mobile.facebook.com/search/pages/?q=" + texttim + "&source=filter&isTrending=0");
-                while (web1.ReadyState != WebBrowserReadyState.Complete)
-                    Application.DoEvents();
-                string htmlcontent = web1.DocumentText;
-
+                // vào trang thông tin
+                request = (HttpWebRequest)WebRequest.Create("https://mobile.facebook.com/search/pages/?q=" + texttim + "&source=filter&isTrending=0");
+                request.Method = "GET";
+                request.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:64.0) Gecko/20100101 Firefox/64.0";
+                request.CookieContainer = mycontainer2;
+                response = (HttpWebResponse)request.GetResponse();
+                mycontainer2.Add(response.Cookies);
+                container = mycontainer2;
+                string htmlcontent = new StreamReader(response.GetResponseStream()).ReadToEnd();
+                htmlcontent = htmlcontent.Replace("amp;", "");
+                htmlcontent = htmlcontent.Replace("&lt;", "<");
+                htmlcontent = htmlcontent.Replace("&gt;", ">");
+                htmlcontent = htmlcontent.Replace("&quot;", "'");
+                htmlcontent = htmlcontent.Replace("&apos;", "\"");
                 imglist.Images.Clear();
                 for (int i = 0; i < 50; i++)
                 {
                     try
                     {
-                        htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("TD class=\"q c") + 15);
+                        htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("td class=\"q c") + 15);
+                        if (htmlcontent.IndexOf("div") < 10) continue;
                         //bắt đầu lấy link ảnh
                         string urlimg = htmlcontent.Substring(htmlcontent.IndexOf("https://"));
                         urlimg = urlimg.Remove(urlimg.IndexOf("\""));
-                        urlimg = urlimg.Replace("amp;", "");
                         lsLinkImgPage.Add(urlimg);
                         WebClient webClient = new WebClient();
                         byte[] data = webClient.DownloadData(urlimg);
@@ -73,11 +101,12 @@ namespace FacebookAuto_v6
                         //Kết thúc lấy link ảnh
                         //
                         //Bắt đầu lấy thông tin
-                        htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("DIV") + 10);
-                        htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("DIV") + 15);
+                        htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("div") + 10);
+                        htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("div") + 15);
                         string kq = htmlcontent.Remove(htmlcontent.IndexOf("<"));
                         lsNamePage.Add(kq);
-                        htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("DIV class") + 15);
+                        htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("div class=\"c") + 10);
+                        htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf(">") + 1);
                         kq = kq + " : " + htmlcontent.Remove(htmlcontent.IndexOf("<"));
                         lskq.Add(kq);
                         //lay id
@@ -87,15 +116,23 @@ namespace FacebookAuto_v6
                         lsIDPage.Add(id);
                         //ket thuc lay id
                         ProgressBarTim.Value += 2;
-                        if (htmlcontent.IndexOf("TD class=\"o b") == -1)
+                        if (htmlcontent.IndexOf("class=\"p ca") == -1)
                         {
                             string url = htmlcontent.Substring(htmlcontent.IndexOf("see_more_pager") + 25);
                             url = url.Remove(url.IndexOf("\">"));
-                            url = url.Replace("amp;", "");
-                            web1.Navigate(url);
-                            while (web1.ReadyState != WebBrowserReadyState.Complete)
-                                Application.DoEvents();
-                            htmlcontent = web1.DocumentText;
+                            request = (HttpWebRequest)WebRequest.Create(url);
+                            request.Method = "GET";
+                            request.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:64.0) Gecko/20100101 Firefox/64.0";
+                            request.CookieContainer = mycontainer2;
+                            response = (HttpWebResponse)request.GetResponse();
+                            mycontainer2.Add(response.Cookies);
+                            container = mycontainer2;
+                            htmlcontent = new StreamReader(response.GetResponseStream()).ReadToEnd();
+                            htmlcontent = htmlcontent.Replace("amp;", "");
+                            htmlcontent = htmlcontent.Replace("&lt;", "<");
+                            htmlcontent = htmlcontent.Replace("&gt;", ">");
+                            htmlcontent = htmlcontent.Replace("&quot;", "'");
+                            htmlcontent = htmlcontent.Replace("&apos;", "\"");
                         }
                     }
                     catch { break; }
@@ -106,19 +143,28 @@ namespace FacebookAuto_v6
             //Tìm kiếm theo nhóm
             if (DrbtnLoaiTim.selectedIndex == 1)
             {
-                web1.Navigate("https://mobile.facebook.com/search/groups/?q=" + texttim + "&source=filter&isTrending=0");
-                while (web1.ReadyState != WebBrowserReadyState.Complete)
-                    Application.DoEvents();
-                string htmlcontent = web1.DocumentText;
+                // vào trang thông tin
+                request = (HttpWebRequest)WebRequest.Create("https://mobile.facebook.com/search/groups/?q=" + texttim + "&source=filter&isTrending=0");
+                request.Method = "GET";
+                request.UserAgent = ".NET Framework Example Client";
+                request.CookieContainer = mycontainer2;
+                response = (HttpWebResponse)request.GetResponse();
+                mycontainer2.Add(response.Cookies);
+                container = mycontainer2;
+                string htmlcontent = new StreamReader(response.GetResponseStream()).ReadToEnd();
+                htmlcontent = htmlcontent.Replace("amp;", "");
+                htmlcontent = htmlcontent.Replace("&lt;", "<");
+                htmlcontent = htmlcontent.Replace("&gt;", ">");
+                htmlcontent = htmlcontent.Replace("&quot;", "'");
+                htmlcontent = htmlcontent.Replace("&apos;", "\"");
                 for (int i = 0; i < 50; i++)
                 {
                     try
                     {
-                        htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("TD class=\"o b") + 15);
+                        htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("td class=\"o b") + 15);
                         //bắt đầu lấy link ảnh
                         string urlimg = htmlcontent.Substring(htmlcontent.IndexOf("https://"));
                         urlimg = urlimg.Remove(urlimg.IndexOf("\""));
-                        urlimg = urlimg.Replace("amp;", "");
                         lsLinkImgPage.Add(urlimg);
                         WebClient webClient = new WebClient();
                         byte[] data = webClient.DownloadData(urlimg);
@@ -132,16 +178,16 @@ namespace FacebookAuto_v6
                         //ket thuc lay id
                         //lấy thông tin
                         //Bắt đầu lấy thông tin
-                        htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("DIV") + 10);
-                        htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("DIV") + 15);
+                        htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("div") + 10);
+                        htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("div") + 15);
                         string kq = htmlcontent.Remove(htmlcontent.IndexOf("<"));
                         lsNamePage.Add(kq);
-                        htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("DIV class") + 15);
+                        htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("div class") + 15);
                         kq = kq + " : " + htmlcontent.Remove(htmlcontent.IndexOf("<"));
                         lskq.Add(kq);
                         //kết thúc lấy thông tin
 
-                        if (htmlcontent.IndexOf("TD class=\"o b") == -1)
+                        if (htmlcontent.IndexOf("td class=\"o b") == -1)
                         {
                             string url = htmlcontent.Substring(htmlcontent.IndexOf("see_more_pager") + 25);
                             url = url.Remove(url.IndexOf("\">"));
@@ -224,7 +270,7 @@ namespace FacebookAuto_v6
         {
             Search();
         }
-        
+
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
@@ -236,7 +282,7 @@ namespace FacebookAuto_v6
 
         private void btnTichCuc1_Click(object sender, EventArgs e)
         {
-                DanhGia(1);
+            DanhGia(1);
         }
         //đánh giá trang, nhóm
         private void DanhGia(int kt)
@@ -266,7 +312,7 @@ namespace FacebookAuto_v6
                     DAO.Group.Them(newgroup);
 
                     DataTable dt = AccountFB.LoadDuLieuByNhanVien(taikhoan);
-                    for(int i=0;i<dt.Rows.Count;i++)
+                    for (int i = 0; i < dt.Rows.Count; i++)
                     {
                         ThuVienLamViecFacebook.DangXuat();
                         ThuVienLamViecFacebook.DNKhongLayTT(dt.Rows[i]["NumberIDAccount"].ToString());
@@ -281,7 +327,7 @@ namespace FacebookAuto_v6
             }
             MessageBox.Show("Đã thêm vào danh sách");
         }
-        
+
         private void btnKhongXacDinh1_Click(object sender, EventArgs e)
         {
             DanhGia(0);
