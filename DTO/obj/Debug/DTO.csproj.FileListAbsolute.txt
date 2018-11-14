@@ -33,3 +33,4 @@ C:\Users\tungn\Documents\Github\FacebookAuto_v6\DTO\obj\Debug\DTO.csproj.CoreCom
 C:\Users\tungn\Documents\Github\FacebookAuto_v6\DTO\obj\Debug\DTO.csproj.CopyComplete
 C:\Users\tungn\Documents\Github\FacebookAuto_v6\DTO\obj\Debug\DTO.dll
 C:\Users\tungn\Documents\Github\FacebookAuto_v6\DTO\obj\Debug\DTO.pdb
+C:\Users\tungn\Documents\Github\FacebookAuto_v6\DTO\obj\Debug\DTO.csprojAssemblyReference.cache

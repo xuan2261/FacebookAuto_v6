@@ -364,3 +364,5 @@ C:\Users\tungn\Documents\Github\FacebookAuto_v6\FacebookAuto_v6\bin\Debug\HtmlAg
 C:\Users\tungn\Documents\Github\FacebookAuto_v6\FacebookAuto_v6\bin\Debug\Mmosoft.Facebook.Sdk.pdb
 C:\Users\tungn\Documents\Github\FacebookAuto_v6\FacebookAuto_v6\bin\Debug\HtmlAgilityPack.pdb
 C:\Users\tungn\Documents\Github\FacebookAuto_v6\FacebookAuto_v6\bin\Debug\HtmlAgilityPack.xml
+C:\Users\tungn\Documents\Github\FacebookAuto_v6\FacebookAuto_v6\bin\Debug\Newtonsoft.Json.dll
+C:\Users\tungn\Documents\Github\FacebookAuto_v6\FacebookAuto_v6\bin\Debug\Newtonsoft.Json.xml

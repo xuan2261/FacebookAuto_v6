@@ -11,11 +11,20 @@ using System.Net;
 using System.IO;
 using DTO;
 using DAO;
+using Tungntdev.Facebook.Sdk;
+using Tungntdev.Facebook.Sdk.Utilities;
+using HtmlAgilityPack;
+using Tungntdev.Facebook.Sdk.Exceptions;
 
 namespace FacebookAuto_v6
 {
     public partial class UCGSThemTrang : UserControl
     {
+
+        ILogger _logger;
+        // for create http request
+        HttpHandler _http;
+
         List<string> lsIDPage = new List<string>();
         List<string> lsNamePage = new List<string>();
         List<string> lsLinkImgPage = new List<string>();
@@ -48,100 +57,66 @@ namespace FacebookAuto_v6
             string texttim = Uri.EscapeDataString(txtSearch.Text);
             //Tìm kiếm theo trang
             lbTrangThaiTim.Text = "Đang tìm kiếm";
-            CookieContainer container = null;
-            string s = "&email=gtunveteran11@gmail.com&pass=Loveeternal95";
-            CookieContainer mycontainer2 = new CookieContainer();
-            byte[] bytes = new UTF8Encoding().GetBytes(s);
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://mobile.facebook.com/login.php");
-            request.Method = "POST";
-            request.KeepAlive = true;
-            request.CookieContainer = mycontainer2;
-            request.ContentType = "application/x-www-form-urlencoded";
-            request.Referer = "https://mobile.facebook.com/profile.php?v=info";
-            request.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:64.0) Gecko/20100101 Firefox/64.0";
-            request.ContentLength = bytes.Length;
-            request.GetRequestStream().Write(bytes, 0, bytes.Length);
-            HttpWebResponse response = null;
-            response = (HttpWebResponse)request.GetResponse();
-            mycontainer2.Add(response.Cookies);
-            container = mycontainer2;
-            string str2 = new StreamReader(response.GetResponseStream()).ReadToEnd();
+
+            _http = new HttpHandler();
+            ILogger log = null;
+            if (log == null)
+                _logger = new SimpleConsoleLogger();
+            else
+                _logger = log;
+            HtmlNode document = this.BuildDom("https://m.facebook.com");
+
+            // Get login form Dom object
+            HtmlNode loginForm = document.SelectSingleNode("//form[@id='login_form']");
+            IEnumerable<HtmlNode> inputs = loginForm.ParentNode.Elements("input");
+
+            // create content payload
+            string credential = string.Format("email=gtunveteran11@gmail.com&pass=Loveeternal95");
+            string payload = HtmlHelper.BuildPayload(inputs, additionKeyValuePair: credential);
+
+            using (HttpWebResponse response = _http.SendPostRequest("https://m.facebook.com/login.php", payload))
+            {
+                if (response.Cookies["c_user"] == null)
+                    throw new UnAuthorizedException(FacebookClientErrors.CookieKeyCUserNotFound);
+            }
 
             if (DrbtnLoaiTim.selectedIndex == 0)
             {
                 // vào trang thông tin
-                request = (HttpWebRequest)WebRequest.Create("https://mobile.facebook.com/search/pages/?q=" + texttim + "&source=filter&isTrending=0");
-                request.Method = "GET";
-                request.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:64.0) Gecko/20100101 Firefox/64.0";
-                request.CookieContainer = mycontainer2;
-                response = (HttpWebResponse)request.GetResponse();
-                mycontainer2.Add(response.Cookies);
-                container = mycontainer2;
-                string htmlcontent = new StreamReader(response.GetResponseStream()).ReadToEnd();
-                htmlcontent = htmlcontent.Replace("amp;", "");
-                htmlcontent = htmlcontent.Replace("&lt;", "<");
-                htmlcontent = htmlcontent.Replace("&gt;", ">");
-                htmlcontent = htmlcontent.Replace("&quot;", "'");
-                htmlcontent = htmlcontent.Replace("&apos;", "\"");
+                document = this.BuildDom("https://mobile.facebook.com/search/pages/?q=" + texttim + "&source=filter&isTrending=0");
                 imglist.Images.Clear();
-                for (int i = 0; i < 50; i++)
+                var listkq = document.SelectSingleNode("//div[@id='BrowseResultsContainer']").SelectNodes(".//table[contains(@role,'presentation')]");
+                foreach (var item in listkq)
                 {
-                    try
-                    {
-                        htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("td class=\"q c") + 15);
-                        if (htmlcontent.IndexOf("div") < 10) continue;
-                        //bắt đầu lấy link ảnh
-                        string urlimg = htmlcontent.Substring(htmlcontent.IndexOf("https://"));
-                        urlimg = urlimg.Remove(urlimg.IndexOf("\""));
-                        lsLinkImgPage.Add(urlimg);
-                        WebClient webClient = new WebClient();
-                        byte[] data = webClient.DownloadData(urlimg);
-                        MemoryStream mem = new MemoryStream(data);
-                        imglist.Images.Add(Image.FromStream(mem));
-                        //Kết thúc lấy link ảnh
-                        //
-                        //Bắt đầu lấy thông tin
-                        htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("div") + 10);
-                        htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("div") + 15);
-                        string kq = htmlcontent.Remove(htmlcontent.IndexOf("<"));
-                        lsNamePage.Add(kq);
-                        htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("div class=\"c") + 10);
-                        htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf(">") + 1);
-                        kq = kq + " : " + htmlcontent.Remove(htmlcontent.IndexOf("<"));
-                        lskq.Add(kq);
-                        //lay id
-                        string id = htmlcontent.Substring(htmlcontent.IndexOf("/a/profile.php"));
-                        id = id.Substring(id.IndexOf("id=") + 3);
-                        id = id.Remove(id.IndexOf("&"));
-                        lsIDPage.Add(id);
-                        //ket thuc lay id
-                        ProgressBarTim.Value += 2;
-                        if (htmlcontent.IndexOf("class=\"p ca") == -1)
-                        {
-                            string url = htmlcontent.Substring(htmlcontent.IndexOf("see_more_pager") + 25);
-                            url = url.Remove(url.IndexOf("\">"));
-                            request = (HttpWebRequest)WebRequest.Create(url);
-                            request.Method = "GET";
-                            request.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:64.0) Gecko/20100101 Firefox/64.0";
-                            request.CookieContainer = mycontainer2;
-                            response = (HttpWebResponse)request.GetResponse();
-                            mycontainer2.Add(response.Cookies);
-                            container = mycontainer2;
-                            htmlcontent = new StreamReader(response.GetResponseStream()).ReadToEnd();
-                            htmlcontent = htmlcontent.Replace("amp;", "");
-                            htmlcontent = htmlcontent.Replace("&lt;", "<");
-                            htmlcontent = htmlcontent.Replace("&gt;", ">");
-                            htmlcontent = htmlcontent.Replace("&quot;", "'");
-                            htmlcontent = htmlcontent.Replace("&apos;", "\"");
-                        }
-                    }
-                    catch { break; }
-                    //Kết thúc lấy thông tin
+                    var linkimg = item.SelectSingleNode(".//img").GetAttributeValue("src", "");
+                    linkimg = linkimg.Replace("amp;", "");
+                    var namepage = item.SelectSingleNode(".//tbody/tr/td[2]/a/div/div").InnerText;
+
+                    lsNamePage.Add(namepage);
+                    namepage = namepage + "\n" + item.SelectSingleNode(".//tbody/tr/td[2]/a/div[2]").InnerText;
+
+                    string id = item.InnerHtml;
+                    id = id.Substring(id.IndexOf("/a/profile.php"));
+                    id = id.Substring(id.IndexOf("id=") + 3);
+                    id = id.Remove(id.IndexOf("&"));
+
+                    //lưu thông tin
+                    lsLinkImgPage.Add(linkimg);
+                    WebClient webClient = new WebClient();
+                    byte[] data = webClient.DownloadData(linkimg);
+                    MemoryStream mem = new MemoryStream(data);
+                    imglist.Images.Add(Image.FromStream(mem));
+
+                    lskq.Add(namepage);
+
+                    lsIDPage.Add(id);
+
+                    ProgressBarTim.Value += 5;
                 }
             }
             //Kết thúc tìm theo trang
             //Tìm kiếm theo nhóm
-            if (DrbtnLoaiTim.selectedIndex == 1)
+            /*if (DrbtnLoaiTim.selectedIndex == 1)
             {
                 // vào trang thông tin
                 request = (HttpWebRequest)WebRequest.Create("https://mobile.facebook.com/search/groups/?q=" + texttim + "&source=filter&isTrending=0");
@@ -200,7 +175,7 @@ namespace FacebookAuto_v6
                     }
                     catch { break; }
                 }
-            }
+            }*/
             //Kết thúc tìm theo nhóm
 
             //Tìm kiếm người dùng
@@ -449,6 +424,24 @@ namespace FacebookAuto_v6
         private void btnTieuCuc_Click(object sender, EventArgs e)
         {
             DanhGiaLink(-1);
+        }
+
+        public void Dispose()
+        {
+            if (_logger != null)
+            {
+                _logger.Dispose();
+            }
+        }
+        /// <summary>
+        /// Download content from url and build DOM from it.
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
+        HtmlNode BuildDom(string url)
+        {
+            string htmlContent = _http.DownloadContent(url);
+            return HtmlHelper.BuildDom(htmlContent);
         }
     }
 }

@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Gecko;
 using DTO;
 using DAO;
+using Tungntdev.Facebook.Sdk.Exceptions;
+using Tungntdev.Facebook.Sdk.Models;
+using Tungntdev.Facebook.Sdk.Utilities;
+using HtmlAgilityPack;
+using System.Net;
 
 namespace FacebookAuto_v6
 {
@@ -31,6 +30,9 @@ namespace FacebookAuto_v6
         public string danhgia;
         public string taikhoan;
         public string timepost;
+
+        HttpHandler _http;
+        ILogger _logger;
         public UCTTKiemDuyet()
         {
             InitializeComponent();
@@ -174,84 +176,106 @@ namespace FacebookAuto_v6
             lbTrangThaiBL.Visible = true;
             ProgressQuetBL.Visible = true;
             ProgressQuetBL.Value = 0;
-            WebBrowser web1 = new WebBrowser();
-            web1.Navigate("mobile.facebook.com/" + idpost);
-            while (web1.ReadyState != WebBrowserReadyState.Complete)
-                Application.DoEvents();
-            htmlcontent = web1.DocumentText;
-            htmlcontent = htmlcontent.Replace("amp;", "");
+            
+            // load html content to document node
+
+            _http = new HttpHandler();
+            ILogger log = null;
+            if (log == null)
+                _logger = new SimpleConsoleLogger();
+            else
+                _logger = log;
+
+            HtmlNode document = this.BuildDom("https://mobile.facebook.com/");
+
+            // Get login form Dom object
+            HtmlNode loginForm = document.SelectSingleNode("//form[@id='login_form']");
+            IEnumerable<HtmlNode> inputs = loginForm.ParentNode.Elements("input");
+
+            // create content payload
+            string credential = string.Format("email=gtunveteran11@gmail.com&pass=Loveeternal95");
+            string payload = HtmlHelper.BuildPayload(inputs, additionKeyValuePair: credential);
+
+            using (HttpWebResponse response = _http.SendPostRequest("https://mobile.facebook.com/login.php", payload))
+            {
+                if (response.Cookies["c_user"] == null)
+                    throw new UnAuthorizedException(FacebookClientErrors.CookieKeyCUserNotFound);
+            }
+
+            document = this.BuildDom("https://mobile.facebook.com/" + idpost);
+            var kt = document.SelectSingleNode("//div[contains(@id,'composer')]");
+            HtmlNode test;
+            if (kt == null)
+            {
+                test = document.SelectSingleNode("/html/body/div/div/div[2]/div/div[1]/div[2]/div/div[4]");
+            }
+            else
+            {
+                    test = document.SelectSingleNode("/html/body/div/div/div[2]/div/div[1]/div[2]/div/div[5]");
+            }
+            var div = test.InnerHtml;
+            div = div.Substring(div.IndexOf("class=\"") + 7);
+            div = div.Remove(div.IndexOf("\""));
+            int ktlenorxuong = 0; // trên nhận về 1 , dưới nhận về 2
             for (; ; )
             {
-                int kt = htmlcontent.IndexOf("<H3><A class=\"");
-                int kt2 = htmlcontent.IndexOf("<h3><a class=\"d");
-                //nếu như còn bình luận
-                if (kt != -1 || kt2 != -1)
+                
+                var threadItems = document.SelectNodes("//div[@class='" + div + "']");
+
+                if (threadItems == null) break;
+
+                foreach (var item in threadItems)
                 {
-                    if (kt == -1)
-                        htmlcontent = htmlcontent.Substring(kt2 + 5);
-                    else
-                        htmlcontent = htmlcontent.Substring(kt + 5);
-                    htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("href") + 4);
-                    htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("\"") + 1);
-
-                    //string idUserComment = htmlcontent.Remove(htmlcontent.IndexOf("refid"));
-                    //idUserComment = idUserComment.Replace("?", "");
-                    //idUserComment = idUserComment.Replace("rc=p", "");
-                    string idUserComment = htmlcontent.Remove(htmlcontent.IndexOf("&"));
-
-
-                    string NameBL = htmlcontent.Substring(htmlcontent.IndexOf(">") + 1);
-                    NameBL = NameBL.Remove(NameBL.IndexOf("<"));
-
-
-                    htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("class=") + 5);
-                    htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf(">") + 1);
-
-                    string NoiDung = htmlcontent.Remove(htmlcontent.IndexOf("/DIV") - 1);
-
-                    string idcomment = htmlcontent.Substring(htmlcontent.IndexOf("like_comment_id=") + 16);
-                    idcomment = idcomment.Remove(idcomment.IndexOf("&"));
-
-                    string TimeBL = htmlcontent.Substring(htmlcontent.IndexOf("ABBR") + 5);
-                    TimeBL = TimeBL.Remove(TimeBL.IndexOf("<"));
-                    if (TimeBL.IndexOf("Tháng") == -1)
-                        TimeBL = TimeBL + DateTime.Now.ToShortDateString();
-
+                    HtmlNode name = item.SelectSingleNode(".//a");
+                    string link = item.InnerHtml;
+                    link = link.Substring(link.IndexOf("href"));
+                    link = link.Substring(link.IndexOf("\"") + 1);
+                    link = link.Remove(link.IndexOf("&"));
+                    if (link.Contains("?refid=")) link = link.Remove(link.IndexOf("?refid="));
+                    string ten = name.InnerText;
+                    var idcomment = item.GetAttributeValue("id", "");
+                    string time = item.SelectSingleNode("//abbr").InnerText;
+                    string noidung = item.SelectSingleNode(".//div[contains(@class,'d')]").InnerText;
                     if (CommentPost.KiemTraIDComment(idcomment) == false)
                     {
-                        lsIDUserBinhLuan.Add(idUserComment);
+                        lsIDUserBinhLuan.Add(link);
                         lsIDBinhLuan.Add(idcomment);
-                        lsNoiDungBL.Add(NoiDung);
-                        lsTimeBinhLuan.Add(TimeBL);
-                        LsNguoiDungBL.Items.Add(NameBL);
+                        lsNoiDungBL.Add(noidung);
+                        lsTimeBinhLuan.Add(time);
+                        LsNguoiDungBL.Items.Add(ten);
                     }
                 }
-                //nếu như hết bình luận cố tìm xem thêm bình luận
-                else
+                if (ktlenorxuong == 0)
                 {
-                    int ktseenext = htmlcontent.IndexOf("see_next");
-                    if (ktseenext != -1)
-                    {
-                        htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("see_next") + 5);
-                        htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("href") + 4);
-                        htmlcontent = htmlcontent.Substring(htmlcontent.IndexOf("\"") + 1);
-                        string urltiep = htmlcontent.Remove(htmlcontent.IndexOf("\""));
-                        urltiep = urltiep.Replace("amp;", "");
-                        web1.Navigate("mobile.facebook.com" + urltiep);
-                        while (web1.ReadyState != WebBrowserReadyState.Complete)
-                            Application.DoEvents();
-                        htmlcontent = web1.DocumentText;
-                    }
-                    else
-                    {
-                        ProgressQuetBL.Value = 100;
-                        lbTrangThaiBL.Text = "Đã quét xong!";
-                        MessageBox.Show("Đã tìm kiếm được " + LsNguoiDungBL.Items.Count + " bình luận mới");
-                        tongsocomment = LsNguoiDungBL.Items.Count;
-                        break;
-                    }
+                    var ktlinktren = document.SelectSingleNode("//div[contains(@id, 'see_prev_')]");
+                    var ktlinkduoi = document.SelectSingleNode("//div[contains(@id,'see_next')]");
+                    if (ktlinktren != null) ktlenorxuong = 1;
+                    if (ktlinkduoi != null) ktlenorxuong = 2;
                 }
+                string href=null;
+                if(ktlenorxuong==1)
+                {
+                    HtmlNode binhluantren = document.SelectSingleNode("//div[contains(@id, 'see_prev_')]");
+                    href = binhluantren.InnerHtml;
+                    href = href.Replace("amp;", "");
+                    href = href.Substring(href.IndexOf("/groups"));
+                    href = href.Remove(href.IndexOf("\""));
+                }
+                if(ktlenorxuong==2)
+                {
+                    HtmlNode binhluantren = document.SelectSingleNode("//div[contains(@id,'see_next')]");
+                    href = binhluantren.InnerHtml;
+                    href = href.Replace("amp;", "");
+                    href = href.Substring(href.IndexOf("/story"));
+                    href = href.Remove(href.IndexOf("\""));
+                }
+                
+                document = this.BuildDom("https://mobile.facebook.com" + href);
             }
+            ProgressQuetBL.Value = 100;
+            lbTrangThaiBL.Text = "Đã quét xong!";
+            MessageBox.Show("Đã tìm kiếm được " + LsNguoiDungBL.Items.Count + " bình luận mới");
+            tongsocomment = LsNguoiDungBL.Items.Count;
         }
 
         private void LsNguoiDungBL_MouseClick(object sender, MouseEventArgs e)
@@ -402,6 +426,12 @@ namespace FacebookAuto_v6
             //kết thúc loại bỏ item trong danh sách
             txtNoiDungBinhLuan.Text = null;
 
+        }
+
+        HtmlNode BuildDom(string url)
+        {
+            string htmlContent = _http.DownloadContent(url);
+            return HtmlHelper.BuildDom(htmlContent);
         }
     }
 }

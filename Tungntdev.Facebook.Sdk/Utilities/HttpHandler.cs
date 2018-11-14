@@ -118,7 +118,9 @@ namespace Tungntdev.Facebook.Sdk.Utilities
         public virtual string DownloadContent(string requestUrl)
         {
             // cause Accept-Encoding allow gzip so request use gzip stream to decompress content.
+
             using (var response = this.SendGetRequest(requestUrl))
+
             using (var responseStreamReader = new StreamReader(new GZipStream(response.GetResponseStream(), CompressionMode.Decompress)))
             {
                 return responseStreamReader.ReadToEnd();

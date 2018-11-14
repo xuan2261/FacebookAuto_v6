@@ -25,7 +25,7 @@ namespace DAO
         }
         public static DataTable LoadDuLieuTichCuc()
         {
-            string sTruyVan = "select top 20 * from tblUserFB where Status >1 order by Status DESC";
+            string sTruyVan = "select top 15 * from tblUserFB where Status >1 order by Status DESC";
             con = DataProvider.KetNoi();
             DataTable dt = DataProvider.LayDataTable(sTruyVan, con);
             DataProvider.DongKetNoi(con);
@@ -33,7 +33,7 @@ namespace DAO
         }
         public static DataTable LoadDuLieuTieuCuc()
         {
-            string sTruyVan = "select top 20 * from tblUserFB where Status <-1 order by Status ASC";
+            string sTruyVan = "select top 15 * from tblUserFB where Status <-1 order by Status ASC";
             con = DataProvider.KetNoi();
             DataTable dt = DataProvider.LayDataTable(sTruyVan, con);
             DataProvider.DongKetNoi(con);
@@ -58,7 +58,7 @@ namespace DAO
         {
             try
             {
-                string sTruyVan = string.Format("declare @t int, @u int, @kq int select @t = sum(Status) from tblCommentPost where IDUser='{0}' select @u = sum(Status) from tblCommentPost where IDUser = '{1}'  if (@u is null and @t is not null) select @kq = @t if (@u is null and @t is null) select @kq = 0 if (@u is not null and @t is null) select @kq = @u else select @kq = @u + @t update tblUserFB set Status = @kq where IDUser = N'{2}'", iduser,iduser,iduser );
+                string sTruyVan = string.Format("declare @t int, @u int, @kq int select @t = sum(Status) from tblLikePost where IDUserFB='{0}' select @u = sum(Status) from tblCommentPost where IDUser = '{1}' if (@u is null and @t is null) set @kq = 0 if (@u is null and @t is not null) set @kq = @t  if (@u is not null and @t is not null) set @kq= @t + @u if (@u is not null and @t is null ) set @kq = @u update tblUserFB set Status=@kq where IDUser='{2}'", iduser,iduser,iduser );
                 con = DataProvider.KetNoi();
                 DataProvider.ThucThiTruyVanNonQuery(sTruyVan, con);
                 DataProvider.DongKetNoi(con);

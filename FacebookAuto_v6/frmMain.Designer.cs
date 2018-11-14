@@ -93,6 +93,7 @@
             this.tabGiamSatTrang,
             this.accordionControlSeparator2,
             this.ElementQLTaiKhoan});
+            this.GroupElemtNhanVien.Expanded = true;
             this.GroupElemtNhanVien.Hint = "Các chức năng của nhân viên";
             this.GroupElemtNhanVien.Name = "GroupElemtNhanVien";
             this.GroupElemtNhanVien.Text = "Nhân viên";

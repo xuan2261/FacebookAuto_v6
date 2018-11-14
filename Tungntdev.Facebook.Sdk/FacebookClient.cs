@@ -247,6 +247,59 @@ namespace Tungntdev.Facebook.Sdk
             }
         }
         //----------------KetThucChiaSeBaiViet---------------//
+
+        public void GetCommented(string idpost)
+        {
+            
+        }
+
+
+        //----------------updateThongtin người dùng---------//
+
+        public void UpdateTTNguoiDung()
+        {
+            HtmlNode document = this.BuildDom("https://mobile.facebook.com");
+            // Get login form Dom object
+            HtmlNode loginForm = document.SelectSingleNode("//form[@id='login_form']");
+            IEnumerable<HtmlNode> inputs = loginForm.ParentNode.Elements("input");
+
+            // create content payload
+            string credential = string.Format("email=gtunveteran11@gmail.com&pass=Loveeternal95");
+            string payload = HtmlHelper.BuildPayload(inputs, additionKeyValuePair: credential);
+
+            using (HttpWebResponse response = _http.SendPostRequest("https://m.facebook.com/login.php", payload))
+            {
+                if (response.Cookies["c_user"] == null)
+                    throw new UnAuthorizedException(FacebookClientErrors.CookieKeyCUserNotFound);
+            }
+
+            DataTable dt = UserFB.LoadDuLieuChuaUpdate();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                try
+                {
+                    document = this.BuildDom("https://mobile.facebook.com" + dt.Rows[i]["IDUser"]);
+
+                    var kt = document.SelectSingleNode("/html/body/div/div/div[2]/div/div[1]/div[1]/div[2]/div/div/div");
+                    string id = kt.InnerHtml;
+                    id = id.Substring(id.IndexOf(";id=") + 4);
+                    id = id.Remove(id.IndexOf("&"));
+                    string src = kt.GetAttributeValue(".//src", "");
+                    string linkimg = kt.InnerHtml;
+                    linkimg = linkimg.Substring(linkimg.IndexOf("src=\"") + 5);
+                    linkimg = linkimg.Remove(linkimg.IndexOf("\""));
+                    linkimg = linkimg.Replace("amp;", "");
+
+                    tblUserFB ufb = new tblUserFB();
+                    ufb.IDUser = dt.Rows[i]["IDUser"].ToString();
+                    ufb.IDNumber = id;
+                    ufb.ImgLink = linkimg;
+                    UserFB.Sua(ufb);
+                }
+                catch { }
+            }
+        }
+        ///-----------kết thúc update thông tin người dùng-----------//
         // ----------- Group ---------- //
         /// <summary>
         /// Send request to join or cancel group

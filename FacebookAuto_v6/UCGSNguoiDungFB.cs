@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using DAO;
 using System.Net;
 using System.IO;
+using Tungntdev.Facebook.Sdk;
 
 namespace FacebookAuto_v6
 {
@@ -341,8 +342,11 @@ namespace FacebookAuto_v6
         private void btnUpdateUser_Click(object sender, EventArgs e)
         {
             ThuVienLamViecFacebook.UpdateStatusUserFB();
-            ThuVienLamViecFacebook.UpdateTTNguoiDung();
+            //ThuVienLamViecFacebook.UpdateTTNguoiDung();
+            FacebookClient fb = new FacebookClient();
+            fb.UpdateTTNguoiDung();
             LoadNguoiDung();
+            MessageBox.Show("Đã cập nhật xong");
         }
 
         private void btnTrangDaThich_Click(object sender, EventArgs e)
